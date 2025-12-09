@@ -26,7 +26,7 @@ class SoundEffects {
       oscillator.type = type;
 
       // Softer volume for click sounds
-      const initialGain = type === 'sine' ? 0.15 : 0.3;
+      const initialGain = type === 'sine' ? 0.08 : 0.3;
       gainNode.gain.setValueAtTime(initialGain, this.audioContext.currentTime);
       gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + duration);
 
@@ -55,7 +55,7 @@ class SoundEffects {
   }
 
   click() {
-    this.playTone(600, 0.04, 'sine');
+    this.playTone(400, 0.03, 'sine');
   }
 
   levelUp() {
