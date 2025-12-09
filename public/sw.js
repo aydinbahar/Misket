@@ -1,5 +1,5 @@
 // Service Worker for Misket PWA
-const CACHE_NAME = 'misket-v1';
+const CACHE_NAME = 'misket-v2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -70,5 +70,12 @@ self.addEventListener('activate', (event) => {
   );
   
   self.clients.claim();
+});
+
+// Listen for skip waiting message
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 

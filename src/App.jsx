@@ -3,6 +3,7 @@ import { AppProvider, useApp } from './context/AppContext';
 import Navigation from './components/Navigation';
 import Notification from './components/Notification';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
+import UpdatePrompt from './components/UpdatePrompt';
 import HomeView from './views/HomeView';
 import UnitsView from './views/UnitsView';
 import PracticeView from './views/PracticeView';
@@ -67,6 +68,9 @@ function AppContent() {
 
       {/* PWA Install Prompt */}
       <PWAInstallPrompt />
+
+      {/* Update Prompt */}
+      <UpdatePrompt />
 
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -16,6 +16,8 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
   const [feedback, setFeedback] = useState(null);
   const [words, setWords] = useState([]);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     if (selectedUnit) {
@@ -23,6 +25,12 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
       setWords(unitWords);
     }
   }, [selectedUnit]);
+
+  // Reset image states when word changes
+  useEffect(() => {
+    setImageLoaded(false);
+    setImageError(false);
+  }, [currentIndex]);
 
   if (words.length === 0) {
     return (
@@ -40,6 +48,13 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
 
   const currentWord = words[currentIndex];
   const progress = userProgress.wordProgress[currentWord.id];
+
+  // Generate image URL from Unsplash
+  const getImageUrl = (word) => {
+    // Use Unsplash Source API for random images based on keyword
+    const keyword = word.toLowerCase().replace(/\s+/g, ',');
+    return `https://source.unsplash.com/800x600/?${keyword},vocabulary,learning`;
+  };
 
   // Text-to-Speech function
   const speakWord = (text) => {
@@ -82,6 +97,8 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
       setShowAnswer(false);
       setFeedback(null);
       setQuizAnswer('');
+      setImageLoaded(false);
+      setImageError(false);
     } else {
       showNotification('🎉 You completed all words in this unit!', 'success');
       setCurrentView('home');
@@ -94,6 +111,8 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
       setShowAnswer(false);
       setFeedback(null);
       setQuizAnswer('');
+      setImageLoaded(false);
+      setImageError(false);
     }
   };
 
@@ -220,6 +239,44 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                 {currentWord.pronunciation}
               </p>
 
+              {/* Image */}
+              <div className="relative mb-4 rounded-xl overflow-hidden bg-gray-100" style={{ height: '300px' }}>
+                {!imageLoaded && !imageError && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+                  </div>
+                )}
+                
+                {imageError ? (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-100 to-pink-100">
+                    <div className="text-center">
+                      <span className="text-8xl mb-4 block">📚</span>
+                      <p className="text-gray-600 text-sm">Visual learning</p>
+                    </div>
+                  </div>
+                ) : (
+                  <img
+                    src={getImageUrl(currentWord.word)}
+                    alt={currentWord.word}
+                    className={`w-full h-full object-cover transition-opacity duration-300 ${
+                      imageLoaded ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    onLoad={() => setImageLoaded(true)}
+                    onError={() => {
+                      setImageError(true);
+                      setImageLoaded(true);
+                    }}
+                  />
+                )}
+                
+                {/* Image overlay with word */}
+                {imageLoaded && !imageError && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                    <p className="text-white text-xl font-bold">{currentWord.word}</p>
+                  </div>
+                )}
+              </div>
+
               {/* Meaning */}
               <div className="bg-white rounded-lg p-4 mb-4">
                 <p className="text-sm text-gray-500 mb-1">Turkish Meaning</p>
@@ -265,6 +322,34 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
               <h3 className="text-xl font-bold text-blue-800 mb-4">
                 What is the English word for:
               </h3>
+              
+              {/* Image hint in quiz mode */}
+              <div className="relative mb-4 rounded-xl overflow-hidden bg-gray-100" style={{ height: '200px' }}>
+                {!imageLoaded && !imageError && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                  </div>
+                )}
+                
+                {imageError ? (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-100 to-cyan-100">
+                    <span className="text-6xl">🤔</span>
+                  </div>
+                ) : (
+                  <img
+                    src={getImageUrl(currentWord.word)}
+                    alt="Visual hint"
+                    className={`w-full h-full object-cover transition-opacity duration-300 ${
+                      imageLoaded ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    onLoad={() => setImageLoaded(true)}
+                    onError={() => {
+                      setImageError(true);
+                      setImageLoaded(true);
+                    }}
+                  />
+                )}
+              </div>
               
               <div className="bg-white rounded-xl p-6 mb-6 text-center">
                 <p className="text-3xl font-bold text-gray-800">
@@ -332,6 +417,8 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                 setShowAnswer(false);
                 setFeedback(null);
                 setQuizAnswer('');
+                setImageLoaded(false);
+                setImageError(false);
               }}
               className="btn-secondary flex items-center gap-2"
             >
