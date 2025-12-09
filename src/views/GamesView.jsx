@@ -34,7 +34,7 @@ const GamesView = ({ setCurrentView }) => {
     }
   ];
 
-  if (selected Game) {
+  if (selectedGame) {
     const game = games.find(g => g.id === selectedGame);
     const GameComponent = game.component;
     

@@ -47,7 +47,16 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
   }
 
   const currentWord = words[currentIndex];
-  const progress = userProgress.wordProgress[currentWord.id];
+  if (!currentWord) {
+    return (
+      <div className="card text-center">
+        <p className="text-gray-600">Loading...</p>
+      </div>
+    );
+  }
+  
+  const wordProgressData = userProgress?.wordProgress || {};
+  const progress = wordProgressData[currentWord.id];
 
   // Get emoji for word (visual representation)
   const getWordEmoji = (word) => {

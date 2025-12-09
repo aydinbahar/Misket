@@ -38,7 +38,18 @@ export const AppProvider = ({ children }) => {
   const [userProgress, setUserProgress] = useState(() => {
     const saved = localStorage.getItem('misket_progress');
     if (saved) {
-      return JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      // Migration: Add missing properties from new features
+      return {
+        ...parsed,
+        achievements: parsed.achievements || [],
+        dailyGoal: parsed.dailyGoal || 10,
+        todayProgress: parsed.todayProgress || 0,
+        lastProgressDate: parsed.lastProgressDate || new Date().toDateString(),
+        weeklyStats: parsed.weeklyStats || [],
+        badges: parsed.badges || [],
+        wordProgress: parsed.wordProgress || {}
+      };
     }
     // Initialize word progress for all words
     const allWords = getAllWords();
@@ -199,6 +210,11 @@ export const AppProvider = ({ children }) => {
       // Add XP
       addXP(xpReward);
 
+      // Check achievements after XP update
+      setTimeout(() => {
+        checkAchievements();
+      }, 500);
+
       return {
         ...prev,
         wordProgress: updatedWordProgress,
@@ -244,11 +260,12 @@ export const AppProvider = ({ children }) => {
   // Add achievement
   const addAchievement = (achievement) => {
     setUserProgress(prev => {
-      if (prev.achievements.some(a => a.id === achievement.id)) return prev;
+      const currentAchievements = prev.achievements || [];
+      if (currentAchievements.some(a => a.id === achievement.id)) return prev;
       showNotification(`🎉 Achievement Unlocked: ${achievement.title}!`, 'success');
       return {
         ...prev,
-        achievements: [...prev.achievements, { ...achievement, unlockedAt: Date.now() }]
+        achievements: [...currentAchievements, { ...achievement, unlockedAt: Date.now() }]
       };
     });
   };
@@ -265,17 +282,19 @@ export const AppProvider = ({ children }) => {
           lastProgressDate: today
         };
       } else {
-        const newProgress = prev.todayProgress + 1;
+        const newProgress = (prev.todayProgress || 0) + 1;
         
         // Check if daily goal completed
-        if (newProgress === prev.dailyGoal) {
-          addAchievement({
-            id: `daily-goal-${Date.now()}`,
-            title: 'Daily Goal Complete!',
-            description: `Studied ${prev.dailyGoal} words today`,
-            icon: '🎯',
-            type: 'daily'
-          });
+        if (newProgress === prev.dailyGoal && !prev.achievements?.some(a => a.id === `daily-goal-${today}`)) {
+          setTimeout(() => {
+            addAchievement({
+              id: `daily-goal-${today}`,
+              title: 'Daily Goal Complete!',
+              description: `Studied ${prev.dailyGoal} words today`,
+              icon: '🎯',
+              type: 'daily'
+            });
+          }, 100);
         }
         
         return {
@@ -288,27 +307,31 @@ export const AppProvider = ({ children }) => {
 
   // Check achievements
   const checkAchievements = () => {
-    const { totalCorrect, dailyStreak, wordProgress, level } = userProgress;
-    const masteredCount = Object.values(wordProgress).filter(w => w.status === 'mastered').length;
+    try {
+      const { totalCorrect, dailyStreak, wordProgress, level, achievements: currentAchievements = [] } = userProgress;
+      const masteredCount = Object.values(wordProgress || {}).filter(w => w.status === 'mastered').length;
 
-    // Milestone achievements
-    const achievements = [
-      { id: 'first-word', title: 'First Word!', description: 'Learned your first word', icon: '🌟', condition: totalCorrect >= 1 },
-      { id: '10-words', title: '10 Words Master', description: 'Mastered 10 words', icon: '📚', condition: masteredCount >= 10 },
-      { id: '25-words', title: '25 Words Master', description: 'Mastered 25 words', icon: '📖', condition: masteredCount >= 25 },
-      { id: '50-words', title: '50 Words Master', description: 'Mastered 50 words', icon: '🏆', condition: masteredCount >= 50 },
-      { id: '100-words', title: '100 Words Champion!', description: 'Mastered 100 words!', icon: '👑', condition: masteredCount >= 100 },
-      { id: 'week-streak', title: 'Week Warrior', description: '7 days streak!', icon: '🔥', condition: dailyStreak >= 7 },
-      { id: 'month-streak', title: 'Month Master', description: '30 days streak!', icon: '⚡', condition: dailyStreak >= 30 },
-      { id: 'level-5', title: 'Level 5!', description: 'Reached level 5', icon: '⭐', condition: level >= 5 },
-      { id: 'perfect-score', title: 'Perfect Score', description: 'Got 100% in a test', icon: '💯', condition: false }, // Manual trigger
-    ];
+      // Milestone achievements
+      const achievementsList = [
+        { id: 'first-word', title: 'First Word!', description: 'Learned your first word', icon: '🌟', condition: totalCorrect >= 1 },
+        { id: '10-words', title: '10 Words Master', description: 'Mastered 10 words', icon: '📚', condition: masteredCount >= 10 },
+        { id: '25-words', title: '25 Words Master', description: 'Mastered 25 words', icon: '📖', condition: masteredCount >= 25 },
+        { id: '50-words', title: '50 Words Master', description: 'Mastered 50 words', icon: '🏆', condition: masteredCount >= 50 },
+        { id: '100-words', title: '100 Words Champion!', description: 'Mastered 100 words!', icon: '👑', condition: masteredCount >= 100 },
+        { id: 'week-streak', title: 'Week Warrior', description: '7 days streak!', icon: '🔥', condition: dailyStreak >= 7 },
+        { id: 'month-streak', title: 'Month Master', description: '30 days streak!', icon: '⚡', condition: dailyStreak >= 30 },
+        { id: 'level-5', title: 'Level 5!', description: 'Reached level 5', icon: '⭐', condition: level >= 5 },
+      ];
 
-    achievements.forEach(achievement => {
-      if (achievement.condition && !userProgress.achievements.some(a => a.id === achievement.id)) {
-        addAchievement(achievement);
-      }
-    });
+      achievementsList.forEach(achievement => {
+        const alreadyHas = currentAchievements.some(a => a.id === achievement.id);
+        if (achievement.condition && !alreadyHas) {
+          addAchievement(achievement);
+        }
+      });
+    } catch (error) {
+      console.error('Error checking achievements:', error);
+    }
   };
 
   // Check and update daily streak
@@ -345,11 +368,6 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     checkDailyStreak();
   }, []);
-
-  // Check achievements on progress change
-  useEffect(() => {
-    checkAchievements();
-  }, [userProgress.totalCorrect, userProgress.dailyStreak, userProgress.level]);
 
   const value = {
     userProgress,

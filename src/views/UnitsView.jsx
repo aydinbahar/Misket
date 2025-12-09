@@ -11,15 +11,16 @@ const UnitsView = ({ setCurrentView, setSelectedUnit }) => {
     const unit = getAllUnits().find(u => u.id === unitId);
     if (!unit) return { mastered: 0, total: 0, percent: 0 };
 
-    const wordIds = Object.keys(userProgress.wordProgress).filter(id => id.startsWith(`w${unitId.slice(-1)}_`));
+    const wordProgress = userProgress?.wordProgress || {};
+    const wordIds = Object.keys(wordProgress).filter(id => id.startsWith(`w${unitId.slice(-1)}_`));
     const masteredCount = wordIds.filter(id => 
-      userProgress.wordProgress[id]?.status === 'mastered'
+      wordProgress[id]?.status === 'mastered'
     ).length;
 
     return {
       mastered: masteredCount,
       total: unit.wordCount,
-      percent: Math.round((masteredCount / unit.wordCount) * 100)
+      percent: unit.wordCount > 0 ? Math.round((masteredCount / unit.wordCount) * 100) : 0
     };
   };
 

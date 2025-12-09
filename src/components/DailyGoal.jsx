@@ -4,7 +4,9 @@ import { Target, CheckCircle, Flame } from 'lucide-react';
 
 const DailyGoal = () => {
   const { userProgress } = useApp();
-  const { dailyGoal, todayProgress, dailyStreak } = userProgress;
+  const dailyGoal = userProgress?.dailyGoal || 10;
+  const todayProgress = userProgress?.todayProgress || 0;
+  const dailyStreak = userProgress?.dailyStreak || 0;
   
   const progressPercent = Math.min((todayProgress / dailyGoal) * 100, 100);
   const isCompleted = todayProgress >= dailyGoal;

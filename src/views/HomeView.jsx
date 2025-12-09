@@ -9,15 +9,16 @@ import { getAllWords } from '../data/vocabulary';
 const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
   const { userProgress, getWordsForReview, getWeakWords } = useApp();
   
-  const wordsForReview = getWordsForReview();
-  const weakWords = getWeakWords();
+  const wordsForReview = getWordsForReview() || [];
+  const weakWords = getWeakWords() || [];
   const allWords = getAllWords();
   
   // Calculate mastery percentage
-  const masteredCount = Object.values(userProgress.wordProgress).filter(
-    p => p.status === 'mastered'
+  const wordProgress = userProgress?.wordProgress || {};
+  const masteredCount = Object.values(wordProgress).filter(
+    p => p?.status === 'mastered'
   ).length;
-  const masteryPercent = Math.round((masteredCount / allWords.length) * 100);
+  const masteryPercent = allWords.length > 0 ? Math.round((masteredCount / allWords.length) * 100) : 0;
 
   const quickActions = [
     {
@@ -111,19 +112,19 @@ const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
         <div className="grid grid-cols-4 gap-2 mt-4 text-center text-xs">
           <div>
             <div className="font-bold text-gray-700">
-              {Object.values(userProgress.wordProgress).filter(p => p.status === 'new').length}
+              {Object.values(wordProgress).filter(p => p?.status === 'new').length}
             </div>
             <div className="text-gray-500">New</div>
           </div>
           <div>
             <div className="font-bold text-blue-600">
-              {Object.values(userProgress.wordProgress).filter(p => p.status === 'learning').length}
+              {Object.values(wordProgress).filter(p => p?.status === 'learning').length}
             </div>
             <div className="text-gray-500">Learning</div>
           </div>
           <div>
             <div className="font-bold text-orange-600">
-              {Object.values(userProgress.wordProgress).filter(p => p.status === 'review').length}
+              {Object.values(wordProgress).filter(p => p?.status === 'review').length}
             </div>
             <div className="text-gray-500">Review</div>
           </div>

@@ -4,10 +4,14 @@ import { Award, Lock } from 'lucide-react';
 
 const AchievementsList = () => {
   const { userProgress } = useApp();
-  const { achievements, totalCorrect, dailyStreak, level } = userProgress;
+  const achievements = userProgress?.achievements || [];
+  const totalCorrect = userProgress?.totalCorrect || 0;
+  const dailyStreak = userProgress?.dailyStreak || 0;
+  const level = userProgress?.level || 1;
+  const wordProgress = userProgress?.wordProgress || {};
   
-  const masteredCount = Object.values(userProgress.wordProgress).filter(
-    w => w.status === 'mastered'
+  const masteredCount = Object.values(wordProgress).filter(
+    w => w?.status === 'mastered'
   ).length;
 
   // All possible achievements

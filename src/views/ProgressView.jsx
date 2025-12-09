@@ -14,20 +14,23 @@ const ProgressView = () => {
   const levelInfo = getCurrentLevelInfo();
   const allWords = getAllWords();
   const units = getAllUnits();
-  const weakWords = getWeakWords();
+  const weakWords = getWeakWords() || [];
 
   // Calculate statistics
   const totalWords = allWords.length;
-  const wordProgress = Object.values(userProgress.wordProgress);
+  const wordProgressData = userProgress?.wordProgress || {};
+  const wordProgress = Object.values(wordProgressData);
   
-  const newWords = wordProgress.filter(w => w.status === 'new').length;
-  const learningWords = wordProgress.filter(w => w.status === 'learning').length;
-  const reviewWords = wordProgress.filter(w => w.status === 'review').length;
-  const masteredWords = wordProgress.filter(w => w.status === 'mastered').length;
+  const newWords = wordProgress.filter(w => w?.status === 'new').length;
+  const learningWords = wordProgress.filter(w => w?.status === 'learning').length;
+  const reviewWords = wordProgress.filter(w => w?.status === 'review').length;
+  const masteredWords = wordProgress.filter(w => w?.status === 'mastered').length;
   
-  const masteryPercent = Math.round((masteredWords / totalWords) * 100);
-  const accuracy = userProgress.totalCorrect + userProgress.totalIncorrect > 0
-    ? Math.round((userProgress.totalCorrect / (userProgress.totalCorrect + userProgress.totalIncorrect)) * 100)
+  const masteryPercent = totalWords > 0 ? Math.round((masteredWords / totalWords) * 100) : 0;
+  const totalCorrect = userProgress?.totalCorrect || 0;
+  const totalIncorrect = userProgress?.totalIncorrect || 0;
+  const accuracy = totalCorrect + totalIncorrect > 0
+    ? Math.round((totalCorrect / (totalCorrect + totalIncorrect)) * 100)
     : 0;
 
   // Unit progress
@@ -37,13 +40,13 @@ const ProgressView = () => {
       .map(w => w.id);
     
     const masteredInUnit = unitWordIds.filter(id => 
-      userProgress.wordProgress[id]?.status === 'mastered'
+      wordProgressData[id]?.status === 'mastered'
     ).length;
 
     return {
       ...unit,
       mastered: masteredInUnit,
-      percent: Math.round((masteredInUnit / unit.wordCount) * 100)
+      percent: unit.wordCount > 0 ? Math.round((masteredInUnit / unit.wordCount) * 100) : 0
     };
   });
 

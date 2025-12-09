@@ -5,6 +5,10 @@ import { Trophy, Zap, TrendingUp } from 'lucide-react';
 const ProgressBar = () => {
   const { getCurrentLevelInfo, userProgress } = useApp();
   const levelInfo = getCurrentLevelInfo();
+  
+  if (!userProgress || !levelInfo) {
+    return null;
+  }
 
   return (
     <div className="card">
@@ -49,26 +53,26 @@ const ProgressBar = () => {
       <div className="grid grid-cols-3 gap-4 mt-4">
         <div className="text-center">
           <div className="text-2xl font-bold text-green-600">
-            {userProgress.totalCorrect}
+            {userProgress?.totalCorrect || 0}
           </div>
           <div className="text-xs text-gray-500">Correct</div>
         </div>
         <div className="text-center">
           <div className="text-2xl font-bold text-red-600">
-            {userProgress.totalIncorrect}
+            {userProgress?.totalIncorrect || 0}
           </div>
           <div className="text-xs text-gray-500">Incorrect</div>
         </div>
         <div className="text-center">
           <div className="text-2xl font-bold text-orange-600">
-            {userProgress.dailyStreak}
+            {userProgress?.dailyStreak || 0}
           </div>
           <div className="text-xs text-gray-500">Day Streak</div>
         </div>
       </div>
 
       {/* Badges */}
-      {userProgress.badges.length > 0 && (
+      {userProgress?.badges?.length > 0 && (
         <div className="mt-4 pt-4 border-t border-gray-200">
           <div className="flex items-center gap-2 mb-2">
             <TrendingUp className="w-4 h-4 text-purple-500" />
