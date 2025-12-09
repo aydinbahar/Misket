@@ -18,30 +18,44 @@ const Navigation = ({ currentView, setCurrentView }) => {
     { id: 'progress', label: 'Progress', icon: Trophy },
   ];
 
+  // Split navigation into two rows
+  const firstRow = navItems.slice(0, 4);  // Home, Units, Practice, Games
+  const secondRow = navItems.slice(4);    // Story, Tests, Progress
+
+  const renderNavButton = (item) => {
+    const Icon = item.icon;
+    const isActive = currentView === item.id;
+    
+    return (
+      <button
+        key={item.id}
+        onClick={() => setCurrentView(item.id)}
+        className={`
+          flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all duration-300 flex-1
+          ${isActive 
+            ? `bg-gradient-to-br ${themeGradient} text-white shadow-lg scale-105` 
+            : 'text-gray-600 hover:bg-gray-100'
+          }
+        `}
+      >
+        <Icon className="w-5 h-5" />
+        <span className="text-xs font-medium">{item.label}</span>
+      </button>
+    );
+  };
+
   return (
     <nav className="bg-white shadow-lg rounded-2xl p-2 mb-6">
-      <div className="flex justify-around items-center">
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          const isActive = currentView === item.id;
-          
-          return (
-            <button
-              key={item.id}
-              onClick={() => setCurrentView(item.id)}
-              className={`
-                flex flex-col items-center gap-1 px-4 py-3 rounded-xl transition-all duration-300
-                ${isActive 
-                  ? `bg-gradient-to-br ${themeGradient} text-white shadow-lg scale-105` 
-                  : 'text-gray-600 hover:bg-gray-100'
-                }
-              `}
-            >
-              <Icon className="w-5 h-5" />
-              <span className="text-xs font-medium">{item.label}</span>
-            </button>
-          );
-        })}
+      <div className="space-y-2">
+        {/* First Row */}
+        <div className="flex items-center gap-2">
+          {firstRow.map(renderNavButton)}
+        </div>
+        
+        {/* Second Row */}
+        <div className="flex items-center gap-2">
+          {secondRow.map(renderNavButton)}
+        </div>
       </div>
     </nav>
   );
