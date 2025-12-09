@@ -7,6 +7,8 @@ import UpdatePrompt from './components/UpdatePrompt';
 import HomeView from './views/HomeView';
 import UnitsView from './views/UnitsView';
 import PracticeView from './views/PracticeView';
+import GamesView from './views/GamesView';
+import StoryMode from './views/StoryMode';
 import TestsView from './views/TestsView';
 import ProgressView from './views/ProgressView';
 
@@ -40,6 +42,10 @@ function AppContent() {
             setCurrentView={setCurrentView}
           />
         );
+      case 'games':
+        return <GamesView setCurrentView={setCurrentView} />;
+      case 'story':
+        return <StoryMode setCurrentView={setCurrentView} />;
       case 'tests':
         return (
           <TestsView 

@@ -48,7 +48,8 @@ export const AppProvider = ({ children }) => {
         lastProgressDate: parsed.lastProgressDate || new Date().toDateString(),
         weeklyStats: parsed.weeklyStats || [],
         badges: parsed.badges || [],
-        wordProgress: parsed.wordProgress || {}
+        wordProgress: parsed.wordProgress || {},
+        theme: parsed.theme || 'purple'
       };
     }
     // Initialize word progress for all words
@@ -79,7 +80,8 @@ export const AppProvider = ({ children }) => {
       dailyGoal: 10, // Words per day
       todayProgress: 0,
       lastProgressDate: new Date().toDateString(),
-      weeklyStats: []
+      weeklyStats: [],
+      theme: 'purple'
     };
   });
 
@@ -369,6 +371,15 @@ export const AppProvider = ({ children }) => {
     checkDailyStreak();
   }, []);
 
+  // Update theme
+  const updateTheme = (themeId) => {
+    setUserProgress(prev => ({
+      ...prev,
+      theme: themeId
+    }));
+    showNotification(`Theme changed to ${themeId}! 🎨`, 'success');
+  };
+
   const value = {
     userProgress,
     setUserProgress,
@@ -381,6 +392,7 @@ export const AppProvider = ({ children }) => {
     addAchievement,
     updateDailyProgress,
     checkAchievements,
+    updateTheme,
     notification,
     showNotification,
   };

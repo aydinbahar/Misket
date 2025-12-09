@@ -3,6 +3,7 @@ import { useApp } from '../context/AppContext';
 import MisketCharacter from '../components/MisketCharacter';
 import ProgressBar from '../components/ProgressBar';
 import DailyGoal from '../components/DailyGoal';
+import ThemeSelector from '../components/ThemeSelector';
 import { BookOpen, Brain, Target, Zap, Clock, TrendingUp } from 'lucide-react';
 import { getAllWords } from '../data/vocabulary';
 
@@ -96,6 +97,9 @@ const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
 
       {/* Daily Goal */}
       <DailyGoal />
+
+      {/* Theme Selector */}
+      <ThemeSelector />
 
       {/* Mastery Stats */}
       <div className="card">
