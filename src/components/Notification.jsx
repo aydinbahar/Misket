@@ -16,24 +16,24 @@ const Notification = ({ message, type = 'info', onClose }) => {
   const configs = {
     success: {
       icon: CheckCircle,
-      bgColor: 'bg-green-50',
+      bgColor: 'bg-green-50 dark:bg-green-900/80',
       borderColor: 'border-green-500',
-      textColor: 'text-green-800',
-      iconColor: 'text-green-500'
+      textColor: 'text-green-800 dark:text-green-100',
+      iconColor: 'text-green-500 dark:text-green-400'
     },
     error: {
       icon: AlertCircle,
-      bgColor: 'bg-red-50',
+      bgColor: 'bg-red-50 dark:bg-red-900/80',
       borderColor: 'border-red-500',
-      textColor: 'text-red-800',
-      iconColor: 'text-red-500'
+      textColor: 'text-red-800 dark:text-red-100',
+      iconColor: 'text-red-500 dark:text-red-400'
     },
     info: {
       icon: Info,
-      bgColor: 'bg-blue-50',
+      bgColor: 'bg-blue-50 dark:bg-blue-900/80',
       borderColor: 'border-blue-500',
-      textColor: 'text-blue-800',
-      iconColor: 'text-blue-500'
+      textColor: 'text-blue-800 dark:text-blue-100',
+      iconColor: 'text-blue-500 dark:text-blue-400'
     }
   };
 
@@ -61,7 +61,7 @@ const Notification = ({ message, type = 'info', onClose }) => {
             setIsVisible(false);
             setTimeout(onClose, 300);
           }}
-          className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
+          className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 dark:text-gray-300 dark:hover:text-gray-100"
         >
           <X className="w-4 h-4" />
         </button>

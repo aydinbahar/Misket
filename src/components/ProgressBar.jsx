@@ -17,22 +17,22 @@ const ProgressBar = () => {
         <div>
           <div className="flex items-center gap-2">
             <Trophy className="w-5 h-5 text-yellow-500" />
-            <h3 className="text-lg font-bold text-gray-800">
+            <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100">
               Level {levelInfo.level}
             </h3>
           </div>
-          <p className="text-sm text-gray-600 mt-1">{levelInfo.title}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{levelInfo.title}</p>
         </div>
         <div className="text-right">
           <div className="flex items-center gap-1 justify-end">
             <Zap className="w-4 h-4 text-purple-500" />
-            <span className="text-2xl font-bold text-purple-600">
+            <span className="text-2xl font-bold text-purple-600 dark:text-purple-400">
               {levelInfo.currentXP}
             </span>
-            <span className="text-sm text-gray-500">XP</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">XP</span>
           </div>
           {!levelInfo.isMaxLevel && (
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
               {levelInfo.xpNeededForNext} XP to next level
             </p>
           )}
@@ -52,31 +52,31 @@ const ProgressBar = () => {
       {/* Stats */}
       <div className="grid grid-cols-3 gap-4 mt-4">
         <div className="text-center">
-          <div className="text-2xl font-bold text-green-600">
+          <div className="text-2xl font-bold text-green-600 dark:text-green-400">
             {userProgress?.totalCorrect || 0}
           </div>
-          <div className="text-xs text-gray-500">Correct</div>
+          <div className="text-xs text-gray-500 dark:text-gray-400">Correct</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-red-600">
+          <div className="text-2xl font-bold text-red-600 dark:text-red-400">
             {userProgress?.totalIncorrect || 0}
           </div>
-          <div className="text-xs text-gray-500">Incorrect</div>
+          <div className="text-xs text-gray-500 dark:text-gray-400">Incorrect</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-orange-600">
+          <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
             {userProgress?.dailyStreak || 0}
           </div>
-          <div className="text-xs text-gray-500">Day Streak</div>
+          <div className="text-xs text-gray-500 dark:text-gray-400">Day Streak</div>
         </div>
       </div>
 
       {/* Badges */}
       {userProgress?.badges?.length > 0 && (
-        <div className="mt-4 pt-4 border-t border-gray-200">
+        <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-2 mb-2">
             <TrendingUp className="w-4 h-4 text-purple-500" />
-            <span className="text-sm font-semibold text-gray-700">Badges</span>
+            <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Badges</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {userProgress.badges.map((badge, idx) => (

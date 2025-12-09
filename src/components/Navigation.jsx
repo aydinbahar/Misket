@@ -34,7 +34,7 @@ const Navigation = ({ currentView, setCurrentView }) => {
           flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all duration-300 flex-1
           ${isActive 
             ? `bg-gradient-to-br ${themeGradient} text-white shadow-lg scale-105` 
-            : 'text-gray-600 hover:bg-gray-100'
+            : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
           }
         `}
       >
@@ -45,7 +45,7 @@ const Navigation = ({ currentView, setCurrentView }) => {
   };
 
   return (
-    <nav className="bg-white shadow-lg rounded-2xl p-2 mb-6">
+    <nav className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg shadow-lg rounded-2xl p-2 mb-6 border border-white/20 dark:border-gray-700/30">
       <div className="space-y-2">
         {/* First Row */}
         <div className="flex items-center gap-2">

@@ -12,30 +12,30 @@ const DailyGoal = () => {
   const isCompleted = todayProgress >= dailyGoal;
 
   return (
-    <div className="card bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-orange-200">
+    <div className="card bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20 border-2 border-orange-200 dark:border-orange-700">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-lg font-bold text-orange-800 flex items-center gap-2">
+        <h3 className="text-lg font-bold text-orange-800 dark:text-orange-300 flex items-center gap-2">
           <Target className="w-5 h-5" />
           Günlük Hedef
         </h3>
         <div className="flex items-center gap-2">
           <Flame className="w-5 h-5 text-red-500" />
-          <span className="text-2xl font-bold text-orange-600">{dailyStreak}</span>
+          <span className="text-2xl font-bold text-orange-600 dark:text-orange-400">{dailyStreak}</span>
         </div>
       </div>
 
       {isCompleted ? (
         <div className="text-center py-6">
           <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-3 animate-bounce" />
-          <p className="text-2xl font-bold text-green-600 mb-1">Tamamlandı! 🎉</p>
-          <p className="text-sm text-gray-600">Bugünkü hedefini başardın!</p>
+          <p className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">Tamamlandı! 🎉</p>
+          <p className="text-sm text-gray-600 dark:text-gray-300">Bugünkü hedefini başardın!</p>
         </div>
       ) : (
         <>
           <div className="mb-4">
             <div className="flex justify-between text-sm mb-2">
-              <span className="text-gray-600">İlerleme</span>
-              <span className="font-bold text-orange-600">
+              <span className="text-gray-600 dark:text-gray-300">İlerleme</span>
+              <span className="font-bold text-orange-600 dark:text-orange-400">
                 {todayProgress} / {dailyGoal} kelime
               </span>
             </div>
@@ -48,7 +48,7 @@ const DailyGoal = () => {
           </div>
 
           <div className="text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-300">
               {dailyGoal - todayProgress} kelime daha çalış! 💪
             </p>
           </div>
