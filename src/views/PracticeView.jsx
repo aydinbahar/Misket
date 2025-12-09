@@ -49,11 +49,65 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
   const currentWord = words[currentIndex];
   const progress = userProgress.wordProgress[currentWord.id];
 
-  // Generate image URL from Unsplash
-  const getImageUrl = (word) => {
-    // Use Unsplash Source API for random images based on keyword
-    const keyword = word.toLowerCase().replace(/\s+/g, ',');
-    return `https://source.unsplash.com/800x600/?${keyword},vocabulary,learning`;
+  // Get emoji for word (visual representation)
+  const getWordEmoji = (word) => {
+    const emojiMap = {
+      // Unit 1 - Friendship
+      'accept': '✅', 'advice': '💡', 'alone': '🧍', 'although': '🤔',
+      'apologize': '🙏', 'argue': '😤', 'ask': '❓', 'attend': '👋',
+      'awesome': '🌟', 'back up': '🤝', 'best friend': '👯', 'buddy': '🤜🤛',
+      'busy': '⏰', 'calm': '😌', 'caring': '💝', 'choose': '🤷',
+      'close friend': '🫂', 'come over': '🚶', 'common': '🔗', 'cool': '😎',
+      'count on': '🤞', 'crazy': '🤪', 'decide': '🎯', 'describe': '📝',
+      'different': '🔀', 'discuss': '💬', 'dishonest': '🤥', 'fair': '⚖️',
+      'find': '🔍', 'friendship': '🤗', 'funny': '😂', 'generous': '🎁',
+      'get on well with': '🤝', 'great': '👍', 'honest': '😇', 'important': '⭐',
+      'introduce': '👋', 'join': '➕', 'loyal': '🐕', 'mate': '👬',
+      'mean': '💭', 'outgoing': '🎉', 'patience': '⏳', 'prefer': '💟',
+      'reliable': '🔒', 'rely on': '🛡️', 'respect': '🙇', 'secret': '🤫',
+      'share': '🤲', 'support': '💪', 'supportive': '🌱', 'trust': '🤝',
+      'trustworthy': '✨', 'understand': '🧠', 'understanding': '💚',
+      
+      // Unit 2 - Teen Life
+      'adult': '👨', 'amazing': '🤩', 'anxious': '😰', 'argue': '💢',
+      'awesome': '🔥', 'awful': '😖', 'band': '🎸', 'boring': '😴',
+      'chat': '💬', 'confident': '💪', 'daily': '📅', 'different': '🎭',
+      'dislike': '👎', 'early': '🌅', 'energetic': '⚡', 'enjoy': '😊',
+      'exciting': '🎢', 'exercise': '🏃', 'fashion': '👗', 'free time': '🎮',
+      'hang out': '🏖️', 'hobby': '🎨', 'how often': '🔄', 'impressive': '👏',
+      'independent': '🦅', 'once': '1️⃣', 'peer pressure': '👥', 'prefer': '❤️',
+      'rarely': '🌙', 'rebellious': '😈', 'recommend': '👌', 'relationship': '💑',
+      'respect': '🙏', 'responsibility': '📋', 'social media': '📱', 'spend time': '⏰',
+      'stressed': '😫', 'teenager': '🧒', 'twice': '2️⃣', 'usually': '📊',
+      
+      // Unit 3 - Kitchen
+      'add': '➕', 'bake': '🧁', 'beat': '🥄', 'bitter': '😖',
+      'blend': '🌀', 'boil': '♨️', 'bowl': '🥣', 'chop': '🔪',
+      'cook': '👨‍🍳', 'cup': '☕', 'cut': '✂️', 'delicious': '😋',
+      'dice': '🎲', 'drain': '💧', 'flavor': '👅', 'flour': '🌾',
+      'fork': '🍴', 'fresh': '🥬', 'fry': '🍳', 'grate': '🧀',
+      'grind': '⚙️', 'heat': '🔥', 'ingredients': '🥘', 'knife': '🔪',
+      'melt': '🧊', 'mix': '🥣', 'oven': '🔥', 'pan': '🍳',
+      'peel': '🍌', 'pepper': '🌶️', 'plate': '🍽️', 'pour': '🚰',
+      'pot': '🍲', 'recipe': '📖', 'roast': '🍗', 'salt': '🧂',
+      'serve': '🍽️', 'slice': '🍕', 'spoon': '🥄', 'squeeze': '🍋',
+      'steam': '💨', 'stir': '🥄', 'sugar': '🍬', 'sweet': '🍰',
+      'taste': '👅', 'tasty': '😋', 'vegetables': '🥦', 'whisk': '🥣',
+      
+      // Unit 4 - Phone
+      'answer': '📞', 'appointment': '📅', 'arrange': '📋', 'available': '✅',
+      'busy': '🔴', 'call': '📞', 'call back': '↩️', 'calm down': '😌',
+      'cell phone': '📱', 'communicate': '💬', 'confirm': '✔️', 'connect': '🔗',
+      'contact': '📧', 'cut off': '✂️', 'dial': '☎️', 'disturb': '🚫',
+      'engaged': '💍', 'extension': '📞', 'get through': '🎯', 'hang on': '⏳',
+      'hang up': '📵', 'hear': '👂', 'hold on': '⏸️', 'important': '❗',
+      'leave message': '💌', 'line': '📶', 'listen': '👂', 'message': '✉️',
+      'phone': '☎️', 'pick up': '📞', 'put through': '🔄', 'repeat': '🔁',
+      'ring': '🔔', 'speak': '🗣️', 'speak up': '📢', 'talk': '💬',
+      'text message': '💬', 'wait': '⏰', 'wrong number': '❌'
+    };
+    
+    return emojiMap[word.toLowerCase()] || '📚';
   };
 
   // Text-to-Speech function
@@ -278,42 +332,13 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                 </div>
               </div>
 
-              {/* Image */}
-              <div className="relative rounded-xl overflow-hidden bg-gray-100" style={{ height: '300px' }}>
-                {!imageLoaded && !imageError && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
-                  </div>
-                )}
-                
-                {imageError ? (
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-100 to-pink-100">
-                    <div className="text-center">
-                      <span className="text-8xl mb-4 block">📚</span>
-                      <p className="text-gray-600 text-sm">Visual learning</p>
-                    </div>
-                  </div>
-                ) : (
-                  <img
-                    src={getImageUrl(currentWord.word)}
-                    alt={currentWord.word}
-                    className={`w-full h-full object-cover transition-opacity duration-300 ${
-                      imageLoaded ? 'opacity-100' : 'opacity-0'
-                    }`}
-                    onLoad={() => setImageLoaded(true)}
-                    onError={() => {
-                      setImageError(true);
-                      setImageLoaded(true);
-                    }}
-                  />
-                )}
-                
-                {/* Image overlay with word */}
-                {imageLoaded && !imageError && (
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                    <p className="text-white text-xl font-bold">{currentWord.word}</p>
-                  </div>
-                )}
+              {/* Visual Emoji */}
+              <div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 border-2 border-purple-200 flex items-center justify-center" style={{ height: '250px' }}>
+                <div className="text-center animate-float">
+                  <div className="text-9xl mb-4">{getWordEmoji(currentWord.word)}</div>
+                  <p className="text-2xl font-bold text-purple-800">{currentWord.word}</p>
+                  <p className="text-lg text-purple-600 mt-2">{currentWord.meaning}</p>
+                </div>
               </div>
             </div>
           ) : (
@@ -323,32 +348,12 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                 What is the English word for:
               </h3>
               
-              {/* Image hint in quiz mode */}
-              <div className="relative mb-4 rounded-xl overflow-hidden bg-gray-100" style={{ height: '200px' }}>
-                {!imageLoaded && !imageError && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-                  </div>
-                )}
-                
-                {imageError ? (
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-100 to-cyan-100">
-                    <span className="text-6xl">🤔</span>
-                  </div>
-                ) : (
-                  <img
-                    src={getImageUrl(currentWord.word)}
-                    alt="Visual hint"
-                    className={`w-full h-full object-cover transition-opacity duration-300 ${
-                      imageLoaded ? 'opacity-100' : 'opacity-0'
-                    }`}
-                    onLoad={() => setImageLoaded(true)}
-                    onError={() => {
-                      setImageError(true);
-                      setImageLoaded(true);
-                    }}
-                  />
-                )}
+              {/* Visual Emoji hint in quiz mode */}
+              <div className="relative mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 to-cyan-100 border-2 border-blue-200 flex items-center justify-center" style={{ height: '200px' }}>
+                <div className="text-center animate-bounce">
+                  <div className="text-8xl">{getWordEmoji(currentWord.word)}</div>
+                  <p className="text-sm text-blue-600 mt-3 font-medium">Visual Hint 👀</p>
+                </div>
               </div>
               
               <div className="bg-white rounded-xl p-6 mb-6 text-center">
