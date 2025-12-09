@@ -103,14 +103,14 @@ const SpeedRound = () => {
       <div className="space-y-6">
         <div className="card text-center bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-300">
           <Zap className="w-20 h-20 text-yellow-500 mx-auto mb-4" />
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Speed Round!</h2>
-          <p className="text-lg text-gray-600 mb-6">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">Speed Round!</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
             Answer as many questions as you can in 30 seconds!
           </p>
           
-          <div className="bg-white rounded-xl p-6 mb-6 max-w-md mx-auto">
-            <h3 className="font-bold text-gray-800 mb-3">Rules:</h3>
-            <ul className="text-left text-gray-600 space-y-2">
+          <div className="bg-white dark:bg-gray-800/80 rounded-xl p-6 mb-6 max-w-md mx-auto">
+            <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-3">Rules:</h3>
+            <ul className="text-left text-gray-600 dark:text-gray-300 space-y-2">
               <li>⏱️ 30 seconds on the clock</li>
               <li>🎯 Choose the correct meaning</li>
               <li>🔥 Build a streak for bonus points</li>
@@ -134,20 +134,20 @@ const SpeedRound = () => {
       <div className="space-y-6">
         <div className="card text-center bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-300">
           <Trophy className="w-20 h-20 text-yellow-500 mx-auto mb-4 animate-bounce" />
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Time's Up!</h2>
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">Time's Up!</h2>
           
-          <div className="bg-white rounded-xl p-8 max-w-md mx-auto mb-6">
-            <div className="text-6xl font-bold text-purple-600 mb-4">{score}</div>
-            <div className="text-gray-600 mb-6">Total Score</div>
+          <div className="bg-white dark:bg-gray-800/80 rounded-xl p-8 max-w-md mx-auto mb-6">
+            <div className="text-6xl font-bold text-purple-600 dark:text-purple-400 mb-4">{score}</div>
+            <div className="text-gray-600 dark:text-gray-300 mb-6">Total Score</div>
             
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div className="bg-blue-50 rounded-lg p-3">
                 <div className="text-2xl font-bold text-blue-600">{totalAnswered}</div>
-                <div className="text-gray-600">Answered</div>
+                <div className="text-gray-600 dark:text-gray-300">Answered</div>
               </div>
               <div className="bg-green-50 rounded-lg p-3">
                 <div className="text-2xl font-bold text-green-600">{accuracy}%</div>
-                <div className="text-gray-600">Accuracy</div>
+                <div className="text-gray-600 dark:text-gray-300">Accuracy</div>
               </div>
             </div>
           </div>
@@ -166,15 +166,15 @@ const SpeedRound = () => {
       <div className="grid grid-cols-3 gap-4">
         <div className="card text-center bg-gradient-to-br from-red-50 to-orange-50">
           <div className="text-4xl font-bold text-red-600">{timeLeft}</div>
-          <div className="text-sm text-gray-600">Seconds</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300">Seconds</div>
         </div>
         <div className="card text-center bg-gradient-to-br from-purple-50 to-pink-50">
           <div className="text-4xl font-bold text-purple-600">{score}</div>
-          <div className="text-sm text-gray-600">Score</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300">Score</div>
         </div>
         <div className="card text-center bg-gradient-to-br from-orange-50 to-yellow-50">
           <div className="text-4xl font-bold text-orange-600">{streak}</div>
-          <div className="text-sm text-gray-600">Streak 🔥</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300">Streak 🔥</div>
         </div>
       </div>
 
@@ -182,8 +182,8 @@ const SpeedRound = () => {
       {currentWord && (
         <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-300">
           <div className="text-center mb-6">
-            <div className="text-sm text-gray-600 mb-2">What does this word mean?</div>
-            <div className="text-4xl font-bold text-gray-800 mb-2">{currentWord.word}</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">What does this word mean?</div>
+            <div className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-2">{currentWord.word}</div>
             <div className="text-2xl mb-2">{currentWord.emoji}</div>
           </div>
 
@@ -192,7 +192,7 @@ const SpeedRound = () => {
               <button
                 key={idx}
                 onClick={() => handleAnswer(option)}
-                className="p-4 bg-white hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white rounded-xl font-medium transition-all duration-200 shadow-md hover:shadow-xl hover:scale-105 text-left"
+                className="p-4 bg-white dark:bg-gray-800 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white rounded-xl font-medium text-gray-800 dark:text-gray-100 transition-all duration-200 shadow-md hover:shadow-xl hover:scale-105 text-left"
               >
                 {option}
               </button>

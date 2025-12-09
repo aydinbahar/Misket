@@ -33,11 +33,11 @@ const UnitsView = ({ setCurrentView, setSelectedUnit }) => {
     <div className="space-y-6">
       {/* Header */}
       <div className="card">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-2">
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2 flex items-center gap-2">
           <BookOpen className="w-8 h-8 text-purple-500" />
           Vocabulary Units
         </h1>
-        <p className="text-gray-600">
+        <p className="text-gray-600 dark:text-gray-300">
           Choose a unit to start learning vocabulary!
         </p>
       </div>
@@ -55,8 +55,8 @@ const UnitsView = ({ setCurrentView, setSelectedUnit }) => {
                 <div className="flex items-center gap-3">
                   <div className="text-4xl">{unit.icon}</div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-800">{unit.title}</h3>
-                    <p className="text-sm text-gray-500">{unit.wordCount} words</p>
+                    <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">{unit.title}</h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{unit.wordCount} words</p>
                   </div>
                 </div>
                 {isCompleted && (
@@ -67,8 +67,8 @@ const UnitsView = ({ setCurrentView, setSelectedUnit }) => {
               {/* Progress Bar */}
               <div className="mb-4">
                 <div className="flex justify-between text-sm mb-2">
-                  <span className="text-gray-600">Progress</span>
-                  <span className="font-bold text-purple-600">{progress.percent}%</span>
+                  <span className="text-gray-600 dark:text-gray-300">Progress</span>
+                  <span className="font-bold text-purple-600 dark:text-purple-400">{progress.percent}%</span>
                 </div>
                 <div className="progress-bar h-3">
                   <div
@@ -97,19 +97,19 @@ const UnitsView = ({ setCurrentView, setSelectedUnit }) => {
               {/* Status Badge */}
               <div className="mt-3 flex items-center justify-center gap-2 text-xs">
                 {progress.percent === 0 && (
-                  <span className="badge bg-gray-200 text-gray-700">
+                  <span className="badge bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
                     <Clock className="w-3 h-3 mr-1" />
                     Not Started
                   </span>
                 )}
                 {progress.percent > 0 && progress.percent < 100 && (
-                  <span className="badge bg-blue-100 text-blue-700">
+                  <span className="badge bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300">
                     <Clock className="w-3 h-3 mr-1" />
                     In Progress
                   </span>
                 )}
                 {progress.percent === 100 && (
-                  <span className="badge bg-green-100 text-green-700">
+                  <span className="badge bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300">
                     <CheckCircle className="w-3 h-3 mr-1" />
                     Completed
                   </span>
@@ -121,9 +121,9 @@ const UnitsView = ({ setCurrentView, setSelectedUnit }) => {
       </div>
 
       {/* Info Card */}
-      <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200">
-        <h3 className="font-bold text-blue-800 mb-2">📚 How to Learn</h3>
-        <ul className="space-y-2 text-sm text-blue-700">
+      <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200 dark:border-blue-700">
+        <h3 className="font-bold text-blue-800 dark:text-blue-300 mb-2">📚 How to Learn</h3>
+        <ul className="space-y-2 text-sm text-blue-700 dark:text-blue-300">
           <li className="flex items-start gap-2">
             <span className="font-bold">1.</span>
             <span>Select a unit to begin learning new words</span>

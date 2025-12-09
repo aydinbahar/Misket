@@ -192,8 +192,9 @@ const SettingsMenu = () => {
               {/* App Info */}
               <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
                 <div className="text-xs text-gray-500 dark:text-gray-400 text-center space-y-1">
-                  <p>Misket v1.0</p>
+                  <p className="font-semibold">Misket v1.0.0</p>
                   <p>Made with 💜 for Serra</p>
+                  <p className="opacity-60">© 2024</p>
                 </div>
               </div>
             </div>

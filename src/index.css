@@ -16,44 +16,6 @@
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     @apply text-gray-100;
   }
-
-  /* Dark mode text color fixes */
-  body.dark-mode .text-gray-800:not(.no-dark) {
-    @apply text-gray-100;
-  }
-
-  body.dark-mode .text-gray-700:not(.no-dark) {
-    @apply text-gray-200;
-  }
-
-  body.dark-mode .text-gray-600:not(.no-dark) {
-    @apply text-gray-300;
-  }
-
-  body.dark-mode .text-gray-500:not(.no-dark) {
-    @apply text-gray-400;
-  }
-
-  /* Dark mode background fixes */
-  body.dark-mode .bg-white:not(.no-dark) {
-    @apply bg-gray-900/80;
-  }
-
-  body.dark-mode .bg-gray-50:not(.no-dark) {
-    @apply bg-gray-800/50;
-  }
-
-  body.dark-mode .bg-gray-100:not(.no-dark) {
-    @apply bg-gray-800;
-  }
-
-  body.dark-mode .border-gray-200:not(.no-dark) {
-    @apply border-gray-700;
-  }
-
-  body.dark-mode .border-gray-300:not(.no-dark) {
-    @apply border-gray-600;
-  }
 }
 
 @layer components {

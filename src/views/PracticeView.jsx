@@ -35,7 +35,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
   if (words.length === 0) {
     return (
       <div className="card text-center">
-        <p className="text-gray-600">No words available. Please select a unit first.</p>
+        <p className="text-gray-600 dark:text-gray-300">No words available. Please select a unit first.</p>
         <button 
           onClick={() => setCurrentView('units')}
           className="btn-primary mt-4"
@@ -50,7 +50,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
   if (!currentWord) {
     return (
       <div className="card text-center">
-        <p className="text-gray-600">Loading...</p>
+        <p className="text-gray-600 dark:text-gray-300">Loading...</p>
       </div>
     );
   }
@@ -227,7 +227,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
           <ArrowLeft className="w-4 h-4" />
           Back to Units
         </button>
-        <div className="text-sm text-gray-600 font-medium">
+        <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
           Word {currentIndex + 1} of {words.length}
         </div>
       </div>
@@ -248,7 +248,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
             className={`flex-1 py-2 px-4 rounded-lg font-medium transition-all ${
               mode === 'learn'
                 ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
             }`}
           >
             <BookOpen className="w-4 h-4 inline mr-2" />
@@ -264,7 +264,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
             className={`flex-1 py-2 px-4 rounded-lg font-medium transition-all ${
               mode === 'quiz'
                 ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
             }`}
           >
             <MessageCircle className="w-4 h-4 inline mr-2" />
@@ -286,14 +286,14 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                   progress?.status === 'mastered' ? 'bg-green-100 text-green-700' :
                   progress?.status === 'review' ? 'bg-orange-100 text-orange-700' :
                   progress?.status === 'learning' ? 'bg-blue-100 text-blue-700' :
-                  'bg-gray-100 text-gray-700'
+                  'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200'
                 }`}>
                   {progress?.status || 'new'}
                 </span>
                 <button 
                   onClick={() => speakWord(currentWord.word)}
                   disabled={isSpeaking}
-                  className={`p-2 hover:bg-white rounded-lg transition-all ${
+                  className={`p-2 hover:bg-white dark:hover:bg-gray-800 rounded-lg transition-all ${
                     isSpeaking ? 'animate-pulse bg-purple-100' : ''
                   }`}
                   title="Listen to pronunciation"
@@ -313,70 +313,70 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
               </p>
 
               {/* Meaning */}
-              <div className="bg-white rounded-lg p-4 mb-4">
-                <p className="text-sm text-gray-500 mb-1">Turkish Meaning</p>
-                <p className="text-xl font-semibold text-gray-800">
+              <div className="bg-white dark:bg-gray-800/80 rounded-lg p-4 mb-4">
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Turkish Meaning</p>
+                <p className="text-xl font-semibold text-gray-800 dark:text-gray-100">
                   {currentWord.meaning}
                 </p>
               </div>
 
               {/* Example Sentence */}
-              <div className="bg-white rounded-lg p-4 mb-4">
-                <p className="text-sm text-gray-500 mb-1">Example Sentence</p>
-                <p className="text-gray-700">
+              <div className="bg-white dark:bg-gray-800/80 rounded-lg p-4 mb-4">
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Example Sentence</p>
+                <p className="text-gray-700 dark:text-gray-200">
                   {currentWord.sentence}
                 </p>
               </div>
 
               {/* Synonyms & Antonyms */}
               <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="bg-green-50 rounded-lg p-3">
-                  <p className="text-xs text-green-600 font-semibold mb-1">Synonyms</p>
-                  <p className="text-sm text-green-800">{currentWord.synonym}</p>
+                <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-3 border border-green-200 dark:border-green-700">
+                  <p className="text-xs text-green-600 dark:text-green-400 font-semibold mb-1">Synonyms</p>
+                  <p className="text-sm text-green-800 dark:text-green-300">{currentWord.synonym}</p>
                 </div>
-                <div className="bg-red-50 rounded-lg p-3">
-                  <p className="text-xs text-red-600 font-semibold mb-1">Antonyms</p>
-                  <p className="text-sm text-red-800">{currentWord.antonym}</p>
+                <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-700">
+                  <p className="text-xs text-red-600 dark:text-red-400 font-semibold mb-1">Antonyms</p>
+                  <p className="text-sm text-red-800 dark:text-red-300">{currentWord.antonym}</p>
                 </div>
               </div>
 
               {/* Memory Tip */}
-              <div className="bg-yellow-50 rounded-lg p-4 border-2 border-yellow-200 mb-4">
+              <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4 border-2 border-yellow-200 dark:border-yellow-700 mb-4">
                 <div className="flex items-start gap-2">
-                  <Lightbulb className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+                  <Lightbulb className="w-5 h-5 text-yellow-600 dark:text-yellow-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-xs text-yellow-600 font-semibold mb-1">Memory Tip</p>
-                    <p className="text-sm text-yellow-800">{currentWord.memoryTip}</p>
+                    <p className="text-xs text-yellow-600 dark:text-yellow-400 font-semibold mb-1">Memory Tip</p>
+                    <p className="text-sm text-yellow-800 dark:text-yellow-300">{currentWord.memoryTip}</p>
                   </div>
                 </div>
               </div>
 
               {/* Visual Emoji */}
-              <div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 border-2 border-purple-200 flex items-center justify-center" style={{ height: '250px' }}>
+              <div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 dark:from-purple-900/30 dark:via-pink-900/30 dark:to-blue-900/30 border-2 border-purple-200 dark:border-purple-700 flex items-center justify-center" style={{ height: '250px' }}>
                 <div className="text-center animate-float">
                   <div className="text-9xl mb-4">{getWordEmoji(currentWord.word)}</div>
-                  <p className="text-2xl font-bold text-purple-800">{currentWord.word}</p>
-                  <p className="text-lg text-purple-600 mt-2">{currentWord.meaning}</p>
+                  <p className="text-2xl font-bold text-purple-800 dark:text-purple-300">{currentWord.word}</p>
+                  <p className="text-lg text-purple-600 dark:text-purple-400 mt-2">{currentWord.meaning}</p>
                 </div>
               </div>
             </div>
           ) : (
             // Quiz Mode
-            <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200">
-              <h3 className="text-xl font-bold text-blue-800 mb-4">
+            <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200 dark:border-blue-700">
+              <h3 className="text-xl font-bold text-blue-800 dark:text-blue-300 mb-4">
                 What is the English word for:
               </h3>
               
               {/* Visual Emoji hint in quiz mode */}
-              <div className="relative mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 to-cyan-100 border-2 border-blue-200 flex items-center justify-center" style={{ height: '200px' }}>
+              <div className="relative mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30 border-2 border-blue-200 dark:border-blue-700 flex items-center justify-center" style={{ height: '200px' }}>
                 <div className="text-center animate-bounce">
                   <div className="text-8xl">{getWordEmoji(currentWord.word)}</div>
-                  <p className="text-sm text-blue-600 mt-3 font-medium">Visual Hint 👀</p>
+                  <p className="text-sm text-blue-600 dark:text-blue-400 mt-3 font-medium">Visual Hint 👀</p>
                 </div>
               </div>
               
-              <div className="bg-white rounded-xl p-6 mb-6 text-center">
-                <p className="text-3xl font-bold text-gray-800">
+              <div className="bg-white dark:bg-gray-800/80 rounded-xl p-6 mb-6 text-center">
+                <p className="text-3xl font-bold text-gray-800 dark:text-gray-100">
                   {currentWord.meaning}
                 </p>
               </div>
@@ -389,7 +389,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                     onChange={(e) => setQuizAnswer(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleQuizSubmit()}
                     placeholder="Type your answer..."
-                    className="w-full px-4 py-3 rounded-lg border-2 border-blue-300 focus:border-blue-500 focus:outline-none text-lg"
+                    className="w-full px-4 py-3 rounded-lg border-2 border-blue-300 dark:border-blue-600 focus:border-blue-500 focus:outline-none text-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100"
                     autoFocus
                   />
                   <button
@@ -403,19 +403,19 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
               ) : (
                 <div className={`rounded-xl p-6 text-center ${
                   feedback === 'correct' 
-                    ? 'bg-green-100 border-2 border-green-500' 
-                    : 'bg-red-100 border-2 border-red-500'
+                    ? 'bg-green-100 dark:bg-green-900/30 border-2 border-green-500 dark:border-green-600' 
+                    : 'bg-red-100 dark:bg-red-900/30 border-2 border-red-500 dark:border-red-600'
                 }`}>
                   {feedback === 'correct' ? (
                     <div>
-                      <Check className="w-16 h-16 text-green-600 mx-auto mb-3" />
-                      <p className="text-2xl font-bold text-green-800">Correct! 🎉</p>
+                      <Check className="w-16 h-16 text-green-600 dark:text-green-400 mx-auto mb-3" />
+                      <p className="text-2xl font-bold text-green-800 dark:text-green-300">Correct! 🎉</p>
                     </div>
                   ) : (
                     <div>
-                      <X className="w-16 h-16 text-red-600 mx-auto mb-3" />
-                      <p className="text-xl font-bold text-red-800 mb-2">Not quite!</p>
-                      <p className="text-lg text-red-700">
+                      <X className="w-16 h-16 text-red-600 dark:text-red-400 mx-auto mb-3" />
+                      <p className="text-xl font-bold text-red-800 dark:text-red-300 mb-2">Not quite!</p>
+                      <p className="text-lg text-red-700 dark:text-red-300">
                         The correct answer is: <span className="font-bold">{currentWord.word}</span>
                       </p>
                     </div>
@@ -471,21 +471,21 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
 
             {/* Word Stats */}
             <div className="mt-6 space-y-3">
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-3">
-                <p className="text-xs text-gray-600 mb-1">Correct Attempts</p>
-                <p className="text-2xl font-bold text-green-600">
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg p-3 border border-green-200 dark:border-green-700">
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Correct Attempts</p>
+                <p className="text-2xl font-bold text-green-600 dark:text-green-400">
                   {progress?.correctCount || 0}
                 </p>
               </div>
-              <div className="bg-gradient-to-r from-red-50 to-pink-50 rounded-lg p-3">
-                <p className="text-xs text-gray-600 mb-1">Incorrect Attempts</p>
-                <p className="text-2xl font-bold text-red-600">
+              <div className="bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 rounded-lg p-3 border border-red-200 dark:border-red-700">
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Incorrect Attempts</p>
+                <p className="text-2xl font-bold text-red-600 dark:text-red-400">
                   {progress?.incorrectCount || 0}
                 </p>
               </div>
-              <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-3">
-                <p className="text-xs text-gray-600 mb-1">Current Streak</p>
-                <p className="text-2xl font-bold text-orange-600">
+              <div className="bg-gradient-to-r from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20 rounded-lg p-3 border border-orange-200 dark:border-orange-700">
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Current Streak</p>
+                <p className="text-2xl font-bold text-orange-600 dark:text-orange-400">
                   {progress?.streak || 0}
                 </p>
               </div>

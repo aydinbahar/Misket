@@ -203,8 +203,8 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
         </div>
 
         <div className="card text-center">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Choose Your Test</h1>
-          <p className="text-gray-600">Select a test mode to challenge yourself!</p>
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">Choose Your Test</h1>
+          <p className="text-gray-600 dark:text-gray-300">Select a test mode to challenge yourself!</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -221,12 +221,12 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
                     <Icon className="w-8 h-8 text-white" />
                   </div>
                   <div className="flex-1 text-left">
-                    <h3 className="text-xl font-bold text-gray-800 mb-1">{mode.title}</h3>
-                    <p className="text-sm text-gray-600">{mode.description}</p>
+                    <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-1">{mode.title}</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">{mode.description}</p>
                   </div>
                 </div>
 
-                <div className="space-y-2 text-sm text-gray-600 mb-4">
+                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300 mb-4">
                   <div className="flex items-center justify-between">
                     <span>Questions:</span>
                     <span className="font-bold">{mode.questionCount}</span>
@@ -240,9 +240,9 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
                   <div className="flex items-center justify-between">
                     <span>Difficulty:</span>
                     <span className={`badge ${
-                      mode.difficulty === 'easy' ? 'bg-green-100 text-green-700' :
-                      mode.difficulty === 'medium' ? 'bg-yellow-100 text-yellow-700' :
-                      'bg-red-100 text-red-700'
+                      mode.difficulty === 'easy' ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300' :
+                      mode.difficulty === 'medium' ? 'bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300' :
+                      'bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300'
                     }`}>
                       {mode.difficulty}
                     </span>
@@ -275,18 +275,18 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
 
     return (
       <div className="space-y-6">
-        <div className="card text-center bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200">
+        <div className="card text-center bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-200 dark:border-purple-700">
           <Trophy className="w-20 h-20 text-yellow-500 mx-auto mb-4 animate-bounce" />
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">Test Complete!</h1>
-          <p className="text-xl text-gray-600 mb-6">
+          <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-2">Test Complete!</h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
             {testModes.find(m => m.id === selectedMode)?.title}
           </p>
 
-          <div className="bg-white rounded-2xl p-8 max-w-md mx-auto">
-            <div className="text-6xl font-bold text-purple-600 mb-2">
+          <div className="bg-white dark:bg-gray-800/80 rounded-2xl p-8 max-w-md mx-auto">
+            <div className="text-6xl font-bold text-purple-600 dark:text-purple-400 mb-2">
               {scorePercent}%
             </div>
-            <div className="text-gray-600 mb-4">
+            <div className="text-gray-600 dark:text-gray-300 mb-4">
               {correctCount} out of {totalQuestions} correct
             </div>
 
@@ -304,20 +304,20 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
             <div className="flex items-center justify-center gap-8 mb-6">
               <div className="text-center">
                 <CheckCircle className="w-8 h-8 text-green-500 mx-auto mb-1" />
-                <div className="text-2xl font-bold text-green-600">{correctCount}</div>
-                <div className="text-xs text-gray-500">Correct</div>
+                <div className="text-2xl font-bold text-green-600 dark:text-green-400">{correctCount}</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">Correct</div>
               </div>
               <div className="text-center">
                 <XCircle className="w-8 h-8 text-red-500 mx-auto mb-1" />
-                <div className="text-2xl font-bold text-red-600">{totalQuestions - correctCount}</div>
-                <div className="text-xs text-gray-500">Incorrect</div>
+                <div className="text-2xl font-bold text-red-600 dark:text-red-400">{totalQuestions - correctCount}</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">Incorrect</div>
               </div>
             </div>
 
             {scorePercent === 100 && (
-              <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4 mb-4">
+              <div className="bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-300 dark:border-yellow-700 rounded-lg p-4 mb-4">
                 <Award className="w-6 h-6 text-yellow-600 mx-auto mb-2" />
-                <p className="text-sm font-bold text-yellow-800">Perfect Score! 🎉</p>
+                <p className="text-sm font-bold text-yellow-800 dark:text-yellow-300">Perfect Score! 🎉</p>
               </div>
             )}
           </div>
@@ -366,7 +366,7 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
     <div className="space-y-6">
       {/* Header with timer */}
       <div className="flex items-center justify-between">
-        <div className="text-sm text-gray-600 font-medium">
+        <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
           Question {currentQuestion + 1} of {questions.length}
         </div>
         {timeLeft !== null && (
@@ -406,7 +406,7 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
                 disabled={answer !== undefined}
                 className={`
                   p-4 rounded-xl border-2 font-medium text-lg transition-all text-left
-                  ${!answer ? 'bg-white border-gray-200 hover:border-blue-400 hover:shadow-md' : ''}
+                  ${!answer ? 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-blue-400 hover:shadow-md' : ''}
                   ${isCorrect ? 'bg-green-100 border-green-500 text-green-800' : ''}
                   ${isWrong ? 'bg-red-100 border-red-500 text-red-800' : ''}
                   ${answer && !isCorrect && !isWrong ? 'opacity-50' : ''}

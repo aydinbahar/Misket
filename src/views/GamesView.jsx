@@ -48,7 +48,7 @@ const GamesView = ({ setCurrentView }) => {
             <ArrowLeft className="w-4 h-4" />
             Geri
           </button>
-          <h1 className="text-2xl font-bold text-gray-800">{game.title}</h1>
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100">{game.title}</h1>
         </div>
         
         <GameComponent setCurrentView={setCurrentView} />
@@ -60,11 +60,11 @@ const GamesView = ({ setCurrentView }) => {
     <div className="space-y-6">
       {/* Header */}
       <div className="card">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-2">
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2 flex items-center gap-2">
           <Gamepad2 className="w-8 h-8 text-purple-500" />
           Oyun Modları
         </h1>
-        <p className="text-gray-600">
+        <p className="text-gray-600 dark:text-gray-300">
           Eğlenerek öğren! Oyunlarla kelime pratiği yap.
         </p>
       </div>
@@ -82,8 +82,8 @@ const GamesView = ({ setCurrentView }) => {
               <div className={`p-6 rounded-xl bg-gradient-to-br ${game.color} mb-4`}>
                 <Icon className="w-16 h-16 text-white mx-auto" />
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{game.title}</h3>
-              <p className="text-sm text-gray-600 mb-4">{game.description}</p>
+              <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">{game.title}</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">{game.description}</p>
               <button className="btn-primary w-full">
                 Oyna
               </button>
@@ -93,11 +93,11 @@ const GamesView = ({ setCurrentView }) => {
       </div>
 
       {/* Coming Soon */}
-      <div className="card bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-dashed border-gray-300">
+      <div className="card bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-800 border-2 border-dashed border-gray-300 dark:border-gray-600">
         <div className="text-center py-8">
           <div className="text-6xl mb-4">🎮</div>
-          <h3 className="text-xl font-bold text-gray-700 mb-2">Daha Fazla Oyun Yakında!</h3>
-          <p className="text-gray-600">
+          <h3 className="text-xl font-bold text-gray-700 dark:text-gray-200 mb-2">Daha Fazla Oyun Yakında!</h3>
+          <p className="text-gray-600 dark:text-gray-300">
             Yeni oyunlar ekleniyor...
           </p>
         </div>

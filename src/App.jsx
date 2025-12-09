@@ -132,10 +132,13 @@ function AppContent() {
         <main>{renderView()}</main>
 
         {/* Footer */}
-        <footer className="mt-12 text-center text-sm text-gray-500">
-          <p className="text-purple-600 font-medium">This app is specially designed for Serra 💜</p>
+        <footer className="mt-12 text-center text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-purple-600 dark:text-purple-400 font-medium">This app is specially designed for Serra 💜</p>
           <p className="mt-2 text-xs">
             Powered by Spaced Repetition System (SRS) & Gamification
+          </p>
+          <p className="mt-2 text-xs opacity-60">
+            Misket v1.0.0
           </p>
         </footer>
       </div>

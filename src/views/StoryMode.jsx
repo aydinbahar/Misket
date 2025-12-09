@@ -191,7 +191,7 @@ const StoryMode = ({ setCurrentView }) => {
   const renderStoryText = (text, options, pageIndex) => {
     const parts = text.split('____');
     return (
-      <div className="text-lg leading-relaxed text-gray-800">
+      <div className="text-lg leading-relaxed text-gray-800 dark:text-gray-100">
         {parts.map((part, idx) => (
           <React.Fragment key={idx}>
             {part}
@@ -231,8 +231,8 @@ const StoryMode = ({ setCurrentView }) => {
 
         <div className="card text-center">
           <BookOpen className="w-16 h-16 text-purple-500 mx-auto mb-4" />
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Story Mode</h1>
-          <p className="text-gray-600">
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">Story Mode</h1>
+          <p className="text-gray-600 dark:text-gray-300">
             Learn vocabulary through interactive stories!
           </p>
         </div>
@@ -245,7 +245,7 @@ const StoryMode = ({ setCurrentView }) => {
               className="card cursor-pointer hover:shadow-2xl transition-all duration-300 hover:scale-105"
             >
               <div className="text-6xl mb-4 text-center">{story.emoji}</div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{story.title}</h3>
+              <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">{story.title}</h3>
               <div className="flex items-center justify-between mb-4">
                 <span className={`badge ${
                   story.difficulty === 'easy' ? 'bg-green-100 text-green-700' :
@@ -254,7 +254,7 @@ const StoryMode = ({ setCurrentView }) => {
                 }`}>
                   {story.difficulty}
                 </span>
-                <span className="text-sm text-gray-600">{story.pages.length} pages</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300">{story.pages.length} pages</span>
               </div>
               <button className="btn-primary w-full">
                 Start Story
@@ -282,16 +282,16 @@ const StoryMode = ({ setCurrentView }) => {
       <div className="space-y-6">
         <div className="card text-center bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-300">
           <Trophy className="w-20 h-20 text-yellow-500 mx-auto mb-4 animate-bounce" />
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Story Complete! 🎉</h2>
-          <p className="text-xl text-gray-600 mb-6">{currentStory.title}</p>
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">Story Complete! 🎉</h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">{currentStory.title}</p>
           
-          <div className="bg-white rounded-xl p-6 max-w-md mx-auto mb-6">
+          <div className="bg-white dark:bg-gray-800/80 rounded-xl p-6 max-w-md mx-auto mb-6">
             <div className="flex items-center justify-center gap-2 mb-4">
               {[1, 2, 3].map((i) => (
                 <Star key={i} className="w-8 h-8 text-yellow-500 fill-yellow-500" />
               ))}
             </div>
-            <p className="text-gray-700 font-medium">
+            <p className="text-gray-700 dark:text-gray-200 font-medium">
               You've completed all {currentStory.pages.length} pages!
             </p>
           </div>
@@ -336,7 +336,7 @@ const StoryMode = ({ setCurrentView }) => {
           <ArrowLeft className="w-4 h-4" />
           Back
         </button>
-        <div className="text-sm font-medium text-gray-600">
+        <div className="text-sm font-medium text-gray-600 dark:text-gray-300">
           Page {currentPage + 1} of {currentStory.pages.length}
         </div>
       </div>
@@ -344,12 +344,12 @@ const StoryMode = ({ setCurrentView }) => {
       {/* Story Card */}
       <div className="card bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-200">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-bold text-gray-800">{currentStory.title}</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">{currentStory.title}</h2>
           <div className="text-4xl">{currentStory.emoji}</div>
         </div>
 
         {/* Story Content */}
-        <div className="bg-white rounded-xl p-6 mb-6">
+        <div className="bg-white dark:bg-gray-800/80 rounded-xl p-6 mb-6">
           {renderStoryText(page.text, page.options, currentPage)}
         </div>
 
@@ -390,7 +390,7 @@ const StoryMode = ({ setCurrentView }) => {
       <div className="card">
         <div className="flex items-center gap-2 mb-2">
           <BookOpen className="w-4 h-4 text-purple-500" />
-          <span className="text-sm font-medium text-gray-700">Story Progress</span>
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-200">Story Progress</span>
         </div>
         <div className="flex gap-2">
           {currentStory.pages.map((_, idx) => (
@@ -401,7 +401,7 @@ const StoryMode = ({ setCurrentView }) => {
                   ? 'bg-gradient-to-r from-green-500 to-emerald-500'
                   : idx === currentPage
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500'
-                  : 'bg-gray-200'
+                  : 'bg-gray-200 dark:bg-gray-700'
               }`}
             />
           ))}

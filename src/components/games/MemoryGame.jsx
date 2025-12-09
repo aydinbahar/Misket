@@ -102,17 +102,17 @@ const MemoryGame = () => {
       <div className="grid grid-cols-3 gap-4">
         <div className="card text-center">
           <div className="text-3xl font-bold text-purple-600">{moves}</div>
-          <div className="text-sm text-gray-600">Moves</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300">Moves</div>
         </div>
         <div className="card text-center">
           <div className="text-3xl font-bold text-blue-600">
             {Math.floor(timeElapsed / 60)}:{(timeElapsed % 60).toString().padStart(2, '0')}
           </div>
-          <div className="text-sm text-gray-600">Time</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300">Time</div>
         </div>
         <div className="card text-center">
           <div className="text-3xl font-bold text-green-600">{matchedCards.length}/6</div>
-          <div className="text-sm text-gray-600">Matched</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300">Matched</div>
         </div>
       </div>
 
@@ -120,8 +120,8 @@ const MemoryGame = () => {
       {gameComplete && (
         <div className="card bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-300 text-center">
           <Trophy className="w-16 h-16 text-yellow-500 mx-auto mb-4 animate-bounce" />
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">Congratulations! 🎉</h2>
-          <p className="text-gray-600 mb-4">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Congratulations! 🎉</h2>
+          <p className="text-gray-600 dark:text-gray-300 mb-4">
             You completed the game in {moves} moves and {Math.floor(timeElapsed / 60)}:{(timeElapsed % 60).toString().padStart(2, '0')} minutes!
           </p>
           <button onClick={initializeGame} className="btn-primary">
@@ -164,9 +164,9 @@ const MemoryGame = () => {
 
       {/* Instructions */}
       {!gameStarted && (
-        <div className="card bg-blue-50 border-2 border-blue-200">
-          <h3 className="font-bold text-blue-900 mb-2">How to Play:</h3>
-          <ul className="text-sm text-blue-800 space-y-1">
+        <div className="card bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-700">
+          <h3 className="font-bold text-blue-900 dark:text-blue-300 mb-2">How to Play:</h3>
+          <ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1">
             <li>• Click on cards to flip them</li>
             <li>• Match words with their meanings</li>
             <li>• Complete all matches to win!</li>
