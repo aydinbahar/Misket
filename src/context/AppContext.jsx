@@ -61,9 +61,14 @@ export const AppProvider = ({ children }) => {
       lastLoginDate: new Date().toDateString(),
       wordProgress,
       badges: [],
+      achievements: [],
       completedUnits: [],
       totalCorrect: 0,
-      totalIncorrect: 0
+      totalIncorrect: 0,
+      dailyGoal: 10, // Words per day
+      todayProgress: 0,
+      lastProgressDate: new Date().toDateString(),
+      weeklyStats: []
     };
   });
 
@@ -236,6 +241,76 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  // Add achievement
+  const addAchievement = (achievement) => {
+    setUserProgress(prev => {
+      if (prev.achievements.some(a => a.id === achievement.id)) return prev;
+      showNotification(`🎉 Achievement Unlocked: ${achievement.title}!`, 'success');
+      return {
+        ...prev,
+        achievements: [...prev.achievements, { ...achievement, unlockedAt: Date.now() }]
+      };
+    });
+  };
+
+  // Update daily progress
+  const updateDailyProgress = () => {
+    const today = new Date().toDateString();
+    setUserProgress(prev => {
+      if (prev.lastProgressDate !== today) {
+        // New day, reset progress
+        return {
+          ...prev,
+          todayProgress: 1,
+          lastProgressDate: today
+        };
+      } else {
+        const newProgress = prev.todayProgress + 1;
+        
+        // Check if daily goal completed
+        if (newProgress === prev.dailyGoal) {
+          addAchievement({
+            id: `daily-goal-${Date.now()}`,
+            title: 'Daily Goal Complete!',
+            description: `Studied ${prev.dailyGoal} words today`,
+            icon: '🎯',
+            type: 'daily'
+          });
+        }
+        
+        return {
+          ...prev,
+          todayProgress: newProgress
+        };
+      }
+    });
+  };
+
+  // Check achievements
+  const checkAchievements = () => {
+    const { totalCorrect, dailyStreak, wordProgress, level } = userProgress;
+    const masteredCount = Object.values(wordProgress).filter(w => w.status === 'mastered').length;
+
+    // Milestone achievements
+    const achievements = [
+      { id: 'first-word', title: 'First Word!', description: 'Learned your first word', icon: '🌟', condition: totalCorrect >= 1 },
+      { id: '10-words', title: '10 Words Master', description: 'Mastered 10 words', icon: '📚', condition: masteredCount >= 10 },
+      { id: '25-words', title: '25 Words Master', description: 'Mastered 25 words', icon: '📖', condition: masteredCount >= 25 },
+      { id: '50-words', title: '50 Words Master', description: 'Mastered 50 words', icon: '🏆', condition: masteredCount >= 50 },
+      { id: '100-words', title: '100 Words Champion!', description: 'Mastered 100 words!', icon: '👑', condition: masteredCount >= 100 },
+      { id: 'week-streak', title: 'Week Warrior', description: '7 days streak!', icon: '🔥', condition: dailyStreak >= 7 },
+      { id: 'month-streak', title: 'Month Master', description: '30 days streak!', icon: '⚡', condition: dailyStreak >= 30 },
+      { id: 'level-5', title: 'Level 5!', description: 'Reached level 5', icon: '⭐', condition: level >= 5 },
+      { id: 'perfect-score', title: 'Perfect Score', description: 'Got 100% in a test', icon: '💯', condition: false }, // Manual trigger
+    ];
+
+    achievements.forEach(achievement => {
+      if (achievement.condition && !userProgress.achievements.some(a => a.id === achievement.id)) {
+        addAchievement(achievement);
+      }
+    });
+  };
+
   // Check and update daily streak
   const checkDailyStreak = () => {
     const today = new Date().toDateString();
@@ -271,6 +346,11 @@ export const AppProvider = ({ children }) => {
     checkDailyStreak();
   }, []);
 
+  // Check achievements on progress change
+  useEffect(() => {
+    checkAchievements();
+  }, [userProgress.totalCorrect, userProgress.dailyStreak, userProgress.level]);
+
   const value = {
     userProgress,
     setUserProgress,
@@ -280,6 +360,9 @@ export const AppProvider = ({ children }) => {
     getWordsForReview,
     getWeakWords,
     addBadge,
+    addAchievement,
+    updateDailyProgress,
+    checkAchievements,
     notification,
     showNotification,
   };

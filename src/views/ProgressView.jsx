@@ -3,6 +3,7 @@ import { useApp } from '../context/AppContext';
 import { getAllWords, getAllUnits } from '../data/vocabulary';
 import MisketCharacter from '../components/MisketCharacter';
 import ProgressBar from '../components/ProgressBar';
+import AchievementsList from '../components/AchievementsList';
 import { 
   TrendingUp, Target, Flame, Award, Brain, 
   CheckCircle, Clock, AlertCircle, Star 
@@ -243,6 +244,15 @@ const ProgressView = () => {
           )}
         </div>
       )}
+
+      {/* Achievements */}
+      <div className="card">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+          <Award className="w-7 h-7 text-yellow-500" />
+          Başarılar
+        </h2>
+        <AchievementsList />
+      </div>
 
       {/* Badges */}
       {userProgress.badges.length > 0 && (

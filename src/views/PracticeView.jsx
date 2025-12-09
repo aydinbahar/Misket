@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 
 const PracticeView = ({ selectedUnit, setCurrentView }) => {
-  const { userProgress, updateWordProgress, showNotification } = useApp();
+  const { userProgress, updateWordProgress, showNotification, updateDailyProgress } = useApp();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [mode, setMode] = useState('learn'); // 'learn' or 'quiz'
@@ -175,6 +175,10 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
     
     setFeedback(isCorrect ? 'correct' : 'incorrect');
     updateWordProgress(currentWord.id, isCorrect);
+    
+    if (isCorrect) {
+      updateDailyProgress(); // Track daily progress
+    }
 
     if (isCorrect) {
       showNotification('🎉 Correct! Great job!', 'success');
