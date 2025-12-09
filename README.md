@@ -3,10 +3,18 @@
 ![Misket](https://img.shields.io/badge/Misket-Vocabulary%20Trainer-purple?style=for-the-badge)
 ![React](https://img.shields.io/badge/React-18.3-blue?style=for-the-badge&logo=react)
 ![Tailwind](https://img.shields.io/badge/Tailwind-3.4-cyan?style=for-the-badge&logo=tailwindcss)
+![PWA](https://img.shields.io/badge/PWA-Ready-success?style=for-the-badge)
 
-**Misket** is a modern, gamified vocabulary learning application powered by React and Tailwind CSS. Learn English vocabulary the fun way with a friendly AI companion! 🚀
+**Misket** is a modern, gamified vocabulary learning **Progressive Web App (PWA)** powered by React and Tailwind CSS. Learn English vocabulary the fun way with a friendly AI companion - now installable on any device! 🚀📱
 
 ## ✨ Features
+
+### 📱 PWA (Progressive Web App)
+- **Installable**: Add to home screen on mobile & desktop
+- **Offline Support**: Works without internet connection
+- **Fast & Reliable**: Lightning-fast load times with caching
+- **Native Experience**: Full-screen app without browser UI
+- **Auto-Updates**: Seamless updates in the background
 
 ### 🎮 Gamification System
 - **XP & Level System**: Earn experience points and level up from "Puppy Learner" to "Master of Words"
@@ -80,6 +88,20 @@ npm run dev
 ```
 http://localhost:5173
 ```
+
+### 📱 Install as PWA
+
+#### On Mobile (Android/iOS):
+1. Open the app in your browser
+2. Look for "Add to Home Screen" or "Install" prompt
+3. Follow the instructions
+4. Launch Misket from your home screen like a native app!
+
+#### On Desktop (Chrome/Edge):
+1. Open the app
+2. Look for the install icon in the address bar
+3. Click "Install"
+4. Misket will open as a standalone app!
 
 ### Build for Production
 ```bash

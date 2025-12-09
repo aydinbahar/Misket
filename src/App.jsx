@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import Navigation from './components/Navigation';
 import Notification from './components/Notification';
+import PWAInstallPrompt from './components/PWAInstallPrompt';
 import HomeView from './views/HomeView';
 import UnitsView from './views/UnitsView';
 import PracticeView from './views/PracticeView';
@@ -64,6 +65,9 @@ function AppContent() {
         />
       )}
 
+      {/* PWA Install Prompt */}
+      <PWAInstallPrompt />
+
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* App Header */}
@@ -87,7 +91,7 @@ function AppContent() {
 
         {/* Footer */}
         <footer className="mt-12 text-center text-sm text-gray-500">
-          <p>Made with 💜 by Misket - Learn vocabulary the fun way!</p>
+          <p className="text-purple-600 font-medium">This app is specially designed for Serra 💜</p>
           <p className="mt-2 text-xs">
             Powered by Spaced Repetition System (SRS) & Gamification
           </p>

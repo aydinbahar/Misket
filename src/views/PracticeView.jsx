@@ -15,6 +15,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
   const [quizAnswer, setQuizAnswer] = useState('');
   const [feedback, setFeedback] = useState(null);
   const [words, setWords] = useState([]);
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
   useEffect(() => {
     if (selectedUnit) {
@@ -39,6 +40,41 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
 
   const currentWord = words[currentIndex];
   const progress = userProgress.wordProgress[currentWord.id];
+
+  // Text-to-Speech function
+  const speakWord = (text) => {
+    // Cancel any ongoing speech
+    window.speechSynthesis.cancel();
+
+    if (!text) return;
+
+    // Check if speech synthesis is supported
+    if (!('speechSynthesis' in window)) {
+      showNotification('Sorry, your browser doesn\'t support text-to-speech', 'error');
+      return;
+    }
+
+    setIsSpeaking(true);
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US'; // English pronunciation
+    utterance.rate = 0.8; // Slightly slower for learning
+    utterance.pitch = 1;
+    utterance.volume = 1;
+
+    // Event listeners
+    utterance.onend = () => {
+      setIsSpeaking(false);
+    };
+
+    utterance.onerror = (event) => {
+      console.error('Speech synthesis error:', event);
+      setIsSpeaking(false);
+      showNotification('Could not speak the word', 'error');
+    };
+
+    window.speechSynthesis.speak(utterance);
+  };
 
   const handleNext = () => {
     if (currentIndex < words.length - 1) {
@@ -162,8 +198,17 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                 }`}>
                   {progress?.status || 'new'}
                 </span>
-                <button className="p-2 hover:bg-white rounded-lg transition-all">
-                  <Volume2 className="w-5 h-5 text-purple-600" />
+                <button 
+                  onClick={() => speakWord(currentWord.word)}
+                  disabled={isSpeaking}
+                  className={`p-2 hover:bg-white rounded-lg transition-all ${
+                    isSpeaking ? 'animate-pulse bg-purple-100' : ''
+                  }`}
+                  title="Listen to pronunciation"
+                >
+                  <Volume2 className={`w-5 h-5 ${
+                    isSpeaking ? 'text-purple-800' : 'text-purple-600'
+                  }`} />
                 </button>
               </div>
 
