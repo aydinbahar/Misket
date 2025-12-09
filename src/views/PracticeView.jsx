@@ -239,8 +239,47 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                 {currentWord.pronunciation}
               </p>
 
+              {/* Meaning */}
+              <div className="bg-white rounded-lg p-4 mb-4">
+                <p className="text-sm text-gray-500 mb-1">Turkish Meaning</p>
+                <p className="text-xl font-semibold text-gray-800">
+                  {currentWord.meaning}
+                </p>
+              </div>
+
+              {/* Example Sentence */}
+              <div className="bg-white rounded-lg p-4 mb-4">
+                <p className="text-sm text-gray-500 mb-1">Example Sentence</p>
+                <p className="text-gray-700">
+                  {currentWord.sentence}
+                </p>
+              </div>
+
+              {/* Synonyms & Antonyms */}
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="bg-green-50 rounded-lg p-3">
+                  <p className="text-xs text-green-600 font-semibold mb-1">Synonyms</p>
+                  <p className="text-sm text-green-800">{currentWord.synonym}</p>
+                </div>
+                <div className="bg-red-50 rounded-lg p-3">
+                  <p className="text-xs text-red-600 font-semibold mb-1">Antonyms</p>
+                  <p className="text-sm text-red-800">{currentWord.antonym}</p>
+                </div>
+              </div>
+
+              {/* Memory Tip */}
+              <div className="bg-yellow-50 rounded-lg p-4 border-2 border-yellow-200 mb-4">
+                <div className="flex items-start gap-2">
+                  <Lightbulb className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-xs text-yellow-600 font-semibold mb-1">Memory Tip</p>
+                    <p className="text-sm text-yellow-800">{currentWord.memoryTip}</p>
+                  </div>
+                </div>
+              </div>
+
               {/* Image */}
-              <div className="relative mb-4 rounded-xl overflow-hidden bg-gray-100" style={{ height: '300px' }}>
+              <div className="relative rounded-xl overflow-hidden bg-gray-100" style={{ height: '300px' }}>
                 {!imageLoaded && !imageError && (
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
@@ -275,45 +314,6 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                     <p className="text-white text-xl font-bold">{currentWord.word}</p>
                   </div>
                 )}
-              </div>
-
-              {/* Meaning */}
-              <div className="bg-white rounded-lg p-4 mb-4">
-                <p className="text-sm text-gray-500 mb-1">Turkish Meaning</p>
-                <p className="text-xl font-semibold text-gray-800">
-                  {currentWord.meaning}
-                </p>
-              </div>
-
-              {/* Example Sentence */}
-              <div className="bg-white rounded-lg p-4 mb-4">
-                <p className="text-sm text-gray-500 mb-1">Example Sentence</p>
-                <p className="text-gray-700">
-                  {currentWord.sentence}
-                </p>
-              </div>
-
-              {/* Synonyms & Antonyms */}
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="bg-green-50 rounded-lg p-3">
-                  <p className="text-xs text-green-600 font-semibold mb-1">Synonyms</p>
-                  <p className="text-sm text-green-800">{currentWord.synonym}</p>
-                </div>
-                <div className="bg-red-50 rounded-lg p-3">
-                  <p className="text-xs text-red-600 font-semibold mb-1">Antonyms</p>
-                  <p className="text-sm text-red-800">{currentWord.antonym}</p>
-                </div>
-              </div>
-
-              {/* Memory Tip */}
-              <div className="bg-yellow-50 rounded-lg p-4 border-2 border-yellow-200">
-                <div className="flex items-start gap-2">
-                  <Lightbulb className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-xs text-yellow-600 font-semibold mb-1">Memory Tip</p>
-                    <p className="text-sm text-yellow-800">{currentWord.memoryTip}</p>
-                  </div>
-                </div>
               </div>
             </div>
           ) : (
