@@ -2,7 +2,6 @@ import React from 'react';
 import { useApp } from '../context/AppContext';
 import ProgressBar from '../components/ProgressBar';
 import DailyGoal from '../components/DailyGoal';
-import ThemeSelector from '../components/ThemeSelector';
 import { BookOpen, Brain, Target, Zap, Clock, TrendingUp } from 'lucide-react';
 import { getAllWords } from '../data/vocabulary';
 
@@ -68,32 +67,13 @@ const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
     },
   ];
 
-  const getMisketMessage = () => {
-    const hour = new Date().getHours();
-    if (hour < 12) return "Good morning! Ready to learn some pawsome words? 🐾";
-    if (hour < 18) return "Hello there! Let's make today's learning awesome! 🌟";
-    return "Evening buddy! Time for some vocabulary practice! 🌙";
-  };
-
   return (
     <div className="space-y-6">
-      {/* Welcome Message */}
-      <div className="card text-center bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-800 dark:to-gray-900 border-2 border-purple-200 dark:border-purple-700">
-        <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-2xl px-6 py-4 shadow-lg max-w-md mx-auto border border-white/20 dark:border-gray-700/30">
-          <p className="text-gray-700 dark:text-gray-200 text-center font-medium text-lg">
-            {getMisketMessage()}
-          </p>
-        </div>
-      </div>
-
       {/* Progress Overview */}
       <ProgressBar />
 
       {/* Daily Goal */}
       <DailyGoal />
-
-      {/* Theme Selector */}
-      <ThemeSelector />
 
       {/* Mastery Stats */}
       <div className="card">

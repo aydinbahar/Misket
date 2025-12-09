@@ -4,7 +4,7 @@ import Navigation from './components/Navigation';
 import Notification from './components/Notification';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
 import UpdatePrompt from './components/UpdatePrompt';
-import DarkModeToggle from './components/DarkModeToggle';
+import SettingsMenu from './components/SettingsMenu';
 import Confetti from './components/Confetti';
 import HomeView from './views/HomeView';
 import UnitsView from './views/UnitsView';
@@ -85,8 +85,8 @@ function AppContent() {
 
   return (
     <div className="min-h-screen pb-8">
-      {/* Dark Mode Toggle */}
-      <DarkModeToggle />
+      {/* Settings Menu (includes Dark Mode & Theme) */}
+      <SettingsMenu />
 
       {/* Confetti Effect */}
       {showConfetti && <Confetti />}
