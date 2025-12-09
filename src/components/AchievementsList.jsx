@@ -82,7 +82,7 @@ const AchievementsList = () => {
                     <h4 className="font-bold text-gray-600 dark:text-gray-300 mb-1">{achievement.title}</h4>
                     <p className="text-sm text-gray-500 dark:text-gray-400">{achievement.description}</p>
                     <div className="mt-2">
-                      <span className="badge bg-gray-200 text-gray-600 text-xs">
+                      <span className="badge bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs">
                         <Lock className="w-3 h-3 inline mr-1" />
                         Kilitli
                       </span>

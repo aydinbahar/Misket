@@ -62,11 +62,11 @@ const ProgressView = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="card">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-2">
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2 flex items-center gap-2">
           <TrendingUp className="w-8 h-8 text-purple-500" />
           Your Progress
         </h1>
-        <p className="text-gray-600">
+        <p className="text-gray-600 dark:text-gray-300">
           Track your learning journey and achievements
         </p>
       </div>
@@ -76,46 +76,46 @@ const ProgressView = () => {
 
       {/* Key Statistics */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="card bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200">
+        <div className="card bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-2 border-green-200 dark:border-green-700">
           <div className="flex items-center gap-3 mb-2">
-            <CheckCircle className="w-6 h-6 text-green-600" />
-            <span className="text-sm text-gray-600">Mastered</span>
+            <CheckCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
+            <span className="text-sm text-gray-600 dark:text-gray-300">Mastered</span>
           </div>
-          <div className="text-3xl font-bold text-green-600">{masteredWords}</div>
-          <div className="text-xs text-gray-500 mt-1">{masteryPercent}% complete</div>
+          <div className="text-3xl font-bold text-green-600 dark:text-green-400">{masteredWords}</div>
+          <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{masteryPercent}% complete</div>
         </div>
 
-        <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200">
+        <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200 dark:border-blue-700">
           <div className="flex items-center gap-3 mb-2">
-            <Brain className="w-6 h-6 text-blue-600" />
-            <span className="text-sm text-gray-600">Learning</span>
+            <Brain className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+            <span className="text-sm text-gray-600 dark:text-gray-300">Learning</span>
           </div>
-          <div className="text-3xl font-bold text-blue-600">{learningWords}</div>
-          <div className="text-xs text-gray-500 mt-1">In progress</div>
+          <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">{learningWords}</div>
+          <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">In progress</div>
         </div>
 
-        <div className="card bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-orange-200">
+        <div className="card bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20 border-2 border-orange-200 dark:border-orange-700">
           <div className="flex items-center gap-3 mb-2">
-            <Target className="w-6 h-6 text-orange-600" />
-            <span className="text-sm text-gray-600">Accuracy</span>
+            <Target className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+            <span className="text-sm text-gray-600 dark:text-gray-300">Accuracy</span>
           </div>
-          <div className="text-3xl font-bold text-orange-600">{accuracy}%</div>
-          <div className="text-xs text-gray-500 mt-1">Overall score</div>
+          <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">{accuracy}%</div>
+          <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Overall score</div>
         </div>
 
-        <div className="card bg-gradient-to-br from-red-50 to-pink-50 border-2 border-red-200">
+        <div className="card bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border-2 border-red-200 dark:border-red-700">
           <div className="flex items-center gap-3 mb-2">
-            <Flame className="w-6 h-6 text-red-600" />
-            <span className="text-sm text-gray-600">Streak</span>
+            <Flame className="w-6 h-6 text-red-600 dark:text-red-400" />
+            <span className="text-sm text-gray-600 dark:text-gray-300">Streak</span>
           </div>
-          <div className="text-3xl font-bold text-red-600">{userProgress.dailyStreak}</div>
-          <div className="text-xs text-gray-500 mt-1">Day streak</div>
+          <div className="text-3xl font-bold text-red-600 dark:text-red-400">{userProgress.dailyStreak}</div>
+          <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Day streak</div>
         </div>
       </div>
 
       {/* Mastery by Status */}
       <div className="card">
-        <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+        <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
           <Star className="w-5 h-5 text-purple-500" />
           Vocabulary Status
         </h3>
@@ -123,8 +123,8 @@ const ProgressView = () => {
         <div className="space-y-4">
           <div>
             <div className="flex justify-between text-sm mb-2">
-              <span className="text-gray-600">New</span>
-              <span className="font-bold text-gray-700">{newWords} words</span>
+              <span className="text-gray-600 dark:text-gray-300">New</span>
+              <span className="font-bold text-gray-700 dark:text-gray-200">{newWords} words</span>
             </div>
             <div className="progress-bar">
               <div
@@ -136,8 +136,8 @@ const ProgressView = () => {
 
           <div>
             <div className="flex justify-between text-sm mb-2">
-              <span className="text-gray-600">Learning</span>
-              <span className="font-bold text-blue-700">{learningWords} words</span>
+              <span className="text-gray-600 dark:text-gray-300">Learning</span>
+              <span className="font-bold text-blue-700 dark:text-blue-400">{learningWords} words</span>
             </div>
             <div className="progress-bar">
               <div
@@ -149,8 +149,8 @@ const ProgressView = () => {
 
           <div>
             <div className="flex justify-between text-sm mb-2">
-              <span className="text-gray-600">Review</span>
-              <span className="font-bold text-orange-700">{reviewWords} words</span>
+              <span className="text-gray-600 dark:text-gray-300">Review</span>
+              <span className="font-bold text-orange-700 dark:text-orange-400">{reviewWords} words</span>
             </div>
             <div className="progress-bar">
               <div
@@ -162,8 +162,8 @@ const ProgressView = () => {
 
           <div>
             <div className="flex justify-between text-sm mb-2">
-              <span className="text-gray-600">Mastered</span>
-              <span className="font-bold text-green-700">{masteredWords} words</span>
+              <span className="text-gray-600 dark:text-gray-300">Mastered</span>
+              <span className="font-bold text-green-700 dark:text-green-400">{masteredWords} words</span>
             </div>
             <div className="progress-bar">
               <div
@@ -177,7 +177,7 @@ const ProgressView = () => {
 
       {/* Unit Progress */}
       <div className="card">
-        <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+        <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
           <Target className="w-5 h-5 text-purple-500" />
           Progress by Unit
         </h3>
@@ -188,11 +188,11 @@ const ProgressView = () => {
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <span className="text-2xl">{unit.icon}</span>
-                  <span className="font-medium text-gray-700">{unit.title}</span>
+                  <span className="font-medium text-gray-700 dark:text-gray-200">{unit.title}</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-sm font-bold text-purple-600">{unit.percent}%</span>
-                  <p className="text-xs text-gray-500">
+                  <span className="text-sm font-bold text-purple-600 dark:text-purple-400">{unit.percent}%</span>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
                     {unit.mastered}/{unit.wordCount}
                   </p>
                 </div>
@@ -214,8 +214,8 @@ const ProgressView = () => {
 
       {/* Weak Words */}
       {weakWords.length > 0 && (
-        <div className="card bg-gradient-to-br from-red-50 to-pink-50 border-2 border-red-200">
-          <h3 className="text-lg font-bold text-red-800 mb-4 flex items-center gap-2">
+        <div className="card bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border-2 border-red-200 dark:border-red-700">
+          <h3 className="text-lg font-bold text-red-800 dark:text-red-300 mb-4 flex items-center gap-2">
             <AlertCircle className="w-5 h-5" />
             Words Needing Practice
           </h3>
@@ -224,15 +224,15 @@ const ProgressView = () => {
             {weakWords.slice(0, 5).map(word => (
               <div 
                 key={word.id} 
-                className="bg-white rounded-lg p-3 flex items-center justify-between"
+                className="bg-white dark:bg-gray-800/80 rounded-lg p-3 flex items-center justify-between"
               >
                 <div>
-                  <p className="font-bold text-gray-800">{word.word}</p>
-                  <p className="text-sm text-gray-600">{word.meaning}</p>
+                  <p className="font-bold text-gray-800 dark:text-gray-100">{word.word}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{word.meaning}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-xs text-gray-500">Incorrect:</p>
-                  <p className="text-lg font-bold text-red-600">
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Incorrect:</p>
+                  <p className="text-lg font-bold text-red-600 dark:text-red-400">
                     {word.progress.incorrectCount}
                   </p>
                 </div>
@@ -241,7 +241,7 @@ const ProgressView = () => {
           </div>
           
           {weakWords.length > 5 && (
-            <p className="text-sm text-gray-600 mt-3 text-center">
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-3 text-center">
               And {weakWords.length - 5} more words...
             </p>
           )}
@@ -250,7 +250,7 @@ const ProgressView = () => {
 
       {/* Achievements */}
       <div className="card">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 flex items-center gap-2">
           <Award className="w-7 h-7 text-yellow-500" />
           Başarılar
         </h2>
@@ -260,7 +260,7 @@ const ProgressView = () => {
       {/* Badges */}
       {userProgress.badges.length > 0 && (
         <div className="card">
-          <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
             <Award className="w-5 h-5 text-yellow-500" />
             Your Badges
           </h3>
@@ -280,7 +280,7 @@ const ProgressView = () => {
 
       {/* Recent Activity */}
       <div className="card">
-        <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+        <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
           <Clock className="w-5 h-5 text-purple-500" />
           Recent Activity
         </h3>
@@ -289,11 +289,11 @@ const ProgressView = () => {
           {recentActivity.map((activity, idx) => {
             const Icon = activity.icon;
             return (
-              <div key={idx} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <div key={idx} className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
                 <Icon className={`w-5 h-5 ${activity.color}`} />
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-800">{activity.action}</p>
-                  <p className="text-xs text-gray-500">{activity.date}</p>
+                  <p className="text-sm font-medium text-gray-800 dark:text-gray-100">{activity.action}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{activity.date}</p>
                 </div>
               </div>
             );
