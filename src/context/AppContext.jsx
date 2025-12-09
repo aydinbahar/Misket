@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { getAllWords } from '../data/vocabulary';
+import { soundEffects } from '../utils/soundEffects';
 
 const AppContext = createContext();
 
@@ -265,6 +266,8 @@ export const AppProvider = ({ children }) => {
       const currentAchievements = prev.achievements || [];
       if (currentAchievements.some(a => a.id === achievement.id)) return prev;
       showNotification(`🎉 Achievement Unlocked: ${achievement.title}!`, 'success');
+      soundEffects.achievement();
+      triggerConfetti();
       return {
         ...prev,
         achievements: [...currentAchievements, { ...achievement, unlockedAt: Date.now() }]
@@ -364,6 +367,20 @@ export const AppProvider = ({ children }) => {
   const showNotification = (message, type = 'info') => {
     setNotification({ message, type, id: Date.now() });
     setTimeout(() => setNotification(null), 3000);
+
+    // Play sound based on type
+    if (type === 'success') {
+      soundEffects.success();
+      soundEffects.vibrate([10, 50, 10]);
+    } else if (type === 'error') {
+      soundEffects.error();
+      soundEffects.vibrate([50]);
+    }
+  };
+
+  // Trigger confetti
+  const triggerConfetti = () => {
+    window.dispatchEvent(new Event('triggerConfetti'));
   };
 
   // Check daily streak on mount
@@ -393,6 +410,7 @@ export const AppProvider = ({ children }) => {
     updateDailyProgress,
     checkAchievements,
     updateTheme,
+    triggerConfetti,
     notification,
     showNotification,
   };

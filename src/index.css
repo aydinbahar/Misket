@@ -4,39 +4,179 @@
 
 @layer base {
   body {
+    @apply min-h-screen font-sans;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body.light-mode {
     @apply bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50;
-    @apply min-h-screen;
-    @apply font-sans;
+  }
+
+  body.dark-mode {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    @apply text-gray-100;
   }
 }
 
 @layer components {
+  /* Glassmorphism Cards */
   .card {
-    @apply bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl;
+    @apply bg-white/90 backdrop-blur-lg rounded-2xl shadow-lg p-6 transition-all duration-300 border border-white/20;
+    animation: fadeInUp 0.5s ease-out;
   }
 
+  body.dark-mode .card {
+    @apply bg-gray-900/80 backdrop-blur-lg border-gray-700/30 text-gray-100 shadow-2xl;
+  }
+
+  .card:hover {
+    @apply shadow-2xl;
+    transform: translateY(-2px);
+  }
+
+  /* Glassmorphism Buttons */
   .btn-primary {
     @apply bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-primary:hover::before {
+    left: 100%;
   }
 
   .btn-secondary {
-    @apply bg-white text-gray-700 px-6 py-3 rounded-xl font-semibold border-2 border-gray-200 transition-all duration-300 hover:border-purple-300 hover:shadow-md;
+    @apply bg-white/80 backdrop-blur-sm text-gray-700 px-6 py-3 rounded-xl font-semibold border-2 border-gray-200 transition-all duration-300 hover:border-purple-300 hover:shadow-md;
+  }
+
+  body.dark-mode .btn-secondary {
+    @apply bg-gray-800/80 text-gray-200 border-gray-700 hover:border-purple-500;
   }
 
   .badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm;
   }
 
+  /* Animated Progress Bar */
   .progress-bar {
     @apply bg-gray-200 rounded-full h-3 overflow-hidden;
+    position: relative;
+  }
+
+  body.dark-mode .progress-bar {
+    @apply bg-gray-700;
   }
 
   .progress-fill {
     @apply h-full rounded-full transition-all duration-500 ease-out;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  /* Skeleton Loading */
+  .skeleton {
+    @apply bg-gray-200 rounded animate-pulse;
+  }
+
+  body.dark-mode .skeleton {
+    @apply bg-gray-700;
+  }
+
+  /* Neon Glow Effects */
+  .neon-glow {
+    box-shadow: 0 0 10px rgba(167, 139, 250, 0.5),
+                0 0 20px rgba(167, 139, 250, 0.3),
+                0 0 30px rgba(167, 139, 250, 0.1);
+  }
+
+  .neon-glow-green {
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5),
+                0 0 20px rgba(16, 185, 129, 0.3),
+                0 0 30px rgba(16, 185, 129, 0.1);
+  }
+
+  /* Wiggle animation for tail */
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(45deg); }
+    25% { transform: rotate(50deg); }
+    75% { transform: rotate(40deg); }
+  }
+
+  .animate-wiggle {
+    animation: wiggle 1s ease-in-out infinite;
   }
 }
 
-/* PWA Install Prompt Animation */
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(167, 139, 250, 0.8);
+  }
+}
+
 @keyframes slide-up {
   from {
     transform: translateY(100%);
@@ -50,6 +190,18 @@
 
 .animate-slide-up {
   animation: slide-up 0.5s ease-out;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
 
 /* Custom scrollbar */

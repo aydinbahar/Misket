@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 
 const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
-  const { updateWordProgress, showNotification, addBadge, addXP } = useApp();
+  const { updateWordProgress, showNotification, addBadge, addXP, triggerConfetti } = useApp();
   const [selectedMode, setSelectedMode] = useState(testMode || null);
   const [testStarted, setTestStarted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -168,14 +168,19 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
     // Award badges
     if (scorePercent === 100) {
       addBadge(`Perfect ${testModes.find(m => m.id === selectedMode)?.title}! 🏆`);
+      triggerConfetti();
     }
     if (selectedMode === 'boss' && scorePercent >= 80) {
       addBadge('Boss Battle Champion! 💀👑');
+      triggerConfetti();
     }
 
     // Bonus XP
     if (scorePercent >= 90) {
       addXP(50, 'Excellent test performance');
+      if (scorePercent === 100) {
+        triggerConfetti();
+      }
     } else if (scorePercent >= 70) {
       addXP(25, 'Good test performance');
     }

@@ -76,13 +76,13 @@ const MisketCharacter = ({ mood = 'happy', message, showStars = false }) => {
 
       {/* Message bubble */}
       {message && (
-        <div className="mt-6 relative">
-          <div className="bg-white rounded-2xl shadow-lg p-4 max-w-xs mx-auto relative">
+        <div className="mt-6 relative animate-fadeInUp">
+          <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-2xl shadow-lg p-4 max-w-xs mx-auto relative border border-white/20 dark:border-gray-700/30">
             {/* Speech bubble triangle */}
-            <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white rotate-45"></div>
+            <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white dark:bg-gray-800 rotate-45"></div>
             
             {/* Message content */}
-            <p className="text-sm text-gray-700 text-center font-medium relative z-10">
+            <p className="text-sm text-gray-700 dark:text-gray-200 text-center font-medium relative z-10">
               {message}
             </p>
           </div>

@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 
 const PracticeView = ({ selectedUnit, setCurrentView }) => {
-  const { userProgress, updateWordProgress, showNotification, updateDailyProgress } = useApp();
+  const { userProgress, updateWordProgress, showNotification, updateDailyProgress, triggerConfetti } = useApp();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [mode, setMode] = useState('learn'); // 'learn' or 'quiz'
@@ -187,6 +187,12 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
     
     if (isCorrect) {
       updateDailyProgress(); // Track daily progress
+      
+      // Check if it's a perfect streak
+      const wordProg = userProgress?.wordProgress?.[currentWord.id];
+      if (wordProg && wordProg.streak >= 5) {
+        triggerConfetti();
+      }
     }
 
     if (isCorrect) {

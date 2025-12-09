@@ -4,7 +4,7 @@ import { getAllWords } from '../../data/vocabulary';
 import { Shuffle, Lightbulb, SkipForward, Trophy, CheckCircle } from 'lucide-react';
 
 const WordPuzzle = () => {
-  const { updateWordProgress, addXP, showNotification, updateDailyProgress } = useApp();
+  const { updateWordProgress, addXP, showNotification, updateDailyProgress, triggerConfetti } = useApp();
   const [currentWord, setCurrentWord] = useState(null);
   const [scrambledLetters, setScrambledLetters] = useState([]);
   const [selectedLetters, setSelectedLetters] = useState([]);
@@ -62,6 +62,12 @@ const WordPuzzle = () => {
       updateWordProgress(currentWord.id, true);
       updateDailyProgress();
       addXP(points);
+      
+      // Trigger confetti for perfect answers (no hints)
+      if (hintsUsed === 0) {
+        triggerConfetti();
+      }
+      
       showNotification(`🎉 Correct! +${points} points`, 'success');
       
       setTimeout(() => {

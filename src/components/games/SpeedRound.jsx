@@ -4,7 +4,7 @@ import { getAllWords } from '../../data/vocabulary';
 import { Zap, Play, Trophy } from 'lucide-react';
 
 const SpeedRound = () => {
-  const { updateWordProgress, addXP, showNotification, updateDailyProgress } = useApp();
+  const { updateWordProgress, addXP, showNotification, updateDailyProgress, triggerConfetti } = useApp();
   const [gameState, setGameState] = useState('ready'); // ready, playing, finished
   const [currentWord, setCurrentWord] = useState(null);
   const [options, setOptions] = useState([]);
@@ -92,6 +92,9 @@ const SpeedRound = () => {
     setGameState('finished');
     const bonus = score > 100 ? 50 : score > 50 ? 25 : 10;
     addXP(bonus);
+    if (score > 100) {
+      triggerConfetti();
+    }
     showNotification(`Speed Round Complete! Bonus: ${bonus} XP`, 'success');
   };
 

@@ -4,7 +4,7 @@ import { getAllWords } from '../../data/vocabulary';
 import { RotateCcw, Trophy, Clock } from 'lucide-react';
 
 const MemoryGame = () => {
-  const { updateWordProgress, addXP, showNotification } = useApp();
+  const { updateWordProgress, addXP, showNotification, triggerConfetti } = useApp();
   const [cards, setCards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
@@ -79,6 +79,7 @@ const MemoryGame = () => {
             setGameComplete(true);
             const bonus = Math.max(100 - moves * 5, 20);
             addXP(bonus);
+            triggerConfetti();
             showNotification(`🏆 Game Complete! Bonus: ${bonus} XP`, 'success');
           }
         }, 500);

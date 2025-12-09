@@ -1,6 +1,5 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
-import MisketCharacter from '../components/MisketCharacter';
 import ProgressBar from '../components/ProgressBar';
 import DailyGoal from '../components/DailyGoal';
 import ThemeSelector from '../components/ThemeSelector';
@@ -78,16 +77,11 @@ const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
 
   return (
     <div className="space-y-6">
-      {/* Welcome Section with Misket */}
-      <div className="card text-center">
-        <MisketCharacter mood="happy" message={getMisketMessage()} />
-        
-        <div className="mt-4">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
-            Welcome to Misket! 🐶
-          </h1>
-          <p className="text-gray-600">
-            Your friendly AI vocabulary learning companion
+      {/* Welcome Message */}
+      <div className="card text-center bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-800 dark:to-gray-900 border-2 border-purple-200 dark:border-purple-700">
+        <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-2xl px-6 py-4 shadow-lg max-w-md mx-auto border border-white/20 dark:border-gray-700/30">
+          <p className="text-gray-700 dark:text-gray-200 text-center font-medium text-lg">
+            {getMisketMessage()}
           </p>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { getAllWords } from '../data/vocabulary';
 import { BookOpen, ArrowRight, ArrowLeft, Trophy, Star } from 'lucide-react';
 
 const StoryMode = ({ setCurrentView }) => {
-  const { updateWordProgress, addXP, showNotification, updateDailyProgress } = useApp();
+  const { updateWordProgress, addXP, showNotification, updateDailyProgress, triggerConfetti } = useApp();
   const [currentStory, setCurrentStory] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [completedPages, setCompletedPages] = useState([]);
@@ -166,6 +166,7 @@ const StoryMode = ({ setCurrentView }) => {
         setTimeout(() => {
           setShowResults(true);
           addXP(50);
+          triggerConfetti();
           showNotification(`Story Complete! Bonus: +50 XP`, 'success');
         }, 1500);
       }
