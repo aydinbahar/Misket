@@ -104,18 +104,12 @@ export const AppProvider = ({ children }) => {
   // Manage dark/light mode DOM classes - SINGLE SOURCE OF TRUTH
   useEffect(() => {
     const isDark = userProgress.darkMode || false;
-    
-    // Update body classes
-    if (isDark) {
-      document.body.classList.add('dark-mode');
-      document.body.classList.remove('light-mode');
-      document.documentElement.classList.add('dark');
-    } else {
-      document.body.classList.add('light-mode');
-      document.body.classList.remove('dark-mode');
-      document.documentElement.classList.remove('dark');
-    }
-    
+    const root = document.documentElement;
+
+    root.classList.toggle('dark', isDark);
+    root.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    document.body.dataset.theme = isDark ? 'dark' : 'light';
+
     // Also save to localStorage for backward compatibility
     localStorage.setItem('darkMode', isDark.toString());
   }, [userProgress.darkMode]);

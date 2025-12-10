@@ -3,103 +3,87 @@
 @tailwind utilities;
 
 @layer base {
-  /* Base body styles - light mode is default */
+  :root {
+    --bg-gradient: radial-gradient(circle at 10% 20%, rgba(196, 181, 253, 0.35), transparent 25%),
+      radial-gradient(circle at 80% 0%, rgba(248, 180, 217, 0.35), transparent 26%),
+      linear-gradient(135deg, #f8fafc 0%, #fdf2f8 35%, #eef2ff 100%);
+    --surface: rgba(255, 255, 255, 0.72);
+    --card-bg: rgba(255, 255, 255, 0.88);
+    --border-color: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --muted: #64748b;
+    --shadow-soft: 0 25px 80px rgba(99, 102, 241, 0.08);
+    color-scheme: light;
+  }
+
+  :root.dark {
+    --bg-gradient: radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.2), transparent 25%),
+      radial-gradient(circle at 80% 0%, rgba(217, 70, 239, 0.18), transparent 26%),
+      linear-gradient(135deg, #050915 0%, #0a1224 50%, #050915 100%);
+    --surface: rgba(15, 23, 42, 0.72);
+    --card-bg: rgba(17, 24, 39, 0.9);
+    --border-color: #1f2937;
+    --text-primary: #e2e8f0;
+    --text-secondary: #cbd5e1;
+    --muted: #94a3b8;
+    --shadow-soft: 0 25px 80px rgba(59, 130, 246, 0.12);
+    color-scheme: dark;
+  }
+
   body {
-    @apply min-h-screen font-sans;
-    background: linear-gradient(135deg, #faf5ff 0%, #fce7f3 50%, #eff6ff 100%);
-    color: #1f2937; /* gray-800 */
-    transition: background-color 0.3s ease, color 0.3s ease;
+    @apply min-h-screen font-sans antialiased;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    transition: background 0.6s ease, color 0.3s ease;
   }
 
-  /* Light mode explicit (for clarity) */
-  body.light-mode {
-    background: linear-gradient(135deg, #faf5ff 0%, #fce7f3 50%, #eff6ff 100%);
-    color: #111827; /* gray-900 - almost black for maximum contrast */
-  }
-  
-  /* Preserve menu panel FIRST - must be before global rule */
-  body.light-mode .settings-menu-panel {
-    color: initial;
-  }
-  
-  body.light-mode .settings-menu-panel * {
-    color: inherit !important;
-  }
-  
-  /* Force all text to be black in light mode (except colored stats/icons, buttons, and menu) */
-  body.light-mode *:not(.settings-menu-panel):not(.settings-menu-panel *) {
-    color: #111827; /* gray-900 */
-  }
-  
-  /* Preserve button text colors */
-  body.light-mode button:not(.settings-menu-panel button):not(.settings-menu-panel button *),
-  body.light-mode .btn-primary,
-  body.light-mode .btn-secondary,
-  body.light-mode .btn-primary *,
-  body.light-mode .btn-secondary * {
-    color: inherit; /* Keep original button text color */
-  }
-  
-  /* Preserve colored elements (stats, icons, gradients) */
-  body.light-mode .text-purple-600,
-  body.light-mode .text-purple-500,
-  body.light-mode .text-purple-400,
-  body.light-mode .text-blue-600,
-  body.light-mode .text-blue-500,
-  body.light-mode .text-blue-400,
-  body.light-mode .text-green-600,
-  body.light-mode .text-green-500,
-  body.light-mode .text-green-400,
-  body.light-mode .text-red-600,
-  body.light-mode .text-red-500,
-  body.light-mode .text-red-400,
-  body.light-mode .text-orange-600,
-  body.light-mode .text-orange-500,
-  body.light-mode .text-orange-400,
-  body.light-mode .text-yellow-500,
-  body.light-mode .text-yellow-400,
-  body.light-mode .text-pink-600,
-  body.light-mode .text-pink-500,
-  body.light-mode .text-pink-400,
-  body.light-mode .text-white,
-  body.light-mode .text-cyan-500,
-  body.light-mode .text-cyan-400,
-  body.light-mode .text-emerald-600,
-  body.light-mode .text-emerald-500,
-  body.light-mode .text-emerald-400 {
-    color: inherit; /* Keep original color */
+  /* Optional subtle grid to add depth without hurting contrast */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 140px 140px;
+    opacity: 0.4;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+    z-index: -1;
   }
 
-  /* Dark mode global background */
-  body.dark-mode {
-    background: linear-gradient(135deg, #070c16 0%, #0a1224 50%, #050915 100%);
-    color: #f3f4f6; /* gray-100 */
+  .app-shell {
+    @apply min-h-screen pb-10 relative;
+    color: var(--text-primary);
   }
 
-  /* REMOVED: Generic text-gray-* overrides that conflict with Tailwind
-     Components should use explicit dark: variants instead */
-}
+  .app-surface {
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-soft);
+  }
 
-@layer utilities {
-  /* Override global black text for menu panel - highest priority */
-  body.light-mode .settings-menu-panel,
-  body.light-mode .settings-menu-panel * {
-    color: inherit !important;
+  .text-primary {
+    color: var(--text-primary);
+  }
+
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .text-muted {
+    color: var(--muted);
   }
 }
 
 @layer components {
   /* Glassmorphism Cards */
   .card {
-    @apply bg-white backdrop-blur-lg rounded-2xl shadow-lg p-6 transition-all duration-300 border border-gray-200;
-    color: #111827; /* gray-900 for light mode */
+    @apply backdrop-blur-lg rounded-2xl shadow-lg p-6 transition-all duration-300 border;
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
     animation: fadeInUp 0.5s ease-out;
-  }
-
-  body.dark-mode .card {
-    @apply backdrop-blur-lg border-gray-800 shadow-2xl;
-    background-color: rgba(17, 24, 39, 0.9); /* gray-900/90 */
-    color: #f9fafb; /* gray-50 */
   }
 
   .card:hover {
@@ -129,27 +113,17 @@
     left: 100%;
   }
 
-  /* Secondary Button */
+  /* Secondary Button - theme aware */
   .btn-secondary {
-    @apply backdrop-blur-sm px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 hover:border-purple-400 hover:shadow-md;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #1f2937; /* gray-800 */
-    border-color: #d1d5db; /* gray-300 */
+    @apply backdrop-blur-sm px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 hover:shadow-md;
+    background-color: var(--surface);
+    color: var(--text-primary);
+    border-color: var(--border-color);
   }
 
   .btn-secondary:hover {
-    background-color: #f9fafb; /* gray-50 */
-  }
-
-  body.dark-mode .btn-secondary {
-    background-color: rgba(31, 41, 55, 0.8); /* gray-800/80 */
-    color: #e5e7eb; /* gray-200 */
-    border-color: #374151; /* gray-700 */
-  }
-
-  body.dark-mode .btn-secondary:hover {
-    background-color: rgba(55, 65, 81, 0.9); /* gray-700 */
-    border-color: #a855f7; /* purple-500 */
+    background-color: color-mix(in srgb, var(--surface) 80%, white 20%);
+    border-color: color-mix(in srgb, var(--border-color) 60%, #a855f7 40%);
   }
 
   .badge {
@@ -158,12 +132,9 @@
 
   /* Progress Bar */
   .progress-bar {
-    @apply bg-gray-200 rounded-full h-3 overflow-hidden;
+    @apply rounded-full h-3 overflow-hidden;
     position: relative;
-  }
-
-  body.dark-mode .progress-bar {
-    @apply bg-gray-800;
+    background: color-mix(in srgb, var(--border-color) 80%, transparent 20%);
   }
 
   .progress-fill {
@@ -185,11 +156,8 @@
 
   /* Skeleton Loading */
   .skeleton {
-    @apply bg-gray-200 rounded animate-pulse;
-  }
-
-  body.dark-mode .skeleton {
-    @apply bg-gray-700;
+    @apply rounded animate-pulse;
+    background: color-mix(in srgb, var(--border-color) 70%, transparent 30%);
   }
 
   /* Neon Glow Effects */
@@ -199,89 +167,76 @@
                 0 0 30px rgba(167, 139, 250, 0.1);
   }
 
-  .neon-glow-green {
-    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5),
-                0 0 20px rgba(16, 185, 129, 0.3),
-                0 0 30px rgba(16, 185, 129, 0.1);
+  /* Timeline Style */
+  .timeline {
+    @apply relative;
+  }
+
+  .timeline::before {
+    content: '';
+    @apply absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500/50 via-purple-400/30 to-transparent;
+  }
+
+  .timeline-item {
+    @apply relative pl-16 pb-8;
+  }
+
+  .timeline-dot {
+    @apply absolute left-4 top-1.5 w-4 h-4 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500;
+  }
+
+  /* Animated gradient background for cards */
+  .animated-gradient {
+    background: linear-gradient(
+      120deg,
+      rgba(167, 139, 250, 0.12),
+      rgba(244, 114, 182, 0.12),
+      rgba(56, 189, 248, 0.12)
+    );
+    background-size: 200% 200%;
+    animation: gradientShift 12s ease infinite;
   }
 }
 
-/* PWA Install Prompt Animation */
-@keyframes slide-up {
+@layer utilities {
+  .glass-border {
+    border-color: color-mix(in srgb, var(--border-color) 70%, transparent 30%);
+  }
+}
+
+@keyframes fadeInUp {
   from {
-    transform: translateY(100%);
     opacity: 0;
+    transform: translateY(10px);
   }
   to {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.animate-slide-up {
-  animation: slide-up 0.5s ease-out;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #e5e7eb; /* gray-200 */
-}
-
-::-webkit-scrollbar-thumb {
-  background-image: linear-gradient(to bottom right, #a855f7, #ec4899);
-  border-radius: 9999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-image: linear-gradient(to bottom right, #9333ea, #db2777);
-}
-
-/* Floating animation */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0px); }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Wiggle animation */
-@keyframes wiggle {
-  0%, 100% { transform: rotate(45deg); }
-  50% { transform: rotate(55deg); }
-}
-
-.animate-wiggle {
-  animation: wiggle 0.5s ease-in-out infinite;
-}
-
-/* Shimmer effect for progress bars */
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
-.animate-shimmer {
-  animation: shimmer 2s infinite linear;
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
-
-/* Confetti animations (for Confetti component if needed) */
-@keyframes confetti-fall {
-  0% { transform: translateY(-100vh) rotate(0deg); opacity: 0; }
-  10% { opacity: 1; }
-  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-}
-
-@keyframes confetti-rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-
