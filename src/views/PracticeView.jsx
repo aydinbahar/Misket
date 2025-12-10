@@ -279,13 +279,13 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
         <div className="lg:col-span-2 space-y-6">
           {mode === 'learn' ? (
             // Learn Mode - Show all info
-            <div className="card bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200">
+            <div className="card bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-200 dark:border-purple-700">
               {/* Word Status Badge */}
               <div className="flex items-center justify-between mb-4">
                 <span className={`badge ${
-                  progress?.status === 'mastered' ? 'bg-green-100 text-green-700' :
-                  progress?.status === 'review' ? 'bg-orange-100 text-orange-700' :
-                  progress?.status === 'learning' ? 'bg-blue-100 text-blue-700' :
+                  progress?.status === 'mastered' ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300' :
+                  progress?.status === 'review' ? 'bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300' :
+                  progress?.status === 'learning' ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300' :
                   'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200'
                 }`}>
                   {progress?.status || 'new'}
@@ -299,16 +299,16 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                   title="Listen to pronunciation"
                 >
                   <Volume2 className={`w-5 h-5 ${
-                    isSpeaking ? 'text-purple-800' : 'text-purple-600'
+                    isSpeaking ? 'text-purple-800 dark:text-purple-300' : 'text-purple-600 dark:text-purple-400'
                   }`} />
                 </button>
               </div>
 
               {/* Word */}
-              <h2 className="text-4xl font-bold text-purple-800 mb-2">
+              <h2 className="text-4xl font-bold text-purple-800 dark:text-purple-300 mb-2">
                 {currentWord.word}
               </h2>
-              <p className="text-lg text-purple-600 mb-4 italic">
+              <p className="text-lg text-purple-600 dark:text-purple-400 mb-4 italic">
                 {currentWord.pronunciation}
               </p>
 

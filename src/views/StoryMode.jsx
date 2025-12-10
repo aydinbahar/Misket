@@ -248,9 +248,9 @@ const StoryMode = ({ setCurrentView }) => {
               <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">{story.title}</h3>
               <div className="flex items-center justify-between mb-4">
                 <span className={`badge ${
-                  story.difficulty === 'easy' ? 'bg-green-100 text-green-700' :
-                  story.difficulty === 'medium' ? 'bg-yellow-100 text-yellow-700' :
-                  'bg-red-100 text-red-700'
+                  story.difficulty === 'easy' ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300' :
+                  story.difficulty === 'medium' ? 'bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300' :
+                  'bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300'
                 }`}>
                   {story.difficulty}
                 </span>

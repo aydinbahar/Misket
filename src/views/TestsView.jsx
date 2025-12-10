@@ -407,8 +407,8 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
                 className={`
                   p-4 rounded-xl border-2 font-medium text-lg transition-all text-left
                   ${!answer ? 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-blue-400 hover:shadow-md' : ''}
-                  ${isCorrect ? 'bg-green-100 border-green-500 text-green-800' : ''}
-                  ${isWrong ? 'bg-red-100 border-red-500 text-red-800' : ''}
+                  ${isCorrect ? 'bg-green-100 dark:bg-green-900/50 border-green-500 text-green-800 dark:text-green-200' : ''}
+                  ${isWrong ? 'bg-red-100 dark:bg-red-900/50 border-red-500 text-red-800 dark:text-red-200' : ''}
                   ${answer && !isCorrect && !isWrong ? 'opacity-50' : ''}
                   disabled:cursor-not-allowed
                 `}
@@ -425,7 +425,7 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
 
         {answer && (
           <div className={`mt-6 p-4 rounded-lg ${
-            answer.correct ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
+            answer.correct ? 'bg-green-50 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-700' : 'bg-red-50 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-700'
           }`}>
             {answer.correct ? (
               <p className="font-medium">✅ Correct! Well done!</p>
