@@ -76,7 +76,7 @@ const ProgressView = () => {
 
       {/* Key Statistics */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="card bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-2 border-green-200 dark:border-green-700">
+        <div className="card bg-white dark:bg-gradient-to-br dark:from-green-900/20 dark:to-emerald-900/20 border-2 border-green-200 dark:border-green-700">
           <div className="flex items-center gap-3 mb-2">
             <CheckCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
             <span className="text-sm text-gray-600 dark:text-gray-300">Mastered</span>
@@ -85,7 +85,7 @@ const ProgressView = () => {
           <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{masteryPercent}% complete</div>
         </div>
 
-        <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200 dark:border-blue-700">
+        <div className="card bg-white dark:bg-gradient-to-br dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200 dark:border-blue-700">
           <div className="flex items-center gap-3 mb-2">
             <Brain className="w-6 h-6 text-blue-600 dark:text-blue-400" />
             <span className="text-sm text-gray-600 dark:text-gray-300">Learning</span>
@@ -94,7 +94,7 @@ const ProgressView = () => {
           <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">In progress</div>
         </div>
 
-        <div className="card bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20 border-2 border-orange-200 dark:border-orange-700">
+        <div className="card bg-white dark:bg-gradient-to-br dark:from-orange-900/20 dark:to-yellow-900/20 border-2 border-orange-200 dark:border-orange-700">
           <div className="flex items-center gap-3 mb-2">
             <Target className="w-6 h-6 text-orange-600 dark:text-orange-400" />
             <span className="text-sm text-gray-600 dark:text-gray-300">Accuracy</span>
@@ -214,7 +214,7 @@ const ProgressView = () => {
 
       {/* Weak Words */}
       {weakWords.length > 0 && (
-        <div className="card bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border-2 border-red-200 dark:border-red-700">
+        <div className="card bg-white dark:bg-gradient-to-br dark:from-red-900/20 dark:to-pink-900/20 border-2 border-red-200 dark:border-red-700">
           <h3 className="text-lg font-bold text-red-800 dark:text-red-300 mb-4 flex items-center gap-2">
             <AlertCircle className="w-5 h-5" />
             Words Needing Practice

@@ -12,7 +12,7 @@ const DailyGoal = () => {
   const isCompleted = todayProgress >= dailyGoal;
 
   return (
-    <div className="card bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20 border-2 border-orange-200 dark:border-orange-700">
+    <div className="card bg-white dark:bg-gradient-to-br dark:from-orange-900/20 dark:to-yellow-900/20 border-2 border-orange-200 dark:border-orange-700">
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-lg font-bold text-orange-800 dark:text-orange-300 flex items-center gap-2">
           <Target className="w-5 h-5" />

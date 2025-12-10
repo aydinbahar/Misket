@@ -150,14 +150,14 @@ const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
       </div>
 
       {/* Daily Tip */}
-      <div className="card bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200">
+      <div className="card bg-white dark:bg-gradient-to-br dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-200 dark:border-purple-700">
         <div className="flex items-start gap-3">
           <div className="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center flex-shrink-0">
             💡
           </div>
           <div>
-            <h3 className="font-bold text-purple-800 mb-1">Misket's Daily Tip</h3>
-            <p className="text-sm text-purple-700">
+            <h3 className="font-bold text-purple-800 dark:text-purple-300 mb-1">Misket's Daily Tip</h3>
+            <p className="text-sm text-purple-700 dark:text-purple-300">
               Practice a little bit every day! Even 5 minutes makes a huge difference. 
               Consistency is the key to mastering vocabulary! 🐾
             </p>

@@ -121,9 +121,9 @@ const UnitsView = ({ setCurrentView, setSelectedUnit }) => {
       </div>
 
       {/* Info Card */}
-      <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200 dark:border-blue-700">
+      <div className="card bg-white dark:bg-gradient-to-br dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200 dark:border-blue-700">
         <h3 className="font-bold text-blue-800 dark:text-blue-300 mb-2">📚 How to Learn</h3>
-        <ul className="space-y-2 text-sm text-blue-700 dark:text-blue-300">
+        <ul className="space-y-2 text-sm text-blue-800 dark:text-blue-300">
           <li className="flex items-start gap-2">
             <span className="font-bold">1.</span>
             <span>Select a unit to begin learning new words</span>
