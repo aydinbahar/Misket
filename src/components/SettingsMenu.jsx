@@ -4,7 +4,7 @@ import { Menu, X, Palette, Moon, Sun, Volume2, VolumeX, RefreshCw } from 'lucide
 import { soundEffects } from '../utils/soundEffects';
 
 const SettingsMenu = () => {
-  const { userProgress, updateTheme, toggleDarkMode } = useApp();
+  const { userProgress, updateTheme } = useApp();
   const [isOpen, setIsOpen] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(() => {
     const saved = localStorage.getItem('soundEnabled');
@@ -13,7 +13,6 @@ const SettingsMenu = () => {
   const [updateStatus, setUpdateStatus] = useState('');
 
   const currentTheme = userProgress?.theme || 'purple';
-  const isDark = userProgress?.darkMode || false;
 
   useEffect(() => {
     soundEffects.toggle(soundEnabled);
@@ -132,25 +131,6 @@ const SettingsMenu = () => {
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                   Settings ⚙️
                 </h2>
-              </div>
-
-              {/* Dark Mode Toggle */}
-              <div>
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-300 mb-3 flex items-center gap-2">
-                  {isDark ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
-                  Appearance
-                </h3>
-                <button
-                  onClick={toggleDarkMode}
-                  className="w-full flex items-center justify-between p-4 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all"
-                >
-                  <span className="text-gray-900 dark:text-gray-200">
-                    {isDark ? 'Dark Mode' : 'Light Mode'}
-                  </span>
-                  <div className={`w-12 h-6 rounded-full transition-all ${isDark ? 'bg-purple-600' : 'bg-gray-300'}`}>
-                    <div className={`w-5 h-5 rounded-full bg-white shadow-md transform transition-transform ${isDark ? 'translate-x-6' : 'translate-x-1'} mt-0.5`} />
-                  </div>
-                </button>
               </div>
 
               {/* Sound Toggle */}

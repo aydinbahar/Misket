@@ -164,7 +164,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
       setImageError(false);
     } else {
       showNotification('🎉 You completed all words in this unit!', 'success');
-      setCurrentView('home');
+          setCurrentView('units');
     }
   };
 
@@ -211,29 +211,29 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
       return "No worries! Let's try again next time! 💪";
     }
     if (mode === 'learn') {
-      return "Take your time to learn this word! 📚";
+      return null; // No message in learn mode
     }
     return "You can do it! Give it your best shot! 🎯";
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-2">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-2">
         <button
           onClick={() => setCurrentView('units')}
-          className="btn-secondary flex items-center gap-2"
+          className="btn-secondary flex items-center gap-1.5 text-xs py-1.5 px-2.5"
         >
-          <ArrowLeft className="w-4 h-4" />
-          Back to Units
+          <ArrowLeft className="w-3.5 h-3.5" />
+          Back
         </button>
-        <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
-          Word {currentIndex + 1} of {words.length}
+        <div className="text-xs text-gray-300 font-medium">
+          {currentIndex + 1} / {words.length}
         </div>
       </div>
 
       {/* Progress Indicator */}
-      <div className="progress-bar h-2">
+      <div className="progress-bar h-1 mb-2">
         <div
           className="progress-fill bg-gradient-to-r from-purple-500 to-pink-500"
           style={{ width: `${((currentIndex + 1) / words.length) * 100}%` }}
@@ -241,18 +241,18 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
       </div>
 
       {/* Mode Selector */}
-      <div className="card">
+      <div className="card p-2 mb-2">
         <div className="flex gap-2">
           <button
             onClick={() => setMode('learn')}
-            className={`flex-1 py-2 px-4 rounded-lg font-medium transition-all ${
+            className={`flex-1 py-1.5 px-2 rounded-lg text-xs font-medium transition-all ${
               mode === 'learn'
-                ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
+                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
             }`}
           >
-            <BookOpen className="w-4 h-4 inline mr-2" />
-            Learn Mode
+            <BookOpen className="w-3 h-3 inline mr-1" />
+            Learn
           </button>
           <button
             onClick={() => {
@@ -261,162 +261,159 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
               setQuizAnswer('');
               setFeedback(null);
             }}
-            className={`flex-1 py-2 px-4 rounded-lg font-medium transition-all ${
+            className={`flex-1 py-1.5 px-2 rounded-lg text-xs font-medium transition-all ${
               mode === 'quiz'
-                ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
+                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
             }`}
           >
-            <MessageCircle className="w-4 h-4 inline mr-2" />
-            Quiz Mode
+            <MessageCircle className="w-3 h-3 inline mr-1" />
+            Quiz
           </button>
         </div>
       </div>
 
       {/* Main Card Area */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
         {/* Flashcard */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-2">
           {mode === 'learn' ? (
             // Learn Mode - Show all info
-            <div className="card bg-white dark:bg-gradient-to-br dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-200 dark:border-purple-700">
-              {/* Word Status Badge */}
-              <div className="flex items-center justify-between mb-4">
-                <span className={`badge ${
-                  progress?.status === 'mastered' ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300' :
-                  progress?.status === 'review' ? 'bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300' :
-                  progress?.status === 'learning' ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300' :
-                  'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200'
+            <div className="card bg-gradient-to-br from-purple-900/30 to-pink-900/30 border border-purple-700/50 p-3">
+              {/* Word Status Badge & Speaker */}
+              <div className="flex items-center justify-between mb-2">
+                <span className={`badge text-xs px-2 py-0.5 ${
+                  progress?.status === 'mastered' ? 'bg-green-900/50 text-green-300' :
+                  progress?.status === 'review' ? 'bg-orange-900/50 text-orange-300' :
+                  progress?.status === 'learning' ? 'bg-blue-900/50 text-blue-300' :
+                  'bg-gray-800 text-gray-200'
                 }`}>
                   {progress?.status || 'new'}
                 </span>
                 <button 
                   onClick={() => speakWord(currentWord.word)}
                   disabled={isSpeaking}
-                  className={`p-2 hover:bg-white dark:hover:bg-gray-800 rounded-lg transition-all ${
-                    isSpeaking ? 'animate-pulse bg-purple-100' : ''
+                  className={`p-1.5 rounded-lg transition-all hover:bg-white/10 ${
+                    isSpeaking ? 'animate-pulse bg-purple-500/20' : ''
                   }`}
                   title="Listen to pronunciation"
                 >
-                  <Volume2 className={`w-5 h-5 ${
-                    isSpeaking ? 'text-purple-800 dark:text-purple-300' : 'text-purple-600 dark:text-purple-400'
+                  <Volume2 className={`w-4 h-4 ${
+                    isSpeaking ? 'text-purple-300' : 'text-purple-400'
                   }`} />
                 </button>
               </div>
 
               {/* Word */}
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-purple-300 mb-2">
+              <h2 className="text-2xl font-bold text-white mb-2">
                 {currentWord.word}
               </h2>
-              <p className="text-lg text-purple-600 dark:text-purple-400 mb-4 italic">
-                {currentWord.pronunciation}
-              </p>
-
+             
               {/* Meaning */}
-              <div className="bg-white dark:bg-gray-800/80 rounded-lg p-4 mb-4 border border-gray-200 dark:border-gray-700">
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Turkish Meaning</p>
-                <p className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+              <div className="bg-gray-800/60 rounded-lg p-2.5 mb-2 border border-gray-700/50">
+                <p className="text-xs text-gray-400 mb-0.5">Turkish Meaning</p>
+                <p className="text-base font-semibold text-white">
                   {currentWord.meaning}
                 </p>
               </div>
 
               {/* Example Sentence */}
-              <div className="bg-white dark:bg-gray-800/80 rounded-lg p-4 mb-4 border border-gray-200 dark:border-gray-700">
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Example Sentence</p>
-                <p className="text-gray-800 dark:text-gray-200">
+              <div className="bg-gray-800/60 rounded-lg p-2.5 mb-2 border border-gray-700/50">
+                <p className="text-xs text-gray-400 mb-0.5">Example Sentence</p>
+                <p className="text-sm text-gray-200 leading-relaxed">
                   {currentWord.sentence}
                 </p>
               </div>
 
-              {/* Synonyms & Antonyms */}
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="bg-white dark:bg-green-900/20 rounded-lg p-3 border border-green-200 dark:border-green-700">
-                  <p className="text-xs text-green-600 dark:text-green-400 font-semibold mb-1">Synonyms</p>
-                  <p className="text-sm text-gray-900 dark:text-green-300">{currentWord.synonym}</p>
-                </div>
-                <div className="bg-white dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-700">
-                  <p className="text-xs text-red-600 dark:text-red-400 font-semibold mb-1">Antonyms</p>
-                  <p className="text-sm text-gray-900 dark:text-red-300">{currentWord.antonym}</p>
-                </div>
-              </div>
-
               {/* Memory Tip */}
-              <div className="bg-white dark:bg-yellow-900/20 rounded-lg p-4 border-2 border-yellow-200 dark:border-yellow-700 mb-4">
-                <div className="flex items-start gap-2">
-                  <Lightbulb className="w-5 h-5 text-yellow-600 dark:text-yellow-400 flex-shrink-0 mt-0.5" />
+              <div className="bg-yellow-900/20 rounded-lg p-2 border border-yellow-700/50 mb-2">
+                <div className="flex items-start gap-1.5">
+                  <Lightbulb className="w-3.5 h-3.5 text-yellow-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-xs text-yellow-600 dark:text-yellow-400 font-semibold mb-1">Memory Tip</p>
-                    <p className="text-sm text-gray-900 dark:text-yellow-300">{currentWord.memoryTip}</p>
+                    <p className="text-xs text-yellow-400 font-semibold mb-0.5">Memory Tip</p>
+                    <p className="text-xs text-yellow-300 leading-relaxed">{currentWord.memoryTip}</p>
                   </div>
                 </div>
               </div>
 
-              {/* Visual Emoji */}
-              <div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 dark:from-purple-900/30 dark:via-pink-900/30 dark:to-blue-900/30 border-2 border-purple-200 dark:border-purple-700 flex items-center justify-center" style={{ height: '250px' }}>
-                <div className="text-center animate-float">
-                  <div className="text-9xl mb-4">{getWordEmoji(currentWord.word)}</div>
-                  <p className="text-2xl font-bold text-purple-800 dark:text-purple-300">{currentWord.word}</p>
-                  <p className="text-lg text-purple-600 dark:text-purple-400 mt-2">{currentWord.meaning}</p>
+              {/* Emoji, Synonyms & Antonyms */}
+              <div className="grid grid-cols-2 gap-2 mb-2">
+                {/* Synonyms & Antonyms */}
+                <div className="space-y-2">
+                  <div className="bg-green-900/20 rounded-lg p-2 border border-green-700/50">
+                    <p className="text-xs text-green-400 font-semibold mb-0.5">Synonyms</p>
+                    <p className="text-xs text-green-300">{currentWord.synonym}</p>
+                  </div>
+                  <div className="bg-red-900/20 rounded-lg p-2 border border-red-700/50">
+                    <p className="text-xs text-red-400 font-semibold mb-0.5">Antonyms</p>
+                    <p className="text-xs text-red-300">{currentWord.antonym}</p>
+                  </div>
+                </div>
+                {/* Visual Emoji */}
+                <div className="relative rounded-lg overflow-hidden bg-gradient-to-br from-purple-900/40 via-pink-900/40 to-blue-900/40 border border-purple-700/50 flex items-center justify-center">
+                  <div className="text-center py-2">
+                    <div className="text-5xl">{getWordEmoji(currentWord.word)}</div>
+                  </div>
                 </div>
               </div>
             </div>
           ) : (
             // Quiz Mode
-            <div className="card bg-white dark:bg-gradient-to-br dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200 dark:border-blue-700">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-blue-300 mb-4">
+            <div className="card bg-gradient-to-br from-blue-900/30 to-cyan-900/30 border border-blue-700/50 p-3">
+              <h3 className="text-base font-bold text-white mb-2">
                 What is the English word for:
               </h3>
               
               {/* Visual Emoji hint in quiz mode */}
-              <div className="relative mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30 border-2 border-blue-200 dark:border-blue-700 flex items-center justify-center" style={{ height: '200px' }}>
-                <div className="text-center animate-bounce">
-                  <div className="text-8xl">{getWordEmoji(currentWord.word)}</div>
-                  <p className="text-sm text-blue-600 dark:text-blue-400 mt-3 font-medium">Visual Hint 👀</p>
+              <div className="relative mb-2 rounded-lg overflow-hidden bg-gradient-to-br from-blue-900/40 to-cyan-900/40 border border-blue-700/50 flex items-center justify-center" style={{ height: '120px' }}>
+                <div className="text-center">
+                  <div className="text-5xl">{getWordEmoji(currentWord.word)}</div>
+                  <p className="text-xs text-gray-400 mt-1">Visual Hint 👀</p>
                 </div>
               </div>
               
-              <div className="bg-white dark:bg-gray-800/80 rounded-xl p-6 mb-6 text-center border border-gray-200 dark:border-gray-700">
-                <p className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+              <div className="bg-gray-800/60 rounded-lg p-3 mb-3 text-center border border-gray-700/50">
+                <p className="text-xl font-bold text-white">
                   {currentWord.meaning}
                 </p>
               </div>
 
               {!feedback ? (
-                <div className="space-y-4">
+                <div className="space-y-2">
                   <input
                     type="text"
                     value={quizAnswer}
                     onChange={(e) => setQuizAnswer(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleQuizSubmit()}
                     placeholder="Type your answer..."
-                    className="w-full px-4 py-3 rounded-lg border-2 border-blue-300 dark:border-blue-600 focus:border-blue-500 focus:outline-none text-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100"
+                    className="w-full px-3 py-2 rounded-lg border border-blue-600 focus:border-blue-500 focus:outline-none text-sm bg-gray-800 text-white placeholder-gray-500"
                     autoFocus
                   />
                   <button
                     onClick={handleQuizSubmit}
                     disabled={!quizAnswer.trim()}
-                    className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed text-xs py-2"
                   >
                     Submit Answer
                   </button>
                 </div>
               ) : (
-                <div className={`rounded-xl p-6 text-center ${
+                <div className={`rounded-lg p-3 text-center ${
                   feedback === 'correct' 
-                    ? 'bg-white dark:bg-green-900/30 border-2 border-green-500 dark:border-green-600' 
-                    : 'bg-white dark:bg-red-900/30 border-2 border-red-500 dark:border-red-600'
+                    ? 'bg-green-900/30 border border-green-600' 
+                    : 'bg-red-900/30 border border-red-600'
                 }`}>
                   {feedback === 'correct' ? (
                     <div>
-                      <Check className="w-16 h-16 text-green-600 dark:text-green-400 mx-auto mb-3" />
-                      <p className="text-2xl font-bold text-gray-900 dark:text-green-300">Correct! 🎉</p>
+                      <Check className="w-10 h-10 text-green-400 mx-auto mb-1.5" />
+                      <p className="text-lg font-bold text-white">Correct! 🎉</p>
                     </div>
                   ) : (
                     <div>
-                      <X className="w-16 h-16 text-red-600 dark:text-red-400 mx-auto mb-3" />
-                      <p className="text-xl font-bold text-gray-900 dark:text-red-300 mb-2">Not quite!</p>
-                      <p className="text-lg text-gray-800 dark:text-red-300">
-                        The correct answer is: <span className="font-bold">{currentWord.word}</span>
+                      <X className="w-10 h-10 text-red-400 mx-auto mb-1.5" />
+                      <p className="text-base font-bold text-white mb-1">Not quite!</p>
+                      <p className="text-xs text-white">
+                        Answer: <span className="font-bold">{currentWord.word}</span>
                       </p>
                     </div>
                   )}
@@ -426,14 +423,14 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
           )}
 
           {/* Navigation */}
-          <div className="flex justify-between items-center gap-4">
+          <div className="flex justify-between items-center gap-1.5">
             <button
               onClick={handlePrevious}
               disabled={currentIndex === 0}
-              className="btn-secondary flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="btn-secondary flex items-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed text-xs py-1.5 px-2.5"
             >
-              <ArrowLeft className="w-4 h-4" />
-              Previous
+              <ArrowLeft className="w-3 h-3" />
+              Prev
             </button>
             
             <button
@@ -444,25 +441,25 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                 setImageLoaded(false);
                 setImageError(false);
               }}
-              className="btn-secondary flex items-center gap-2"
+              className="btn-secondary flex items-center gap-1 text-xs py-1.5 px-2.5"
             >
-              <RotateCcw className="w-4 h-4" />
+              <RotateCcw className="w-3 h-3" />
               Reset
             </button>
 
             <button
               onClick={handleNext}
-              className="btn-primary flex items-center gap-2"
+              className="btn-primary flex items-center gap-1 text-xs py-1.5 px-2.5"
             >
               Next
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-3 h-3" />
             </button>
           </div>
         </div>
 
         {/* Misket Sidebar */}
         <div className="lg:col-span-1">
-          <div className="card sticky top-4">
+          <div className="card sticky top-4 p-3">
             <MisketCharacter 
               mood={feedback === 'correct' ? 'celebrating' : 'encouraging'} 
               message={getMisketMessage()}
@@ -470,22 +467,22 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
             />
 
             {/* Word Stats */}
-            <div className="mt-6 space-y-3">
-              <div className="bg-white dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg p-3 border border-green-200 dark:border-green-700">
-                <p className="text-xs text-gray-800 dark:text-gray-400 mb-1">Correct Attempts</p>
-                <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+            <div className="mt-3 space-y-1.5">
+              <div className="bg-green-900/20 rounded-lg p-2 border border-green-700/50">
+                <p className="text-xs text-gray-400 mb-0.5">Correct</p>
+                <p className="text-lg font-bold text-white">
                   {progress?.correctCount || 0}
                 </p>
               </div>
-              <div className="bg-white dark:from-red-900/20 dark:to-pink-900/20 rounded-lg p-3 border border-red-200 dark:border-red-700">
-                <p className="text-xs text-gray-800 dark:text-gray-400 mb-1">Incorrect Attempts</p>
-                <p className="text-2xl font-bold text-red-600 dark:text-red-400">
+              <div className="bg-red-900/20 rounded-lg p-2 border border-red-700/50">
+                <p className="text-xs text-gray-400 mb-0.5">Incorrect</p>
+                <p className="text-lg font-bold text-white">
                   {progress?.incorrectCount || 0}
                 </p>
               </div>
-              <div className="bg-white dark:from-orange-900/20 dark:to-yellow-900/20 rounded-lg p-3 border border-orange-200 dark:border-orange-700">
-                <p className="text-xs text-gray-800 dark:text-gray-400 mb-1">Current Streak</p>
-                <p className="text-2xl font-bold text-orange-600 dark:text-orange-400">
+              <div className="bg-orange-900/20 rounded-lg p-2 border border-orange-700/50">
+                <p className="text-xs text-gray-400 mb-0.5">Streak</p>
+                <p className="text-lg font-bold text-white">
                   {progress?.streak || 0}
                 </p>
               </div>
@@ -498,4 +495,5 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
 };
 
 export default PracticeView;
+
 

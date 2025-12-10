@@ -55,7 +55,7 @@ export const AppProvider = ({ children }) => {
         badges: parsed.badges || [],
         wordProgress: parsed.wordProgress || {},
         theme: parsed.theme || 'purple',
-        darkMode: darkMode
+        darkMode: true // Always dark mode
       };
     }
     // Initialize word progress for all words
@@ -71,10 +71,6 @@ export const AppProvider = ({ children }) => {
         streak: 0
       };
     });
-    
-    // Check localStorage for darkMode preference
-    const savedDarkMode = localStorage.getItem('darkMode');
-    const initialDarkMode = savedDarkMode === 'true';
     
     return {
       xp: 0,
@@ -92,7 +88,7 @@ export const AppProvider = ({ children }) => {
       lastProgressDate: new Date().toDateString(),
       weeklyStats: [],
       theme: 'purple',
-      darkMode: initialDarkMode
+      darkMode: true // Always dark mode
     };
   });
 
@@ -101,18 +97,14 @@ export const AppProvider = ({ children }) => {
     localStorage.setItem('misket_progress', JSON.stringify(userProgress));
   }, [userProgress]);
 
-  // Manage dark/light mode DOM classes - SINGLE SOURCE OF TRUTH
+  // Always set dark mode - no light mode support
   useEffect(() => {
-    const isDark = userProgress.darkMode || false;
     const root = document.documentElement;
-
-    root.classList.toggle('dark', isDark);
-    root.setAttribute('data-theme', isDark ? 'dark' : 'light');
-    document.body.dataset.theme = isDark ? 'dark' : 'light';
-
-    // Also save to localStorage for backward compatibility
-    localStorage.setItem('darkMode', isDark.toString());
-  }, [userProgress.darkMode]);
+    root.classList.add('dark');
+    root.setAttribute('data-theme', 'dark');
+    document.body.dataset.theme = 'dark';
+    localStorage.setItem('darkMode', 'true');
+  }, []);
 
   // Calculate current level info
   const getCurrentLevelInfo = () => {
@@ -417,16 +409,10 @@ export const AppProvider = ({ children }) => {
       ...prev,
       theme: themeId
     }));
-    showNotification(`Theme changed to ${themeId}! 🎨`, 'success');
+    // No notification for theme changes
   };
 
-  // Toggle dark mode - SINGLE FUNCTION TO CONTROL DARK MODE
-  const toggleDarkMode = () => {
-    setUserProgress(prev => ({
-      ...prev,
-      darkMode: !prev.darkMode
-    }));
-  };
+  // Dark mode is always enabled - no toggle function needed
 
   const value = {
     userProgress,
@@ -441,7 +427,6 @@ export const AppProvider = ({ children }) => {
     updateDailyProgress,
     checkAchievements,
     updateTheme,
-    toggleDarkMode,
     triggerConfetti,
     notification,
     showNotification,

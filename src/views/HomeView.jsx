@@ -1,7 +1,6 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
 import ProgressBar from '../components/ProgressBar';
-import DailyGoal from '../components/DailyGoal';
 import { BookOpen, Brain, Target, Zap, Clock, TrendingUp } from 'lucide-react';
 import { getAllWords } from '../data/vocabulary';
 
@@ -72,14 +71,11 @@ const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
       {/* Progress Overview */}
       <ProgressBar />
 
-      {/* Daily Goal */}
-      <DailyGoal />
-
       {/* Mastery Stats */}
       <div className="card">
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Overall Mastery</h3>
-          <span className="text-2xl font-bold text-purple-600 dark:text-purple-400">{masteryPercent}%</span>
+          <h3 className="text-lg font-bold text-gray-100">Overall Mastery</h3>
+          <span className="text-2xl font-bold text-purple-400">{masteryPercent}%</span>
         </div>
         <div className="progress-bar h-4">
           <div
@@ -89,35 +85,35 @@ const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
         </div>
         <div className="grid grid-cols-4 gap-2 mt-4 text-center text-xs">
           <div>
-            <div className="font-bold text-gray-900 dark:text-gray-300">
+            <div className="font-bold text-gray-300">
               {Object.values(wordProgress).filter(p => p?.status === 'new').length}
             </div>
-            <div className="text-gray-800 dark:text-gray-400">New</div>
+            <div className="text-gray-400">New</div>
           </div>
           <div>
-            <div className="font-bold text-blue-600 dark:text-blue-400">
+            <div className="font-bold text-blue-400">
               {Object.values(wordProgress).filter(p => p?.status === 'learning').length}
             </div>
-            <div className="text-gray-800 dark:text-gray-400">Learning</div>
+            <div className="text-gray-400">Learning</div>
           </div>
           <div>
-            <div className="font-bold text-orange-600 dark:text-orange-400">
+            <div className="font-bold text-orange-400">
               {Object.values(wordProgress).filter(p => p?.status === 'review').length}
             </div>
-            <div className="text-gray-800 dark:text-gray-400">Review</div>
+            <div className="text-gray-400">Review</div>
           </div>
           <div>
-            <div className="font-bold text-green-600 dark:text-green-400">
+            <div className="font-bold text-green-400">
               {masteredCount}
             </div>
-            <div className="text-gray-800 dark:text-gray-400">Mastered</div>
+            <div className="text-gray-400">Mastered</div>
           </div>
         </div>
       </div>
 
       {/* Quick Actions */}
       <div>
-        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
+        <h2 className="text-xl font-bold text-gray-100 mb-4 flex items-center gap-2">
           <Target className="w-5 h-5 text-purple-500" />
           Quick Actions
         </h2>
@@ -139,8 +135,8 @@ const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
                     <Icon className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">{action.title}</h3>
-                    <p className="text-sm text-gray-800 dark:text-gray-300">{action.description}</p>
+                    <h3 className="font-bold text-gray-100 mb-1">{action.title}</h3>
+                    <p className="text-sm text-gray-300">{action.description}</p>
                   </div>
                 </div>
               </button>
@@ -150,14 +146,14 @@ const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
       </div>
 
       {/* Daily Tip */}
-      <div className="card bg-white dark:bg-gradient-to-br dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-200 dark:border-purple-700">
+      <div className="card bg-gradient-to-br from-purple-900/20 to-pink-900/20 border-2 border-purple-700">
         <div className="flex items-start gap-3">
           <div className="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center flex-shrink-0">
             💡
           </div>
           <div>
-            <h3 className="font-bold text-gray-900 dark:text-purple-300 mb-1">Misket's Daily Tip</h3>
-            <p className="text-sm text-gray-800 dark:text-purple-300">
+            <h3 className="font-bold text-purple-300 mb-1">Misket's Daily Tip</h3>
+            <p className="text-sm text-purple-300">
               Practice a little bit every day! Even 5 minutes makes a huge difference. 
               Consistency is the key to mastering vocabulary! 🐾
             </p>

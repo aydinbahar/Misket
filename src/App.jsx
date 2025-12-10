@@ -5,16 +5,13 @@ import Notification from './components/Notification';
 import UpdatePrompt from './components/UpdatePrompt';
 import SettingsMenu from './components/SettingsMenu';
 import Confetti from './components/Confetti';
-import HomeView from './views/HomeView';
 import UnitsView from './views/UnitsView';
 import PracticeView from './views/PracticeView';
 import GamesView from './views/GamesView';
-import StoryMode from './views/StoryMode';
 import TestsView from './views/TestsView';
-import ProgressView from './views/ProgressView';
 
 function AppContent() {
-  const [currentView, setCurrentView] = useState('home');
+  const [currentView, setCurrentView] = useState('units');
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [testMode, setTestMode] = useState(null);
   const [showConfetti, setShowConfetti] = useState(false);
@@ -35,14 +32,6 @@ function AppContent() {
 
   const renderView = () => {
     switch (currentView) {
-      case 'home':
-        return (
-          <HomeView 
-            setCurrentView={setCurrentView}
-            setSelectedUnit={setSelectedUnit}
-            setTestMode={setTestMode}
-          />
-        );
       case 'units':
         return (
           <UnitsView 
@@ -59,8 +48,6 @@ function AppContent() {
         );
       case 'games':
         return <GamesView setCurrentView={setCurrentView} />;
-      case 'story':
-        return <StoryMode setCurrentView={setCurrentView} />;
       case 'tests':
         return (
           <TestsView 
@@ -69,10 +56,13 @@ function AppContent() {
             setCurrentView={setCurrentView}
           />
         );
-      case 'progress':
-        return <ProgressView />;
       default:
-        return <HomeView setCurrentView={setCurrentView} />;
+        return (
+          <UnitsView 
+            setCurrentView={setCurrentView}
+            setSelectedUnit={setSelectedUnit}
+          />
+        );
     }
   };
 

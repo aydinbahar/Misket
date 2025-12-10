@@ -3,21 +3,8 @@
 @tailwind utilities;
 
 @layer base {
+  /* Dark mode only - no light mode support */
   :root {
-    --bg-gradient: radial-gradient(circle at 10% 20%, rgba(196, 181, 253, 0.35), transparent 25%),
-      radial-gradient(circle at 80% 0%, rgba(248, 180, 217, 0.35), transparent 26%),
-      linear-gradient(135deg, #f8fafc 0%, #fdf2f8 35%, #eef2ff 100%);
-    --surface: rgba(255, 255, 255, 0.72);
-    --card-bg: rgba(255, 255, 255, 0.88);
-    --border-color: #e2e8f0;
-    --text-primary: #0f172a;
-    --text-secondary: #334155;
-    --muted: #64748b;
-    --shadow-soft: 0 25px 80px rgba(99, 102, 241, 0.08);
-    color-scheme: light;
-  }
-
-  :root.dark {
     --bg-gradient: radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.2), transparent 25%),
       radial-gradient(circle at 80% 0%, rgba(217, 70, 239, 0.18), transparent 26%),
       linear-gradient(135deg, #050915 0%, #0a1224 50%, #050915 100%);
@@ -38,6 +25,15 @@
     transition: background 0.6s ease, color 0.3s ease;
   }
 
+  /* Navigation menu - override body color */
+  .navigation-menu,
+  .navigation-menu button,
+  .navigation-menu button *,
+  .navigation-menu span,
+  .navigation-menu svg {
+    color: inherit !important;
+  }
+
   /* Optional subtle grid to add depth without hurting contrast */
   body::before {
     content: "";
@@ -50,6 +46,24 @@
     pointer-events: none;
     mix-blend-mode: soft-light;
     z-index: -1;
+  }
+
+  /* Navigation menu - preserve Tailwind text colors, override body color */
+  .navigation-menu {
+    color: initial !important;
+  }
+  
+  .navigation-menu * {
+    color: inherit !important;
+  }
+  
+  /* Specifically target navigation buttons and text */
+  .navigation-menu button:not([class*="bg-gradient"]) {
+    color: #cbd5e1 !important; /* gray-300 for dark mode */
+  }
+  
+  .navigation-menu button:not([class*="bg-gradient"]) * {
+    color: inherit !important;
   }
 
   .app-shell {
@@ -73,6 +87,24 @@
 
   .text-muted {
     color: var(--muted);
+  }
+
+  /* Navigation menu - preserve Tailwind text colors, override body color */
+  .navigation-menu {
+    color: initial !important;
+  }
+  
+  .navigation-menu * {
+    color: inherit !important;
+  }
+  
+  /* Specifically target navigation buttons and text */
+  .navigation-menu button:not([class*="bg-gradient"]) {
+    color: #4b5563 !important; /* gray-600 for light mode */
+  }
+  
+  .navigation-menu button:not([class*="bg-gradient"]) * {
+    color: inherit !important;
   }
 }
 

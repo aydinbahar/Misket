@@ -35,38 +35,7 @@ const MisketCharacter = ({ mood = 'happy', message, showStars = false }) => {
       {/* Misket character */}
       <div className={`relative ${bounce ? 'animate-bounce' : 'animate-float'}`}>
         {/* Misket body - cute dog */}
-        <div className="relative w-32 h-32 mx-auto">
-          {/* Head */}
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full shadow-lg">
-            {/* Eyes */}
-            <div className="absolute top-6 left-3 w-2.5 h-3 bg-gray-800 rounded-full"></div>
-            <div className="absolute top-6 right-3 w-2.5 h-3 bg-gray-800 rounded-full"></div>
-            
-            {/* Nose */}
-            <div className="absolute top-11 left-1/2 transform -translate-x-1/2 w-3 h-2.5 bg-gray-900 rounded-full"></div>
-            
-            {/* Smile */}
-            <div className="absolute top-12 left-1/2 transform -translate-x-1/2 w-8 h-3 border-b-2 border-gray-800 rounded-b-full"></div>
-            
-            {/* Ears */}
-            <div className="absolute -left-3 top-2 w-8 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full transform -rotate-12"></div>
-            <div className="absolute -right-3 top-2 w-8 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full transform rotate-12"></div>
-            
-            {/* Spots */}
-            <div className="absolute top-2 right-6 w-3 h-3 bg-orange-700 rounded-full"></div>
-            <div className="absolute top-4 left-5 w-2 h-2 bg-orange-700 rounded-full"></div>
-          </div>
-          
-          {/* Body */}
-          <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-16 h-14 bg-gradient-to-b from-amber-400 to-orange-500 rounded-t-3xl rounded-b-2xl shadow-md">
-            {/* Paws */}
-            <div className="absolute -bottom-1 left-2 w-4 h-5 bg-amber-500 rounded-b-full"></div>
-            <div className="absolute -bottom-1 right-2 w-4 h-5 bg-amber-500 rounded-b-full"></div>
-          </div>
-          
-          {/* Tail */}
-          <div className="absolute top-20 -right-2 w-12 h-3 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full transform rotate-45 origin-left animate-wiggle"></div>
-        </div>
+       
 
         {/* Hearts */}
         <div className="absolute -top-2 -right-2">

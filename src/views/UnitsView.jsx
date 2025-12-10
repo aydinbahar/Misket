@@ -49,7 +49,27 @@ const UnitsView = ({ setCurrentView, setSelectedUnit }) => {
           const isCompleted = progress.percent === 100;
 
           return (
-            <div key={unit.id} className="card group hover:shadow-2xl transition-all duration-300">
+            <div key={unit.id} className="card group hover:shadow-2xl transition-all duration-300 relative">
+              {/* Status Badge - Top Right */}
+              {progress.percent === 0 && (
+                <span className="absolute top-4 right-4 badge bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                  <Clock className="w-3 h-3 mr-1" />
+                  Not Started
+                </span>
+              )}
+              {progress.percent > 0 && progress.percent < 100 && (
+                <span className="absolute top-4 right-4 badge bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300">
+                  <Clock className="w-3 h-3 mr-1" />
+                  In Progress
+                </span>
+              )}
+              {progress.percent === 100 && (
+                <span className="absolute top-4 right-4 badge bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300">
+                  <CheckCircle className="w-3 h-3 mr-1" />
+                  Completed
+                </span>
+              )}
+
               {/* Unit Header */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
@@ -93,28 +113,6 @@ const UnitsView = ({ setCurrentView, setSelectedUnit }) => {
                 {isCompleted ? 'Review Unit' : 'Start Learning'}
                 <ArrowRight className="w-4 h-4" />
               </button>
-
-              {/* Status Badge */}
-              <div className="mt-3 flex items-center justify-center gap-2 text-xs">
-                {progress.percent === 0 && (
-                  <span className="badge bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
-                    <Clock className="w-3 h-3 mr-1" />
-                    Not Started
-                  </span>
-                )}
-                {progress.percent > 0 && progress.percent < 100 && (
-                  <span className="badge bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300">
-                    <Clock className="w-3 h-3 mr-1" />
-                    In Progress
-                  </span>
-                )}
-                {progress.percent === 100 && (
-                  <span className="badge bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300">
-                    <CheckCircle className="w-3 h-3 mr-1" />
-                    Completed
-                  </span>
-                )}
-              </div>
             </div>
           );
         })}

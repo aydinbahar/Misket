@@ -194,7 +194,7 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <button
-            onClick={() => setCurrentView('home')}
+            onClick={() => setCurrentView('units')}
             className="btn-secondary flex items-center gap-2"
           >
             <ArrowLeft className="w-4 h-4" />
