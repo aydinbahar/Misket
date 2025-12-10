@@ -14,7 +14,60 @@
   /* Light mode explicit (for clarity) */
   body.light-mode {
     background: linear-gradient(135deg, #faf5ff 0%, #fce7f3 50%, #eff6ff 100%);
-    color: #1f2937; /* gray-800 */
+    color: #111827; /* gray-900 - almost black for maximum contrast */
+  }
+  
+  /* Preserve menu panel FIRST - must be before global rule */
+  body.light-mode .settings-menu-panel {
+    color: initial;
+  }
+  
+  body.light-mode .settings-menu-panel * {
+    color: inherit !important;
+  }
+  
+  /* Force all text to be black in light mode (except colored stats/icons, buttons, and menu) */
+  body.light-mode *:not(.settings-menu-panel):not(.settings-menu-panel *) {
+    color: #111827; /* gray-900 */
+  }
+  
+  /* Preserve button text colors */
+  body.light-mode button:not(.settings-menu-panel button):not(.settings-menu-panel button *),
+  body.light-mode .btn-primary,
+  body.light-mode .btn-secondary,
+  body.light-mode .btn-primary *,
+  body.light-mode .btn-secondary * {
+    color: inherit; /* Keep original button text color */
+  }
+  
+  /* Preserve colored elements (stats, icons, gradients) */
+  body.light-mode .text-purple-600,
+  body.light-mode .text-purple-500,
+  body.light-mode .text-purple-400,
+  body.light-mode .text-blue-600,
+  body.light-mode .text-blue-500,
+  body.light-mode .text-blue-400,
+  body.light-mode .text-green-600,
+  body.light-mode .text-green-500,
+  body.light-mode .text-green-400,
+  body.light-mode .text-red-600,
+  body.light-mode .text-red-500,
+  body.light-mode .text-red-400,
+  body.light-mode .text-orange-600,
+  body.light-mode .text-orange-500,
+  body.light-mode .text-orange-400,
+  body.light-mode .text-yellow-500,
+  body.light-mode .text-yellow-400,
+  body.light-mode .text-pink-600,
+  body.light-mode .text-pink-500,
+  body.light-mode .text-pink-400,
+  body.light-mode .text-white,
+  body.light-mode .text-cyan-500,
+  body.light-mode .text-cyan-400,
+  body.light-mode .text-emerald-600,
+  body.light-mode .text-emerald-500,
+  body.light-mode .text-emerald-400 {
+    color: inherit; /* Keep original color */
   }
 
   /* Dark mode global background */
@@ -25,6 +78,14 @@
 
   /* REMOVED: Generic text-gray-* overrides that conflict with Tailwind
      Components should use explicit dark: variants instead */
+}
+
+@layer utilities {
+  /* Override global black text for menu panel - highest priority */
+  body.light-mode .settings-menu-panel,
+  body.light-mode .settings-menu-panel * {
+    color: inherit !important;
+  }
 }
 
 @layer components {

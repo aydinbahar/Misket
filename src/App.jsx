@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import Navigation from './components/Navigation';
 import Notification from './components/Notification';
-import PWAInstallPrompt from './components/PWAInstallPrompt';
 import UpdatePrompt from './components/UpdatePrompt';
 import SettingsMenu from './components/SettingsMenu';
 import Confetti from './components/Confetti';
@@ -94,9 +93,6 @@ function AppContent() {
         />
       )}
 
-      {/* PWA Install Prompt */}
-      <PWAInstallPrompt />
-
       {/* Update Prompt */}
       <UpdatePrompt />
 
@@ -108,7 +104,7 @@ function AppContent() {
             <img 
               src="/icon.svg" 
               alt="Misket" 
-              className="w-12 h-12 animate-bounce-slow"
+              className="w-12 h-12"
             />
             <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
               Misket

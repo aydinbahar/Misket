@@ -105,7 +105,7 @@ const SettingsMenu = () => {
       {/* Hamburger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 right-4 z-50 p-3 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 neon-glow"
+        className="fixed top-4 right-4 z-50 p-3 rounded-full bg-white dark:bg-gray-800/90 backdrop-blur-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 neon-glow"
         aria-label="Settings"
       >
         {isOpen ? (
@@ -125,7 +125,7 @@ const SettingsMenu = () => {
           />
 
           {/* Panel */}
-          <div className="fixed top-0 right-0 h-full w-80 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl z-40 overflow-y-auto animate-slide-in">
+          <div className="settings-menu-panel fixed top-0 right-0 h-full w-80 bg-white dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl z-40 overflow-y-auto animate-slide-in">
             <div className="p-6 space-y-6">
               {/* Header */}
               <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
