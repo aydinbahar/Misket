@@ -41,6 +41,10 @@ export const AppProvider = ({ children }) => {
     if (saved) {
       const parsed = JSON.parse(saved);
       // Migration: Add missing properties from new features
+      // Check localStorage for darkMode (backward compatibility)
+      const savedDarkMode = localStorage.getItem('darkMode');
+      const darkMode = savedDarkMode === 'true' || parsed.darkMode === true;
+      
       return {
         ...parsed,
         achievements: parsed.achievements || [],
@@ -50,7 +54,8 @@ export const AppProvider = ({ children }) => {
         weeklyStats: parsed.weeklyStats || [],
         badges: parsed.badges || [],
         wordProgress: parsed.wordProgress || {},
-        theme: parsed.theme || 'purple'
+        theme: parsed.theme || 'purple',
+        darkMode: darkMode
       };
     }
     // Initialize word progress for all words
@@ -67,6 +72,10 @@ export const AppProvider = ({ children }) => {
       };
     });
     
+    // Check localStorage for darkMode preference
+    const savedDarkMode = localStorage.getItem('darkMode');
+    const initialDarkMode = savedDarkMode === 'true';
+    
     return {
       xp: 0,
       level: 1,
@@ -82,7 +91,8 @@ export const AppProvider = ({ children }) => {
       todayProgress: 0,
       lastProgressDate: new Date().toDateString(),
       weeklyStats: [],
-      theme: 'purple'
+      theme: 'purple',
+      darkMode: initialDarkMode
     };
   });
 
@@ -90,6 +100,25 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('misket_progress', JSON.stringify(userProgress));
   }, [userProgress]);
+
+  // Manage dark/light mode DOM classes - SINGLE SOURCE OF TRUTH
+  useEffect(() => {
+    const isDark = userProgress.darkMode || false;
+    
+    // Update body classes
+    if (isDark) {
+      document.body.classList.add('dark-mode');
+      document.body.classList.remove('light-mode');
+      document.documentElement.classList.add('dark');
+    } else {
+      document.body.classList.add('light-mode');
+      document.body.classList.remove('dark-mode');
+      document.documentElement.classList.remove('dark');
+    }
+    
+    // Also save to localStorage for backward compatibility
+    localStorage.setItem('darkMode', isDark.toString());
+  }, [userProgress.darkMode]);
 
   // Calculate current level info
   const getCurrentLevelInfo = () => {
@@ -397,6 +426,14 @@ export const AppProvider = ({ children }) => {
     showNotification(`Theme changed to ${themeId}! 🎨`, 'success');
   };
 
+  // Toggle dark mode - SINGLE FUNCTION TO CONTROL DARK MODE
+  const toggleDarkMode = () => {
+    setUserProgress(prev => ({
+      ...prev,
+      darkMode: !prev.darkMode
+    }));
+  };
+
   const value = {
     userProgress,
     setUserProgress,
@@ -410,6 +447,7 @@ export const AppProvider = ({ children }) => {
     updateDailyProgress,
     checkAchievements,
     updateTheme,
+    toggleDarkMode,
     triggerConfetti,
     notification,
     showNotification,

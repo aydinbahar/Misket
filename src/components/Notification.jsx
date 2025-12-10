@@ -16,24 +16,24 @@ const Notification = ({ message, type = 'info', onClose }) => {
   const configs = {
     success: {
       icon: CheckCircle,
-      bgColor: 'bg-green-50 dark:bg-green-900/80',
-      borderColor: 'border-green-500',
-      textColor: 'text-green-800 dark:text-green-100',
-      iconColor: 'text-green-500 dark:text-green-400'
+      bgColor: 'bg-white dark:bg-green-900/80',
+      borderColor: 'border-green-500 dark:border-green-600',
+      textColor: 'text-gray-900 dark:text-green-100',
+      iconColor: 'text-green-600 dark:text-green-400'
     },
     error: {
       icon: AlertCircle,
-      bgColor: 'bg-red-50 dark:bg-red-900/80',
-      borderColor: 'border-red-500',
-      textColor: 'text-red-800 dark:text-red-100',
-      iconColor: 'text-red-500 dark:text-red-400'
+      bgColor: 'bg-white dark:bg-red-900/80',
+      borderColor: 'border-red-500 dark:border-red-600',
+      textColor: 'text-gray-900 dark:text-red-100',
+      iconColor: 'text-red-600 dark:text-red-400'
     },
     info: {
       icon: Info,
-      bgColor: 'bg-blue-50 dark:bg-blue-900/80',
-      borderColor: 'border-blue-500',
-      textColor: 'text-blue-800 dark:text-blue-100',
-      iconColor: 'text-blue-500 dark:text-blue-400'
+      bgColor: 'bg-white dark:bg-blue-900/80',
+      borderColor: 'border-blue-500 dark:border-blue-600',
+      textColor: 'text-gray-900 dark:text-blue-100',
+      iconColor: 'text-blue-600 dark:text-blue-400'
     }
   };
 

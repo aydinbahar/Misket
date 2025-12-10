@@ -21,13 +21,7 @@ function AppContent() {
   const [showConfetti, setShowConfetti] = useState(false);
   const { notification, showNotification } = useApp();
 
-  // Initialize light mode on first load
-  useEffect(() => {
-    const darkMode = localStorage.getItem('darkMode');
-    if (darkMode === null) {
-      document.body.classList.add('light-mode');
-    }
-  }, []);
+  // Dark mode is now managed in AppContext - no need for initialization here
 
   // Listen for confetti events
   useEffect(() => {

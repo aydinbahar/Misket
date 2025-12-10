@@ -4,12 +4,8 @@ import { Menu, X, Palette, Moon, Sun, Volume2, VolumeX, RefreshCw } from 'lucide
 import { soundEffects } from '../utils/soundEffects';
 
 const SettingsMenu = () => {
-  const { userProgress, updateTheme } = useApp();
+  const { userProgress, updateTheme, toggleDarkMode } = useApp();
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(() => {
-    const saved = localStorage.getItem('darkMode');
-    return saved === 'true';
-  });
   const [soundEnabled, setSoundEnabled] = useState(() => {
     const saved = localStorage.getItem('soundEnabled');
     return saved !== 'false'; // Default true
@@ -17,19 +13,7 @@ const SettingsMenu = () => {
   const [updateStatus, setUpdateStatus] = useState('');
 
   const currentTheme = userProgress?.theme || 'purple';
-
-  useEffect(() => {
-    if (isDark) {
-      document.body.classList.add('dark-mode');
-      document.body.classList.remove('light-mode');
-      document.documentElement.classList.add('dark');
-    } else {
-      document.body.classList.add('light-mode');
-      document.body.classList.remove('dark-mode');
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('darkMode', isDark);
-  }, [isDark]);
+  const isDark = userProgress?.darkMode || false;
 
   useEffect(() => {
     soundEffects.toggle(soundEnabled);
@@ -145,22 +129,22 @@ const SettingsMenu = () => {
             <div className="p-6 space-y-6">
               {/* Header */}
               <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
-                <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                   Settings ⚙️
                 </h2>
               </div>
 
               {/* Dark Mode Toggle */}
               <div>
-                <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2">
+                <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-300 mb-3 flex items-center gap-2">
                   {isDark ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
                   Appearance
                 </h3>
                 <button
-                  onClick={() => setIsDark(!isDark)}
+                  onClick={toggleDarkMode}
                   className="w-full flex items-center justify-between p-4 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all"
                 >
-                  <span className="text-gray-800 dark:text-gray-200">
+                  <span className="text-gray-900 dark:text-gray-200">
                     {isDark ? 'Dark Mode' : 'Light Mode'}
                   </span>
                   <div className={`w-12 h-6 rounded-full transition-all ${isDark ? 'bg-purple-600' : 'bg-gray-300'}`}>
@@ -171,7 +155,7 @@ const SettingsMenu = () => {
 
               {/* Sound Toggle */}
               <div>
-                <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2">
+                <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-300 mb-3 flex items-center gap-2">
                   {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
                   Sound Effects
                 </h3>
@@ -179,7 +163,7 @@ const SettingsMenu = () => {
                   onClick={() => setSoundEnabled(!soundEnabled)}
                   className="w-full flex items-center justify-between p-4 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all"
                 >
-                  <span className="text-gray-800 dark:text-gray-200">
+                  <span className="text-gray-900 dark:text-gray-200">
                     {soundEnabled ? 'Enabled' : 'Disabled'}
                   </span>
                   <div className={`w-12 h-6 rounded-full transition-all ${soundEnabled ? 'bg-green-600' : 'bg-gray-300'}`}>
@@ -190,7 +174,7 @@ const SettingsMenu = () => {
 
               {/* Theme Selection */}
               <div>
-                <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2">
+                <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-300 mb-3 flex items-center gap-2">
                   <Palette className="w-4 h-4" />
                   Color Theme
                 </h3>
@@ -213,7 +197,7 @@ const SettingsMenu = () => {
                       <div className={`${theme.preview} rounded-lg h-16 flex items-center justify-center text-2xl mb-2`}>
                         {theme.emoji}
                       </div>
-                      <div className="text-xs font-medium text-gray-800 dark:text-gray-200 text-center">
+                      <div className="text-xs font-medium text-gray-900 dark:text-gray-200 text-center">
                         {theme.name}
                       </div>
                       
@@ -229,19 +213,19 @@ const SettingsMenu = () => {
 
               {/* App Updates */}
               <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-                <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2">
+                <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-300 mb-3 flex items-center gap-2">
                   <RefreshCw className="w-4 h-4" />
                   App Updates
                 </h3>
                 <button
                   onClick={handleCheckForUpdate}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-sm font-medium text-gray-800 dark:text-gray-100 transition-all"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-sm font-medium text-gray-900 dark:text-gray-100 transition-all"
                 >
                   <RefreshCw className="w-4 h-4" />
                   Check for update & apply
                 </button>
                 {updateStatus && (
-                  <p className="mt-2 text-xs text-gray-600 dark:text-gray-400">
+                  <p className="mt-2 text-xs text-gray-800 dark:text-gray-400">
                     {updateStatus}
                   </p>
                 )}
