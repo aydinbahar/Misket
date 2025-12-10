@@ -279,7 +279,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
         <div className="lg:col-span-2 space-y-6">
           {mode === 'learn' ? (
             // Learn Mode - Show all info
-            <div className="card bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-200 dark:border-purple-700">
+            <div className="card bg-white dark:bg-gradient-to-br dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-200 dark:border-purple-700">
               {/* Word Status Badge */}
               <div className="flex items-center justify-between mb-4">
                 <span className={`badge ${
@@ -362,7 +362,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
             </div>
           ) : (
             // Quiz Mode
-            <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200 dark:border-blue-700">
+            <div className="card bg-white dark:bg-gradient-to-br dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200 dark:border-blue-700">
               <h3 className="text-xl font-bold text-blue-800 dark:text-blue-300 mb-4">
                 What is the English word for:
               </h3>
