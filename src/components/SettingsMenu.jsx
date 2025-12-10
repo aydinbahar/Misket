@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
-import { Menu, X, Palette, Moon, Sun, Volume2, VolumeX } from 'lucide-react';
+import { Menu, X, Palette, Moon, Sun, Volume2, VolumeX, RefreshCw } from 'lucide-react';
 import { soundEffects } from '../utils/soundEffects';
 
 const SettingsMenu = () => {
@@ -14,6 +14,7 @@ const SettingsMenu = () => {
     const saved = localStorage.getItem('soundEnabled');
     return saved !== 'false'; // Default true
   });
+  const [updateStatus, setUpdateStatus] = useState('');
 
   const currentTheme = userProgress?.theme || 'purple';
 
@@ -34,6 +35,41 @@ const SettingsMenu = () => {
     soundEffects.toggle(soundEnabled);
     localStorage.setItem('soundEnabled', soundEnabled);
   }, [soundEnabled]);
+
+  const handleCheckForUpdate = async () => {
+    if (!('serviceWorker' in navigator)) {
+      setUpdateStatus('Updates are not supported in this browser.');
+      return;
+    }
+
+    try {
+      setUpdateStatus('Checking for updates...');
+      const registration = await navigator.serviceWorker.getRegistration();
+
+      if (!registration) {
+        setUpdateStatus('Update system is not ready yet. Please try again in a moment.');
+        return;
+      }
+
+      // Ask the browser to check for a new service worker
+      await registration.update();
+
+      const waitingWorker = registration.waiting;
+
+      if (waitingWorker) {
+        setUpdateStatus('Installing update... The app will reload automatically.');
+        // Tell the waiting service worker to activate immediately
+        waitingWorker.postMessage({ type: 'SKIP_WAITING' });
+        // When the new SW takes control, UpdatePrompt's controllerchange listener
+        // will trigger a full reload of the app.
+      } else {
+        setUpdateStatus('You already have the latest version.');
+      }
+    } catch (error) {
+      console.error('Error checking for updates:', error);
+      setUpdateStatus('Could not check for updates. Please try again later.');
+    }
+  };
 
   const themes = [
     {
@@ -189,6 +225,26 @@ const SettingsMenu = () => {
                     </button>
                   ))}
                 </div>
+              </div>
+
+              {/* App Updates */}
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
+                <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2">
+                  <RefreshCw className="w-4 h-4" />
+                  App Updates
+                </h3>
+                <button
+                  onClick={handleCheckForUpdate}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-sm font-medium text-gray-800 dark:text-gray-100 transition-all"
+                >
+                  <RefreshCw className="w-4 h-4" />
+                  Check for update & apply
+                </button>
+                {updateStatus && (
+                  <p className="mt-2 text-xs text-gray-600 dark:text-gray-400">
+                    {updateStatus}
+                  </p>
+                )}
               </div>
 
               {/* App Info */}
