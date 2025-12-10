@@ -12,6 +12,19 @@
     @apply bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 text-gray-800;
   }
 
+  /* Light mode readability tweaks: make grays darker on light backgrounds */
+  body.light-mode .text-gray-500 {
+    @apply text-gray-700;
+  }
+
+  body.light-mode .text-gray-600 {
+    @apply text-gray-800;
+  }
+
+  body.light-mode .text-gray-400 {
+    @apply text-gray-600;
+  }
+
   body.dark-mode {
     background: linear-gradient(135deg, #070c16 0%, #0a1224 50%, #050915 100%);
     @apply text-gray-100;
