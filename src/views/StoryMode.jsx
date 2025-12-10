@@ -231,7 +231,7 @@ const StoryMode = ({ setCurrentView }) => {
 
         <div className="card text-center">
           <BookOpen className="w-16 h-16 text-purple-500 mx-auto mb-4" />
-          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">Story Mode</h1>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Story Mode</h1>
           <p className="text-gray-600 dark:text-gray-300">
             Learn vocabulary through interactive stories!
           </p>
@@ -245,7 +245,7 @@ const StoryMode = ({ setCurrentView }) => {
               className="card cursor-pointer hover:shadow-2xl transition-all duration-300 hover:scale-105"
             >
               <div className="text-6xl mb-4 text-center">{story.emoji}</div>
-              <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">{story.title}</h3>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{story.title}</h3>
               <div className="flex items-center justify-between mb-4">
                 <span className={`badge ${
                   story.difficulty === 'easy' ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300' :
@@ -263,9 +263,9 @@ const StoryMode = ({ setCurrentView }) => {
           ))}
         </div>
 
-        <div className="card bg-blue-50 border-2 border-blue-200">
-          <h3 className="font-bold text-blue-900 mb-2">How Story Mode Works:</h3>
-          <ul className="text-sm text-blue-800 space-y-1">
+        <div className="card bg-white dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-700">
+          <h3 className="font-bold text-gray-900 dark:text-blue-300 mb-2">How Story Mode Works:</h3>
+          <ul className="text-sm text-gray-800 dark:text-blue-300 space-y-1">
             <li>• Read the story and fill in the blanks</li>
             <li>• Choose the correct word from the options</li>
             <li>• Complete all pages to finish the story</li>
@@ -280,9 +280,9 @@ const StoryMode = ({ setCurrentView }) => {
   if (showResults) {
     return (
       <div className="space-y-6">
-        <div className="card text-center bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-300">
+        <div className="card text-center bg-white dark:bg-gradient-to-br dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-300 dark:border-purple-700">
           <Trophy className="w-20 h-20 text-yellow-500 mx-auto mb-4 animate-bounce" />
-          <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">Story Complete! 🎉</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Story Complete! 🎉</h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">{currentStory.title}</p>
           
           <div className="bg-white dark:bg-gray-800/80 rounded-xl p-6 max-w-md mx-auto mb-6">
@@ -342,9 +342,9 @@ const StoryMode = ({ setCurrentView }) => {
       </div>
 
       {/* Story Card */}
-      <div className="card bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-200">
+      <div className="card bg-white dark:bg-gradient-to-br dark:from-yellow-900/20 dark:to-orange-900/20 border-2 border-yellow-200 dark:border-yellow-700">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">{currentStory.title}</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{currentStory.title}</h2>
           <div className="text-4xl">{currentStory.emoji}</div>
         </div>
 

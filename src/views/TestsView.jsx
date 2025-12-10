@@ -203,7 +203,7 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
         </div>
 
         <div className="card text-center">
-          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">Choose Your Test</h1>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Choose Your Test</h1>
           <p className="text-gray-600 dark:text-gray-300">Select a test mode to challenge yourself!</p>
         </div>
 
@@ -221,7 +221,7 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
                     <Icon className="w-8 h-8 text-white" />
                   </div>
                   <div className="flex-1 text-left">
-                    <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-1">{mode.title}</h3>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1">{mode.title}</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-300">{mode.description}</p>
                   </div>
                 </div>
@@ -275,9 +275,9 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
 
     return (
       <div className="space-y-6">
-        <div className="card text-center bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-200 dark:border-purple-700">
+        <div className="card text-center bg-white dark:bg-gradient-to-br dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-200 dark:border-purple-700">
           <Trophy className="w-20 h-20 text-yellow-500 mx-auto mb-4 animate-bounce" />
-          <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-2">Test Complete!</h1>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">Test Complete!</h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
             {testModes.find(m => m.id === selectedMode)?.title}
           </p>
@@ -315,9 +315,9 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
             </div>
 
             {scorePercent === 100 && (
-              <div className="bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-300 dark:border-yellow-700 rounded-lg p-4 mb-4">
-                <Award className="w-6 h-6 text-yellow-600 mx-auto mb-2" />
-                <p className="text-sm font-bold text-yellow-800 dark:text-yellow-300">Perfect Score! 🎉</p>
+              <div className="bg-white dark:bg-yellow-900/20 border-2 border-yellow-300 dark:border-yellow-700 rounded-lg p-4 mb-4">
+                <Award className="w-6 h-6 text-yellow-600 dark:text-yellow-400 mx-auto mb-2" />
+                <p className="text-sm font-bold text-gray-900 dark:text-yellow-300">Perfect Score! 🎉</p>
               </div>
             )}
           </div>
@@ -388,8 +388,8 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
       </div>
 
       {/* Question Card */}
-      <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200">
-        <h2 className="text-2xl font-bold text-blue-800 mb-6 text-center">
+      <div className="card bg-white dark:bg-gradient-to-br dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200 dark:border-blue-700">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-blue-300 mb-6 text-center">
           {question.question}
         </h2>
 

@@ -305,7 +305,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
               </div>
 
               {/* Word */}
-              <h2 className="text-4xl font-bold text-purple-800 dark:text-purple-300 mb-2">
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-purple-300 mb-2">
                 {currentWord.word}
               </h2>
               <p className="text-lg text-purple-600 dark:text-purple-400 mb-4 italic">
@@ -313,40 +313,40 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
               </p>
 
               {/* Meaning */}
-              <div className="bg-white dark:bg-gray-800/80 rounded-lg p-4 mb-4">
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Turkish Meaning</p>
-                <p className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+              <div className="bg-white dark:bg-gray-800/80 rounded-lg p-4 mb-4 border border-gray-200 dark:border-gray-700">
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Turkish Meaning</p>
+                <p className="text-xl font-semibold text-gray-900 dark:text-gray-100">
                   {currentWord.meaning}
                 </p>
               </div>
 
               {/* Example Sentence */}
-              <div className="bg-white dark:bg-gray-800/80 rounded-lg p-4 mb-4">
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Example Sentence</p>
-                <p className="text-gray-700 dark:text-gray-200">
+              <div className="bg-white dark:bg-gray-800/80 rounded-lg p-4 mb-4 border border-gray-200 dark:border-gray-700">
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Example Sentence</p>
+                <p className="text-gray-800 dark:text-gray-200">
                   {currentWord.sentence}
                 </p>
               </div>
 
               {/* Synonyms & Antonyms */}
               <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-3 border border-green-200 dark:border-green-700">
+                <div className="bg-white dark:bg-green-900/20 rounded-lg p-3 border border-green-200 dark:border-green-700">
                   <p className="text-xs text-green-600 dark:text-green-400 font-semibold mb-1">Synonyms</p>
-                  <p className="text-sm text-green-800 dark:text-green-300">{currentWord.synonym}</p>
+                  <p className="text-sm text-gray-900 dark:text-green-300">{currentWord.synonym}</p>
                 </div>
-                <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-700">
+                <div className="bg-white dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-700">
                   <p className="text-xs text-red-600 dark:text-red-400 font-semibold mb-1">Antonyms</p>
-                  <p className="text-sm text-red-800 dark:text-red-300">{currentWord.antonym}</p>
+                  <p className="text-sm text-gray-900 dark:text-red-300">{currentWord.antonym}</p>
                 </div>
               </div>
 
               {/* Memory Tip */}
-              <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4 border-2 border-yellow-200 dark:border-yellow-700 mb-4">
+              <div className="bg-white dark:bg-yellow-900/20 rounded-lg p-4 border-2 border-yellow-200 dark:border-yellow-700 mb-4">
                 <div className="flex items-start gap-2">
                   <Lightbulb className="w-5 h-5 text-yellow-600 dark:text-yellow-400 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-xs text-yellow-600 dark:text-yellow-400 font-semibold mb-1">Memory Tip</p>
-                    <p className="text-sm text-yellow-800 dark:text-yellow-300">{currentWord.memoryTip}</p>
+                    <p className="text-sm text-gray-900 dark:text-yellow-300">{currentWord.memoryTip}</p>
                   </div>
                 </div>
               </div>
@@ -363,7 +363,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
           ) : (
             // Quiz Mode
             <div className="card bg-white dark:bg-gradient-to-br dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200 dark:border-blue-700">
-              <h3 className="text-xl font-bold text-blue-800 dark:text-blue-300 mb-4">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-blue-300 mb-4">
                 What is the English word for:
               </h3>
               
@@ -375,8 +375,8 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                 </div>
               </div>
               
-              <div className="bg-white dark:bg-gray-800/80 rounded-xl p-6 mb-6 text-center">
-                <p className="text-3xl font-bold text-gray-800 dark:text-gray-100">
+              <div className="bg-white dark:bg-gray-800/80 rounded-xl p-6 mb-6 text-center border border-gray-200 dark:border-gray-700">
+                <p className="text-3xl font-bold text-gray-900 dark:text-gray-100">
                   {currentWord.meaning}
                 </p>
               </div>
@@ -403,19 +403,19 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
               ) : (
                 <div className={`rounded-xl p-6 text-center ${
                   feedback === 'correct' 
-                    ? 'bg-green-100 dark:bg-green-900/30 border-2 border-green-500 dark:border-green-600' 
-                    : 'bg-red-100 dark:bg-red-900/30 border-2 border-red-500 dark:border-red-600'
+                    ? 'bg-white dark:bg-green-900/30 border-2 border-green-500 dark:border-green-600' 
+                    : 'bg-white dark:bg-red-900/30 border-2 border-red-500 dark:border-red-600'
                 }`}>
                   {feedback === 'correct' ? (
                     <div>
                       <Check className="w-16 h-16 text-green-600 dark:text-green-400 mx-auto mb-3" />
-                      <p className="text-2xl font-bold text-green-800 dark:text-green-300">Correct! 🎉</p>
+                      <p className="text-2xl font-bold text-gray-900 dark:text-green-300">Correct! 🎉</p>
                     </div>
                   ) : (
                     <div>
                       <X className="w-16 h-16 text-red-600 dark:text-red-400 mx-auto mb-3" />
-                      <p className="text-xl font-bold text-red-800 dark:text-red-300 mb-2">Not quite!</p>
-                      <p className="text-lg text-red-700 dark:text-red-300">
+                      <p className="text-xl font-bold text-gray-900 dark:text-red-300 mb-2">Not quite!</p>
+                      <p className="text-lg text-gray-800 dark:text-red-300">
                         The correct answer is: <span className="font-bold">{currentWord.word}</span>
                       </p>
                     </div>
@@ -471,20 +471,20 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
 
             {/* Word Stats */}
             <div className="mt-6 space-y-3">
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg p-3 border border-green-200 dark:border-green-700">
-                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Correct Attempts</p>
+              <div className="bg-white dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg p-3 border border-green-200 dark:border-green-700">
+                <p className="text-xs text-gray-800 dark:text-gray-400 mb-1">Correct Attempts</p>
                 <p className="text-2xl font-bold text-green-600 dark:text-green-400">
                   {progress?.correctCount || 0}
                 </p>
               </div>
-              <div className="bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 rounded-lg p-3 border border-red-200 dark:border-red-700">
-                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Incorrect Attempts</p>
+              <div className="bg-white dark:from-red-900/20 dark:to-pink-900/20 rounded-lg p-3 border border-red-200 dark:border-red-700">
+                <p className="text-xs text-gray-800 dark:text-gray-400 mb-1">Incorrect Attempts</p>
                 <p className="text-2xl font-bold text-red-600 dark:text-red-400">
                   {progress?.incorrectCount || 0}
                 </p>
               </div>
-              <div className="bg-gradient-to-r from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20 rounded-lg p-3 border border-orange-200 dark:border-orange-700">
-                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Current Streak</p>
+              <div className="bg-white dark:from-orange-900/20 dark:to-yellow-900/20 rounded-lg p-3 border border-orange-200 dark:border-orange-700">
+                <p className="text-xs text-gray-800 dark:text-gray-400 mb-1">Current Streak</p>
                 <p className="text-2xl font-bold text-orange-600 dark:text-orange-400">
                   {progress?.streak || 0}
                 </p>

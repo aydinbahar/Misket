@@ -62,7 +62,7 @@ const ProgressView = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="card">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2 flex items-center gap-2">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2 flex items-center gap-2">
           <TrendingUp className="w-8 h-8 text-purple-500" />
           Your Progress
         </h1>
@@ -115,7 +115,7 @@ const ProgressView = () => {
 
       {/* Mastery by Status */}
       <div className="card">
-        <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
           <Star className="w-5 h-5 text-purple-500" />
           Vocabulary Status
         </h3>
@@ -177,7 +177,7 @@ const ProgressView = () => {
 
       {/* Unit Progress */}
       <div className="card">
-        <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
           <Target className="w-5 h-5 text-purple-500" />
           Progress by Unit
         </h3>
@@ -260,7 +260,7 @@ const ProgressView = () => {
       {/* Badges */}
       {userProgress.badges.length > 0 && (
         <div className="card">
-          <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
             <Award className="w-5 h-5 text-yellow-500" />
             Your Badges
           </h3>
@@ -280,7 +280,7 @@ const ProgressView = () => {
 
       {/* Recent Activity */}
       <div className="card">
-        <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
           <Clock className="w-5 h-5 text-purple-500" />
           Recent Activity
         </h3>

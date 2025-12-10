@@ -35,7 +35,7 @@ const AchievementsList = () => {
       {/* Unlocked Achievements */}
       {unlockedAchievements.length > 0 && (
         <div>
-          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
             <Award className="w-6 h-6 text-yellow-500" />
             Kazanılan Başarılar ({unlockedAchievements.length})
           </h3>
@@ -43,12 +43,12 @@ const AchievementsList = () => {
             {unlockedAchievements.map((achievement) => (
               <div
                 key={achievement.id}
-                className="card bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-2 border-yellow-300 dark:border-yellow-700 hover:scale-105 transition-transform"
+                className="card bg-white dark:bg-gradient-to-br dark:from-yellow-900/20 dark:to-orange-900/20 border-2 border-yellow-300 dark:border-yellow-700 hover:scale-105 transition-transform"
               >
                 <div className="flex items-start gap-4">
                   <div className="text-5xl animate-bounce">{achievement.icon}</div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-gray-800 dark:text-gray-100 mb-1">{achievement.title}</h4>
+                    <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-1">{achievement.title}</h4>
                     <p className="text-sm text-gray-600 dark:text-gray-300">{achievement.description}</p>
                     <div className="mt-2">
                       <span className="badge bg-green-100 text-green-700 text-xs">
@@ -66,7 +66,7 @@ const AchievementsList = () => {
       {/* Locked Achievements */}
       {lockedAchievements.length > 0 && (
         <div>
-          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
             <Lock className="w-6 h-6 text-gray-400" />
             Kilitli Başarılar ({lockedAchievements.length})
           </h3>
@@ -74,12 +74,12 @@ const AchievementsList = () => {
             {lockedAchievements.map((achievement) => (
               <div
                 key={achievement.id}
-                className="card bg-gray-50 dark:bg-gray-800/50 border-2 border-gray-200 dark:border-gray-700 opacity-60"
+                className="card bg-white dark:bg-gray-800/50 border-2 border-gray-200 dark:border-gray-700 opacity-60"
               >
                 <div className="flex items-start gap-4">
                   <div className="text-5xl grayscale">{achievement.icon}</div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-gray-600 dark:text-gray-300 mb-1">{achievement.title}</h4>
+                    <h4 className="font-bold text-gray-800 dark:text-gray-300 mb-1">{achievement.title}</h4>
                     <p className="text-sm text-gray-500 dark:text-gray-400">{achievement.description}</p>
                     <div className="mt-2">
                       <span className="badge bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs">
@@ -99,7 +99,7 @@ const AchievementsList = () => {
       {unlockedAchievements.length === 0 && (
         <div className="card text-center py-12">
           <div className="text-6xl mb-4">🏆</div>
-          <h3 className="text-xl font-bold text-gray-700 dark:text-gray-200 mb-2">Henüz Başarı Yok</h3>
+          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-200 mb-2">Henüz Başarı Yok</h3>
           <p className="text-gray-600 dark:text-gray-300">
             Kelime öğrenmeye başla ve başarıları aç!
           </p>

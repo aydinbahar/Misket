@@ -101,15 +101,15 @@ const SpeedRound = () => {
   if (gameState === 'ready') {
     return (
       <div className="space-y-6">
-        <div className="card text-center bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-300">
+        <div className="card text-center bg-white dark:bg-gradient-to-br dark:from-yellow-900/20 dark:to-orange-900/20 border-2 border-yellow-300 dark:border-yellow-700">
           <Zap className="w-20 h-20 text-yellow-500 mx-auto mb-4" />
-          <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">Speed Round!</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Speed Round!</h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
             Answer as many questions as you can in 30 seconds!
           </p>
           
           <div className="bg-white dark:bg-gray-800/80 rounded-xl p-6 mb-6 max-w-md mx-auto">
-            <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-3">Rules:</h3>
+            <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-3">Rules:</h3>
             <ul className="text-left text-gray-600 dark:text-gray-300 space-y-2">
               <li>⏱️ 30 seconds on the clock</li>
               <li>🎯 Choose the correct meaning</li>
@@ -132,22 +132,22 @@ const SpeedRound = () => {
     
     return (
       <div className="space-y-6">
-        <div className="card text-center bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-300">
+        <div className="card text-center bg-white dark:bg-gradient-to-br dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-300 dark:border-purple-700">
           <Trophy className="w-20 h-20 text-yellow-500 mx-auto mb-4 animate-bounce" />
-          <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">Time's Up!</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Time's Up!</h2>
           
           <div className="bg-white dark:bg-gray-800/80 rounded-xl p-8 max-w-md mx-auto mb-6">
             <div className="text-6xl font-bold text-purple-600 dark:text-purple-400 mb-4">{score}</div>
             <div className="text-gray-600 dark:text-gray-300 mb-6">Total Score</div>
             
             <div className="grid grid-cols-2 gap-4 text-sm">
-              <div className="bg-blue-50 rounded-lg p-3">
-                <div className="text-2xl font-bold text-blue-600">{totalAnswered}</div>
-                <div className="text-gray-600 dark:text-gray-300">Answered</div>
+              <div className="bg-white dark:bg-blue-900/20 rounded-lg p-3 border border-blue-200 dark:border-blue-700">
+                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{totalAnswered}</div>
+                <div className="text-gray-800 dark:text-gray-300">Answered</div>
               </div>
-              <div className="bg-green-50 rounded-lg p-3">
-                <div className="text-2xl font-bold text-green-600">{accuracy}%</div>
-                <div className="text-gray-600 dark:text-gray-300">Accuracy</div>
+              <div className="bg-white dark:bg-green-900/20 rounded-lg p-3 border border-green-200 dark:border-green-700">
+                <div className="text-2xl font-bold text-green-600 dark:text-green-400">{accuracy}%</div>
+                <div className="text-gray-800 dark:text-gray-300">Accuracy</div>
               </div>
             </div>
           </div>
@@ -164,26 +164,26 @@ const SpeedRound = () => {
     <div className="space-y-6">
       {/* Timer & Score */}
       <div className="grid grid-cols-3 gap-4">
-        <div className="card text-center bg-gradient-to-br from-red-50 to-orange-50">
-          <div className="text-4xl font-bold text-red-600">{timeLeft}</div>
-          <div className="text-sm text-gray-600 dark:text-gray-300">Seconds</div>
+        <div className="card text-center bg-white dark:bg-gradient-to-br dark:from-red-900/20 dark:to-orange-900/20">
+          <div className="text-4xl font-bold text-red-600 dark:text-red-400">{timeLeft}</div>
+          <div className="text-sm text-gray-800 dark:text-gray-300">Seconds</div>
         </div>
-        <div className="card text-center bg-gradient-to-br from-purple-50 to-pink-50">
-          <div className="text-4xl font-bold text-purple-600">{score}</div>
-          <div className="text-sm text-gray-600 dark:text-gray-300">Score</div>
+        <div className="card text-center bg-white dark:bg-gradient-to-br dark:from-purple-900/20 dark:to-pink-900/20">
+          <div className="text-4xl font-bold text-purple-600 dark:text-purple-400">{score}</div>
+          <div className="text-sm text-gray-800 dark:text-gray-300">Score</div>
         </div>
-        <div className="card text-center bg-gradient-to-br from-orange-50 to-yellow-50">
-          <div className="text-4xl font-bold text-orange-600">{streak}</div>
-          <div className="text-sm text-gray-600 dark:text-gray-300">Streak 🔥</div>
+        <div className="card text-center bg-white dark:bg-gradient-to-br dark:from-orange-900/20 dark:to-yellow-900/20">
+          <div className="text-4xl font-bold text-orange-600 dark:text-orange-400">{streak}</div>
+          <div className="text-sm text-gray-800 dark:text-gray-300">Streak 🔥</div>
         </div>
       </div>
 
       {/* Question */}
       {currentWord && (
-        <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-300">
+        <div className="card bg-white dark:bg-gradient-to-br dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-300 dark:border-blue-700">
           <div className="text-center mb-6">
-            <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">What does this word mean?</div>
-            <div className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-2">{currentWord.word}</div>
+            <div className="text-sm text-gray-800 dark:text-gray-300 mb-2">What does this word mean?</div>
+            <div className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">{currentWord.word}</div>
             <div className="text-2xl mb-2">{currentWord.emoji}</div>
           </div>
 

@@ -108,26 +108,26 @@ const WordPuzzle = () => {
     <div className="space-y-6">
       {/* Score */}
       <div className="grid grid-cols-2 gap-4">
-        <div className="card text-center bg-gradient-to-br from-purple-50 to-pink-50">
-          <div className="text-4xl font-bold text-purple-600">{score}</div>
-          <div className="text-sm text-gray-600 dark:text-gray-300">Score</div>
+        <div className="card text-center bg-white dark:bg-gradient-to-br dark:from-purple-900/20 dark:to-pink-900/20">
+          <div className="text-4xl font-bold text-purple-600 dark:text-purple-400">{score}</div>
+          <div className="text-sm text-gray-800 dark:text-gray-300">Score</div>
         </div>
-        <div className="card text-center bg-gradient-to-br from-green-50 to-emerald-50">
-          <div className="text-4xl font-bold text-green-600">{solvedWords}</div>
-          <div className="text-sm text-gray-600 dark:text-gray-300">Solved</div>
+        <div className="card text-center bg-white dark:bg-gradient-to-br dark:from-green-900/20 dark:to-emerald-900/20">
+          <div className="text-4xl font-bold text-green-600 dark:text-green-400">{solvedWords}</div>
+          <div className="text-sm text-gray-800 dark:text-gray-300">Solved</div>
         </div>
       </div>
 
       {/* Question */}
-      <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-300">
+      <div className="card bg-white dark:bg-gradient-to-br dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-300 dark:border-blue-700">
         <div className="text-center mb-4">
           <div className="text-4xl mb-3">{currentWord.emoji}</div>
-          <div className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-2">Unscramble the word:</div>
+          <div className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">Unscramble the word:</div>
           <div className="text-md text-gray-600 dark:text-gray-300 italic">{currentWord.meaning}</div>
           {showHint && (
-            <div className="mt-3 p-3 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg border-2 border-yellow-300 dark:border-yellow-700">
-              <div className="text-sm font-bold text-yellow-800 dark:text-yellow-200 mb-1">💡 Hint:</div>
-              <div className="text-sm text-yellow-700 dark:text-yellow-300">{currentWord.memoryTip}</div>
+            <div className="mt-3 p-3 bg-white dark:bg-yellow-900/30 rounded-lg border-2 border-yellow-300 dark:border-yellow-700">
+              <div className="text-sm font-bold text-gray-900 dark:text-yellow-200 mb-1">💡 Hint:</div>
+              <div className="text-sm text-gray-800 dark:text-yellow-300">{currentWord.memoryTip}</div>
             </div>
           )}
         </div>
@@ -194,9 +194,9 @@ const WordPuzzle = () => {
 
       {/* Instructions */}
       {solvedWords === 0 && (
-        <div className="card bg-green-50 dark:bg-green-900/20 border-2 border-green-200 dark:border-green-700">
-          <h3 className="font-bold text-green-900 dark:text-green-300 mb-2">How to Play:</h3>
-          <ul className="text-sm text-green-800 dark:text-green-300 space-y-1">
+        <div className="card bg-white dark:bg-green-900/20 border-2 border-green-200 dark:border-green-700">
+          <h3 className="font-bold text-gray-900 dark:text-green-300 mb-2">How to Play:</h3>
+          <ul className="text-sm text-gray-800 dark:text-green-300 space-y-1">
             <li>• Tap letters to spell the word</li>
             <li>• Use the meaning as a clue</li>
             <li>• Use hints if you're stuck (-10 points)</li>

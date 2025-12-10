@@ -118,9 +118,9 @@ const MemoryGame = () => {
 
       {/* Game Complete */}
       {gameComplete && (
-        <div className="card bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-300 text-center">
+        <div className="card bg-white dark:bg-gradient-to-br dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-300 dark:border-purple-700 text-center">
           <Trophy className="w-16 h-16 text-yellow-500 mx-auto mb-4 animate-bounce" />
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Congratulations! 🎉</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Congratulations! 🎉</h2>
           <p className="text-gray-600 dark:text-gray-300 mb-4">
             You completed the game in {moves} moves and {Math.floor(timeElapsed / 60)}:{(timeElapsed % 60).toString().padStart(2, '0')} minutes!
           </p>
@@ -164,9 +164,9 @@ const MemoryGame = () => {
 
       {/* Instructions */}
       {!gameStarted && (
-        <div className="card bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-700">
-          <h3 className="font-bold text-blue-900 dark:text-blue-300 mb-2">How to Play:</h3>
-          <ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1">
+        <div className="card bg-white dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-700">
+          <h3 className="font-bold text-gray-900 dark:text-blue-300 mb-2">How to Play:</h3>
+          <ul className="text-sm text-gray-800 dark:text-blue-300 space-y-1">
             <li>• Click on cards to flip them</li>
             <li>• Match words with their meanings</li>
             <li>• Complete all matches to win!</li>
