@@ -77,7 +77,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen pb-8">
+    <div className="app-shell">
       {/* Settings Menu (includes Dark Mode & Theme) */}
       <SettingsMenu />
 
@@ -97,7 +97,7 @@ function AppContent() {
       <UpdatePrompt />
 
       {/* Main Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 app-surface rounded-3xl">
         {/* App Header */}
         <header className="mb-8 text-center">
           <div className="flex items-center justify-center gap-3 mb-2">
