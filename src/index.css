@@ -12,22 +12,23 @@
     @apply bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 text-gray-800;
   }
 
-  /* Light mode readability tweaks: make grays darker on light backgrounds */
-  body.light-mode .text-gray-500 {
-    @apply text-gray-700;
-  }
-
-  body.light-mode .text-gray-600 {
-    @apply text-gray-800;
-  }
-
-  body.light-mode .text-gray-400 {
-    @apply text-gray-600;
-  }
-
+  /* Dark mode global background */
   body.dark-mode {
     background: linear-gradient(135deg, #070c16 0%, #0a1224 50%, #050915 100%);
     @apply text-gray-100;
+  }
+
+  /* Light mode readability tweaks: make grays darker on light backgrounds without @apply circular issues */
+  body.light-mode .text-gray-500 {
+    color: theme('colors.gray.700');
+  }
+
+  body.light-mode .text-gray-600 {
+    color: theme('colors.gray.800');
+  }
+
+  body.light-mode .text-gray-400 {
+    color: theme('colors.gray.600');
   }
 }
 
@@ -47,7 +48,7 @@
     transform: translateY(-2px);
   }
 
-  /* Glassmorphism Buttons */
+  /* Primary Button */
   .btn-primary {
     @apply bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg;
     position: relative;
@@ -69,6 +70,7 @@
     left: 100%;
   }
 
+  /* Secondary Button */
   .btn-secondary {
     @apply bg-white/80 backdrop-blur-sm text-gray-700 px-6 py-3 rounded-xl font-semibold border-2 border-gray-200 transition-all duration-300 hover:border-purple-300 hover:shadow-md;
   }
@@ -81,7 +83,7 @@
     @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm;
   }
 
-  /* Animated Progress Bar */
+  /* Progress Bar */
   .progress-bar {
     @apply bg-gray-200 rounded-full h-3 overflow-hidden;
     position: relative;
@@ -102,8 +104,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
     animation: shimmer 2s infinite;
   }
@@ -129,67 +131,9 @@
                 0 0 20px rgba(16, 185, 129, 0.3),
                 0 0 30px rgba(16, 185, 129, 0.1);
   }
-
-  /* Wiggle animation for tail */
-  @keyframes wiggle {
-    0%, 100% { transform: rotate(45deg); }
-    25% { transform: rotate(50deg); }
-    75% { transform: rotate(40deg); }
-  }
-
-  .animate-wiggle {
-    animation: wiggle 1s ease-in-out infinite;
-  }
 }
 
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes bounce-slow {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(167, 139, 250, 0.8);
-  }
-}
-
+/* PWA Install Prompt Animation */
 @keyframes slide-up {
   from {
     transform: translateY(100%);
@@ -205,34 +149,66 @@
   animation: slide-up 0.5s ease-out;
 }
 
-.animate-bounce-slow {
-  animation: bounce-slow 3s ease-in-out infinite;
-}
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
+  background-color: #e5e7eb; /* gray-200 */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #8B5CF6, #EC4899);
-  border-radius: 10px;
+  background-image: linear-gradient(to bottom right, #a855f7, #ec4899);
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #7C3AED, #DB2777);
+  background-image: linear-gradient(to bottom right, #9333ea, #db2777);
 }
+
+/* Floating animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Wiggle animation */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(45deg); }
+  50% { transform: rotate(55deg); }
+}
+
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+
+/* Shimmer effect for progress bars */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+}
+
+/* Confetti animations (for Confetti component if needed) */
+@keyframes confetti-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes confetti-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 
