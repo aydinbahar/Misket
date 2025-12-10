@@ -274,23 +274,23 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
     const scorePercent = Math.round((correctCount / totalQuestions) * 100);
 
     return (
-      <div className="space-y-6">
-        <div className="card text-center bg-white dark:bg-gradient-to-br dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-200 dark:border-purple-700">
-          <Trophy className="w-20 h-20 text-yellow-500 mx-auto mb-4 animate-bounce" />
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">Test Complete!</h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
+      <div className="space-y-4">
+        <div className="card text-center bg-gradient-to-br from-purple-900/30 to-pink-900/30 border border-purple-700/50 p-4">
+          <Trophy className="w-16 h-16 text-yellow-400 mx-auto mb-3" />
+          <h1 className="text-3xl font-bold text-white mb-2">Test Complete!</h1>
+          <p className="text-lg text-gray-300 mb-4">
             {testModes.find(m => m.id === selectedMode)?.title}
           </p>
 
-          <div className="bg-white dark:bg-gray-800/80 rounded-2xl p-8 max-w-md mx-auto">
-            <div className="text-6xl font-bold text-purple-600 dark:text-purple-400 mb-2">
+          <div className="bg-gray-800/60 rounded-xl p-6 max-w-md mx-auto border border-gray-700/50">
+            <div className="text-5xl font-bold text-purple-400 mb-2">
               {scorePercent}%
             </div>
-            <div className="text-gray-600 dark:text-gray-300 mb-4">
+            <div className="text-gray-300 mb-4 text-sm">
               {correctCount} out of {totalQuestions} correct
             </div>
 
-            <div className="progress-bar h-4 mb-6">
+            <div className="progress-bar h-3 mb-4">
               <div
                 className={`progress-fill ${
                   scorePercent >= 90 ? 'bg-gradient-to-r from-green-500 to-emerald-500' :
@@ -301,28 +301,28 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
               />
             </div>
 
-            <div className="flex items-center justify-center gap-8 mb-6">
+            <div className="flex items-center justify-center gap-6 mb-4">
               <div className="text-center">
-                <CheckCircle className="w-8 h-8 text-green-500 mx-auto mb-1" />
-                <div className="text-2xl font-bold text-green-600 dark:text-green-400">{correctCount}</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Correct</div>
+                <CheckCircle className="w-6 h-6 text-green-400 mx-auto mb-1" />
+                <div className="text-xl font-bold text-green-400">{correctCount}</div>
+                <div className="text-xs text-gray-400">Correct</div>
               </div>
               <div className="text-center">
-                <XCircle className="w-8 h-8 text-red-500 mx-auto mb-1" />
-                <div className="text-2xl font-bold text-red-600 dark:text-red-400">{totalQuestions - correctCount}</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Incorrect</div>
+                <XCircle className="w-6 h-6 text-red-400 mx-auto mb-1" />
+                <div className="text-xl font-bold text-red-400">{totalQuestions - correctCount}</div>
+                <div className="text-xs text-gray-400">Incorrect</div>
               </div>
             </div>
 
             {scorePercent === 100 && (
-              <div className="bg-white dark:bg-yellow-900/20 border-2 border-yellow-300 dark:border-yellow-700 rounded-lg p-4 mb-4">
-                <Award className="w-6 h-6 text-yellow-600 dark:text-yellow-400 mx-auto mb-2" />
-                <p className="text-sm font-bold text-gray-900 dark:text-yellow-300">Perfect Score! 🎉</p>
+              <div className="bg-yellow-900/20 border border-yellow-700 rounded-lg p-3 mb-4">
+                <Award className="w-5 h-5 text-yellow-400 mx-auto mb-1" />
+                <p className="text-sm font-bold text-yellow-300">Perfect Score! 🎉</p>
               </div>
             )}
           </div>
 
-          <div className="mt-6">
+          <div className="mt-4">
             <MisketCharacter 
               mood={scorePercent >= 70 ? 'celebrating' : 'encouraging'} 
               message={
@@ -335,10 +335,10 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
             />
           </div>
 
-          <div className="flex gap-4 mt-6">
+          <div className="flex gap-3 mt-4">
             <button
               onClick={() => handleStartTest(selectedMode)}
-              className="btn-secondary flex-1"
+              className="btn-secondary flex-1 text-sm py-2"
             >
               Try Again
             </button>
@@ -347,7 +347,7 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
                 setTestStarted(false);
                 setSelectedMode(null);
               }}
-              className="btn-primary flex-1"
+              className="btn-primary flex-1 text-sm py-2"
             >
               Choose Another Test
             </button>
@@ -366,14 +366,14 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
     <div className="space-y-6">
       {/* Header with timer */}
       <div className="flex items-center justify-between">
-        <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+        <div className="text-xs text-gray-300 font-medium">
           Question {currentQuestion + 1} of {questions.length}
         </div>
         {timeLeft !== null && (
-          <div className={`flex items-center gap-2 px-4 py-2 rounded-lg font-bold ${
-            timeLeft < 30 ? 'bg-red-100 text-red-600 animate-pulse' : 'bg-blue-100 text-blue-600'
+          <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-bold text-sm ${
+            timeLeft < 30 ? 'bg-red-900/50 text-red-300 animate-pulse' : 'bg-blue-900/50 text-blue-300'
           }`}>
-            <Clock className="w-4 h-4" />
+            <Clock className="w-3.5 h-3.5" />
             {Math.floor(timeLeft / 60)}:{String(timeLeft % 60).padStart(2, '0')}
           </div>
         )}
@@ -388,12 +388,12 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
       </div>
 
       {/* Question Card */}
-      <div className="card bg-white dark:bg-gradient-to-br dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200 dark:border-blue-700">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-blue-300 mb-6 text-center">
+      <div className="card bg-gradient-to-br from-blue-900/30 to-cyan-900/30 border border-blue-700/50 p-4">
+        <h2 className="text-xl font-bold text-white mb-4 text-center">
           {question.question}
         </h2>
 
-        <div className="grid grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 gap-3">
           {question.options.map((option, index) => {
             const isSelected = selectedAnswer === option;
             const isCorrect = answer && option === question.correctAnswer;
@@ -405,18 +405,18 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
                 onClick={() => handleAnswerSelect(option)}
                 disabled={answer !== undefined}
                 className={`
-                  p-4 rounded-xl border-2 font-medium text-lg transition-all text-left
-                  ${!answer ? 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-blue-400 hover:shadow-md' : ''}
-                  ${isCorrect ? 'bg-green-100 dark:bg-green-900/50 border-green-500 text-green-800 dark:text-green-200' : ''}
-                  ${isWrong ? 'bg-red-100 dark:bg-red-900/50 border-red-500 text-red-800 dark:text-red-200' : ''}
-                  ${answer && !isCorrect && !isWrong ? 'opacity-50' : ''}
+                  p-3 rounded-lg border font-medium text-base transition-all text-left
+                  ${!answer ? 'bg-gray-800/60 border-gray-700/50 text-white hover:border-blue-500 hover:bg-gray-800/80' : ''}
+                  ${isCorrect ? 'bg-green-900/50 border-green-600 text-green-200' : ''}
+                  ${isWrong ? 'bg-red-900/50 border-red-600 text-red-200' : ''}
+                  ${answer && !isCorrect && !isWrong ? 'opacity-50 bg-gray-800/40 border-gray-700/30 text-gray-400' : ''}
                   disabled:cursor-not-allowed
                 `}
               >
                 <div className="flex items-center justify-between">
                   <span>{option}</span>
-                  {isCorrect && <CheckCircle className="w-6 h-6" />}
-                  {isWrong && <XCircle className="w-6 h-6" />}
+                  {isCorrect && <CheckCircle className="w-5 h-5 text-green-400" />}
+                  {isWrong && <XCircle className="w-5 h-5 text-red-400" />}
                 </div>
               </button>
             );
@@ -424,15 +424,15 @@ const TestsView = ({ testMode, setTestMode, setCurrentView }) => {
         </div>
 
         {answer && (
-          <div className={`mt-6 p-4 rounded-lg ${
-            answer.correct ? 'bg-green-50 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-700' : 'bg-red-50 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-700'
+          <div className={`mt-4 p-3 rounded-lg ${
+            answer.correct ? 'bg-green-900/30 text-green-200 border border-green-700' : 'bg-red-900/30 text-red-200 border border-red-700'
           }`}>
             {answer.correct ? (
-              <p className="font-medium">✅ Correct! Well done!</p>
+              <p className="font-medium text-sm">✅ Correct! Well done!</p>
             ) : (
               <div>
-                <p className="font-medium mb-2">❌ Incorrect!</p>
-                <p className="text-sm">
+                <p className="font-medium mb-1 text-sm">❌ Incorrect!</p>
+                <p className="text-xs text-gray-300">
                   Example: {question.word.sentence}
                 </p>
               </div>

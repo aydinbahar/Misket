@@ -28,12 +28,12 @@ const MisketCharacter = ({ mood = 'happy', message, showStars = false }) => {
         <div className="absolute inset-0 flex items-center justify-center">
           <Sparkles className="w-8 h-8 text-yellow-400 animate-ping absolute -top-2 -left-2" />
           <Sparkles className="w-6 h-6 text-pink-400 animate-ping absolute -top-2 -right-2" />
-          <Star className="w-5 h-5 text-purple-400 animate-bounce absolute -bottom-2 left-1/2" />
+          <Star className="w-5 h-5 text-purple-400 absolute -bottom-2 left-1/2" />
         </div>
       )}
 
       {/* Misket character */}
-      <div className={`relative ${bounce ? 'animate-bounce' : 'animate-float'}`}>
+      <div className={`relative ${bounce ? '' : 'animate-float'}`}>
         {/* Misket body - cute dog */}
        
 

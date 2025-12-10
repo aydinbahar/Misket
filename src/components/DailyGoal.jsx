@@ -26,7 +26,7 @@ const DailyGoal = () => {
 
       {isCompleted ? (
         <div className="text-center py-6">
-          <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-3 animate-bounce" />
+          <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-3" />
           <p className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">Tamamlandı! 🎉</p>
           <p className="text-sm text-gray-800 dark:text-gray-300">Bugünkü hedefini başardın!</p>
         </div>

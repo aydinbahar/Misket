@@ -133,7 +133,7 @@ const SpeedRound = () => {
     return (
       <div className="space-y-6">
         <div className="card text-center bg-white dark:bg-gradient-to-br dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-300 dark:border-purple-700">
-          <Trophy className="w-20 h-20 text-yellow-500 mx-auto mb-4 animate-bounce" />
+          <Trophy className="w-20 h-20 text-yellow-500 mx-auto mb-4" />
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Time's Up!</h2>
           
           <div className="bg-white dark:bg-gray-800/80 rounded-xl p-8 max-w-md mx-auto mb-6">

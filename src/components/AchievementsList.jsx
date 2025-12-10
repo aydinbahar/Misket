@@ -46,7 +46,7 @@ const AchievementsList = () => {
                 className="card bg-white dark:bg-gradient-to-br dark:from-yellow-900/20 dark:to-orange-900/20 border-2 border-yellow-300 dark:border-yellow-700 hover:scale-105 transition-transform"
               >
                 <div className="flex items-start gap-4">
-                  <div className="text-5xl animate-bounce">{achievement.icon}</div>
+                  <div className="text-5xl">{achievement.icon}</div>
                   <div className="flex-1">
                     <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-1">{achievement.title}</h4>
                     <p className="text-sm text-gray-600 dark:text-gray-300">{achievement.description}</p>

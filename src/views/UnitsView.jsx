@@ -80,7 +80,7 @@ const UnitsView = ({ setCurrentView, setSelectedUnit }) => {
                   </div>
                 </div>
                 {isCompleted && (
-                  <CheckCircle className="w-8 h-8 text-green-500 animate-bounce" />
+                  <CheckCircle className="w-8 h-8 text-green-500" />
                 )}
               </div>
 
@@ -116,29 +116,6 @@ const UnitsView = ({ setCurrentView, setSelectedUnit }) => {
             </div>
           );
         })}
-      </div>
-
-      {/* Info Card */}
-      <div className="card bg-white dark:bg-gradient-to-br dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200 dark:border-blue-700">
-        <h3 className="font-bold text-blue-800 dark:text-blue-300 mb-2">📚 How to Learn</h3>
-        <ul className="space-y-2 text-sm text-blue-800 dark:text-blue-300">
-          <li className="flex items-start gap-2">
-            <span className="font-bold">1.</span>
-            <span>Select a unit to begin learning new words</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="font-bold">2.</span>
-            <span>Study each word with examples and memory tips</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="font-bold">3.</span>
-            <span>Practice with interactive quizzes</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="font-bold">4.</span>
-            <span>Review regularly to master the vocabulary</span>
-          </li>
-        </ul>
       </div>
     </div>
   );

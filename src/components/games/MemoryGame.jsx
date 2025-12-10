@@ -119,7 +119,7 @@ const MemoryGame = () => {
       {/* Game Complete */}
       {gameComplete && (
         <div className="card bg-white dark:bg-gradient-to-br dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-300 dark:border-purple-700 text-center">
-          <Trophy className="w-16 h-16 text-yellow-500 mx-auto mb-4 animate-bounce" />
+          <Trophy className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Congratulations! 🎉</h2>
           <p className="text-gray-600 dark:text-gray-300 mb-4">
             You completed the game in {moves} moves and {Math.floor(timeElapsed / 60)}:{(timeElapsed % 60).toString().padStart(2, '0')} minutes!
