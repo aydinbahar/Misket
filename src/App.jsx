@@ -9,9 +9,10 @@ import UnitsView from './views/UnitsView';
 import PracticeView from './views/PracticeView';
 import GamesView from './views/GamesView';
 import TestsView from './views/TestsView';
+import HomeView from './views/HomeView';
 
 function AppContent() {
-  const [currentView, setCurrentView] = useState('units');
+  const [currentView, setCurrentView] = useState('home');
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [testMode, setTestMode] = useState(null);
   const [showConfetti, setShowConfetti] = useState(false);
@@ -32,6 +33,14 @@ function AppContent() {
 
   const renderView = () => {
     switch (currentView) {
+      case 'home':
+        return (
+          <HomeView 
+            setCurrentView={setCurrentView}
+            setSelectedUnit={setSelectedUnit}
+            setTestMode={setTestMode}
+          />
+        );
       case 'units':
         return (
           <UnitsView 
@@ -58,9 +67,10 @@ function AppContent() {
         );
       default:
         return (
-          <UnitsView 
+          <HomeView 
             setCurrentView={setCurrentView}
             setSelectedUnit={setSelectedUnit}
+            setTestMode={setTestMode}
           />
         );
     }
@@ -90,7 +100,10 @@ function AppContent() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 app-surface rounded-3xl">
         {/* App Header */}
         <header className="mb-8 text-center">
-          <div className="flex items-center justify-center gap-3 mb-2">
+          <button
+            onClick={() => setCurrentView('home')}
+            className="flex items-center justify-center gap-3 mb-2 mx-auto transition-transform duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+          >
             <img 
               src="/icon.svg" 
               alt="Misket" 
@@ -99,7 +112,7 @@ function AppContent() {
             <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
               Misket
             </h1>
-          </div>
+          </button>
           <p className="text-gray-600 dark:text-gray-400 text-sm">
             Your AI-Powered Vocabulary Learning Companion
           </p>

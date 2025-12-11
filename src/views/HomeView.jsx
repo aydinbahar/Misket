@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import ProgressBar from '../components/ProgressBar';
 import { BookOpen, Brain, Target, Zap, Clock, TrendingUp } from 'lucide-react';
 import { getAllWords } from '../data/vocabulary';
+import { getRandomMessage, getCurrentDay } from '../utils/motivationalMessages';
 
 const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
   const { userProgress, getWordsForReview, getWeakWords } = useApp();
+  const [motivationalMessage, setMotivationalMessage] = useState(null);
+  
+  // Her component mount olduğunda yeni bir mesaj seç
+  useEffect(() => {
+    setMotivationalMessage(getRandomMessage());
+  }, []);
   
   const wordsForReview = getWordsForReview() || [];
   const weakWords = getWeakWords() || [];
@@ -66,8 +73,38 @@ const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
     },
   ];
 
+  const dayInfo = getCurrentDay();
+
   return (
     <div className="space-y-6">
+      {/* Motivasyon Mesajı - Hoş Geldin */}
+      {motivationalMessage && (
+        <div className="card bg-gradient-to-br from-pink-900/30 to-purple-900/30 border-2 border-pink-700/50">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center flex-shrink-0 text-2xl">
+              💜
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <h3 className="font-bold text-pink-300 text-lg">
+                  Merhaba Serra! 
+                </h3>
+                <span className="text-xs text-pink-400/70">
+                  ({dayInfo.tr})
+                </span>
+                <span className="text-lg ml-1">🐾</span>
+              </div>
+              <p className="text-base text-pink-200 mb-2 font-medium">
+                {motivationalMessage.tr} 🐾
+              </p>
+              <p className="text-sm text-pink-300/80 italic">
+                {motivationalMessage.en} 🐾
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Progress Overview */}
       <ProgressBar />
 
