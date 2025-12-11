@@ -79,27 +79,29 @@ const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
     <div className="space-y-6">
       {/* Motivasyon Mesajı - Hoş Geldin */}
       {motivationalMessage && (
-        <div className="card bg-gradient-to-br from-pink-900/30 to-purple-900/30 border-2 border-pink-700/50">
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center flex-shrink-0 text-2xl">
+        <div className="card bg-gradient-to-br from-purple-950/60 via-pink-950/50 to-purple-950/60 border-2 border-purple-600/40 shadow-2xl shadow-purple-900/20 p-6 md:p-8">
+          <div className="flex items-start gap-5 md:gap-6">
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-purple-600 flex items-center justify-center flex-shrink-0 text-3xl md:text-4xl shadow-lg shadow-purple-500/30">
               💜
             </div>
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-2">
-                <h3 className="font-bold text-pink-300 text-lg">
+            <div className="flex-1 pt-1">
+              <div className="flex items-center gap-3 mb-4 flex-wrap">
+                <h3 className="font-bold text-purple-200 text-xl md:text-2xl">
                   Merhaba Serra! 
                 </h3>
-                <span className="text-xs text-pink-400/70">
-                  ({dayInfo.tr})
+                <span className="text-sm md:text-base text-purple-300/80 bg-purple-900/40 px-2 py-1 rounded-lg">
+                  {dayInfo.tr}
                 </span>
-                <span className="text-lg ml-1">🐾</span>
+                <span className="text-2xl md:text-3xl ml-auto">🐾</span>
               </div>
-              <p className="text-base text-pink-200 mb-2 font-medium">
+              <p className="text-lg md:text-xl text-purple-100 mb-4 font-semibold leading-relaxed">
                 {motivationalMessage.tr} 🐾
               </p>
-              <p className="text-sm text-pink-300/80 italic">
-                {motivationalMessage.en} 🐾
-              </p>
+              <div className="pt-3 border-t border-purple-700/30">
+                <p className="text-base md:text-lg text-purple-200/90 italic leading-relaxed">
+                  {motivationalMessage.en} 🐾
+                </p>
+              </div>
             </div>
           </div>
         </div>
