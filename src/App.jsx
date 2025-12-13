@@ -128,7 +128,7 @@ function AppContent() {
         <footer className="mt-12 text-center">
           <p className="text-4xl mb-2">💜</p>
           <p className="text-xs text-gray-400 opacity-60 mt-4">
-            Misket v1.0.0
+            Misket v1.2.0
           </p>
         </footer>
       </div>
