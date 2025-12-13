@@ -2,13 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { getWordsByUnit } from '../data/vocabulary';
 import MisketCharacter from '../components/MisketCharacter';
+import { getThemePanelBg, getThemePanelBorder, getThemePanelShadow, getThemePanelText, getThemePanelIcon, getThemeInnerCardBg } from '../utils/themeUtils';
 import { 
   ArrowLeft, ArrowRight, RotateCcw, Volume2, 
-  Lightbulb, MessageCircle, BookOpen, Check, X, Star, Eye, EyeOff
+  Lightbulb, MessageCircle, BookOpen, Check, X, Star, Eye, EyeOff, AlertCircle
 } from 'lucide-react';
 
 const PracticeView = ({ selectedUnit, setCurrentView }) => {
   const { userProgress, updateWordProgress, showNotification, updateDailyProgress, triggerConfetti, markWordAsKnown, unmarkWordAsKnown, isWordKnown } = useApp();
+  const theme = userProgress?.theme || 'purple';
+  const panelBg = getThemePanelBg(theme);
+  const panelBorder = getThemePanelBorder(theme);
+  const panelShadow = getThemePanelShadow(theme);
+  const panelText = getThemePanelText(theme);
+  const panelIcon = getThemePanelIcon(theme);
+  const innerCardBg = getThemeInnerCardBg(theme);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [mode, setMode] = useState('learn'); // 'learn' or 'quiz'
@@ -20,6 +28,8 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const [typoErrors, setTypoErrors] = useState([]);
 
   // Load words when unit changes
   useEffect(() => {
@@ -231,8 +241,55 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
     }
   };
 
+  // Calculate character differences between two strings
+  const calculateTypoErrors = (userAnswer, correctAnswer) => {
+    const user = userAnswer.toLowerCase().trim();
+    const correct = correctAnswer.toLowerCase().trim();
+    const errors = [];
+    
+    // Compare character by character
+    const maxLength = Math.max(user.length, correct.length);
+    for (let i = 0; i < maxLength; i++) {
+      if (user[i] !== correct[i]) {
+        if (user[i] && correct[i]) {
+          errors.push({
+            position: i + 1,
+            userChar: user[i],
+            correctChar: correct[i],
+            type: 'wrong'
+          });
+        } else if (user[i] && !correct[i]) {
+          errors.push({
+            position: i + 1,
+            userChar: user[i],
+            correctChar: null,
+            type: 'extra'
+          });
+        } else if (!user[i] && correct[i]) {
+          errors.push({
+            position: i + 1,
+            userChar: null,
+            correctChar: correct[i],
+            type: 'missing'
+          });
+        }
+      }
+    }
+    
+    return errors;
+  };
+
   const handleQuizSubmit = () => {
-    const isCorrect = quizAnswer.toLowerCase().trim() === currentWord.word.toLowerCase().trim();
+    const userAnswer = quizAnswer.toLowerCase().trim();
+    const correctAnswer = currentWord.word.toLowerCase().trim();
+    const exactMatch = userAnswer === correctAnswer;
+    
+    // Calculate typo errors
+    const errors = calculateTypoErrors(userAnswer, correctAnswer);
+    const errorCount = errors.length;
+    
+    // If exact match or 2 or fewer errors, count as correct
+    const isCorrect = exactMatch || errorCount <= 2;
     
     setFeedback(isCorrect ? 'correct' : 'incorrect');
     updateWordProgress(currentWord.id, isCorrect);
@@ -245,11 +302,15 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
       if (wordProg && wordProg.streak >= 5) {
         triggerConfetti();
       }
-    }
-
-    if (isCorrect) {
-      showNotification('🎉 Correct! Great job!', 'success');
-      setTimeout(() => handleNext(), 1500);
+      
+      // Show error popup if there were typos
+      if (!exactMatch && errorCount > 0) {
+        setTypoErrors(errors);
+        setShowErrorPopup(true);
+      } else {
+        showNotification('🎉 Correct! Great job!', 'success');
+        setTimeout(() => handleNext(), 1500);
+      }
     } else {
       showNotification(`Not quite! The answer is: ${currentWord.word}`, 'error');
     }
@@ -599,6 +660,83 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
           </div>
         </div>
       </div>
+
+      {/* Typo Error Popup */}
+      {showErrorPopup && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className={`card bg-gradient-to-br ${panelBg} border-2 ${panelBorder} ${panelShadow} max-w-md w-full shadow-2xl`}>
+            <div className="flex items-start gap-4">
+              <div className={`w-12 h-12 ${innerCardBg} rounded-full flex items-center justify-center flex-shrink-0`}>
+                <AlertCircle className={`w-6 h-6 ${panelIcon}`} />
+              </div>
+              <div className="flex-1">
+                <h3 className={`font-bold ${panelText.primary} text-lg mb-2`}>
+                  Doğru! Ama küçük hatalar vardı 🎉
+                </h3>
+                <p className={`${panelText.secondary}/90 text-sm mb-3`}>
+                  Cevabın doğru sayıldı, ancak şu hatalar vardı:
+                </p>
+                <div className={`${innerCardBg} rounded-lg p-2 mb-3`}>
+                  <p className={`text-xs ${panelText.secondary} mb-1`}>
+                    Senin yazdığın:
+                  </p>
+                  <p className={`text-base font-mono ${panelText.primary} font-semibold`}>
+                    {quizAnswer}
+                  </p>
+                </div>
+                <div className="space-y-2 mb-4">
+                  {typoErrors.map((error, index) => (
+                    <div key={index} className={`${innerCardBg} rounded-lg p-2`}>
+                      <p className={`text-xs ${panelText.secondary} mb-1`}>
+                        Pozisyon {error.position}:
+                      </p>
+                      <div className="flex items-center gap-2">
+                        {error.type === 'wrong' && (
+                          <>
+                            <span className="text-red-300 font-mono">"{error.userChar}"</span>
+                            <span className={`${panelText.secondary}`}>→</span>
+                            <span className="text-green-300 font-mono">"{error.correctChar}"</span>
+                          </>
+                        )}
+                        {error.type === 'extra' && (
+                          <>
+                            <span className="text-red-300 font-mono">"{error.userChar}"</span>
+                            <span className={`${panelText.secondary}`}>→</span>
+                            <span className={`${panelText.secondary}`}>(fazladan harf)</span>
+                          </>
+                        )}
+                        {error.type === 'missing' && (
+                          <>
+                            <span className={`${panelText.secondary}`}>(eksik)</span>
+                            <span className={`${panelText.secondary}`}>→</span>
+                            <span className="text-green-300 font-mono">"{error.correctChar}"</span>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className={`${innerCardBg} rounded-lg p-2 mb-4`}>
+                  <p className={`text-sm ${panelText.primary}`}>
+                    <span className="font-bold">Doğru cevap:</span> {currentWord.word}
+                  </p>
+                </div>
+                <button
+                  onClick={() => {
+                    setShowErrorPopup(false);
+                    setTypoErrors([]);
+                    showNotification('🎉 Correct! Great job!', 'success');
+                    setTimeout(() => handleNext(), 500);
+                  }}
+                  className="btn-primary w-full"
+                >
+                  Devam Et
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

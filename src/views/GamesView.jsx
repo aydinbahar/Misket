@@ -69,37 +69,26 @@ const GamesView = ({ setCurrentView }) => {
         </p>
       </div>
 
-      {/* Games Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {games.map((game) => {
-          const Icon = game.icon;
-          return (
-            <div
-              key={game.id}
-              onClick={() => setSelectedGame(game.id)}
-              className="card cursor-pointer hover:shadow-2xl transition-all duration-300 hover:scale-105"
-            >
-              <div className={`p-6 rounded-xl bg-gradient-to-br ${game.color} mb-4`}>
-                <Icon className="w-16 h-16 text-white mx-auto" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{game.title}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">{game.description}</p>
-              <button className="btn-primary w-full">
-                Oyna
+      {/* Games - iPhone Style App Shortcuts */}
+      <div className="card p-6 md:p-8">
+        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 justify-items-center">
+          {games.map((game) => {
+            const Icon = game.icon;
+            return (
+              <button
+                key={game.id}
+                onClick={() => setSelectedGame(game.id)}
+                className="flex flex-col items-center gap-2 group transition-all duration-300 hover:scale-110 active:scale-95"
+              >
+                <div className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br ${game.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}>
+                  <Icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
+                </div>
+                <span className="text-xs md:text-sm font-medium text-gray-900 dark:text-gray-100 text-center max-w-[80px] line-clamp-2">
+                  {game.title}
+                </span>
               </button>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Coming Soon */}
-      <div className="card bg-white dark:from-gray-800/50 dark:to-gray-800 border-2 border-dashed border-gray-300 dark:border-gray-600">
-        <div className="text-center py-8">
-          <div className="text-6xl mb-4">🎮</div>
-          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-200 mb-2">Daha Fazla Oyun Yakında!</h3>
-          <p className="text-gray-600 dark:text-gray-300">
-            Yeni oyunlar ekleniyor...
-          </p>
+            );
+          })}
         </div>
       </div>
     </div>
