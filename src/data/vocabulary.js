@@ -1847,6 +1847,2348 @@ export const vocabularyData = {
         pronunciation: "ˈrȯŋ ˈnəm-bər"
       }
     ]
+  },
+  "unit5": {
+    id: "unit5",
+    title: "The Internet",
+    icon: "🌐",
+    words: [
+      {
+        id: "w5_1",
+        word: "Access",
+        meaning: "Erişmek, erişim",
+        sentence: "I can access the internet from my phone.",
+        synonym: "Reach, Connect",
+        antonym: "Block, Deny",
+        memoryTip: "ACCESS → AC + CESS = get to it!",
+        pronunciation: "ˈak-ˌses"
+      },
+      {
+        id: "w5_2",
+        word: "Account",
+        meaning: "Hesap",
+        sentence: "Create an account to use this website.",
+        synonym: "Profile, Registration",
+        antonym: "Guest",
+        memoryTip: "ACCOUNT → count your ACCOUNT!",
+        pronunciation: "ə-ˈkau̇nt"
+      },
+      {
+        id: "w5_3",
+        word: "Add",
+        meaning: "Eklemek",
+        sentence: "Add your friends to the group chat.",
+        synonym: "Include, Attach",
+        antonym: "Remove, Delete",
+        memoryTip: "ADD → ADDing more!",
+        pronunciation: "ˈad"
+      },
+      {
+        id: "w5_4",
+        word: "Attachment",
+        meaning: "Ek dosya",
+        sentence: "Check the email attachment I sent you.",
+        synonym: "File, Document",
+        antonym: "Main message",
+        memoryTip: "ATTACHMENT → ATTACHed to email!",
+        pronunciation: "ə-ˈtach-mənt"
+      },
+      {
+        id: "w5_5",
+        word: "Available",
+        meaning: "Müsait, erişilebilir",
+        sentence: "The website is available 24/7.",
+        synonym: "Accessible, Free",
+        antonym: "Unavailable, Busy",
+        memoryTip: "AVAILABLE → AVAIL-able to use!",
+        pronunciation: "ə-ˈvā-lə-bəl"
+      },
+      {
+        id: "w5_6",
+        word: "Blog",
+        meaning: "Blog",
+        sentence: "I write a blog about technology.",
+        synonym: "Website, Journal",
+        antonym: "Private diary",
+        memoryTip: "BLOG → write a BLOG!",
+        pronunciation: "ˈbläg"
+      },
+      {
+        id: "w5_7",
+        word: "Browse",
+        meaning: "Gezinmek, taramak",
+        sentence: "I like to browse the internet for news.",
+        synonym: "Search, Look around",
+        antonym: "Focus",
+        memoryTip: "BROWSE → BROWSE like a browser!",
+        pronunciation: "ˈbrau̇z"
+      },
+      {
+        id: "w5_8",
+        word: "Chat",
+        meaning: "Sohbet etmek",
+        sentence: "Let's chat online tonight.",
+        synonym: "Talk, Message",
+        antonym: "Ignore",
+        memoryTip: "CHAT → like a CAT chatting!",
+        pronunciation: "ˈchat"
+      },
+      {
+        id: "w5_9",
+        word: "Click",
+        meaning: "Tıklamak",
+        sentence: "Click the button to continue.",
+        synonym: "Press, Select",
+        antonym: "Release",
+        memoryTip: "CLICK → makes a CLICK sound!",
+        pronunciation: "ˈklik"
+      },
+      {
+        id: "w5_10",
+        word: "Comment",
+        meaning: "Yorum yapmak",
+        sentence: "Please leave a comment below.",
+        synonym: "Remark, Opinion",
+        antonym: "Ignore",
+        memoryTip: "COMMENT → give your COMMENT!",
+        pronunciation: "ˈkä-ˌment"
+      },
+      {
+        id: "w5_11",
+        word: "Connect",
+        meaning: "Bağlanmak",
+        sentence: "Connect to the Wi-Fi network.",
+        synonym: "Link, Join",
+        antonym: "Disconnect",
+        memoryTip: "CONNECT → make CONNECTION!",
+        pronunciation: "kə-ˈnekt"
+      },
+      {
+        id: "w5_12",
+        word: "Create",
+        meaning: "Oluşturmak",
+        sentence: "Create a new account.",
+        synonym: "Make, Build",
+        antonym: "Delete, Destroy",
+        memoryTip: "CREATE → CREATE something new!",
+        pronunciation: "krē-ˈāt"
+      },
+      {
+        id: "w5_13",
+        word: "Delete",
+        meaning: "Silmek",
+        sentence: "Delete the old messages.",
+        synonym: "Remove, Erase",
+        antonym: "Create, Save",
+        memoryTip: "DELETE → DE-lete = remove!",
+        pronunciation: "di-ˈlēt"
+      },
+      {
+        id: "w5_14",
+        word: "Download",
+        meaning: "İndirmek",
+        sentence: "Download the app from the store.",
+        synonym: "Get, Save",
+        antonym: "Upload, Delete",
+        memoryTip: "DOWNLOAD → DOWN load = bring DOWN!",
+        pronunciation: "ˈdau̇n-ˌlōd"
+      },
+      {
+        id: "w5_15",
+        word: "Email",
+        meaning: "E-posta",
+        sentence: "Send me an email with the details.",
+        synonym: "Message, Mail",
+        antonym: "Snail mail",
+        memoryTip: "EMAIL → E-lectronic MAIL!",
+        pronunciation: "ˈē-ˌmāl"
+      },
+      {
+        id: "w5_16",
+        word: "Enter",
+        meaning: "Girmek",
+        sentence: "Enter your password to login.",
+        synonym: "Type, Input",
+        antonym: "Exit",
+        memoryTip: "ENTER → ENTER the door!",
+        pronunciation: "ˈen-tər"
+      },
+      {
+        id: "w5_17",
+        word: "File",
+        meaning: "Dosya",
+        sentence: "Save the file on your computer.",
+        synonym: "Document, Data",
+        antonym: "Folder",
+        memoryTip: "FILE → like a FILE cabinet!",
+        pronunciation: "ˈfī(-ə)l"
+      },
+      {
+        id: "w5_18",
+        word: "Follow",
+        meaning: "Takip etmek",
+        sentence: "Follow me on social media.",
+        synonym: "Subscribe, Track",
+        antonym: "Unfollow",
+        memoryTip: "FOLLOW → FOLLOW someone!",
+        pronunciation: "ˈfä-lō"
+      },
+      {
+        id: "w5_19",
+        word: "Forward",
+        meaning: "İletmek",
+        sentence: "Forward this email to your friend.",
+        synonym: "Send, Share",
+        antonym: "Reply",
+        memoryTip: "FORWARD → send FORWARD!",
+        pronunciation: "ˈfȯr-wərd"
+      },
+      {
+        id: "w5_20",
+        word: "Internet",
+        meaning: "İnternet",
+        sentence: "The internet has changed our lives.",
+        synonym: "Web, Network",
+        antonym: "Offline",
+        memoryTip: "INTERNET → INTERconnected NETwork!",
+        pronunciation: "ˈin-tər-ˌnet"
+      },
+      {
+        id: "w5_21",
+        word: "Link",
+        meaning: "Bağlantı, link",
+        sentence: "Click the link to visit the website.",
+        synonym: "URL, Connection",
+        antonym: "Disconnect",
+        memoryTip: "LINK → LINKing pages!",
+        pronunciation: "ˈliŋk"
+      },
+      {
+        id: "w5_22",
+        word: "Log in",
+        meaning: "Giriş yapmak",
+        sentence: "Log in to your account.",
+        synonym: "Sign in, Enter",
+        antonym: "Log out",
+        memoryTip: "LOG IN → LOG into system!",
+        pronunciation: "ˈläg ˈin"
+      },
+      {
+        id: "w5_23",
+        word: "Log out",
+        meaning: "Çıkış yapmak",
+        sentence: "Don't forget to log out.",
+        synonym: "Sign out, Exit",
+        antonym: "Log in",
+        memoryTip: "LOG OUT → LOG out of system!",
+        pronunciation: "ˈläg ˈau̇t"
+      },
+      {
+        id: "w5_24",
+        word: "Message",
+        meaning: "Mesaj",
+        sentence: "I received a message from my friend.",
+        synonym: "Text, Note",
+        antonym: "Silence",
+        memoryTip: "MESSAGE → send a MESSAGE!",
+        pronunciation: "ˈme-sij"
+      },
+      {
+        id: "w5_25",
+        word: "Online",
+        meaning: "Çevrimiçi",
+        sentence: "Are you online right now?",
+        synonym: "Connected, Available",
+        antonym: "Offline",
+        memoryTip: "ONLINE → ON the LINE!",
+        pronunciation: "ˈän-ˌlīn"
+      },
+      {
+        id: "w5_26",
+        word: "Password",
+        meaning: "Şifre",
+        sentence: "Enter your password to continue.",
+        synonym: "Code, Key",
+        antonym: "Public",
+        memoryTip: "PASSWORD → PASS + WORD = secret word!",
+        pronunciation: "ˈpas-ˌwərd"
+      },
+      {
+        id: "w5_27",
+        word: "Post",
+        meaning: "Göndermek, paylaşmak",
+        sentence: "Post a photo on Instagram.",
+        synonym: "Share, Publish",
+        antonym: "Delete",
+        memoryTip: "POST → POST on wall!",
+        pronunciation: "ˈpōst"
+      },
+      {
+        id: "w5_28",
+        word: "Profile",
+        meaning: "Profil",
+        sentence: "Update your profile picture.",
+        synonym: "Account, Page",
+        antonym: "Guest",
+        memoryTip: "PROFILE → your PROFILE page!",
+        pronunciation: "ˈprō-ˌfī(-ə)l"
+      },
+      {
+        id: "w5_29",
+        word: "Reply",
+        meaning: "Cevaplamak",
+        sentence: "Reply to my message when you can.",
+        synonym: "Answer, Respond",
+        antonym: "Ignore",
+        memoryTip: "REPLY → RE-spond to message!",
+        pronunciation: "ri-ˈplī"
+      },
+      {
+        id: "w5_30",
+        word: "Save",
+        meaning: "Kaydetmek",
+        sentence: "Save your work frequently.",
+        synonym: "Store, Keep",
+        antonym: "Delete, Remove",
+        memoryTip: "SAVE → SAVE your work!",
+        pronunciation: "ˈsāv"
+      },
+      {
+        id: "w5_31",
+        word: "Search",
+        meaning: "Aramak",
+        sentence: "Search for information on Google.",
+        synonym: "Look for, Find",
+        antonym: "Ignore",
+        memoryTip: "SEARCH → SEARCH for answers!",
+        pronunciation: "ˈsərch"
+      },
+      {
+        id: "w5_32",
+        word: "Send",
+        meaning: "Göndermek",
+        sentence: "Send me an email.",
+        synonym: "Deliver, Mail",
+        antonym: "Receive",
+        memoryTip: "SEND → SEND it away!",
+        pronunciation: "ˈsend"
+      },
+      {
+        id: "w5_33",
+        word: "Share",
+        meaning: "Paylaşmak",
+        sentence: "Share this post with your friends.",
+        synonym: "Distribute, Give",
+        antonym: "Keep private",
+        memoryTip: "SHARE → SHARE and care!",
+        pronunciation: "ˈsher"
+      },
+      {
+        id: "w5_34",
+        word: "Sign up",
+        meaning: "Kayıt olmak",
+        sentence: "Sign up for a new account.",
+        synonym: "Register, Join",
+        antonym: "Sign out",
+        memoryTip: "SIGN UP → SIGN UP for service!",
+        pronunciation: "ˈsīn ˈəp"
+      },
+      {
+        id: "w5_35",
+        word: "Social media",
+        meaning: "Sosyal medya",
+        sentence: "I spend too much time on social media.",
+        synonym: "Social networks, Platforms",
+        antonym: "Private communication",
+        memoryTip: "SOCIAL MEDIA → SOCIAL communication MEDIA!",
+        pronunciation: "ˈsō-shəl ˈmē-dē-ə"
+      },
+      {
+        id: "w5_36",
+        word: "Subscribe",
+        meaning: "Abone olmak",
+        sentence: "Subscribe to my YouTube channel.",
+        synonym: "Follow, Join",
+        antonym: "Unsubscribe",
+        memoryTip: "SUBSCRIBE → SUB + SCRIBE = write under!",
+        pronunciation: "səb-ˈskrīb"
+      },
+      {
+        id: "w5_37",
+        word: "Upload",
+        meaning: "Yüklemek",
+        sentence: "Upload your photos to the cloud.",
+        synonym: "Send, Post",
+        antonym: "Download",
+        memoryTip: "UPLOAD → UP load = send UP!",
+        pronunciation: "ˈəp-ˌlōd"
+      },
+      {
+        id: "w5_38",
+        word: "Username",
+        meaning: "Kullanıcı adı",
+        sentence: "Enter your username and password.",
+        synonym: "ID, Handle",
+        antonym: "Password",
+        memoryTip: "USERNAME → USER's NAME!",
+        pronunciation: "ˈyü-zər-ˌnām"
+      },
+      {
+        id: "w5_39",
+        word: "Website",
+        meaning: "Web sitesi",
+        sentence: "Visit our website for more information.",
+        synonym: "Site, Page",
+        antonym: "Offline",
+        memoryTip: "WEBSITE → WEB + SITE!",
+        pronunciation: "ˈweb-ˌsīt"
+      },
+      {
+        id: "w5_40",
+        word: "Wi-Fi",
+        meaning: "Kablosuz internet",
+        sentence: "Connect to the Wi-Fi network.",
+        synonym: "Wireless, Internet",
+        antonym: "Wired",
+        memoryTip: "WI-FI → Wireless Fidelity!",
+        pronunciation: "ˈwī-ˌfī"
+      }
+    ]
+  },
+  "unit6": {
+    id: "unit6",
+    title: "Adventures",
+    icon: "🏔️",
+    words: [
+      {
+        id: "w6_1",
+        word: "Adventure",
+        meaning: "Macera",
+        sentence: "We had an amazing adventure in the mountains.",
+        synonym: "Journey, Experience",
+        antonym: "Routine",
+        memoryTip: "ADVENTURE → ADVENTURE awaits!",
+        pronunciation: "əd-ˈven-chər"
+      },
+      {
+        id: "w6_2",
+        word: "Accident",
+        meaning: "Kaza",
+        sentence: "There was a car accident on the highway.",
+        synonym: "Crash, Incident",
+        antonym: "Safety",
+        memoryTip: "ACCIDENT → ACCIDENT happens!",
+        pronunciation: "ˈak-sə-dənt"
+      },
+      {
+        id: "w6_3",
+        word: "Accommodation",
+        meaning: "Konaklama",
+        sentence: "We booked accommodation for the weekend.",
+        synonym: "Lodging, Hotel",
+        antonym: "Homeless",
+        memoryTip: "ACCOMMODATION → ACCOMMODATE guests!",
+        pronunciation: "ə-ˌkä-mə-ˈdā-shən"
+      },
+      {
+        id: "w6_4",
+        word: "Adrenalin seeker",
+        meaning: "Adrenalin tutkunu",
+        sentence: "He's a real adrenalin seeker who loves extreme sports.",
+        synonym: "Thrill seeker, Daredevil",
+        antonym: "Cautious person",
+        memoryTip: "ADRENALIN SEEKER → seeks ADRENALIN!",
+        pronunciation: "ə-ˈdre-nə-lən ˈsē-kər"
+      },
+      {
+        id: "w6_5",
+        word: "Adventurous",
+        meaning: "Maceralı",
+        sentence: "She's very adventurous and loves traveling.",
+        synonym: "Bold, Daring",
+        antonym: "Cautious, Safe",
+        memoryTip: "ADVENTUROUS → full of ADVENTURE!",
+        pronunciation: "əd-ˈven-chə-rəs"
+      },
+      {
+        id: "w6_6",
+        word: "Afraid",
+        meaning: "Korkmuş",
+        sentence: "I'm afraid of heights.",
+        synonym: "Scared, Frightened",
+        antonym: "Brave, Fearless",
+        memoryTip: "AFRAID → A + FRAID = scared!",
+        pronunciation: "ə-ˈfrād"
+      },
+      {
+        id: "w6_7",
+        word: "Ambitious",
+        meaning: "Hırslı",
+        sentence: "She's very ambitious about her career.",
+        synonym: "Determined, Driven",
+        antonym: "Lazy, Unmotivated",
+        memoryTip: "AMBITIOUS → AMBITIOUS goals!",
+        pronunciation: "am-ˈbi-shəs"
+      },
+      {
+        id: "w6_8",
+        word: "Beach",
+        meaning: "Sahil, plaj",
+        sentence: "Let's go to the beach this weekend.",
+        synonym: "Shore, Coast",
+        antonym: "Mountain",
+        memoryTip: "BEACH → BEACH volleyball!",
+        pronunciation: "ˈbēch"
+      },
+      {
+        id: "w6_9",
+        word: "Boring",
+        meaning: "Sıkıcı",
+        sentence: "This movie is so boring.",
+        synonym: "Dull, Tedious",
+        antonym: "Interesting, Exciting",
+        memoryTip: "BORING → makes you SNORE!",
+        pronunciation: "ˈbȯr-iŋ"
+      },
+      {
+        id: "w6_10",
+        word: "Caving",
+        meaning: "Mağara yürüyüşü",
+        sentence: "Caving is an exciting adventure sport.",
+        synonym: "Spelunking, Cave exploring",
+        antonym: "Surface activities",
+        memoryTip: "CAVING → explore CAVEs!",
+        pronunciation: "ˈkā-viŋ"
+      },
+      {
+        id: "w6_11",
+        word: "Challenging",
+        meaning: "Zorlu",
+        sentence: "Climbing that mountain was very challenging.",
+        synonym: "Difficult, Tough",
+        antonym: "Easy, Simple",
+        memoryTip: "CHALLENGING → a CHALLENGE!",
+        pronunciation: "ˈcha-lən-jiŋ"
+      },
+      {
+        id: "w6_12",
+        word: "Dangerous",
+        meaning: "Tehlikeli",
+        sentence: "This activity is too dangerous for children.",
+        synonym: "Risky, Unsafe",
+        antonym: "Safe, Secure",
+        memoryTip: "DANGEROUS → full of DANGER!",
+        pronunciation: "ˈdān-jə-rəs"
+      },
+      {
+        id: "w6_13",
+        word: "Demonstration",
+        meaning: "Gösteri",
+        sentence: "The instructor gave a demonstration of the equipment.",
+        synonym: "Show, Example",
+        antonym: "Hide",
+        memoryTip: "DEMONSTRATION → DEMONSTRATE how!",
+        pronunciation: "ˌde-mən-ˈstrā-shən"
+      },
+      {
+        id: "w6_14",
+        word: "Destination",
+        meaning: "Varış yeri",
+        sentence: "Our destination is the mountain peak.",
+        synonym: "Goal, End point",
+        antonym: "Starting point",
+        memoryTip: "DESTINATION → DESTINed to arrive!",
+        pronunciation: "ˌdes-tə-ˈnā-shən"
+      },
+      {
+        id: "w6_15",
+        word: "Entertaining",
+        meaning: "Eğlendirici",
+        sentence: "The show was very entertaining.",
+        synonym: "Amusing, Fun",
+        antonym: "Boring",
+        memoryTip: "ENTERTAINING → ENTERTAINs you!",
+        pronunciation: "ˌen-tər-ˈtā-niŋ"
+      },
+      {
+        id: "w6_16",
+        word: "Exciting",
+        meaning: "Heyecan verici",
+        sentence: "The roller coaster was so exciting!",
+        synonym: "Thrilling, Stimulating",
+        antonym: "Boring, Dull",
+        memoryTip: "EXCITING → causes EXCITEMENT!",
+        pronunciation: "ik-ˈsī-tiŋ"
+      },
+      {
+        id: "w6_17",
+        word: "Experience",
+        meaning: "Deneyim, tecrübe etmek",
+        sentence: "I want to experience skydiving.",
+        synonym: "Encounter, Live through",
+        antonym: "Miss",
+        memoryTip: "EXPERIENCE → EX-perience it!",
+        pronunciation: "ik-ˈspir-ē-ən(t)s"
+      },
+      {
+        id: "w6_18",
+        word: "Extreme sports",
+        meaning: "Tehlikeli sporlar",
+        sentence: "Extreme sports require special equipment.",
+        synonym: "Adventure sports, High-risk sports",
+        antonym: "Safe sports",
+        memoryTip: "EXTREME SPORTS → EXTREMEly dangerous!",
+        pronunciation: "ik-ˈstrēm ˈspȯrts"
+      },
+      {
+        id: "w6_19",
+        word: "Fascinating",
+        meaning: "Büyüleyici",
+        sentence: "The view from the top was fascinating.",
+        synonym: "Captivating, Amazing",
+        antonym: "Boring",
+        memoryTip: "FASCINATING → FASCINATEs you!",
+        pronunciation: "ˈfa-sə-ˌnā-tiŋ"
+      },
+      {
+        id: "w6_20",
+        word: "Freedom",
+        meaning: "Özgürlük",
+        sentence: "I love the freedom of traveling alone.",
+        synonym: "Liberty, Independence",
+        antonym: "Restriction",
+        memoryTip: "FREEDOM → FREE to do!",
+        pronunciation: "ˈfrē-dəm"
+      },
+      {
+        id: "w6_21",
+        word: "Hang gliding",
+        meaning: "Uçma sporu",
+        sentence: "Hang gliding is an amazing experience.",
+        synonym: "Flying, Soaring",
+        antonym: "Ground activities",
+        memoryTip: "HANG GLIDING → HANG and GLIDE!",
+        pronunciation: "ˈhaŋ ˈglī-diŋ"
+      },
+      {
+        id: "w6_22",
+        word: "Helmet",
+        meaning: "Kask",
+        sentence: "Always wear a helmet when cycling.",
+        synonym: "Head protection, Hard hat",
+        antonym: "Bare head",
+        memoryTip: "HELMET → protects your HEAD!",
+        pronunciation: "ˈhel-mət"
+      },
+      {
+        id: "w6_23",
+        word: "Interesting",
+        meaning: "İlginç",
+        sentence: "This book is very interesting.",
+        synonym: "Engaging, Captivating",
+        antonym: "Boring, Dull",
+        memoryTip: "INTERESTING → INTERESTs you!",
+        pronunciation: "ˈin-tə-rəs-tiŋ"
+      },
+      {
+        id: "w6_24",
+        word: "Knife",
+        meaning: "Bıçak",
+        sentence: "We need a knife to cut the rope.",
+        synonym: "Blade, Cutter",
+        antonym: "Spoon",
+        memoryTip: "KNIFE → cuts like a KNIFE!",
+        pronunciation: "ˈnīf"
+      },
+      {
+        id: "w6_25",
+        word: "Research",
+        meaning: "Araştırmak",
+        sentence: "I need to research this topic.",
+        synonym: "Investigate, Study",
+        antonym: "Ignore",
+        memoryTip: "RESEARCH → RE-search again!",
+        pronunciation: "ri-ˈsərch"
+      },
+      {
+        id: "w6_26",
+        word: "Scuba diving",
+        meaning: "Tüple dalış",
+        sentence: "Scuba diving is popular in tropical areas.",
+        synonym: "Underwater diving, Snorkeling",
+        antonym: "Surface swimming",
+        memoryTip: "SCUBA DIVING → Self-Contained Underwater Breathing Apparatus!",
+        pronunciation: "ˈskü-bə ˈdī-viŋ"
+      },
+      {
+        id: "w6_27",
+        word: "Structure",
+        meaning: "Yapı, bina",
+        sentence: "The ancient structure was amazing.",
+        synonym: "Building, Construction",
+        antonym: "Ruin",
+        memoryTip: "STRUCTURE → STRUCTURE of building!",
+        pronunciation: "ˈstrək-chər"
+      },
+      {
+        id: "w6_28",
+        word: "To me",
+        meaning: "Bence, bana göre",
+        sentence: "To me, this is the best adventure.",
+        synonym: "In my opinion, I think",
+        antonym: "To you",
+        memoryTip: "TO ME → my opinion TO ME!",
+        pronunciation: "ˈtü ˈmē"
+      },
+      {
+        id: "w6_29",
+        word: "Transportation",
+        meaning: "Ulaşım",
+        sentence: "What transportation did you use?",
+        synonym: "Travel, Transport",
+        antonym: "Walking",
+        memoryTip: "TRANSPORTATION → TRANSPORT you!",
+        pronunciation: "ˌtran(t)s-pər-ˈtā-shən"
+      },
+      {
+        id: "w6_30",
+        word: "Equipment",
+        meaning: "Ekipman",
+        sentence: "We need proper equipment for this adventure.",
+        synonym: "Gear, Tools",
+        antonym: "Nothing",
+        memoryTip: "EQUIPMENT → EQUIP yourself!",
+        pronunciation: "i-ˈkwip-mənt"
+      },
+      {
+        id: "w6_31",
+        word: "Explore",
+        meaning: "Keşfetmek",
+        sentence: "Let's explore the cave together.",
+        synonym: "Discover, Investigate",
+        antonym: "Ignore",
+        memoryTip: "EXPLORE → EXPLORE new places!",
+        pronunciation: "ik-ˈsplȯr"
+      },
+      {
+        id: "w6_32",
+        word: "Safety",
+        meaning: "Güvenlik",
+        sentence: "Safety is our first priority.",
+        synonym: "Security, Protection",
+        antonym: "Danger",
+        memoryTip: "SAFETY → stay SAFE!",
+        pronunciation: "ˈsāf-tē"
+      },
+      {
+        id: "w6_33",
+        word: "Risk",
+        meaning: "Risk",
+        sentence: "This activity involves some risk.",
+        synonym: "Danger, Hazard",
+        antonym: "Safety",
+        memoryTip: "RISK → take a RISK!",
+        pronunciation: "ˈrisk"
+      },
+      {
+        id: "w6_34",
+        word: "Journey",
+        meaning: "Yolculuk",
+        sentence: "Our journey to the mountain took 3 hours.",
+        synonym: "Trip, Travel",
+        antonym: "Stay",
+        memoryTip: "JOURNEY → JOURNEY to destination!",
+        pronunciation: "ˈjər-nē"
+      },
+      {
+        id: "w6_35",
+        word: "Climb",
+        meaning: "Tırmanmak",
+        sentence: "We will climb the mountain tomorrow.",
+        synonym: "Ascend, Scale",
+        antonym: "Descend",
+        memoryTip: "CLIMB → CLIMB up!",
+        pronunciation: "ˈklīm"
+      },
+      {
+        id: "w6_36",
+        word: "Courage",
+        meaning: "Cesaret",
+        sentence: "It takes courage to try extreme sports.",
+        synonym: "Bravery, Boldness",
+        antonym: "Fear",
+        memoryTip: "COURAGE → have COURAGE!",
+        pronunciation: "ˈkər-ij"
+      },
+      {
+        id: "w6_37",
+        word: "Survive",
+        meaning: "Hayatta kalmak",
+        sentence: "We need to survive in the wilderness.",
+        synonym: "Live, Endure",
+        antonym: "Die",
+        memoryTip: "SURVIVE → SURVIVE the challenge!",
+        pronunciation: "sər-ˈvīv"
+      },
+      {
+        id: "w6_38",
+        word: "Thrilling",
+        meaning: "Heyecan verici",
+        sentence: "The bungee jump was thrilling!",
+        synonym: "Exciting, Adrenaline-pumping",
+        antonym: "Boring",
+        memoryTip: "THRILLING → gives you THRILL!",
+        pronunciation: "ˈthri-liŋ"
+      },
+      {
+        id: "w6_39",
+        word: "Wilderness",
+        meaning: "Vahşi doğa",
+        sentence: "We camped in the wilderness.",
+        synonym: "Wild, Nature",
+        antonym: "City",
+        memoryTip: "WILDERNESS → WILD nature!",
+        pronunciation: "ˈwil-dər-nəs"
+      },
+      {
+        id: "w6_40",
+        word: "Challenge",
+        meaning: "Meydan okumak, zorluk",
+        sentence: "This climb is a real challenge.",
+        synonym: "Difficulty, Test",
+        antonym: "Easy task",
+        memoryTip: "CHALLENGE → CHALLENGE yourself!",
+        pronunciation: "ˈcha-lənj"
+      }
+    ]
+  },
+  "unit7": {
+    id: "unit7",
+    title: "Tourism",
+    icon: "✈️",
+    words: [
+      {
+        id: "w7_1",
+        word: "Tourism",
+        meaning: "Turizm",
+        sentence: "Tourism is important for the economy.",
+        synonym: "Travel, Sightseeing",
+        antonym: "Staying home",
+        memoryTip: "TOURISM → TOUR around!",
+        pronunciation: "ˈtu̇r-ˌi-zəm"
+      },
+      {
+        id: "w7_2",
+        word: "Tourist",
+        meaning: "Turist",
+        sentence: "Many tourists visit Istanbul every year.",
+        synonym: "Visitor, Traveler",
+        antonym: "Local",
+        memoryTip: "TOURIST → TOUR around!",
+        pronunciation: "ˈtu̇r-əst"
+      },
+      {
+        id: "w7_3",
+        word: "Travel",
+        meaning: "Seyahat etmek",
+        sentence: "I love to travel to new countries.",
+        synonym: "Journey, Trip",
+        antonym: "Stay",
+        memoryTip: "TRAVEL → TRAVEL the world!",
+        pronunciation: "ˈtra-vəl"
+      },
+      {
+        id: "w7_4",
+        word: "Trip",
+        meaning: "Gezi, yolculuk",
+        sentence: "We're planning a trip to Paris.",
+        synonym: "Journey, Excursion",
+        antonym: "Stay",
+        memoryTip: "TRIP → take a TRIP!",
+        pronunciation: "ˈtrip"
+      },
+      {
+        id: "w7_5",
+        word: "Vacation",
+        meaning: "Tatil",
+        sentence: "We're going on vacation next month.",
+        synonym: "Holiday, Break",
+        antonym: "Work",
+        memoryTip: "VACATION → VACATE work!",
+        pronunciation: "vā-ˈkā-shən"
+      },
+      {
+        id: "w7_6",
+        word: "Hotel",
+        meaning: "Otel",
+        sentence: "We booked a hotel room for three nights.",
+        synonym: "Accommodation, Inn",
+        antonym: "Home",
+        memoryTip: "HOTEL → stay in HOTEL!",
+        pronunciation: "hō-ˈtel"
+      },
+      {
+        id: "w7_7",
+        word: "Reservation",
+        meaning: "Rezervasyon",
+        sentence: "I made a reservation at the restaurant.",
+        synonym: "Booking, Appointment",
+        antonym: "Walk-in",
+        memoryTip: "RESERVATION → RESERVE a table!",
+        pronunciation: "ˌre-zər-ˈvā-shən"
+      },
+      {
+        id: "w7_8",
+        word: "Sightseeing",
+        meaning: "Gezip görme",
+        sentence: "We did sightseeing in the old city.",
+        synonym: "Touring, Visiting",
+        antonym: "Staying in hotel",
+        memoryTip: "SIGHTSEEING → SEE SIGHTS!",
+        pronunciation: "ˈsīt-ˌsē-iŋ"
+      },
+      {
+        id: "w7_9",
+        word: "Attraction",
+        meaning: "Çekici yer",
+        sentence: "The museum is a popular tourist attraction.",
+        synonym: "Landmark, Site",
+        antonym: "Uninteresting place",
+        memoryTip: "ATTRACTION → ATTRACTs visitors!",
+        pronunciation: "ə-ˈtrak-shən"
+      },
+      {
+        id: "w7_10",
+        word: "Guide",
+        meaning: "Rehber",
+        sentence: "Our guide showed us around the city.",
+        synonym: "Tour guide, Leader",
+        antonym: "Lost",
+        memoryTip: "GUIDE → GUIDEs you!",
+        pronunciation: "ˈgīd"
+      },
+      {
+        id: "w7_11",
+        word: "Map",
+        meaning: "Harita",
+        sentence: "Can you show me on the map?",
+        synonym: "Chart, Plan",
+        antonym: "Lost",
+        memoryTip: "MAP → MAP the route!",
+        pronunciation: "ˈmap"
+      },
+      {
+        id: "w7_12",
+        word: "Passport",
+        meaning: "Pasaport",
+        sentence: "Don't forget your passport!",
+        synonym: "ID, Document",
+        antonym: "No ID",
+        memoryTip: "PASSPORT → PASS the PORT!",
+        pronunciation: "ˈpas-ˌpȯrt"
+      },
+      {
+        id: "w7_13",
+        word: "Ticket",
+        meaning: "Bilet",
+        sentence: "I bought two tickets for the concert.",
+        synonym: "Pass, Admission",
+        antonym: "No entry",
+        memoryTip: "TICKET → TICKET to enter!",
+        pronunciation: "ˈti-kət"
+      },
+      {
+        id: "w7_14",
+        word: "Luggage",
+        meaning: "Bagaj",
+        sentence: "Where is your luggage?",
+        synonym: "Baggage, Suitcase",
+        antonym: "Hands free",
+        memoryTip: "LUGGAGE → LUG your bags!",
+        pronunciation: "ˈlə-gij"
+      },
+      {
+        id: "w7_15",
+        word: "Suitcase",
+        meaning: "Bavul",
+        sentence: "Pack your suitcase for the trip.",
+        synonym: "Bag, Luggage",
+        antonym: "Empty",
+        memoryTip: "SUITCASE → SUIT for travel!",
+        pronunciation: "ˈsüt-ˌkās"
+      },
+      {
+        id: "w7_16",
+        word: "Flight",
+        meaning: "Uçuş",
+        sentence: "Our flight leaves at 3 PM.",
+        synonym: "Trip, Journey",
+        antonym: "Ground travel",
+        memoryTip: "FLIGHT → FLY in FLIGHT!",
+        pronunciation: "ˈflīt"
+      },
+      {
+        id: "w7_17",
+        word: "Airport",
+        meaning: "Havalimanı",
+        sentence: "We arrived at the airport early.",
+        synonym: "Terminal, Airfield",
+        antonym: "Home",
+        memoryTip: "AIRPORT → AIR + PORT!",
+        pronunciation: "ˈer-ˌpȯrt"
+      },
+      {
+        id: "w7_18",
+        word: "Check in",
+        meaning: "Giriş yapmak",
+        sentence: "We need to check in at the hotel.",
+        synonym: "Register, Arrive",
+        antonym: "Check out",
+        memoryTip: "CHECK IN → CHECK IN to hotel!",
+        pronunciation: "ˈchek ˈin"
+      },
+      {
+        id: "w7_19",
+        word: "Check out",
+        meaning: "Çıkış yapmak",
+        sentence: "Check out time is 11 AM.",
+        synonym: "Leave, Depart",
+        antonym: "Check in",
+        memoryTip: "CHECK OUT → CHECK OUT of hotel!",
+        pronunciation: "ˈchek ˈau̇t"
+      },
+      {
+        id: "w7_20",
+        word: "Currency",
+        meaning: "Para birimi",
+        sentence: "What currency do they use in Turkey?",
+        synonym: "Money, Cash",
+        antonym: "Barter",
+        memoryTip: "CURRENCY → CURRENT money!",
+        pronunciation: "ˈkər-ən-sē"
+      },
+      {
+        id: "w7_21",
+        word: "Exchange",
+        meaning: "Döviz bozdurmak",
+        sentence: "Where can I exchange money?",
+        synonym: "Convert, Trade",
+        antonym: "Keep",
+        memoryTip: "EXCHANGE → EX-CHANGE money!",
+        pronunciation: "iks-ˈchānj"
+      },
+      {
+        id: "w7_22",
+        word: "Culture",
+        meaning: "Kültür",
+        sentence: "I love learning about different cultures.",
+        synonym: "Tradition, Customs",
+        antonym: "Ignorance",
+        memoryTip: "CULTURE → CULTURE of people!",
+        pronunciation: "ˈkəl-chər"
+      },
+      {
+        id: "w7_23",
+        word: "Traditional",
+        meaning: "Geleneksel",
+        sentence: "We ate traditional Turkish food.",
+        synonym: "Customary, Classic",
+        antonym: "Modern",
+        memoryTip: "TRADITIONAL → TRADITIONal way!",
+        pronunciation: "trə-ˈdish-nəl"
+      },
+      {
+        id: "w7_24",
+        word: "Landmark",
+        meaning: "Önemli yer",
+        sentence: "The Eiffel Tower is a famous landmark.",
+        synonym: "Monument, Attraction",
+        antonym: "Unknown place",
+        memoryTip: "LANDMARK → LAND + MARK!",
+        pronunciation: "ˈland-ˌmärk"
+      },
+      {
+        id: "w7_25",
+        word: "Monument",
+        meaning: "Anıt",
+        sentence: "We visited the historical monument.",
+        synonym: "Memorial, Statue",
+        antonym: "Modern building",
+        memoryTip: "MONUMENT → MONUMENTal structure!",
+        pronunciation: "ˈmän-yə-mənt"
+      },
+      {
+        id: "w7_26",
+        word: "Museum",
+        meaning: "Müze",
+        sentence: "The museum was very interesting.",
+        synonym: "Gallery, Exhibition",
+        antonym: "Outdoor",
+        memoryTip: "MUSEUM → MUSEUM of art!",
+        pronunciation: "myü-ˈzē-əm"
+      },
+      {
+        id: "w7_27",
+        word: "Restaurant",
+        meaning: "Restoran",
+        sentence: "We had dinner at a nice restaurant.",
+        synonym: "Cafe, Diner",
+        antonym: "Home cooking",
+        memoryTip: "RESTAURANT → REST and eat!",
+        pronunciation: "ˈre-stə-ˌränt"
+      },
+      {
+        id: "w7_28",
+        word: "Cuisine",
+        meaning: "Mutfak, yemek kültürü",
+        sentence: "Turkish cuisine is delicious.",
+        synonym: "Food, Cooking style",
+        antonym: "Fast food",
+        memoryTip: "CUISINE → CUISINE of country!",
+        pronunciation: "kwi-ˈzēn"
+      },
+      {
+        id: "w7_29",
+        word: "Souvenir",
+        meaning: "Hatıra eşya",
+        sentence: "I bought souvenirs for my family.",
+        synonym: "Gift, Memento",
+        antonym: "Nothing",
+        memoryTip: "SOUVENIR → SOUVENIR to remember!",
+        pronunciation: "ˌsü-və-ˈnir"
+      },
+      {
+        id: "w7_30",
+        word: "Brochure",
+        meaning: "Broşür",
+        sentence: "Pick up a brochure at the tourist office.",
+        synonym: "Pamphlet, Guide",
+        antonym: "No information",
+        memoryTip: "BROCHURE → BROCHURE with info!",
+        pronunciation: "brō-ˈshu̇r"
+      },
+      {
+        id: "w7_31",
+        word: "Itinerary",
+        meaning: "Gezi programı",
+        sentence: "Here's our itinerary for the trip.",
+        synonym: "Schedule, Plan",
+        antonym: "No plan",
+        memoryTip: "ITINERARY → ITINERARY of trip!",
+        pronunciation: "ī-ˈti-nə-ˌrer-ē"
+      },
+      {
+        id: "w7_32",
+        word: "Destination",
+        meaning: "Varış yeri",
+        sentence: "Paris is our final destination.",
+        synonym: "Goal, End point",
+        antonym: "Starting point",
+        memoryTip: "DESTINATION → DESTINed to arrive!",
+        pronunciation: "ˌdes-tə-ˈnā-shən"
+      },
+      {
+        id: "w7_33",
+        word: "Journey",
+        meaning: "Yolculuk",
+        sentence: "The journey took 8 hours.",
+        synonym: "Trip, Travel",
+        antonym: "Stay",
+        memoryTip: "JOURNEY → JOURNEY to destination!",
+        pronunciation: "ˈjər-nē"
+      },
+      {
+        id: "w7_34",
+        word: "Abroad",
+        meaning: "Yurt dışında",
+        sentence: "I'm traveling abroad this summer.",
+        synonym: "Overseas, Foreign",
+        antonym: "Domestic",
+        memoryTip: "ABROAD → A + BROAD = wide world!",
+        pronunciation: "ə-ˈbrȯd"
+      },
+      {
+        id: "w7_35",
+        word: "Domestic",
+        meaning: "Yurt içi",
+        sentence: "We prefer domestic travel.",
+        synonym: "Local, National",
+        antonym: "International",
+        memoryTip: "DOMESTIC → in your DOMAIN!",
+        pronunciation: "də-ˈme-stik"
+      },
+      {
+        id: "w7_36",
+        word: "Scenery",
+        meaning: "Manzara",
+        sentence: "The scenery was breathtaking.",
+        synonym: "View, Landscape",
+        antonym: "Cityscape",
+        memoryTip: "SCENERY → SCENE you see!",
+        pronunciation: "ˈsē-nə-rē"
+      },
+      {
+        id: "w7_37",
+        word: "Photograph",
+        meaning: "Fotoğraf çekmek",
+        sentence: "Let's photograph this beautiful view.",
+        synonym: "Photo, Picture",
+        antonym: "Delete",
+        memoryTip: "PHOTOGRAPH → PHOTO + GRAPH!",
+        pronunciation: "ˈfō-tə-ˌgraf"
+      },
+      {
+        id: "w7_38",
+        word: "Explore",
+        meaning: "Keşfetmek",
+        sentence: "Let's explore the old town.",
+        synonym: "Discover, Visit",
+        antonym: "Ignore",
+        memoryTip: "EXPLORE → EXPLORE new places!",
+        pronunciation: "ik-ˈsplȯr"
+      },
+      {
+        id: "w7_39",
+        word: "Experience",
+        meaning: "Deneyim",
+        sentence: "Traveling is a great experience.",
+        synonym: "Adventure, Journey",
+        antonym: "Miss",
+        memoryTip: "EXPERIENCE → EX-perience it!",
+        pronunciation: "ik-ˈspir-ē-ən(t)s"
+      },
+      {
+        id: "w7_40",
+        word: "Memorable",
+        meaning: "Unutulmaz",
+        sentence: "It was a memorable vacation.",
+        synonym: "Unforgettable, Special",
+        antonym: "Forgettable",
+        memoryTip: "MEMORABLE → MEMORable = remember!",
+        pronunciation: "ˈme-mə-rə-bəl"
+      }
+    ]
+  },
+  "unit8": {
+    id: "unit8",
+    title: "Chores",
+    icon: "🧹",
+    words: [
+      {
+        id: "w8_1",
+        word: "Chores",
+        meaning: "Ev işleri",
+        sentence: "I do my chores every Saturday.",
+        synonym: "Housework, Tasks",
+        antonym: "Leisure",
+        memoryTip: "CHORES → CHORES at home!",
+        pronunciation: "ˈchȯr"
+      },
+      {
+        id: "w8_2",
+        word: "Do the laundry",
+        meaning: "Çamaşır yıkamak",
+        sentence: "I need to do the laundry today.",
+        synonym: "Wash clothes, Clean clothes",
+        antonym: "Dirty clothes",
+        memoryTip: "DO THE LAUNDRY → DO laundry!",
+        pronunciation: "ˈdü ˈt͟hə ˈlȯn-drē"
+      },
+      {
+        id: "w8_3",
+        word: "Do the dishes",
+        meaning: "Bulaşıkları yıkamak",
+        sentence: "It's your turn to do the dishes.",
+        synonym: "Wash dishes, Clean dishes",
+        antonym: "Dirty dishes",
+        memoryTip: "DO THE DISHES → DO dishes!",
+        pronunciation: "ˈdü ˈt͟hə ˈdi-shəz"
+      },
+      {
+        id: "w8_4",
+        word: "Vacuum",
+        meaning: "Süpürmek",
+        sentence: "I vacuum the floor every week.",
+        synonym: "Clean, Sweep",
+        antonym: "Dirty",
+        memoryTip: "VACUUM → VACUUM cleaner!",
+        pronunciation: "ˈva-kyəm"
+      },
+      {
+        id: "w8_5",
+        word: "Dust",
+        meaning: "Toz almak",
+        sentence: "Please dust the furniture.",
+        synonym: "Clean, Wipe",
+        antonym: "Dirty",
+        memoryTip: "DUST → remove DUST!",
+        pronunciation: "ˈdəst"
+      },
+      {
+        id: "w8_6",
+        word: "Take out the trash",
+        meaning: "Çöpü dışarı çıkarmak",
+        sentence: "Don't forget to take out the trash.",
+        synonym: "Throw away, Remove garbage",
+        antonym: "Keep trash",
+        memoryTip: "TAKE OUT THE TRASH → TAKE it OUT!",
+        pronunciation: "ˈtāk ˈau̇t ˈt͟hə ˈtrash"
+      },
+      {
+        id: "w8_7",
+        word: "Make the bed",
+        meaning: "Yatağı toplamak",
+        sentence: "Make your bed before leaving.",
+        synonym: "Tidy bed, Arrange bed",
+        antonym: "Messy bed",
+        memoryTip: "MAKE THE BED → MAKE it neat!",
+        pronunciation: "ˈmāk ˈt͟hə ˈbed"
+      },
+      {
+        id: "w8_8",
+        word: "Set the table",
+        meaning: "Masayı kurmak",
+        sentence: "Can you set the table for dinner?",
+        synonym: "Prepare table, Arrange table",
+        antonym: "Clear table",
+        memoryTip: "SET THE TABLE → SET it up!",
+        pronunciation: "ˈset ˈt͟hə ˈtā-bəl"
+      },
+      {
+        id: "w8_9",
+        word: "Do the ironing",
+        meaning: "Ütü yapmak",
+        sentence: "I do the ironing on Sundays.",
+        synonym: "Press clothes, Iron clothes",
+        antonym: "Wrinkled clothes",
+        memoryTip: "DO THE IRONING → IRON clothes!",
+        pronunciation: "ˈdü ˈt͟hə ˈī(-ə)r-niŋ"
+      },
+      {
+        id: "w8_10",
+        word: "Mop",
+        meaning: "Paspaslamak",
+        sentence: "I mop the kitchen floor.",
+        synonym: "Clean, Wash floor",
+        antonym: "Dirty floor",
+        memoryTip: "MOP → MOP the floor!",
+        pronunciation: "ˈmäp"
+      },
+      {
+        id: "w8_11",
+        word: "Feed",
+        meaning: "Beslemek",
+        sentence: "I feed the cat every morning.",
+        synonym: "Give food, Nourish",
+        antonym: "Starve",
+        memoryTip: "FEED → FEED the animals!",
+        pronunciation: "ˈfēd"
+      },
+      {
+        id: "w8_12",
+        word: "Water",
+        meaning: "Sulamak",
+        sentence: "Don't forget to water the plants.",
+        synonym: "Irrigate, Give water",
+        antonym: "Dry",
+        memoryTip: "WATER → WATER the plants!",
+        pronunciation: "ˈwȯ-tər"
+      },
+      {
+        id: "w8_13",
+        word: "Clean",
+        meaning: "Temizlemek",
+        sentence: "I clean my room every day.",
+        synonym: "Tidy, Organize",
+        antonym: "Dirty, Messy",
+        memoryTip: "CLEAN → keep it CLEAN!",
+        pronunciation: "ˈklēn"
+      },
+      {
+        id: "w8_14",
+        word: "Cook",
+        meaning: "Yemek pişirmek",
+        sentence: "I cook dinner for my family.",
+        synonym: "Prepare food, Make food",
+        antonym: "Eat out",
+        memoryTip: "COOK → COOK in kitchen!",
+        pronunciation: "ˈku̇k"
+      },
+      {
+        id: "w8_15",
+        word: "Walk",
+        meaning: "Yürütmek, gezdirmek",
+        sentence: "I walk the dog every evening.",
+        synonym: "Take for a walk, Exercise",
+        antonym: "Keep inside",
+        memoryTip: "WALK → WALK the dog!",
+        pronunciation: "ˈwȯk"
+      },
+      {
+        id: "w8_16",
+        word: "Organize",
+        meaning: "Düzenlemek",
+        sentence: "I need to organize my closet.",
+        synonym: "Arrange, Sort",
+        antonym: "Mess up",
+        memoryTip: "ORGANIZE → ORGANIZE things!",
+        pronunciation: "ˈȯr-gə-ˌnīz"
+      },
+      {
+        id: "w8_17",
+        word: "Tidy",
+        meaning: "Toplamak, düzenlemek",
+        sentence: "Please tidy your room.",
+        synonym: "Clean, Organize",
+        antonym: "Messy",
+        memoryTip: "TIDY → keep it TIDY!",
+        pronunciation: "ˈtī-dē"
+      },
+      {
+        id: "w8_18",
+        word: "Sweep",
+        meaning: "Süpürmek",
+        sentence: "I sweep the floor every day.",
+        synonym: "Clean, Brush",
+        antonym: "Dirty",
+        memoryTip: "SWEEP → SWEEP with broom!",
+        pronunciation: "ˈswēp"
+      },
+      {
+        id: "w8_19",
+        word: "Wash",
+        meaning: "Yıkamak",
+        sentence: "I wash the windows monthly.",
+        synonym: "Clean, Rinse",
+        antonym: "Dirty",
+        memoryTip: "WASH → WASH clean!",
+        pronunciation: "ˈwȯsh"
+      },
+      {
+        id: "w8_20",
+        word: "Responsibility",
+        meaning: "Sorumluluk",
+        sentence: "Doing chores is my responsibility.",
+        synonym: "Duty, Task",
+        antonym: "Freedom",
+        memoryTip: "RESPONSIBILITY → RESPONSIBILITY to do!",
+        pronunciation: "ri-ˌspän-sə-ˈbi-lə-tē"
+      },
+      {
+        id: "w8_21",
+        word: "Must",
+        meaning: "Zorunda olmak",
+        sentence: "You must clean your room.",
+        synonym: "Have to, Should",
+        antonym: "Don't have to",
+        memoryTip: "MUST → MUST do it!",
+        pronunciation: "ˈməst"
+      },
+      {
+        id: "w8_22",
+        word: "Have to",
+        meaning: "Zorunda olmak",
+        sentence: "I have to do my homework.",
+        synonym: "Must, Need to",
+        antonym: "Don't have to",
+        memoryTip: "HAVE TO → HAVE TO do!",
+        pronunciation: "ˈhav ˈtü"
+      },
+      {
+        id: "w8_23",
+        word: "Should",
+        meaning: "Meli, malı",
+        sentence: "You should help with chores.",
+        synonym: "Ought to, Had better",
+        antonym: "Shouldn't",
+        memoryTip: "SHOULD → SHOULD do it!",
+        pronunciation: "ˈshu̇d"
+      },
+      {
+        id: "w8_24",
+        word: "Household",
+        meaning: "Ev ile ilgili",
+        sentence: "We share household chores.",
+        synonym: "Home, Family",
+        antonym: "Workplace",
+        memoryTip: "HOUSEHOLD → HOUSE + HOLD!",
+        pronunciation: "ˈhau̇s-ˌhōld"
+      },
+      {
+        id: "w8_25",
+        word: "Routine",
+        meaning: "Rutin",
+        sentence: "Doing chores is part of my daily routine.",
+        synonym: "Habit, Schedule",
+        antonym: "Irregular",
+        memoryTip: "ROUTINE → ROUTINE tasks!",
+        pronunciation: "rü-ˈtēn"
+      },
+      {
+        id: "w8_26",
+        word: "Task",
+        meaning: "Görev",
+        sentence: "Each family member has different tasks.",
+        synonym: "Job, Duty",
+        antonym: "Leisure",
+        memoryTip: "TASK → TASK to do!",
+        pronunciation: "ˈtask"
+      },
+      {
+        id: "w8_27",
+        word: "Duty",
+        meaning: "Görev",
+        sentence: "It's my duty to help at home.",
+        synonym: "Responsibility, Task",
+        antonym: "Choice",
+        memoryTip: "DUTY → DUTY to do!",
+        pronunciation: "ˈdü-tē"
+      },
+      {
+        id: "w8_28",
+        word: "Share",
+        meaning: "Paylaşmak",
+        sentence: "We share the household chores.",
+        synonym: "Divide, Distribute",
+        antonym: "Keep all",
+        memoryTip: "SHARE → SHARE the work!",
+        pronunciation: "ˈsher"
+      },
+      {
+        id: "w8_29",
+        word: "Help",
+        meaning: "Yardım etmek",
+        sentence: "Can you help me with the dishes?",
+        synonym: "Assist, Aid",
+        antonym: "Hinder",
+        memoryTip: "HELP → HELP others!",
+        pronunciation: "ˈhelp"
+      },
+      {
+        id: "w8_30",
+        word: "Complete",
+        meaning: "Tamamlamak",
+        sentence: "I need to complete my chores.",
+        synonym: "Finish, Do",
+        antonym: "Start",
+        memoryTip: "COMPLETE → COMPLETE the task!",
+        pronunciation: "kəm-ˈplēt"
+      }
+    ]
+  },
+  "unit9": {
+    id: "unit9",
+    title: "Science",
+    icon: "🔬",
+    words: [
+      {
+        id: "w9_1",
+        word: "Science",
+        meaning: "Bilim",
+        sentence: "Science helps us understand the world.",
+        synonym: "Knowledge, Study",
+        antonym: "Ignorance",
+        memoryTip: "SCIENCE → SCIENTIFIC knowledge!",
+        pronunciation: "ˈsī-ən(t)s"
+      },
+      {
+        id: "w9_2",
+        word: "Scientist",
+        meaning: "Bilim insanı",
+        sentence: "Einstein was a great scientist.",
+        synonym: "Researcher, Scholar",
+        antonym: "Layperson",
+        memoryTip: "SCIENTIST → SCIENCE expert!",
+        pronunciation: "ˈsī-ən-tist"
+      },
+      {
+        id: "w9_3",
+        word: "Experiment",
+        meaning: "Deney",
+        sentence: "We did an experiment in chemistry class.",
+        synonym: "Test, Trial",
+        antonym: "Theory",
+        memoryTip: "EXPERIMENT → EXPERIMENT to test!",
+        pronunciation: "ik-ˈsper-ə-mənt"
+      },
+      {
+        id: "w9_4",
+        word: "Discover",
+        meaning: "Keşfetmek",
+        sentence: "Scientists discover new things every day.",
+        synonym: "Find, Uncover",
+        antonym: "Hide",
+        memoryTip: "DISCOVER → DISCOVER new!",
+        pronunciation: "di-ˈskə-vər"
+      },
+      {
+        id: "w9_5",
+        word: "Invention",
+        meaning: "Buluş",
+        sentence: "The telephone was an important invention.",
+        synonym: "Creation, Innovation",
+        antonym: "Destruction",
+        memoryTip: "INVENTION → INVENT something!",
+        pronunciation: "in-ˈven(t)-shən"
+      },
+      {
+        id: "w9_6",
+        word: "Research",
+        meaning: "Araştırma",
+        sentence: "She does research on climate change.",
+        synonym: "Study, Investigation",
+        antonym: "Ignore",
+        memoryTip: "RESEARCH → RE-search again!",
+        pronunciation: "ri-ˈsərch"
+      },
+      {
+        id: "w9_7",
+        word: "Laboratory",
+        meaning: "Laboratuvar",
+        sentence: "We work in the laboratory.",
+        synonym: "Lab, Workspace",
+        antonym: "Field",
+        memoryTip: "LABORATORY → LAB for work!",
+        pronunciation: "ˈla-brə-ˌtȯr-ē"
+      },
+      {
+        id: "w9_8",
+        word: "Theory",
+        meaning: "Teori",
+        sentence: "Einstein's theory of relativity is famous.",
+        synonym: "Hypothesis, Idea",
+        antonym: "Fact",
+        memoryTip: "THEORY → THEORY of science!",
+        pronunciation: "ˈthir-ē"
+      },
+      {
+        id: "w9_9",
+        word: "Hypothesis",
+        meaning: "Hipotez",
+        sentence: "Let's test this hypothesis.",
+        synonym: "Theory, Guess",
+        antonym: "Conclusion",
+        memoryTip: "HYPOTHESIS → HYPOTHESIS to test!",
+        pronunciation: "hī-ˈpä-thə-səs"
+      },
+      {
+        id: "w9_10",
+        word: "Observe",
+        meaning: "Gözlemlemek",
+        sentence: "Scientists observe nature carefully.",
+        synonym: "Watch, Study",
+        antonym: "Ignore",
+        memoryTip: "OBSERVE → OBSERVE closely!",
+        pronunciation: "əb-ˈzərv"
+      },
+      {
+        id: "w9_11",
+        word: "Analyze",
+        meaning: "Analiz etmek",
+        sentence: "We need to analyze the data.",
+        synonym: "Examine, Study",
+        antonym: "Ignore",
+        memoryTip: "ANALYZE → ANALYZE data!",
+        pronunciation: "ˈa-nə-ˌlīz"
+      },
+      {
+        id: "w9_12",
+        word: "Conclusion",
+        meaning: "Sonuç",
+        sentence: "What is your conclusion?",
+        synonym: "Result, End",
+        antonym: "Beginning",
+        memoryTip: "CONCLUSION → CONCLUDE the study!",
+        pronunciation: "kən-ˈklü-zhən"
+      },
+      {
+        id: "w9_13",
+        word: "Evidence",
+        meaning: "Kanıt",
+        sentence: "We need more evidence to prove this.",
+        synonym: "Proof, Data",
+        antonym: "Assumption",
+        memoryTip: "EVIDENCE → EVIDENCE proves!",
+        pronunciation: "ˈe-və-dən(t)s"
+      },
+      {
+        id: "w9_14",
+        word: "Prove",
+        meaning: "Kanıtlamak",
+        sentence: "Can you prove this theory?",
+        synonym: "Demonstrate, Show",
+        antonym: "Disprove",
+        memoryTip: "PROVE → PROVE it's true!",
+        pronunciation: "ˈprüv"
+      },
+      {
+        id: "w9_15",
+        word: "Chemistry",
+        meaning: "Kimya",
+        sentence: "I love chemistry class.",
+        synonym: "Science, Study of matter",
+        antonym: "Physics",
+        memoryTip: "CHEMISTRY → CHEMICAL reactions!",
+        pronunciation: "ˈke-mə-strē"
+      },
+      {
+        id: "w9_16",
+        word: "Physics",
+        meaning: "Fizik",
+        sentence: "Physics explains how things work.",
+        synonym: "Science, Study of nature",
+        antonym: "Chemistry",
+        memoryTip: "PHYSICS → PHYSICAL laws!",
+        pronunciation: "ˈfi-ziks"
+      },
+      {
+        id: "w9_17",
+        word: "Biology",
+        meaning: "Biyoloji",
+        sentence: "Biology is the study of living things.",
+        synonym: "Life science, Study of life",
+        antonym: "Physics",
+        memoryTip: "BIOLOGY → BIO = life!",
+        pronunciation: "bī-ˈä-lə-jē"
+      },
+      {
+        id: "w9_18",
+        word: "Microscope",
+        meaning: "Mikroskop",
+        sentence: "We use a microscope to see small things.",
+        synonym: "Magnifier, Instrument",
+        antonym: "Telescope",
+        memoryTip: "MICROSCOPE → MICRO = small!",
+        pronunciation: "ˈmī-krə-ˌskōp"
+      },
+      {
+        id: "w9_19",
+        word: "Telescope",
+        meaning: "Teleskop",
+        sentence: "We looked at stars through a telescope.",
+        synonym: "Viewer, Instrument",
+        antonym: "Microscope",
+        memoryTip: "TELESCOPE → TELE = far!",
+        pronunciation: "ˈte-lə-ˌskōp"
+      },
+      {
+        id: "w9_20",
+        word: "Atom",
+        meaning: "Atom",
+        sentence: "Everything is made of atoms.",
+        synonym: "Particle, Unit",
+        antonym: "Molecule",
+        memoryTip: "ATOM → ATOM is tiny!",
+        pronunciation: "ˈa-təm"
+      },
+      {
+        id: "w9_21",
+        word: "Molecule",
+        meaning: "Molekül",
+        sentence: "A molecule consists of atoms.",
+        synonym: "Particle, Compound",
+        antonym: "Atom",
+        memoryTip: "MOLECULE → MOLECULE of atoms!",
+        pronunciation: "ˈmä-lə-ˌkyül"
+      },
+      {
+        id: "w9_22",
+        word: "Energy",
+        meaning: "Enerji",
+        sentence: "The sun provides energy.",
+        synonym: "Power, Force",
+        antonym: "Weakness",
+        memoryTip: "ENERGY → full of ENERGY!",
+        pronunciation: "ˈe-nər-jē"
+      },
+      {
+        id: "w9_23",
+        word: "Force",
+        meaning: "Kuvvet",
+        sentence: "Gravity is a force.",
+        synonym: "Power, Strength",
+        antonym: "Weakness",
+        memoryTip: "FORCE → FORCE of nature!",
+        pronunciation: "ˈfȯrs"
+      },
+      {
+        id: "w9_24",
+        word: "Gravity",
+        meaning: "Yerçekimi",
+        sentence: "Gravity pulls things down.",
+        synonym: "Attraction, Force",
+        antonym: "Levitation",
+        memoryTip: "GRAVITY → GRAVITY pulls!",
+        pronunciation: "ˈgra-və-tē"
+      },
+      {
+        id: "w9_25",
+        word: "Temperature",
+        meaning: "Sıcaklık",
+        sentence: "What's the temperature today?",
+        synonym: "Heat, Cold",
+        antonym: "Room temperature",
+        memoryTip: "TEMPERATURE → TEMPERATURE gauge!",
+        pronunciation: "ˈtem-pər-ə-ˌchu̇r"
+      },
+      {
+        id: "w9_26",
+        word: "Measure",
+        meaning: "Ölçmek",
+        sentence: "We measure temperature in degrees.",
+        synonym: "Calculate, Gauge",
+        antonym: "Guess",
+        memoryTip: "MEASURE → MEASURE it!",
+        pronunciation: "ˈme-zhər"
+      },
+      {
+        id: "w9_27",
+        word: "Data",
+        meaning: "Veri",
+        sentence: "We collected a lot of data.",
+        synonym: "Information, Facts",
+        antonym: "Opinion",
+        memoryTip: "DATA → DATA collection!",
+        pronunciation: "ˈdā-tə"
+      },
+      {
+        id: "w9_28",
+        word: "Result",
+        meaning: "Sonuç",
+        sentence: "What was the result of the experiment?",
+        synonym: "Outcome, Finding",
+        antonym: "Cause",
+        memoryTip: "RESULT → RESULT of test!",
+        pronunciation: "ri-ˈzəlt"
+      },
+      {
+        id: "w9_29",
+        word: "Develop",
+        meaning: "Geliştirmek",
+        sentence: "Scientists develop new technologies.",
+        synonym: "Create, Improve",
+        antonym: "Destroy",
+        memoryTip: "DEVELOP → DEVELOP new!",
+        pronunciation: "di-ˈve-ləp"
+      },
+      {
+        id: "w9_30",
+        word: "Technology",
+        meaning: "Teknoloji",
+        sentence: "Modern technology changes our lives.",
+        synonym: "Innovation, Advancement",
+        antonym: "Primitive",
+        memoryTip: "TECHNOLOGY → TECH + NOLOGY!",
+        pronunciation: "tek-ˈnä-lə-jē"
+      },
+      {
+        id: "w9_31",
+        word: "Innovation",
+        meaning: "Yenilik",
+        sentence: "This is a great innovation.",
+        synonym: "Invention, New idea",
+        antonym: "Old way",
+        memoryTip: "INNOVATION → INNOVATE new!",
+        pronunciation: "ˌi-nə-ˈvā-shən"
+      },
+      {
+        id: "w9_32",
+        word: "Progress",
+        meaning: "İlerleme",
+        sentence: "Science makes great progress.",
+        synonym: "Advancement, Development",
+        antonym: "Regression",
+        memoryTip: "PROGRESS → PROGRESS forward!",
+        pronunciation: "ˈprä-grəs"
+      },
+      {
+        id: "w9_33",
+        word: "Achievement",
+        meaning: "Başarı",
+        sentence: "This is a great scientific achievement.",
+        synonym: "Accomplishment, Success",
+        antonym: "Failure",
+        memoryTip: "ACHIEVEMENT → ACHIEVE success!",
+        pronunciation: "ə-ˈchēv-mənt"
+      },
+      {
+        id: "w9_34",
+        word: "Nobel Prize",
+        meaning: "Nobel Ödülü",
+        sentence: "She won the Nobel Prize for physics.",
+        synonym: "Award, Honor",
+        antonym: "No recognition",
+        memoryTip: "NOBEL PRIZE → NOBEL award!",
+        pronunciation: "nō-ˈbel ˈprīz"
+      },
+      {
+        id: "w9_35",
+        word: "Breakthrough",
+        meaning: "Çığır açan buluş",
+        sentence: "This is a major breakthrough.",
+        synonym: "Discovery, Innovation",
+        antonym: "Failure",
+        memoryTip: "BREAKTHROUGH → BREAK THROUGH!",
+        pronunciation: "ˈbrāk-ˌthrü"
+      },
+      {
+        id: "w9_36",
+        word: "Study",
+        meaning: "Çalışmak, incelemek",
+        sentence: "We study science at school.",
+        synonym: "Learn, Research",
+        antonym: "Ignore",
+        memoryTip: "STUDY → STUDY hard!",
+        pronunciation: "ˈstə-dē"
+      },
+      {
+        id: "w9_37",
+        word: "Learn",
+        meaning: "Öğrenmek",
+        sentence: "We learn about the universe.",
+        synonym: "Study, Understand",
+        antonym: "Forget",
+        memoryTip: "LEARN → LEARN new things!",
+        pronunciation: "ˈlərn"
+      },
+      {
+        id: "w9_38",
+        word: "Understand",
+        meaning: "Anlamak",
+        sentence: "I understand how this works.",
+        synonym: "Comprehend, Grasp",
+        antonym: "Misunderstand",
+        memoryTip: "UNDERSTAND → UNDER-STAND it!",
+        pronunciation: "ˌən-dər-ˈstand"
+      },
+      {
+        id: "w9_39",
+        word: "Explain",
+        meaning: "Açıklamak",
+        sentence: "Can you explain this to me?",
+        synonym: "Describe, Clarify",
+        antonym: "Confuse",
+        memoryTip: "EXPLAIN → EXPLAIN clearly!",
+        pronunciation: "ik-ˈsplān"
+      },
+      {
+        id: "w9_40",
+        word: "Knowledge",
+        meaning: "Bilgi",
+        sentence: "Science increases our knowledge.",
+        synonym: "Information, Understanding",
+        antonym: "Ignorance",
+        memoryTip: "KNOWLEDGE → KNOW + LEDGE!",
+        pronunciation: "ˈnä-lij"
+      }
+    ]
+  },
+  "unit10": {
+    id: "unit10",
+    title: "Natural Forces",
+    icon: "🌋",
+    words: [
+      {
+        id: "w10_1",
+        word: "Natural forces",
+        meaning: "Doğal afetler",
+        sentence: "Natural forces can be very powerful.",
+        synonym: "Natural disasters, Forces of nature",
+        antonym: "Man-made",
+        memoryTip: "NATURAL FORCES → NATURE's FORCES!",
+        pronunciation: "ˈna-chə-rəl ˈfȯrs-əz"
+      },
+      {
+        id: "w10_2",
+        word: "Earthquake",
+        meaning: "Deprem",
+        sentence: "There was a strong earthquake last night.",
+        synonym: "Tremor, Seismic activity",
+        antonym: "Stability",
+        memoryTip: "EARTHQUAKE → EARTH QUAKEs!",
+        pronunciation: "ˈərth-ˌkwāk"
+      },
+      {
+        id: "w10_3",
+        word: "Flood",
+        meaning: "Sel",
+        sentence: "The flood damaged many houses.",
+        synonym: "Inundation, Overflow",
+        antonym: "Drought",
+        memoryTip: "FLOOD → FLOOD of water!",
+        pronunciation: "ˈfləd"
+      },
+      {
+        id: "w10_4",
+        word: "Hurricane",
+        meaning: "Kasırga",
+        sentence: "The hurricane destroyed the town.",
+        synonym: "Storm, Cyclone",
+        antonym: "Calm weather",
+        memoryTip: "HURRICANE → HURRICANE winds!",
+        pronunciation: "ˈhər-ə-ˌkān"
+      },
+      {
+        id: "w10_5",
+        word: "Tornado",
+        meaning: "Hortum",
+        sentence: "A tornado hit the area.",
+        synonym: "Twister, Cyclone",
+        antonym: "Calm",
+        memoryTip: "TORNADO → TORNADO spins!",
+        pronunciation: "tȯr-ˈnā-(ˌ)dō"
+      },
+      {
+        id: "w10_6",
+        word: "Tsunami",
+        meaning: "Tsunami",
+        sentence: "The tsunami caused great damage.",
+        synonym: "Tidal wave, Seismic wave",
+        antonym: "Calm sea",
+        memoryTip: "TSUNAMI → TSUNAMI wave!",
+        pronunciation: "sü-ˈnä-mē"
+      },
+      {
+        id: "w10_7",
+        word: "Volcano",
+        meaning: "Volkan",
+        sentence: "The volcano erupted last year.",
+        synonym: "Mountain, Crater",
+        antonym: "Plain",
+        memoryTip: "VOLCANO → VOLCANO erupts!",
+        pronunciation: "väl-ˈkā-(ˌ)nō"
+      },
+      {
+        id: "w10_8",
+        word: "Eruption",
+        meaning: "Patlama",
+        sentence: "The volcanic eruption was spectacular.",
+        synonym: "Explosion, Burst",
+        antonym: "Calm",
+        memoryTip: "ERUPTION → ERUPTs!",
+        pronunciation: "i-ˈrəp-shən"
+      },
+      {
+        id: "w10_9",
+        word: "Lightning",
+        meaning: "Yıldırım",
+        sentence: "Lightning struck the tree.",
+        synonym: "Thunderbolt, Electric discharge",
+        antonym: "Calm sky",
+        memoryTip: "LIGHTNING → LIGHTNING flash!",
+        pronunciation: "ˈlīt-niŋ"
+      },
+      {
+        id: "w10_10",
+        word: "Thunder",
+        meaning: "Gök gürültüsü",
+        sentence: "The thunder was very loud.",
+        synonym: "Rumble, Boom",
+        antonym: "Silence",
+        memoryTip: "THUNDER → THUNDER roars!",
+        pronunciation: "ˈthən-dər"
+      },
+      {
+        id: "w10_11",
+        word: "Storm",
+        meaning: "Fırtına",
+        sentence: "A big storm is coming.",
+        synonym: "Tempest, Bad weather",
+        antonym: "Calm",
+        memoryTip: "STORM → STORMy weather!",
+        pronunciation: "ˈstȯrm"
+      },
+      {
+        id: "w10_12",
+        word: "Drought",
+        meaning: "Kuraklık",
+        sentence: "The drought lasted for months.",
+        synonym: "Dryness, Aridity",
+        antonym: "Flood",
+        memoryTip: "DROUGHT → DROUGHT = dry!",
+        pronunciation: "ˈdrau̇t"
+      },
+      {
+        id: "w10_13",
+        word: "Avalanche",
+        meaning: "Çığ",
+        sentence: "The avalanche buried the road.",
+        synonym: "Snowslide, Landslide",
+        antonym: "Stable snow",
+        memoryTip: "AVALANCHE → AVALANCHE of snow!",
+        pronunciation: "ˈa-və-ˌlanch"
+      },
+      {
+        id: "w10_14",
+        word: "Landslide",
+        meaning: "Heyelan",
+        sentence: "The landslide blocked the road.",
+        synonym: "Mudslide, Rockslide",
+        antonym: "Stable ground",
+        memoryTip: "LANDSLIDE → LAND SLIDEs!",
+        pronunciation: "ˈland-ˌslīd"
+      },
+      {
+        id: "w10_15",
+        word: "Wildfire",
+        meaning: "Orman yangını",
+        sentence: "The wildfire spread quickly.",
+        synonym: "Forest fire, Blaze",
+        antonym: "Extinguished",
+        memoryTip: "WILDFIRE → WILD FIRE!",
+        pronunciation: "ˈwī(-ə)ld-ˌfī(-ə)r"
+      },
+      {
+        id: "w10_16",
+        word: "Disaster",
+        meaning: "Afet",
+        sentence: "Natural disasters can be devastating.",
+        synonym: "Catastrophe, Tragedy",
+        antonym: "Blessing",
+        memoryTip: "DISASTER → DISASTER strikes!",
+        pronunciation: "di-ˈzas-tər"
+      },
+      {
+        id: "w10_17",
+        word: "Damage",
+        meaning: "Zarar",
+        sentence: "The earthquake caused great damage.",
+        synonym: "Harm, Destruction",
+        antonym: "Repair",
+        memoryTip: "DAMAGE → DAMAGE property!",
+        pronunciation: "ˈda-mij"
+      },
+      {
+        id: "w10_18",
+        word: "Destroy",
+        meaning: "Yıkmak",
+        sentence: "The flood destroyed many buildings.",
+        synonym: "Ruin, Demolish",
+        antonym: "Build",
+        memoryTip: "DESTROY → DESTROY completely!",
+        pronunciation: "di-ˈstrȯi"
+      },
+      {
+        id: "w10_19",
+        word: "Survive",
+        meaning: "Hayatta kalmak",
+        sentence: "We need to survive this disaster.",
+        synonym: "Live, Endure",
+        antonym: "Die",
+        memoryTip: "SURVIVE → SURVIVE the danger!",
+        pronunciation: "sər-ˈvīv"
+      },
+      {
+        id: "w10_20",
+        word: "Rescue",
+        meaning: "Kurtarmak",
+        sentence: "The rescue team arrived quickly.",
+        synonym: "Save, Help",
+        antonym: "Abandon",
+        memoryTip: "RESCUE → RESCUE people!",
+        pronunciation: "ˈres-ˌkyü"
+      },
+      {
+        id: "w10_21",
+        word: "Emergency",
+        meaning: "Acil durum",
+        sentence: "Call 112 in case of emergency.",
+        synonym: "Crisis, Urgency",
+        antonym: "Normal situation",
+        memoryTip: "EMERGENCY → EMERGENCY situation!",
+        pronunciation: "i-ˈmər-jən-sē"
+      },
+      {
+        id: "w10_22",
+        word: "Precaution",
+        meaning: "Önlem",
+        sentence: "Take precautions before the storm.",
+        synonym: "Prevention, Safety measure",
+        antonym: "Risk",
+        memoryTip: "PRECAUTION → PRE-caution = before!",
+        pronunciation: "pri-ˈkȯ-shən"
+      },
+      {
+        id: "w10_23",
+        word: "Warning",
+        meaning: "Uyarı",
+        sentence: "There's a storm warning today.",
+        synonym: "Alert, Notice",
+        antonym: "All clear",
+        memoryTip: "WARNING → WARN you!",
+        pronunciation: "ˈwȯr-niŋ"
+      },
+      {
+        id: "w10_24",
+        word: "Evacuate",
+        meaning: "Tahliye etmek",
+        sentence: "We need to evacuate the area.",
+        synonym: "Leave, Clear out",
+        antonym: "Stay",
+        memoryTip: "EVACUATE → EVACUATE quickly!",
+        pronunciation: "i-ˈva-kyə-ˌwāt"
+      },
+      {
+        id: "w10_25",
+        word: "Shelter",
+        meaning: "Sığınak",
+        sentence: "Find shelter from the storm.",
+        synonym: "Protection, Refuge",
+        antonym: "Exposure",
+        memoryTip: "SHELTER → SHELTER protects!",
+        pronunciation: "ˈshel-tər"
+      },
+      {
+        id: "w10_26",
+        word: "Magnitude",
+        meaning: "Büyüklük",
+        sentence: "The earthquake had a magnitude of 7.0.",
+        synonym: "Size, Intensity",
+        antonym: "Small",
+        memoryTip: "MAGNITUDE → MAGNITUDE of force!",
+        pronunciation: "ˈmag-nə-ˌtüd"
+      },
+      {
+        id: "w10_27",
+        word: "Aftershock",
+        meaning: "Artçı deprem",
+        sentence: "Several aftershocks followed the main quake.",
+        synonym: "Tremor, Follow-up",
+        antonym: "Main quake",
+        memoryTip: "AFTERSHOCK → AFTER the SHOCK!",
+        pronunciation: "ˈaf-tər-ˌshäk"
+      },
+      {
+        id: "w10_28",
+        word: "Fault line",
+        meaning: "Fay hattı",
+        sentence: "Turkey is on an active fault line.",
+        synonym: "Crack, Break",
+        antonym: "Stable ground",
+        memoryTip: "FAULT LINE → FAULT in earth!",
+        pronunciation: "ˈfȯlt ˈlīn"
+      },
+      {
+        id: "w10_29",
+        word: "Predict",
+        meaning: "Tahmin etmek",
+        sentence: "Scientists try to predict earthquakes.",
+        synonym: "Forecast, Estimate",
+        antonym: "Surprise",
+        memoryTip: "PREDICT → PRE-dict = say before!",
+        pronunciation: "pri-ˈdikt"
+      },
+      {
+        id: "w10_30",
+        word: "Prevent",
+        meaning: "Önlemek",
+        sentence: "We can't prevent natural disasters.",
+        synonym: "Stop, Avoid",
+        antonym: "Cause",
+        memoryTip: "PREVENT → PRE-vent = before!",
+        pronunciation: "pri-ˈvent"
+      },
+      {
+        id: "w10_31",
+        word: "Protect",
+        meaning: "Korumak",
+        sentence: "We must protect ourselves from disasters.",
+        synonym: "Guard, Shield",
+        antonym: "Expose",
+        memoryTip: "PROTECT → PROTECT yourself!",
+        pronunciation: "prə-ˈtekt"
+      },
+      {
+        id: "w10_32",
+        word: "Prepare",
+        meaning: "Hazırlanmak",
+        sentence: "We should prepare for emergencies.",
+        synonym: "Get ready, Plan",
+        antonym: "Ignore",
+        memoryTip: "PREPARE → PRE-pare = before!",
+        pronunciation: "pri-ˈper"
+      },
+      {
+        id: "w10_33",
+        word: "Climate change",
+        meaning: "İklim değişikliği",
+        sentence: "Climate change affects the whole world.",
+        synonym: "Global warming, Environmental change",
+        antonym: "Stable climate",
+        memoryTip: "CLIMATE CHANGE → CLIMATE is CHANGING!",
+        pronunciation: "ˈklī-mət ˈchānj"
+      },
+      {
+        id: "w10_34",
+        word: "Global warming",
+        meaning: "Küresel ısınma",
+        sentence: "Global warming is a serious problem.",
+        synonym: "Climate change, Temperature rise",
+        antonym: "Cooling",
+        memoryTip: "GLOBAL WARMING → GLOBE is WARMING!",
+        pronunciation: "ˈglō-bəl ˈwȯr-miŋ"
+      },
+      {
+        id: "w10_35",
+        word: "Pollution",
+        meaning: "Kirlilik",
+        sentence: "Air pollution is increasing.",
+        synonym: "Contamination, Waste",
+        antonym: "Clean",
+        memoryTip: "POLLUTION → POLLUTE the air!",
+        pronunciation: "pə-ˈlü-shən"
+      },
+      {
+        id: "w10_36",
+        word: "Environment",
+        meaning: "Çevre",
+        sentence: "We must protect the environment.",
+        synonym: "Nature, Surroundings",
+        antonym: "Pollution",
+        memoryTip: "ENVIRONMENT → ENVIRONMENT around!",
+        pronunciation: "in-ˈvī-rən-mənt"
+      },
+      {
+        id: "w10_37",
+        word: "Recycle",
+        meaning: "Geri dönüştürmek",
+        sentence: "We should recycle more.",
+        synonym: "Reuse, Repurpose",
+        antonym: "Waste",
+        memoryTip: "RECYCLE → RE-cycle again!",
+        pronunciation: "rē-ˈsī-kəl"
+      },
+      {
+        id: "w10_38",
+        word: "Conserve",
+        meaning: "Korumak",
+        sentence: "We need to conserve water.",
+        synonym: "Save, Preserve",
+        antonym: "Waste",
+        memoryTip: "CONSERVE → CONSERVE resources!",
+        pronunciation: "kən-ˈsərv"
+      },
+      {
+        id: "w10_39",
+        word: "Sustainable",
+        meaning: "Sürdürülebilir",
+        sentence: "We need sustainable energy sources.",
+        synonym: "Eco-friendly, Renewable",
+        antonym: "Unsustainable",
+        memoryTip: "SUSTAINABLE → SUSTAIN for future!",
+        pronunciation: "sə-ˈstā-nə-bəl"
+      },
+      {
+        id: "w10_40",
+        word: "Natural phenomena",
+        meaning: "Doğal olaylar",
+        sentence: "Rainbows are beautiful natural phenomena.",
+        synonym: "Natural events, Nature's wonders",
+        antonym: "Man-made",
+        memoryTip: "NATURAL PHENOMENA → NATURE's PHENOMENA!",
+        pronunciation: "ˈna-chə-rəl fə-ˈnä-mə-nə"
+      }
+    ]
   }
 };
 

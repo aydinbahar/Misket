@@ -59,11 +59,11 @@
   
   /* Specifically target navigation buttons and text */
   .navigation-menu button:not([class*="bg-gradient"]) {
-    color: #cbd5e1 !important; /* gray-300 for dark mode */
+    color: #ffffff !important; /* white for all menu text */
   }
   
   .navigation-menu button:not([class*="bg-gradient"]) * {
-    color: inherit !important;
+    color: #ffffff !important; /* white for all menu text */
   }
 
   .app-shell {
@@ -100,11 +100,11 @@
   
   /* Specifically target navigation buttons and text */
   .navigation-menu button:not([class*="bg-gradient"]) {
-    color: #4b5563 !important; /* gray-600 for light mode */
+    color: #ffffff !important; /* white for all menu text */
   }
   
   .navigation-menu button:not([class*="bg-gradient"]) * {
-    color: inherit !important;
+    color: #ffffff !important; /* white for all menu text */
   }
 }
 

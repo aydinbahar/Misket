@@ -31,7 +31,7 @@ const Navigation = ({ currentView, setCurrentView }) => {
           flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all duration-300 flex-1
           ${isActive 
             ? `bg-gradient-to-br ${themeGradient} text-white shadow-lg scale-105` 
-            : 'text-gray-100 hover:bg-gray-800'
+            : 'text-white hover:bg-gray-800'
           }
         `}
       >

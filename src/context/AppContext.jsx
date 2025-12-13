@@ -54,6 +54,7 @@ export const AppProvider = ({ children }) => {
         weeklyStats: parsed.weeklyStats || [],
         badges: parsed.badges || [],
         wordProgress: parsed.wordProgress || {},
+        knownWords: parsed.knownWords || [],
         theme: parsed.theme || 'purple',
         darkMode: true // Always dark mode
       };
@@ -87,6 +88,7 @@ export const AppProvider = ({ children }) => {
       todayProgress: 0,
       lastProgressDate: new Date().toDateString(),
       weeklyStats: [],
+      knownWords: [], // Words marked as known by user
       theme: 'purple',
       darkMode: true // Always dark mode
     };
@@ -412,6 +414,36 @@ export const AppProvider = ({ children }) => {
     // No notification for theme changes
   };
 
+  // Mark word as known
+  const markWordAsKnown = (wordId) => {
+    setUserProgress(prev => {
+      const knownWords = prev.knownWords || [];
+      if (knownWords.includes(wordId)) {
+        return prev; // Already marked
+      }
+      return {
+        ...prev,
+        knownWords: [...knownWords, wordId]
+      };
+    });
+  };
+
+  // Unmark word as known
+  const unmarkWordAsKnown = (wordId) => {
+    setUserProgress(prev => {
+      const knownWords = prev.knownWords || [];
+      return {
+        ...prev,
+        knownWords: knownWords.filter(id => id !== wordId)
+      };
+    });
+  };
+
+  // Check if word is known
+  const isWordKnown = (wordId) => {
+    return (userProgress.knownWords || []).includes(wordId);
+  };
+
   // Dark mode is always enabled - no toggle function needed
 
   const value = {
@@ -430,6 +462,9 @@ export const AppProvider = ({ children }) => {
     triggerConfetti,
     notification,
     showNotification,
+    markWordAsKnown,
+    unmarkWordAsKnown,
+    isWordKnown,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

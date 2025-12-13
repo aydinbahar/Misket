@@ -4,27 +4,51 @@ import { getWordsByUnit } from '../data/vocabulary';
 import MisketCharacter from '../components/MisketCharacter';
 import { 
   ArrowLeft, ArrowRight, RotateCcw, Volume2, 
-  Lightbulb, MessageCircle, BookOpen, Check, X 
+  Lightbulb, MessageCircle, BookOpen, Check, X, Star, Eye, EyeOff
 } from 'lucide-react';
 
 const PracticeView = ({ selectedUnit, setCurrentView }) => {
-  const { userProgress, updateWordProgress, showNotification, updateDailyProgress, triggerConfetti } = useApp();
+  const { userProgress, updateWordProgress, showNotification, updateDailyProgress, triggerConfetti, markWordAsKnown, unmarkWordAsKnown, isWordKnown } = useApp();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [mode, setMode] = useState('learn'); // 'learn' or 'quiz'
   const [quizAnswer, setQuizAnswer] = useState('');
   const [feedback, setFeedback] = useState(null);
   const [words, setWords] = useState([]);
+  const [filteredWords, setFilteredWords] = useState([]);
+  const [showKnownWords, setShowKnownWords] = useState(false); // Toggle to show/hide known words
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
 
+  // Load words when unit changes
   useEffect(() => {
     if (selectedUnit) {
       const unitWords = getWordsByUnit(selectedUnit);
       setWords(unitWords);
+      setCurrentIndex(0); // Reset to first word
     }
   }, [selectedUnit]);
+
+  // Filter words based on known words preference
+  useEffect(() => {
+    if (words.length === 0) return;
+    
+    if (showKnownWords) {
+      setFilteredWords(words);
+    } else {
+      const knownWords = userProgress.knownWords || [];
+      const filtered = words.filter(word => !knownWords.includes(word.id));
+      setFilteredWords(filtered);
+    }
+  }, [words, showKnownWords, userProgress.knownWords]);
+
+  // Adjust currentIndex when filtered words change
+  useEffect(() => {
+    if (filteredWords.length > 0 && currentIndex >= filteredWords.length) {
+      setCurrentIndex(0);
+    }
+  }, [filteredWords.length]);
 
   // Reset image states when word changes
   useEffect(() => {
@@ -46,7 +70,35 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
     );
   }
 
-  const currentWord = words[currentIndex];
+  // Use filtered words for display
+  const displayWords = showKnownWords ? words : filteredWords;
+  
+  // If no words available after filtering
+  if (displayWords.length === 0) {
+    return (
+      <div className="card text-center p-6">
+        <Star className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
+        <p className="text-xl font-bold text-white mb-2">All words marked as known! 🎉</p>
+        <p className="text-gray-400 mb-4">You've marked all words in this unit as known.</p>
+        <div className="flex gap-2 justify-center">
+          <button
+            onClick={() => setShowKnownWords(true)}
+            className="btn-secondary text-sm py-2 px-4"
+          >
+            Show Known Words
+          </button>
+          <button 
+            onClick={() => setCurrentView('units')}
+            className="btn-primary text-sm py-2 px-4"
+          >
+            Go to Units
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const currentWord = displayWords[currentIndex];
   if (!currentWord) {
     return (
       <div className="card text-center">
@@ -155,7 +207,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
   };
 
   const handleNext = () => {
-    if (currentIndex < words.length - 1) {
+    if (currentIndex < displayWords.length - 1) {
       setCurrentIndex(currentIndex + 1);
       setShowAnswer(false);
       setFeedback(null);
@@ -164,7 +216,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
       setImageError(false);
     } else {
       showNotification('🎉 You completed all words in this unit!', 'success');
-          setCurrentView('units');
+      setCurrentView('units');
     }
   };
 
@@ -216,6 +268,24 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
     return "You can do it! Give it your best shot! 🎯";
   };
 
+  // Handle marking word as known/unknown
+  const handleToggleKnown = () => {
+    if (!currentWord) return;
+    
+    const isKnown = isWordKnown(currentWord.id);
+    if (isKnown) {
+      unmarkWordAsKnown(currentWord.id);
+      showNotification('Word removed from known list', 'info');
+    } else {
+      markWordAsKnown(currentWord.id);
+      showNotification('✅ Word marked as known!', 'success');
+      // Auto-advance to next word if not showing known words
+      if (!showKnownWords && currentIndex < displayWords.length - 1) {
+        setTimeout(() => handleNext(), 500);
+      }
+    }
+  };
+
   return (
     <div className="space-y-2">
       {/* Header */}
@@ -227,8 +297,26 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
           <ArrowLeft className="w-3.5 h-3.5" />
           Back
         </button>
-        <div className="text-xs text-gray-300 font-medium">
-          {currentIndex + 1} / {words.length}
+        <div className="flex items-center gap-2">
+          <div className="text-xs text-gray-300 font-medium">
+            {currentIndex + 1} / {displayWords.length}
+            {!showKnownWords && words.length > displayWords.length && (
+              <span className="text-gray-500 ml-1">({words.length - displayWords.length} hidden)</span>
+            )}
+          </div>
+          {mode === 'learn' && (
+            <button
+              onClick={() => setShowKnownWords(!showKnownWords)}
+              className={`p-1.5 rounded-lg transition-all ${
+                showKnownWords 
+                  ? 'bg-blue-500/20 text-blue-400' 
+                  : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+              }`}
+              title={showKnownWords ? "Hide known words" : "Show known words"}
+            >
+              {showKnownWords ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+            </button>
+          )}
         </div>
       </div>
 
@@ -236,7 +324,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
       <div className="progress-bar h-1 mb-2">
         <div
           className="progress-fill bg-gradient-to-r from-purple-500 to-pink-500"
-          style={{ width: `${((currentIndex + 1) / words.length) * 100}%` }}
+          style={{ width: `${displayWords.length > 0 ? ((currentIndex + 1) / displayWords.length) * 100 : 0}%` }}
         />
       </div>
 
@@ -280,39 +368,60 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
           {mode === 'learn' ? (
             // Learn Mode - Show all info
             <div className="card bg-gradient-to-br from-purple-900/30 to-pink-900/30 border border-purple-700/50 p-3">
-              {/* Word Status Badge & Speaker */}
+              {/* Word Status Badge & Actions */}
               <div className="flex items-center justify-between mb-2">
-                <span className={`badge text-xs px-2 py-0.5 ${
-                  progress?.status === 'mastered' ? 'bg-green-900/50 text-green-300' :
-                  progress?.status === 'review' ? 'bg-orange-900/50 text-orange-300' :
-                  progress?.status === 'learning' ? 'bg-blue-900/50 text-blue-300' :
-                  'bg-gray-800 text-gray-200'
-                }`}>
-                  {progress?.status || 'new'}
-                </span>
-                <button 
-                  onClick={() => speakWord(currentWord.word)}
-                  disabled={isSpeaking}
-                  className={`p-1.5 rounded-lg transition-all hover:bg-white/10 ${
-                    isSpeaking ? 'animate-pulse bg-purple-500/20' : ''
-                  }`}
-                  title="Listen to pronunciation"
-                >
-                  <Volume2 className={`w-4 h-4 ${
-                    isSpeaking ? 'text-purple-300' : 'text-purple-400'
-                  }`} />
-                </button>
+                <div className="flex items-center gap-2">
+                  <span className={`badge text-xs px-2 py-0.5 ${
+                    progress?.status === 'mastered' ? 'bg-green-900/50 text-green-300' :
+                    progress?.status === 'review' ? 'bg-orange-900/50 text-orange-300' :
+                    progress?.status === 'learning' ? 'bg-blue-900/50 text-blue-300' :
+                    'bg-gray-800 text-gray-200'
+                  }`}>
+                    {progress?.status || 'new'}
+                  </span>
+                  {isWordKnown(currentWord.id) && (
+                    <span className="badge text-xs px-2 py-0.5 bg-yellow-900/50 text-yellow-300 flex items-center gap-1">
+                      <Star className="w-3 h-3 fill-yellow-300" />
+                      Known
+                    </span>
+                  )}
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <button 
+                    onClick={handleToggleKnown}
+                    className={`p-2.5 rounded-lg transition-all ${
+                      isWordKnown(currentWord.id)
+                        ? 'bg-yellow-900/30 text-yellow-400 hover:bg-yellow-900/40'
+                        : 'bg-gray-800/60 text-gray-400 hover:bg-gray-700/60'
+                    }`}
+                    title={isWordKnown(currentWord.id) ? "Mark as unknown" : "Mark as known"}
+                  >
+                    <Star className={`w-5 h-5 ${isWordKnown(currentWord.id) ? 'fill-yellow-400' : ''}`} />
+                  </button>
+                  <button 
+                    onClick={() => speakWord(currentWord.word)}
+                    disabled={isSpeaking}
+                    className={`p-3.5 rounded-lg transition-all hover:bg-white/10 ${
+                      isSpeaking ? 'animate-pulse bg-purple-500/20' : ''
+                    }`}
+                    title="Listen to pronunciation"
+                  >
+                    <Volume2 className={`w-7 h-7 ${
+                      isSpeaking ? 'text-purple-300' : 'text-purple-400'
+                    }`} />
+                  </button>
+                </div>
               </div>
 
               {/* Word */}
-              <h2 className="text-2xl font-bold text-white mb-2">
+              <h2 className="text-4xl font-bold text-white mb-2">
                 {currentWord.word}
               </h2>
              
               {/* Meaning */}
               <div className="bg-gray-800/60 rounded-lg p-2.5 mb-2 border border-gray-700/50">
                 <p className="text-xs text-gray-400 mb-0.5">Turkish Meaning</p>
-                <p className="text-base font-semibold text-white">
+                <p className="text-xl font-semibold text-white">
                   {currentWord.meaning}
                 </p>
               </div>
@@ -320,7 +429,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
               {/* Example Sentence */}
               <div className="bg-gray-800/60 rounded-lg p-2.5 mb-2 border border-gray-700/50">
                 <p className="text-xs text-gray-400 mb-0.5">Example Sentence</p>
-                <p className="text-sm text-gray-200 leading-relaxed">
+                <p className="text-base text-gray-200 leading-relaxed">
                   {currentWord.sentence}
                 </p>
               </div>
@@ -328,10 +437,10 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
               {/* Memory Tip */}
               <div className="bg-yellow-900/20 rounded-lg p-2 border border-yellow-700/50 mb-2">
                 <div className="flex items-start gap-1.5">
-                  <Lightbulb className="w-3.5 h-3.5 text-yellow-400 flex-shrink-0 mt-0.5" />
+                  <Lightbulb className="w-4 h-4 text-yellow-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-xs text-yellow-400 font-semibold mb-0.5">Memory Tip</p>
-                    <p className="text-xs text-yellow-300 leading-relaxed">{currentWord.memoryTip}</p>
+                    <p className="text-sm text-yellow-400 font-semibold mb-0.5">Memory Tip</p>
+                    <p className="text-base text-yellow-300 leading-relaxed">{currentWord.memoryTip}</p>
                   </div>
                 </div>
               </div>
@@ -341,12 +450,12 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                 {/* Synonyms & Antonyms */}
                 <div className="space-y-2">
                   <div className="bg-green-900/20 rounded-lg p-2 border border-green-700/50">
-                    <p className="text-xs text-green-400 font-semibold mb-0.5">Synonyms</p>
-                    <p className="text-xs text-green-300">{currentWord.synonym}</p>
+                    <p className="text-sm text-green-400 font-semibold mb-0.5">Synonyms</p>
+                    <p className="text-base text-green-300">{currentWord.synonym}</p>
                   </div>
                   <div className="bg-red-900/20 rounded-lg p-2 border border-red-700/50">
-                    <p className="text-xs text-red-400 font-semibold mb-0.5">Antonyms</p>
-                    <p className="text-xs text-red-300">{currentWord.antonym}</p>
+                    <p className="text-sm text-red-400 font-semibold mb-0.5">Antonyms</p>
+                    <p className="text-base text-red-300">{currentWord.antonym}</p>
                   </div>
                 </div>
                 {/* Visual Emoji */}
@@ -360,7 +469,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
           ) : (
             // Quiz Mode
             <div className="card bg-gradient-to-br from-blue-900/30 to-cyan-900/30 border border-blue-700/50 p-3">
-              <h3 className="text-base font-bold text-white mb-2">
+              <h3 className="text-lg font-bold text-white mb-2">
                 What is the English word for:
               </h3>
               
@@ -373,7 +482,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
               </div>
               
               <div className="bg-gray-800/60 rounded-lg p-3 mb-3 text-center border border-gray-700/50">
-                <p className="text-xl font-bold text-white">
+                <p className="text-2xl font-bold text-white">
                   {currentWord.meaning}
                 </p>
               </div>
@@ -386,13 +495,13 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                     onChange={(e) => setQuizAnswer(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleQuizSubmit()}
                     placeholder="Type your answer..."
-                    className="w-full px-3 py-2 rounded-lg border border-blue-600 focus:border-blue-500 focus:outline-none text-sm bg-gray-800 text-white placeholder-gray-500"
+                    className="w-full px-3 py-2 rounded-lg border border-blue-600 focus:border-blue-500 focus:outline-none text-base bg-gray-800 text-white placeholder-gray-500"
                     autoFocus
                   />
                   <button
                     onClick={handleQuizSubmit}
                     disabled={!quizAnswer.trim()}
-                    className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed text-xs py-2"
+                    className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed text-sm py-2.5"
                   >
                     Submit Answer
                   </button>
@@ -406,13 +515,13 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                   {feedback === 'correct' ? (
                     <div>
                       <Check className="w-10 h-10 text-green-400 mx-auto mb-1.5" />
-                      <p className="text-lg font-bold text-white">Correct! 🎉</p>
+                      <p className="text-xl font-bold text-white">Correct! 🎉</p>
                     </div>
                   ) : (
                     <div>
                       <X className="w-10 h-10 text-red-400 mx-auto mb-1.5" />
-                      <p className="text-base font-bold text-white mb-1">Not quite!</p>
-                      <p className="text-xs text-white">
+                      <p className="text-lg font-bold text-white mb-1">Not quite!</p>
+                      <p className="text-sm text-white">
                         Answer: <span className="font-bold">{currentWord.word}</span>
                       </p>
                     </div>
@@ -427,9 +536,9 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
             <button
               onClick={handlePrevious}
               disabled={currentIndex === 0}
-              className="btn-secondary flex items-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed text-xs py-1.5 px-2.5"
+              className="btn-secondary flex items-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed text-sm py-2 px-3"
             >
-              <ArrowLeft className="w-3 h-3" />
+              <ArrowLeft className="w-4 h-4" />
               Prev
             </button>
             
@@ -441,18 +550,18 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                 setImageLoaded(false);
                 setImageError(false);
               }}
-              className="btn-secondary flex items-center gap-1 text-xs py-1.5 px-2.5"
+              className="btn-secondary flex items-center gap-1.5 text-sm py-2 px-3"
             >
-              <RotateCcw className="w-3 h-3" />
+              <RotateCcw className="w-4 h-4" />
               Reset
             </button>
 
             <button
               onClick={handleNext}
-              className="btn-primary flex items-center gap-1 text-xs py-1.5 px-2.5"
+              className="btn-primary flex items-center gap-1.5 text-sm py-2 px-3"
             >
               Next
-              <ArrowRight className="w-3 h-3" />
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>

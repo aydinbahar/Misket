@@ -1,26 +1,44 @@
 import React from 'react';
-import { getAllUnits } from '../data/vocabulary';
+import { getAllUnits, getWordsByUnit, getAllWords } from '../data/vocabulary';
 import { useApp } from '../context/AppContext';
-import { BookOpen, CheckCircle, Clock, ArrowRight } from 'lucide-react';
+import { BookOpen, CheckCircle, Clock, ArrowRight, Star, BookX } from 'lucide-react';
 
 const UnitsView = ({ setCurrentView, setSelectedUnit }) => {
   const { userProgress } = useApp();
   const units = getAllUnits();
+  const knownWords = userProgress?.knownWords || [];
+
+  // Calculate overall statistics
+  const allWords = getAllWords();
+  const totalKnown = knownWords.length;
+  const totalUnknown = allWords.length - totalKnown;
 
   const getUnitProgress = (unitId) => {
     const unit = getAllUnits().find(u => u.id === unitId);
-    if (!unit) return { mastered: 0, total: 0, percent: 0 };
+    if (!unit) return { mastered: 0, total: 0, percent: 0, known: 0, unknown: 0 };
 
+    const unitWords = getWordsByUnit(unitId);
     const wordProgress = userProgress?.wordProgress || {};
-    const wordIds = Object.keys(wordProgress).filter(id => id.startsWith(`w${unitId.slice(-1)}_`));
-    const masteredCount = wordIds.filter(id => 
-      wordProgress[id]?.status === 'mastered'
+    
+    // Count mastered words
+    const masteredCount = unitWords.filter(word => 
+      wordProgress[word.id]?.status === 'mastered'
     ).length;
+
+    // Count known words (marked as known by user)
+    const knownCount = unitWords.filter(word => 
+      knownWords.includes(word.id)
+    ).length;
+
+    // Count unknown words
+    const unknownCount = unitWords.length - knownCount;
 
     return {
       mastered: masteredCount,
       total: unit.wordCount,
-      percent: unit.wordCount > 0 ? Math.round((masteredCount / unit.wordCount) * 100) : 0
+      percent: unit.wordCount > 0 ? Math.round((masteredCount / unit.wordCount) * 100) : 0,
+      known: knownCount,
+      unknown: unknownCount
     };
   };
 
@@ -33,13 +51,33 @@ const UnitsView = ({ setCurrentView, setSelectedUnit }) => {
     <div className="space-y-6">
       {/* Header */}
       <div className="card">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2 flex items-center gap-2">
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
           <BookOpen className="w-8 h-8 text-purple-500" />
           Vocabulary Units
         </h1>
-        <p className="text-gray-600 dark:text-gray-300">
+        <p className="text-gray-600 dark:text-gray-300 mb-4">
           Choose a unit to start learning vocabulary!
         </p>
+        
+        {/* Overall Statistics */}
+        <div className="grid grid-cols-2 gap-4 mt-4">
+          <div className="bg-gradient-to-br from-yellow-900/30 to-yellow-800/20 rounded-lg p-4 border border-yellow-700/50">
+            <div className="flex items-center gap-2 mb-2">
+              <Star className="w-5 h-5 text-yellow-400" />
+              <span className="text-sm text-yellow-400 font-semibold">Known Words</span>
+            </div>
+            <p className="text-2xl font-bold text-white">{totalKnown}</p>
+            <p className="text-xs text-yellow-300 mt-1">out of {allWords.length} total</p>
+          </div>
+          <div className="bg-gradient-to-br from-gray-800/60 to-gray-700/40 rounded-lg p-4 border border-gray-700/50">
+            <div className="flex items-center gap-2 mb-2">
+              <BookX className="w-5 h-5 text-gray-400" />
+              <span className="text-sm text-gray-400 font-semibold">Unknown Words</span>
+            </div>
+            <p className="text-2xl font-bold text-white">{totalUnknown}</p>
+            <p className="text-xs text-gray-300 mt-1">to learn</p>
+          </div>
+        </div>
       </div>
 
       {/* Units Grid */}
@@ -82,6 +120,24 @@ const UnitsView = ({ setCurrentView, setSelectedUnit }) => {
                 {isCompleted && (
                   <CheckCircle className="w-8 h-8 text-green-500" />
                 )}
+              </div>
+
+              {/* Unit KPI Stats */}
+              <div className="grid grid-cols-2 gap-2 mb-4">
+                <div className="bg-yellow-900/20 rounded-lg p-2.5 border border-yellow-700/50">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <Star className="w-4 h-4 text-yellow-400" />
+                    <span className="text-xs text-yellow-400 font-semibold">Known</span>
+                  </div>
+                  <p className="text-lg font-bold text-white">{progress.known}</p>
+                </div>
+                <div className="bg-gray-800/60 rounded-lg p-2.5 border border-gray-700/50">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <BookX className="w-4 h-4 text-gray-400" />
+                    <span className="text-xs text-gray-400 font-semibold">Unknown</span>
+                  </div>
+                  <p className="text-lg font-bold text-white">{progress.unknown}</p>
+                </div>
               </div>
 
               {/* Progress Bar */}
