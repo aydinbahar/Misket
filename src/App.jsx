@@ -113,8 +113,8 @@ function AppContent() {
               Misket
             </h1>
           </button>
-          <p className="text-gray-600 dark:text-gray-400 text-sm">
-            Your AI-Powered Vocabulary Learning Companion
+          <p className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-pulse mb-2">
+            ✨ Made with Love for Serra ✨
           </p>
         </header>
 
@@ -126,9 +126,6 @@ function AppContent() {
 
         {/* Footer */}
         <footer className="mt-12 text-center">
-          <p className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-pulse mb-2">
-            ✨ Made with Love for Serra ✨
-          </p>
           <p className="text-4xl mb-2">💜</p>
           <p className="text-xs text-gray-400 opacity-60 mt-4">
             Misket v1.0.0

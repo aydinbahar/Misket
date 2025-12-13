@@ -1,12 +1,15 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
 import { BookOpen, Brain, Target, Gamepad2 } from 'lucide-react';
-import { getThemeGradient } from '../utils/themeUtils';
+import { getThemeGradient, getThemePanelBg, getThemePanelBorder, getThemePanelShadow } from '../utils/themeUtils';
 
 const Navigation = ({ currentView, setCurrentView }) => {
   const { userProgress } = useApp();
   const theme = userProgress?.theme || 'purple';
   const themeGradient = getThemeGradient(theme);
+  const panelBg = getThemePanelBg(theme);
+  const panelBorder = getThemePanelBorder(theme);
+  const panelShadow = getThemePanelShadow(theme);
 
   const navItems = [
     { id: 'units', label: 'Units', icon: BookOpen },
@@ -42,7 +45,7 @@ const Navigation = ({ currentView, setCurrentView }) => {
   };
 
   return (
-    <nav className="navigation-menu bg-gray-900 backdrop-blur-lg shadow-lg rounded-2xl p-2 mb-6 border border-gray-700">
+    <nav className={`navigation-menu card bg-gradient-to-br ${panelBg} border-2 ${panelBorder} shadow-2xl ${panelShadow} p-2 mb-6`}>
       <div className="space-y-2">
         {/* First Row */}
         <div className="flex items-center gap-2">
