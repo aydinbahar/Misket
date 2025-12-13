@@ -16,7 +16,9 @@ const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
   const badgeBg = getThemeBadgeBg(theme);
   const dividerBorder = getThemeDividerBorder(theme);
   const [motivationalMessage, setMotivationalMessage] = useState(null);
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [timeLeft, setTimeLeft] = useState({ months: 0, days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [weekdaysLeft, setWeekdaysLeft] = useState(0);
+  const [totalDaysLeft, setTotalDaysLeft] = useState(0);
   
   // Her component mount olduğunda yeni bir mesaj seç
   useEffect(() => {
@@ -40,14 +42,51 @@ const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
       const difference = birthday - now;
       
       if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        // Ay hesaplama - daha doğru yöntem
+        let months = 0;
+        let tempDate = new Date(now);
         
-        setTimeLeft({ days, hours, minutes, seconds });
+        // Ay farkını hesapla (her ayı tek tek ekleyerek)
+        while (tempDate < birthday) {
+          const nextMonth = new Date(tempDate.getFullYear(), tempDate.getMonth() + 1, tempDate.getDate());
+          if (nextMonth <= birthday) {
+            months++;
+            tempDate = nextMonth;
+          } else {
+            break;
+          }
+        }
+        
+        // Kalan günleri hesapla (ay ekledikten sonra)
+        const dateAfterMonths = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
+        const remainingDiff = birthday - dateAfterMonths;
+        
+        const days = Math.floor(remainingDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((remainingDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((remainingDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((remainingDiff % (1000 * 60)) / 1000);
+        
+        setTimeLeft({ months, days, hours, minutes, seconds });
+        
+        // Toplam gün sayısını hesapla
+        const totalDays = Math.floor(difference / (1000 * 60 * 60 * 24));
+        setTotalDaysLeft(totalDays);
+        
+        // Hafta sonlarını saymadan kalan günleri hesapla
+        let weekdayCount = 0;
+        const checkDate = new Date(now);
+        while (checkDate < birthday) {
+          const dayOfWeek = checkDate.getDay(); // 0 = Pazar, 6 = Cumartesi
+          if (dayOfWeek !== 0 && dayOfWeek !== 6) { // Hafta sonu değilse
+            weekdayCount++;
+          }
+          checkDate.setDate(checkDate.getDate() + 1);
+        }
+        setWeekdaysLeft(weekdayCount);
       } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setTimeLeft({ months: 0, days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setTotalDaysLeft(0);
+        setWeekdaysLeft(0);
       }
     };
 
@@ -113,31 +152,51 @@ const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
                 <span className={`text-sm ${panelText.secondary}/80`}>20 Nisan, 14:25</span>
               </div>
             </div>
-            <div className="grid grid-cols-4 gap-2 md:gap-3 mt-4">
-              <div className={`${innerCardBg} rounded-lg p-3 md:p-4 text-center`}>
-                <div className={`text-2xl md:text-3xl font-bold ${panelText.primary} mb-1`}>
-                  {timeLeft.days}
+            <div className="space-y-4 mt-4">
+              {/* Ay ve Gün - Üst Kısım (Büyük) */}
+              <div className="grid grid-cols-2 gap-3 md:gap-4">
+                <div className={`${innerCardBg} rounded-lg p-4 md:p-6 text-center`}>
+                  <div className={`text-4xl md:text-5xl font-bold ${panelText.primary} mb-2`}>
+                    {timeLeft.months}
+                  </div>
+                  <div className={`text-base md:text-lg ${panelText.secondary} font-semibold`}>Ay</div>
                 </div>
-                <div className={`text-xs md:text-sm ${panelText.secondary}/80`}>Gün</div>
-              </div>
-              <div className={`${innerCardBg} rounded-lg p-3 md:p-4 text-center`}>
-                <div className={`text-2xl md:text-3xl font-bold ${panelText.primary} mb-1`}>
-                  {timeLeft.hours}
+                <div className={`${innerCardBg} rounded-lg p-4 md:p-6 text-center`}>
+                  <div className={`text-4xl md:text-5xl font-bold ${panelText.primary} mb-2`}>
+                    {timeLeft.days}
+                  </div>
+                  <div className={`text-base md:text-lg ${panelText.secondary} font-semibold`}>Gün</div>
                 </div>
-                <div className={`text-xs md:text-sm ${panelText.secondary}/80`}>Saat</div>
               </div>
-              <div className={`${innerCardBg} rounded-lg p-3 md:p-4 text-center`}>
-                <div className={`text-2xl md:text-3xl font-bold ${panelText.primary} mb-1`}>
-                  {timeLeft.minutes}
+              
+              {/* Saat, Dakika, Saniye - Alt Kısım (Küçük) */}
+              <div className="grid grid-cols-3 gap-2 md:gap-3">
+                <div className={`${innerCardBg} rounded-lg p-3 md:p-4 text-center`}>
+                  <div className={`text-2xl md:text-3xl font-bold ${panelText.primary} mb-1`}>
+                    {timeLeft.hours}
+                  </div>
+                  <div className={`text-xs md:text-sm ${panelText.secondary}/80`}>Saat</div>
                 </div>
-                <div className={`text-xs md:text-sm ${panelText.secondary}/80`}>Dakika</div>
-              </div>
-              <div className={`${innerCardBg} rounded-lg p-3 md:p-4 text-center`}>
-                <div className={`text-2xl md:text-3xl font-bold ${panelText.primary} mb-1`}>
-                  {timeLeft.seconds}
+                <div className={`${innerCardBg} rounded-lg p-3 md:p-4 text-center`}>
+                  <div className={`text-2xl md:text-3xl font-bold ${panelText.primary} mb-1`}>
+                    {timeLeft.minutes}
+                  </div>
+                  <div className={`text-xs md:text-sm ${panelText.secondary}/80`}>Dakika</div>
                 </div>
-                <div className={`text-xs md:text-sm ${panelText.secondary}/80`}>Saniye</div>
+                <div className={`${innerCardBg} rounded-lg p-3 md:p-4 text-center`}>
+                  <div className={`text-2xl md:text-3xl font-bold ${panelText.primary} mb-1`}>
+                    {timeLeft.seconds}
+                  </div>
+                  <div className={`text-xs md:text-sm ${panelText.secondary}/80`}>Saniye</div>
+                </div>
               </div>
+            </div>
+            
+            {/* Hafta Sonları Hariç Not */}
+            <div className={`mt-4 pt-4 border-t ${dividerBorder}`}>
+              <p className={`text-sm ${panelText.secondary}/80 text-center italic`}>
+                💡 Toplam <span className={`font-bold ${panelText.primary}`}>{totalDaysLeft} gün</span> kaldı. Eğer hafta sonlarını saymazsak, sadece <span className={`font-bold ${panelText.primary}`}>{weekdaysLeft} iş günü</span> kaldı! 🎉
+              </p>
             </div>
           </div>
         </div>
