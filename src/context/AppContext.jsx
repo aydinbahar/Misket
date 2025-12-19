@@ -400,10 +400,17 @@ export const AppProvider = ({ children }) => {
     window.dispatchEvent(new Event('triggerConfetti'));
   };
 
-  // Check daily streak on mount
+  // Check daily streak on mount (only once)
   useEffect(() => {
-    checkDailyStreak();
-  }, []);
+    const today = new Date().toDateString();
+    const lastLogin = userProgress.lastLoginDate;
+    
+    // Only check if it's a new day
+    if (lastLogin !== today) {
+      checkDailyStreak();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Only run once on mount
 
   // Update theme
   const updateTheme = (themeId) => {

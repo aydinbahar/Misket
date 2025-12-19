@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { RefreshCw, X } from 'lucide-react';
 
 const UpdatePrompt = () => {
   const [showPrompt, setShowPrompt] = useState(false);
   const [waitingWorker, setWaitingWorker] = useState(null);
+  const shouldReloadRef = useRef(false);
 
   useEffect(() => {
     // Check for service worker updates
@@ -23,21 +24,36 @@ const UpdatePrompt = () => {
         });
 
         // Check for updates every 60 seconds
-        setInterval(() => {
+        const updateInterval = setInterval(() => {
           registration.update();
         }, 60000);
+
+        // Cleanup interval on unmount
+        return () => clearInterval(updateInterval);
       });
 
       // Listen for messages from service worker
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        // Refresh the page when new service worker takes control
-        window.location.reload();
-      });
+      // Only reload if we explicitly triggered the update
+      const handleControllerChange = () => {
+        if (shouldReloadRef.current) {
+          // Refresh the page when new service worker takes control
+          window.location.reload();
+        }
+      };
+
+      navigator.serviceWorker.addEventListener('controllerchange', handleControllerChange);
+
+      // Cleanup event listener on unmount
+      return () => {
+        navigator.serviceWorker.removeEventListener('controllerchange', handleControllerChange);
+      };
     }
   }, []);
 
   const handleUpdate = () => {
     if (waitingWorker) {
+      // Set flag to allow reload
+      shouldReloadRef.current = true;
       // Tell the waiting service worker to skip waiting and become active
       waitingWorker.postMessage({ type: 'SKIP_WAITING' });
       setShowPrompt(false);
