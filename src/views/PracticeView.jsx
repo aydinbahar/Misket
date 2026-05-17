@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { getWordsByUnit, getUnitInfo } from '../data/vocabulary';
 import { getUnitClusters } from '../data/wordClusters';
-import { ArrowLeft, Check, Volume2, X, RotateCcw } from 'lucide-react';
+import { ArrowLeft, Check, Volume2, X } from 'lucide-react';
 
 const statusBadgeStyle = (status) => {
   switch (status) {
@@ -61,21 +61,6 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
     () => words.filter((w) => wp[w.id]?.status === 'mastered').length,
     [words, wp]
   );
-
-  // Alt listeler: öğrenilenler ve çalışılması gerekenler
-  const { learnedList, toReviewList } = useMemo(() => {
-    const learned = [];
-    const toReview = [];
-    words.forEach((w) => {
-      const status = wp[w.id]?.status;
-      if (status === 'mastered') {
-        learned.push(w);
-      } else if (status === 'learning' || status === 'review') {
-        toReview.push(w);
-      }
-    });
-    return { learnedList: learned, toReviewList: toReview };
-  }, [words, wp]);
 
   // Modal açıkken sayfa kaydırmasını kapat
   useEffect(() => {
@@ -192,65 +177,6 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
           );
         })}
       </div>
-
-      {/* Alt listeler: öğrenilenler + çalışılması gerekenler */}
-      {(learnedList.length > 0 || toReviewList.length > 0) && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 pt-2">
-          {toReviewList.length > 0 && (
-            <section className="card">
-              <header className="flex items-center justify-between mb-3">
-                <h3 className="font-display font-bold text-base flex items-center gap-2" style={{ color: 'var(--accent)' }}>
-                  <RotateCcw className="w-4 h-4" />
-                  Çalışman gereken kelimeler
-                </h3>
-                <span className="text-xs font-semibold text-muted-soft tabular-nums">
-                  {toReviewList.length}
-                </span>
-              </header>
-              <ul className="divide-y" style={{ borderColor: 'var(--border-soft)' }}>
-                {toReviewList.map((w) => (
-                  <li key={w.id}>
-                    <button
-                      onClick={() => setOpenWordId(w.id)}
-                      className="w-full flex items-center justify-between gap-3 py-3.5 min-h-[48px] text-left transition-colors hover:opacity-75"
-                    >
-                      <span className="font-semibold text-primary truncate">{w.word}</span>
-                      <span className="text-sm text-secondary truncate text-right">{w.meaning}</span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-
-          {learnedList.length > 0 && (
-            <section className="card">
-              <header className="flex items-center justify-between mb-3">
-                <h3 className="font-display font-bold text-base flex items-center gap-2" style={{ color: 'var(--success)' }}>
-                  <Check className="w-4 h-4" />
-                  Öğrendiğin kelimeler
-                </h3>
-                <span className="text-xs font-semibold text-muted-soft tabular-nums">
-                  {learnedList.length}
-                </span>
-              </header>
-              <ul className="divide-y" style={{ borderColor: 'var(--border-soft)' }}>
-                {learnedList.map((w) => (
-                  <li key={w.id}>
-                    <button
-                      onClick={() => setOpenWordId(w.id)}
-                      className="w-full flex items-center justify-between gap-3 py-3.5 min-h-[48px] text-left transition-colors hover:opacity-75"
-                    >
-                      <span className="font-semibold text-primary truncate">{w.word}</span>
-                      <span className="text-sm text-secondary truncate text-right">{w.meaning}</span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-        </div>
-      )}
 
       {/* Kelime detay — bottom sheet */}
       {openWord && (

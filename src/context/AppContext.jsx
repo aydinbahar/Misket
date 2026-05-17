@@ -363,28 +363,6 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  // Check and update daily streak
-  const checkDailyStreak = () => {
-    const today = new Date().toDateString();
-    const lastLogin = userProgress.lastLoginDate;
-    
-    if (lastLogin !== today) {
-      const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toDateString();
-      const isConsecutive = lastLogin === yesterday;
-      
-      setUserProgress(prev => ({
-        ...prev,
-        dailyStreak: isConsecutive ? prev.dailyStreak + 1 : 1,
-        lastLoginDate: today
-      }));
-
-      if (isConsecutive) {
-        addXP(5, 'Daily login bonus');
-        showNotification(`🔥 Daily Streak: Day ${userProgress.dailyStreak + 1}!`, 'success');
-      }
-    }
-  };
-
   // Notification system
   const [notification, setNotification] = useState(null);
 
@@ -407,17 +385,6 @@ export const AppProvider = ({ children }) => {
     window.dispatchEvent(new Event('triggerConfetti'));
   };
 
-  // Check daily streak on mount (only once)
-  useEffect(() => {
-    const today = new Date().toDateString();
-    const lastLogin = userProgress.lastLoginDate;
-    
-    // Only check if it's a new day
-    if (lastLogin !== today) {
-      checkDailyStreak();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Only run once on mount
 
   // Light/Dark/Auto modu değiştir
   const updateThemeMode = (mode) => {
