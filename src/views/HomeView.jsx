@@ -106,9 +106,6 @@ const HomeView = ({ setCurrentView, setSelectedUnit }) => {
                     {UNIT_TITLE_TR[unit.title]}
                   </p>
                 )}
-                <p className="text-xs text-muted-soft mt-0.5">
-                  {unit.total} kelime
-                </p>
               </div>
               <ChevronRight
                 className="w-5 h-5 text-muted-soft group-hover:text-primary transition-colors flex-shrink-0 mt-1"
