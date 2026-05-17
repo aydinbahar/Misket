@@ -230,7 +230,10 @@
   .text-balance { text-wrap: balance; }
 
   .view-enter {
-    animation: slideUp 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+    /* fill mode 'both' transform'u kalıcı bırakır; bu da modal gibi
+       fixed çocukların viewport yerine bu elementi containing block
+       almasına neden olur (kaydırma sonrası modal kayıyor). */
+    animation: slideUp 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
 
