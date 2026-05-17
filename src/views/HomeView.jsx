@@ -1,209 +1,132 @@
-import React, { useState, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { useApp } from '../context/AppContext';
-import { getRandomMessage, getCurrentDay } from '../utils/motivationalMessages';
-import { Calendar, Clock } from 'lucide-react';
-import { getThemePanelBg, getThemePanelBorder, getThemePanelShadow, getThemePanelText, getThemePanelIcon, getThemeInnerCardBg, getThemeGradient, getThemeBadgeBg, getThemeDividerBorder } from '../utils/themeUtils';
+import { getAllUnits, getWordsByUnit } from '../data/vocabulary';
+import { LGS_EXAM_DATE } from '../data/config';
+import { ChevronRight, CheckCircle2, Clock, Circle } from 'lucide-react';
 
-const HomeView = ({ setCurrentView, setSelectedUnit, setTestMode }) => {
+const daysBetween = (a, b) => {
+  const MS_PER_DAY = 24 * 60 * 60 * 1000;
+  const start = new Date(a.getFullYear(), a.getMonth(), a.getDate());
+  const end = new Date(b.getFullYear(), b.getMonth(), b.getDate());
+  return Math.round((end - start) / MS_PER_DAY);
+};
+
+const HomeView = ({ setCurrentView, setSelectedUnit }) => {
   const { userProgress } = useApp();
-  const theme = userProgress?.theme || 'purple';
-  const panelBg = getThemePanelBg(theme);
-  const panelBorder = getThemePanelBorder(theme);
-  const panelShadow = getThemePanelShadow(theme);
-  const panelText = getThemePanelText(theme);
-  const panelIcon = getThemePanelIcon(theme);
-  const innerCardBg = getThemeInnerCardBg(theme);
-  const badgeBg = getThemeBadgeBg(theme);
-  const dividerBorder = getThemeDividerBorder(theme);
-  const [motivationalMessage, setMotivationalMessage] = useState(null);
-  const [timeLeft, setTimeLeft] = useState({ months: 0, days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [weekdaysLeft, setWeekdaysLeft] = useState(0);
-  const [totalDaysLeft, setTotalDaysLeft] = useState(0);
-  
-  // Her component mount olduğunda yeni bir mesaj seç
-  useEffect(() => {
-    setMotivationalMessage(getRandomMessage());
-  }, []);
+  const wp = userProgress?.wordProgress || {};
 
-  // Doğum günü countdown hesaplama
-  useEffect(() => {
-    const calculateTimeLeft = () => {
-      const now = new Date();
-      const currentYear = now.getFullYear();
-      
-      // Bu yılki doğum günü (20 Nisan 14:25)
-      let birthday = new Date(currentYear, 3, 20, 14, 25, 0); // Ay 0-indexed, Nisan = 3
-      
-      // Eğer bu yılki doğum günü geçtiyse, gelecek yılki doğum gününü al
-      if (now > birthday) {
-        birthday = new Date(currentYear + 1, 3, 20, 14, 25, 0);
-      }
-      
-      const difference = birthday - now;
-      
-      if (difference > 0) {
-        // Ay hesaplama - daha doğru yöntem
-        let months = 0;
-        let tempDate = new Date(now);
-        
-        // Ay farkını hesapla (her ayı tek tek ekleyerek)
-        while (tempDate < birthday) {
-          const nextMonth = new Date(tempDate.getFullYear(), tempDate.getMonth() + 1, tempDate.getDate());
-          if (nextMonth <= birthday) {
-            months++;
-            tempDate = nextMonth;
-          } else {
-            break;
-          }
-        }
-        
-        // Kalan günleri hesapla (ay ekledikten sonra)
-        const dateAfterMonths = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
-        const remainingDiff = birthday - dateAfterMonths;
-        
-        const days = Math.floor(remainingDiff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((remainingDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((remainingDiff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((remainingDiff % (1000 * 60)) / 1000);
-        
-        setTimeLeft({ months, days, hours, minutes, seconds });
-        
-        // Toplam gün sayısını hesapla
-        const totalDays = Math.floor(difference / (1000 * 60 * 60 * 24));
-        setTotalDaysLeft(totalDays);
-        
-        // Hafta sonlarını saymadan kalan günleri hesapla
-        let weekdayCount = 0;
-        const checkDate = new Date(now);
-        while (checkDate < birthday) {
-          const dayOfWeek = checkDate.getDay(); // 0 = Pazar, 6 = Cumartesi
-          if (dayOfWeek !== 0 && dayOfWeek !== 6) { // Hafta sonu değilse
-            weekdayCount++;
-          }
-          checkDate.setDate(checkDate.getDate() + 1);
-        }
-        setWeekdaysLeft(weekdayCount);
-      } else {
-        setTimeLeft({ months: 0, days: 0, hours: 0, minutes: 0, seconds: 0 });
-        setTotalDaysLeft(0);
-        setWeekdaysLeft(0);
-      }
-    };
+  const units = useMemo(() => {
+    return getAllUnits().map((u) => {
+      const words = getWordsByUnit(u.id);
+      let mastered = 0;
+      let learning = 0;
+      let fresh = 0;
+      words.forEach((w) => {
+        const status = wp[w.id]?.status;
+        if (status === 'mastered') mastered++;
+        else if (status === 'learning' || status === 'review') learning++;
+        else fresh++;
+      });
+      const total = words.length;
+      const percent = total ? Math.round((mastered / total) * 100) : 0;
+      return { ...u, total, mastered, learning, fresh, percent };
+    });
+  }, [wp]);
 
-    // İlk hesaplama
-    calculateTimeLeft();
-    
-    // Her saniye güncelle
-    const interval = setInterval(calculateTimeLeft, 1000);
-    
-    return () => clearInterval(interval);
-  }, []);
+  const totals = units.reduce(
+    (acc, u) => ({
+      mastered: acc.mastered + u.mastered,
+      total: acc.total + u.total,
+    }),
+    { mastered: 0, total: 0 }
+  );
 
-  const dayInfo = getCurrentDay();
+  const lgsDaysLeft = Math.max(0, daysBetween(new Date(), LGS_EXAM_DATE));
+
+  const handleOpenUnit = (unitId) => {
+    setSelectedUnit(unitId);
+    setCurrentView('practice');
+  };
 
   return (
     <div className="space-y-6">
-      {/* Motivasyon Mesajı - Hoş Geldin */}
-      {motivationalMessage && (
-        <div className={`card bg-gradient-to-br ${panelBg} border-2 ${panelBorder} shadow-2xl ${panelShadow} p-6 md:p-8`}>
-          <div className="flex items-start gap-5 md:gap-6">
-            <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br ${getThemeGradient(theme)} flex items-center justify-center flex-shrink-0 text-3xl md:text-4xl shadow-lg`}>
-              💜
-            </div>
-            <div className="flex-1 pt-1">
-              <div className="flex items-center gap-3 mb-4 flex-wrap">
-                <h3 className={`font-bold ${panelText.primary} text-xl md:text-2xl`}>
-                  Merhaba Serra! 
+      {/* LGS sayacı — sade, tek satır */}
+      <div className="card flex items-center justify-between">
+        <div>
+          <p className="text-xs uppercase tracking-wider text-muted-soft mb-1">
+            LGS 2026'ya kalan
+          </p>
+          <p className="font-display text-3xl font-bold text-primary leading-none">
+            {lgsDaysLeft} <span className="text-base font-semibold text-secondary">gün</span>
+          </p>
+        </div>
+        <div className="text-right">
+          <p className="text-xs uppercase tracking-wider text-muted-soft mb-1">
+            Öğrenilen
+          </p>
+          <p className="font-display text-3xl font-bold text-primary leading-none">
+            {totals.mastered}
+            <span className="text-base font-semibold text-secondary">/{totals.total}</span>
+          </p>
+        </div>
+      </div>
+
+      {/* Konu kartları */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {units.map((unit) => (
+          <button
+            key={unit.id}
+            onClick={() => handleOpenUnit(unit.id)}
+            className="card text-left hover:border-strong transition-colors group"
+          >
+            <div className="flex items-start gap-3 mb-3">
+              <span className="text-2xl select-none" aria-hidden>
+                {unit.icon}
+              </span>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-display font-bold text-lg text-primary leading-tight">
+                  {unit.title}
                 </h3>
-                <span className={`text-sm md:text-base ${panelText.secondary}/80 ${badgeBg} px-2 py-1 rounded-lg`}>
-                  {dayInfo.tr}
-                </span>
-                <span className="text-2xl md:text-3xl ml-auto">🐾</span>
-              </div>
-              <p className={`text-lg md:text-xl ${panelText.primary} mb-4 font-semibold leading-relaxed`}>
-                {motivationalMessage.tr} 🐾
-              </p>
-              <div className={`pt-3 border-t ${dividerBorder}`}>
-                <p className={`text-base md:text-lg ${panelText.secondary} italic leading-relaxed`}>
-                  {motivationalMessage.en} 🐾
+                <p className="text-xs text-muted-soft mt-0.5">
+                  {unit.total} kelime
                 </p>
               </div>
+              <ChevronRight
+                className="w-5 h-5 text-muted-soft group-hover:text-primary transition-colors flex-shrink-0 mt-1"
+              />
             </div>
-          </div>
-        </div>
-      )}
 
-      {/* Doğum Günü Countdown */}
-      <div className={`card bg-gradient-to-br ${panelBg} border-2 ${panelBorder} shadow-2xl ${panelShadow} p-6 md:p-8`}>
-        <div className="flex items-start gap-4 md:gap-5">
-          <div className={`w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br ${getThemeGradient(theme)} flex items-center justify-center flex-shrink-0 text-2xl md:text-3xl shadow-lg`}>
-            🎂
-          </div>
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-3">
-              <Calendar className={`w-5 h-5 ${panelIcon}`} />
-              <h3 className={`font-bold ${panelText.primary} text-lg md:text-xl`}>
-                Serra'nın Doğum Gününe Kalan Süre
-              </h3>
+            {/* Durum sayıları */}
+            <div className="flex items-center gap-3 text-xs">
+              <span
+                className="inline-flex items-center gap-1 font-semibold"
+                style={{ color: unit.mastered ? 'var(--success)' : 'var(--text-muted)' }}
+              >
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                {unit.mastered}
+              </span>
+              <span
+                className="inline-flex items-center gap-1 font-semibold"
+                style={{ color: unit.learning ? 'var(--warning)' : 'var(--text-muted)' }}
+              >
+                <Clock className="w-3.5 h-3.5" />
+                {unit.learning}
+              </span>
+              <span className="inline-flex items-center gap-1 font-semibold text-muted-soft">
+                <Circle className="w-3.5 h-3.5" />
+                {unit.fresh}
+              </span>
             </div>
-            <div className="flex items-center gap-4 md:gap-6 mb-3">
-              <div className="flex items-center gap-2">
-                <Clock className={`w-4 h-4 ${panelText.secondary}`} />
-                <span className={`text-sm ${panelText.secondary}/80`}>20 Nisan, 14:25</span>
-              </div>
+
+            {/* İlerleme çubuğu */}
+            <div className="progress-bar mt-3">
+              <div className="progress-fill" style={{ width: `${unit.percent}%` }} />
             </div>
-            <div className="space-y-4 mt-4">
-              {/* Ay ve Gün - Üst Kısım (Büyük) */}
-              <div className="grid grid-cols-2 gap-3 md:gap-4">
-                <div className={`${innerCardBg} rounded-lg p-4 md:p-6 text-center`}>
-                  <div className={`text-4xl md:text-5xl font-bold ${panelText.primary} mb-2`}>
-                    {timeLeft.months}
-                  </div>
-                  <div className={`text-base md:text-lg ${panelText.secondary} font-semibold`}>Ay</div>
-                </div>
-                <div className={`${innerCardBg} rounded-lg p-4 md:p-6 text-center`}>
-                  <div className={`text-4xl md:text-5xl font-bold ${panelText.primary} mb-2`}>
-                    {timeLeft.days}
-                  </div>
-                  <div className={`text-base md:text-lg ${panelText.secondary} font-semibold`}>Gün</div>
-                </div>
-              </div>
-              
-              {/* Saat, Dakika, Saniye - Alt Kısım (Küçük) */}
-              <div className="grid grid-cols-3 gap-2 md:gap-3">
-                <div className={`${innerCardBg} rounded-lg p-3 md:p-4 text-center`}>
-                  <div className={`text-2xl md:text-3xl font-bold ${panelText.primary} mb-1`}>
-                    {timeLeft.hours}
-                  </div>
-                  <div className={`text-xs md:text-sm ${panelText.secondary}/80`}>Saat</div>
-                </div>
-                <div className={`${innerCardBg} rounded-lg p-3 md:p-4 text-center`}>
-                  <div className={`text-2xl md:text-3xl font-bold ${panelText.primary} mb-1`}>
-                    {timeLeft.minutes}
-                  </div>
-                  <div className={`text-xs md:text-sm ${panelText.secondary}/80`}>Dakika</div>
-                </div>
-                <div className={`${innerCardBg} rounded-lg p-3 md:p-4 text-center`}>
-                  <div className={`text-2xl md:text-3xl font-bold ${panelText.primary} mb-1`}>
-                    {timeLeft.seconds}
-                  </div>
-                  <div className={`text-xs md:text-sm ${panelText.secondary}/80`}>Saniye</div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Hafta Sonları Hariç Not */}
-            <div className={`mt-4 pt-4 border-t ${dividerBorder}`}>
-              <p className={`text-sm ${panelText.secondary}/80 text-center italic`}>
-                💡 Toplam <span className={`font-bold ${panelText.primary}`}>{totalDaysLeft} gün</span> kaldı. Eğer hafta sonlarını saymazsak, sadece <span className={`font-bold ${panelText.primary}`}>{weekdaysLeft} iş günü</span> kaldı! 🎉
-              </p>
-            </div>
-          </div>
-        </div>
+          </button>
+        ))}
       </div>
     </div>
   );
 };
 
 export default HomeView;
-

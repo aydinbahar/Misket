@@ -2,273 +2,244 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Misket — sade tasarım sistemi
+ * Tek nötr palet (slate + indigo accent), sadece light + dark.
+ * Tema çoğaltması ve gradient'ler bilinçli olarak yok — odak: LGS çalışması.
+ */
+
 @layer base {
-  /* Dark mode only - no light mode support */
   :root {
-    --bg-gradient: radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.2), transparent 25%),
-      radial-gradient(circle at 80% 0%, rgba(217, 70, 239, 0.18), transparent 26%),
-      linear-gradient(135deg, #050915 0%, #0a1224 50%, #050915 100%);
-    --surface: rgba(15, 23, 42, 0.72);
-    --card-bg: rgba(17, 24, 39, 0.9);
-    --border-color: #1f2937;
-    --text-primary: #e2e8f0;
-    --text-secondary: #cbd5e1;
-    --muted: #94a3b8;
-    --shadow-soft: 0 25px 80px rgba(59, 130, 246, 0.12);
+    --bg-app: #f8fafc;          /* slate-50 */
+    --bg-card: #ffffff;
+    --bg-card-elev: #f1f5f9;    /* slate-100 */
+    --bg-soft: #eef2ff;         /* indigo-50 */
+
+    --text-primary: #0f172a;    /* slate-900 */
+    --text-secondary: #334155;  /* slate-700 */
+    --text-muted: #64748b;      /* slate-500 */
+
+    --border-soft: #e2e8f0;     /* slate-200 */
+    --border-strong: #cbd5e1;   /* slate-300 */
+
+    --accent: #4f46e5;          /* indigo-600 */
+    --accent-strong: #4338ca;   /* indigo-700 */
+    --accent-soft: #eef2ff;     /* indigo-50 */
+    --accent-contrast: #ffffff;
+
+    --success: #16a34a;         /* green-600 */
+    --success-soft: #dcfce7;    /* green-100 */
+    --error: #dc2626;           /* red-600 */
+    --error-soft: #fee2e2;      /* red-100 */
+    --warning: #d97706;         /* amber-600 */
+    --warning-soft: #fef3c7;    /* amber-100 */
+
+    --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+    color-scheme: light;
+  }
+
+  .dark {
+    --bg-app: #0b1220;
+    --bg-card: #111827;          /* slate-900-ish */
+    --bg-card-elev: #1e293b;     /* slate-800 */
+    --bg-soft: #1e1b4b;          /* indigo-950 */
+
+    --text-primary: #f1f5f9;     /* slate-100 */
+    --text-secondary: #cbd5e1;   /* slate-300 */
+    --text-muted: #94a3b8;       /* slate-400 */
+
+    --border-soft: #1f2937;
+    --border-strong: #334155;
+
+    --accent: #818cf8;           /* indigo-400 */
+    --accent-strong: #a5b4fc;    /* indigo-300 */
+    --accent-soft: #1e1b4b;
+    --accent-contrast: #0b1220;
+
+    --success: #4ade80;
+    --success-soft: #052e16;
+    --error: #f87171;
+    --error-soft: #450a0a;
+    --warning: #fbbf24;
+    --warning-soft: #422006;
+
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
     color-scheme: dark;
   }
 
-  body {
-    @apply min-h-screen font-sans antialiased;
-    background: var(--bg-gradient);
+  html, body {
+    @apply min-h-screen antialiased;
+    font-family: theme('fontFamily.sans');
+    background-color: var(--bg-app);
     color: var(--text-primary);
-    transition: background 0.6s ease, color 0.3s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
-  /* Navigation menu - override body color */
-  .navigation-menu,
-  .navigation-menu button,
-  .navigation-menu button *,
-  .navigation-menu span,
-  .navigation-menu svg {
-    color: inherit !important;
-  }
-
-  /* Optional subtle grid to add depth without hurting contrast */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-    background-size: 140px 140px;
-    opacity: 0.4;
-    pointer-events: none;
-    mix-blend-mode: soft-light;
-    z-index: -1;
-  }
-
-  /* Navigation menu - preserve Tailwind text colors, override body color */
-  .navigation-menu {
-    color: initial !important;
-  }
-  
-  .navigation-menu * {
-    color: inherit !important;
-  }
-  
-  /* Specifically target navigation buttons and text */
-  .navigation-menu button:not([class*="bg-gradient"]) {
-    color: #ffffff !important; /* white for all menu text */
-  }
-  
-  .navigation-menu button:not([class*="bg-gradient"]) * {
-    color: #ffffff !important; /* white for all menu text */
-  }
-
-  .app-shell {
-    @apply min-h-screen pb-10 relative;
+  h1, h2, h3, h4 {
+    font-family: theme('fontFamily.display');
     color: var(--text-primary);
+    letter-spacing: -0.01em;
   }
 
-  .app-surface {
-    background: var(--surface);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-soft);
+  *::selection {
+    background-color: var(--accent-soft);
+    color: var(--accent-strong);
   }
 
-  .text-primary {
-    color: var(--text-primary);
-  }
-
-  .text-secondary {
-    color: var(--text-secondary);
-  }
-
-  .text-muted {
-    color: var(--muted);
-  }
-
-  /* Navigation menu - preserve Tailwind text colors, override body color */
-  .navigation-menu {
-    color: initial !important;
-  }
-  
-  .navigation-menu * {
-    color: inherit !important;
-  }
-  
-  /* Specifically target navigation buttons and text */
-  .navigation-menu button:not([class*="bg-gradient"]) {
-    color: #ffffff !important; /* white for all menu text */
-  }
-  
-  .navigation-menu button:not([class*="bg-gradient"]) * {
-    color: #ffffff !important; /* white for all menu text */
+  /* Sade scrollbar */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 999px;
   }
 }
 
 @layer components {
-  /* Glassmorphism Cards */
+  /* === KART === */
   .card {
-    @apply backdrop-blur-lg rounded-2xl shadow-lg p-6 transition-all duration-300 border;
-    background-color: var(--card-bg);
-    border-color: var(--border-color);
+    @apply rounded-2xl p-5 md:p-6 transition-colors duration-200;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-soft);
     color: var(--text-primary);
-    animation: fadeInUp 0.5s ease-out;
+    box-shadow: var(--shadow-card);
   }
 
-  .card:hover {
-    @apply shadow-2xl;
-    transform: translateY(-2px);
+  .card-elev {
+    background-color: var(--bg-card-elev);
   }
 
-  /* Primary Button */
+  .card-flat {
+    @apply rounded-xl p-4;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-soft);
+    color: var(--text-primary);
+  }
+
+  /* === BUTONLAR (sade, fiziksel hissi az) === */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-bold
+           transition-all duration-150 select-none cursor-pointer
+           disabled:opacity-50 disabled:cursor-not-allowed;
+    font-family: theme('fontFamily.sans');
+  }
+
   .btn-primary {
-    @apply bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg;
-    position: relative;
-    overflow: hidden;
+    @apply btn;
+    background-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--accent-strong);
+  }
+  .btn-primary:active:not(:disabled) {
+    transform: scale(0.98);
   }
 
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.5s;
-  }
-
-  .btn-primary:hover::before {
-    left: 100%;
-  }
-
-  /* Secondary Button - theme aware */
   .btn-secondary {
-    @apply backdrop-blur-sm px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 hover:shadow-md;
-    background-color: var(--surface);
+    @apply btn;
+    background-color: var(--bg-card);
     color: var(--text-primary);
-    border-color: var(--border-color);
+    border: 1px solid var(--border-strong);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background-color: var(--bg-card-elev);
+  }
+  .btn-secondary:active:not(:disabled) {
+    transform: scale(0.98);
   }
 
-  .btn-secondary:hover {
-    background-color: color-mix(in srgb, var(--surface) 80%, white 20%);
-    border-color: color-mix(in srgb, var(--border-color) 60%, #a855f7 40%);
+  .btn-ghost {
+    @apply btn;
+    background-color: transparent;
+    color: var(--text-secondary);
+  }
+  .btn-ghost:hover:not(:disabled) {
+    background-color: var(--bg-card-elev);
+    color: var(--text-primary);
   }
 
+  .btn-success {
+    @apply btn text-white;
+    background-color: var(--success);
+  }
+  .btn-error {
+    @apply btn text-white;
+    background-color: var(--error);
+  }
+
+  /* === ROZET === */
   .badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm;
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold;
+    background-color: var(--bg-card-elev);
+    color: var(--text-secondary);
+  }
+  .badge-accent {
+    background-color: var(--accent-soft);
+    color: var(--accent-strong);
+  }
+  .badge-success {
+    background-color: var(--success-soft);
+    color: var(--success);
+  }
+  .badge-warning {
+    background-color: var(--warning-soft);
+    color: var(--warning);
+  }
+  .badge-error {
+    background-color: var(--error-soft);
+    color: var(--error);
+  }
+  .badge-muted {
+    background-color: var(--bg-card-elev);
+    color: var(--text-muted);
   }
 
-  /* Progress Bar */
+  /* === İLERLEME ÇUBUĞU === */
   .progress-bar {
-    @apply rounded-full h-3 overflow-hidden;
-    position: relative;
-    background: color-mix(in srgb, var(--border-color) 80%, transparent 20%);
+    @apply rounded-full h-2 overflow-hidden;
+    background-color: var(--bg-card-elev);
   }
-
   .progress-fill {
     @apply h-full rounded-full transition-all duration-500 ease-out;
-    position: relative;
-    overflow: hidden;
+    background-color: var(--accent);
   }
 
-  .progress-fill::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    animation: shimmer 2s infinite;
+  /* === ANA EKRAN BÜYÜK CTA === */
+  .cta-primary {
+    @apply btn-primary w-full px-5 py-4 rounded-2xl text-base md:text-lg;
   }
 
-  /* Skeleton Loading */
+  /* === SADE ETİKETLER === */
+  .text-primary    { color: var(--text-primary); }
+  .text-secondary  { color: var(--text-secondary); }
+  .text-muted-soft { color: var(--text-muted); }
+  .bg-app          { background-color: var(--bg-app); }
+  .bg-card         { background-color: var(--bg-card); }
+  .bg-soft         { background-color: var(--bg-card-elev); }
+  .border-soft     { border-color: var(--border-soft); }
+  .border-strong   { border-color: var(--border-strong); }
+
   .skeleton {
-    @apply rounded animate-pulse;
-    background: color-mix(in srgb, var(--border-color) 70%, transparent 30%);
-  }
-
-  /* Neon Glow Effects */
-  .neon-glow {
-    box-shadow: 0 0 10px rgba(167, 139, 250, 0.5),
-                0 0 20px rgba(167, 139, 250, 0.3),
-                0 0 30px rgba(167, 139, 250, 0.1);
-  }
-
-  /* Timeline Style */
-  .timeline {
-    @apply relative;
-  }
-
-  .timeline::before {
-    content: '';
-    @apply absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500/50 via-purple-400/30 to-transparent;
-  }
-
-  .timeline-item {
-    @apply relative pl-16 pb-8;
-  }
-
-  .timeline-dot {
-    @apply absolute left-4 top-1.5 w-4 h-4 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg;
-  }
-
-  /* Gradient Text */
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500;
-  }
-
-  /* Animated gradient background for cards */
-  .animated-gradient {
-    background: linear-gradient(
-      120deg,
-      rgba(167, 139, 250, 0.12),
-      rgba(244, 114, 182, 0.12),
-      rgba(56, 189, 248, 0.12)
-    );
-    background-size: 200% 200%;
-    animation: gradientShift 12s ease infinite;
+    @apply rounded-lg animate-pulse;
+    background-color: var(--bg-card-elev);
   }
 }
 
 @layer utilities {
-  .glass-border {
-    border-color: color-mix(in srgb, var(--border-color) 70%, transparent 30%);
+  .text-balance { text-wrap: balance; }
+
+  .view-enter {
+    animation: slideUp 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
+}
+
+@keyframes slideUp {
+  0%   { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0%   { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }

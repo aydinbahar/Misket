@@ -34,17 +34,28 @@ export const SRS_STATES = {
   MASTERED: 'mastered'
 };
 
+const VALID_THEME_MODES = ['auto', 'light', 'dark'];
+
+const normaliseThemeMode = (mode, legacyDarkMode) => {
+  if (VALID_THEME_MODES.includes(mode)) return mode;
+  // Eski sürümden gelen darkMode boolean'ını migrate et
+  if (legacyDarkMode === true) return 'dark';
+  if (legacyDarkMode === false) return 'light';
+  return 'auto';
+};
+
 export const AppProvider = ({ children }) => {
   // Load from localStorage or initialize
   const [userProgress, setUserProgress] = useState(() => {
     const saved = localStorage.getItem('misket_progress');
     if (saved) {
       const parsed = JSON.parse(saved);
-      // Migration: Add missing properties from new features
-      // Check localStorage for darkMode (backward compatibility)
       const savedDarkMode = localStorage.getItem('darkMode');
-      const darkMode = savedDarkMode === 'true' || parsed.darkMode === true;
-      
+      const legacyDarkMode =
+        savedDarkMode === 'true' ? true :
+        savedDarkMode === 'false' ? false :
+        parsed.darkMode;
+
       return {
         ...parsed,
         achievements: parsed.achievements || [],
@@ -55,8 +66,8 @@ export const AppProvider = ({ children }) => {
         badges: parsed.badges || [],
         wordProgress: parsed.wordProgress || {},
         knownWords: parsed.knownWords || [],
-        theme: parsed.theme || 'purple',
-        darkMode: true // Always dark mode
+        themeMode: normaliseThemeMode(parsed.themeMode, legacyDarkMode),
+        soundEnabled: parsed.soundEnabled !== false,
       };
     }
     // Initialize word progress for all words
@@ -72,7 +83,7 @@ export const AppProvider = ({ children }) => {
         streak: 0
       };
     });
-    
+
     return {
       xp: 0,
       level: 1,
@@ -84,13 +95,13 @@ export const AppProvider = ({ children }) => {
       completedUnits: [],
       totalCorrect: 0,
       totalIncorrect: 0,
-      dailyGoal: 10, // Words per day
+      dailyGoal: 10,
       todayProgress: 0,
       lastProgressDate: new Date().toDateString(),
       weeklyStats: [],
-      knownWords: [], // Words marked as known by user
-      theme: 'purple',
-      darkMode: true // Always dark mode
+      knownWords: [],
+      themeMode: 'auto',
+      soundEnabled: true,
     };
   });
 
@@ -99,14 +110,30 @@ export const AppProvider = ({ children }) => {
     localStorage.setItem('misket_progress', JSON.stringify(userProgress));
   }, [userProgress]);
 
-  // Always set dark mode - no light mode support
+  // Light/Dark modunu sistem temasıyla beraber yönet
   useEffect(() => {
+    const mode = userProgress.themeMode || 'auto';
     const root = document.documentElement;
-    root.classList.add('dark');
-    root.setAttribute('data-theme', 'dark');
-    document.body.dataset.theme = 'dark';
-    localStorage.setItem('darkMode', 'true');
-  }, []);
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const apply = (resolvedDark) => {
+      root.classList.toggle('dark', resolvedDark);
+      root.setAttribute('data-mode', resolvedDark ? 'dark' : 'light');
+    };
+
+    if (mode === 'auto') {
+      apply(media.matches);
+      const listener = (e) => apply(e.matches);
+      media.addEventListener('change', listener);
+      return () => media.removeEventListener('change', listener);
+    }
+    apply(mode === 'dark');
+  }, [userProgress.themeMode]);
+
+  // Ses ayarını soundEffects modülüne yansıt
+  useEffect(() => {
+    soundEffects.toggle(userProgress.soundEnabled !== false);
+  }, [userProgress.soundEnabled]);
 
   // Calculate current level info
   const getCurrentLevelInfo = () => {
@@ -412,13 +439,29 @@ export const AppProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Only run once on mount
 
-  // Update theme
-  const updateTheme = (themeId) => {
+  // Light/Dark/Auto modu değiştir
+  const updateThemeMode = (mode) => {
     setUserProgress(prev => ({
       ...prev,
-      theme: themeId
+      themeMode: normaliseThemeMode(mode)
     }));
-    // No notification for theme changes
+  };
+
+  // 3-state toggle: auto → light → dark → auto
+  const cycleThemeMode = () => {
+    setUserProgress(prev => {
+      const current = prev.themeMode || 'auto';
+      const next = current === 'auto' ? 'light' : current === 'light' ? 'dark' : 'auto';
+      return { ...prev, themeMode: next };
+    });
+  };
+
+  // Ses on/off
+  const toggleSound = () => {
+    setUserProgress(prev => ({
+      ...prev,
+      soundEnabled: !prev.soundEnabled
+    }));
   };
 
   // Mark word as known
@@ -465,7 +508,9 @@ export const AppProvider = ({ children }) => {
     addAchievement,
     updateDailyProgress,
     checkAchievements,
-    updateTheme,
+    updateThemeMode,
+    cycleThemeMode,
+    toggleSound,
     triggerConfetti,
     notification,
     showNotification,

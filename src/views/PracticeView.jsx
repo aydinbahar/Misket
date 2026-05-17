@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { getWordsByUnit } from '../data/vocabulary';
-import MisketCharacter from '../components/MisketCharacter';
 import { getThemePanelBg, getThemePanelBorder, getThemePanelShadow, getThemePanelText, getThemePanelIcon, getThemeInnerCardBg } from '../utils/themeUtils';
 import { 
   ArrowLeft, ArrowRight, RotateCcw, Volume2, 
@@ -10,13 +9,12 @@ import {
 
 const PracticeView = ({ selectedUnit, setCurrentView }) => {
   const { userProgress, updateWordProgress, showNotification, updateDailyProgress, triggerConfetti, markWordAsKnown, unmarkWordAsKnown, isWordKnown } = useApp();
-  const theme = userProgress?.theme || 'purple';
-  const panelBg = getThemePanelBg(theme);
-  const panelBorder = getThemePanelBorder(theme);
-  const panelShadow = getThemePanelShadow(theme);
-  const panelText = getThemePanelText(theme);
-  const panelIcon = getThemePanelIcon(theme);
-  const innerCardBg = getThemeInnerCardBg(theme);
+  const panelBg = getThemePanelBg();
+  const panelBorder = getThemePanelBorder();
+  const panelShadow = getThemePanelShadow();
+  const panelText = getThemePanelText();
+  const panelIcon = getThemePanelIcon();
+  const innerCardBg = getThemeInnerCardBg();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [mode, setMode] = useState('learn'); // 'learn' or 'quiz'
@@ -71,7 +69,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
       <div className="card text-center">
         <p className="text-gray-600 dark:text-gray-300">No words available. Please select a unit first.</p>
         <button 
-          onClick={() => setCurrentView('units')}
+          onClick={() => setCurrentView('home')}
           className="btn-primary mt-4"
         >
           Go to Units
@@ -98,7 +96,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
             Show Known Words
           </button>
           <button 
-            onClick={() => setCurrentView('units')}
+            onClick={() => setCurrentView('home')}
             className="btn-primary text-sm py-2 px-4"
           >
             Go to Units
@@ -226,7 +224,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
       setImageError(false);
     } else {
       showNotification('🎉 You completed all words in this unit!', 'success');
-      setCurrentView('units');
+      setCurrentView('home');
     }
   };
 
@@ -352,7 +350,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
       {/* Header */}
       <div className="flex items-center justify-between mb-2">
         <button
-          onClick={() => setCurrentView('units')}
+          onClick={() => setCurrentView('home')}
           className="btn-secondary flex items-center gap-1.5 text-xs py-1.5 px-2.5"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
@@ -627,32 +625,35 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
           </div>
         </div>
 
-        {/* Misket Sidebar */}
+        {/* Yan panel — istatistik + ipucu */}
         <div className="lg:col-span-1">
-          <div className="card sticky top-4 p-3">
-            <MisketCharacter 
-              mood={feedback === 'correct' ? 'celebrating' : 'encouraging'} 
-              message={getMisketMessage()}
-              showStars={feedback === 'correct'}
-            />
+          <div className="card sticky top-4 space-y-3">
+            <div
+              className="rounded-2xl px-3 py-3 text-sm font-semibold"
+              style={{
+                background: feedback === 'correct' ? 'var(--success-soft)' : 'var(--bg-soft)',
+                color: feedback === 'correct' ? 'var(--success)' : 'var(--text-secondary)',
+              }}
+            >
+              {getMisketMessage()}
+            </div>
 
-            {/* Word Stats */}
-            <div className="mt-3 space-y-1.5">
-              <div className="bg-green-900/20 rounded-lg p-2 border border-green-700/50">
-                <p className="text-xs text-gray-400 mb-0.5">Correct</p>
-                <p className="text-lg font-bold text-white">
+            <div className="grid grid-cols-3 gap-2">
+              <div className="rounded-xl p-2 text-center" style={{ background: 'var(--success-soft)' }}>
+                <p className="text-[10px] uppercase tracking-wide text-muted-soft mb-0.5">Doğru</p>
+                <p className="text-lg font-bold" style={{ color: 'var(--success)' }}>
                   {progress?.correctCount || 0}
                 </p>
               </div>
-              <div className="bg-red-900/20 rounded-lg p-2 border border-red-700/50">
-                <p className="text-xs text-gray-400 mb-0.5">Incorrect</p>
-                <p className="text-lg font-bold text-white">
+              <div className="rounded-xl p-2 text-center" style={{ background: 'var(--error-soft)' }}>
+                <p className="text-[10px] uppercase tracking-wide text-muted-soft mb-0.5">Yanlış</p>
+                <p className="text-lg font-bold" style={{ color: 'var(--error)' }}>
                   {progress?.incorrectCount || 0}
                 </p>
               </div>
-              <div className="bg-orange-900/20 rounded-lg p-2 border border-orange-700/50">
-                <p className="text-xs text-gray-400 mb-0.5">Streak</p>
-                <p className="text-lg font-bold text-white">
+              <div className="rounded-xl p-2 text-center" style={{ background: 'var(--warning-soft)' }}>
+                <p className="text-[10px] uppercase tracking-wide text-muted-soft mb-0.5">Seri</p>
+                <p className="text-lg font-bold" style={{ color: 'var(--warning)' }}>
                   {progress?.streak || 0}
                 </p>
               </div>
