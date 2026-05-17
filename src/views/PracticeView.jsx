@@ -170,7 +170,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                 </span>
               </header>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2.5">
                 {clusterWords.map((word) => {
                   const status = wp[word.id]?.status || 'new';
                   const style = statusBadgeStyle(status);
@@ -179,10 +179,10 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                     <button
                       key={word.id}
                       onClick={() => setOpenWordId(word.id)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-150 active:scale-95 border"
+                      className="inline-flex items-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-full text-base font-semibold transition-all duration-150 active:scale-95 border"
                       style={style}
                     >
-                      {isMastered && <Check className="w-3.5 h-3.5" />}
+                      {isMastered && <Check className="w-4 h-4" />}
                       {word.word}
                     </button>
                   );
@@ -195,7 +195,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
 
       {/* Alt listeler: öğrenilenler + çalışılması gerekenler */}
       {(learnedList.length > 0 || toReviewList.length > 0) && (
-        <div className="space-y-3 pt-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 pt-2">
           {toReviewList.length > 0 && (
             <section className="card">
               <header className="flex items-center justify-between mb-3">
@@ -212,7 +212,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                   <li key={w.id}>
                     <button
                       onClick={() => setOpenWordId(w.id)}
-                      className="w-full flex items-center justify-between gap-3 py-2.5 text-left transition-colors hover:opacity-75"
+                      className="w-full flex items-center justify-between gap-3 py-3.5 min-h-[48px] text-left transition-colors hover:opacity-75"
                     >
                       <span className="font-semibold text-primary truncate">{w.word}</span>
                       <span className="text-sm text-secondary truncate text-right">{w.meaning}</span>
@@ -239,7 +239,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                   <li key={w.id}>
                     <button
                       onClick={() => setOpenWordId(w.id)}
-                      className="w-full flex items-center justify-between gap-3 py-2.5 text-left transition-colors hover:opacity-75"
+                      className="w-full flex items-center justify-between gap-3 py-3.5 min-h-[48px] text-left transition-colors hover:opacity-75"
                     >
                       <span className="font-semibold text-primary truncate">{w.word}</span>
                       <span className="text-sm text-secondary truncate text-right">{w.meaning}</span>
@@ -266,7 +266,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
 
           {/* Sheet */}
           <div
-            className="relative w-full sm:max-w-md mx-auto rounded-t-3xl sm:rounded-3xl p-6 animate-slide-up"
+            className="relative w-full sm:max-w-md md:max-w-lg mx-auto rounded-t-3xl sm:rounded-3xl px-6 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:pb-6 animate-slide-up max-h-[90dvh] overflow-y-auto"
             style={{
               background: 'var(--bg-card)',
               border: '1px solid var(--border-soft)',

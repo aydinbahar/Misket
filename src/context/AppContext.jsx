@@ -204,33 +204,13 @@ export const AppProvider = ({ children }) => {
         streak: 0
       };
 
-      let newStatus = wordProg.status;
-      let newStreak = correct ? wordProg.streak + 1 : 0;
-      let xpReward = 10;
-
-      // Update status based on performance
-      if (correct) {
-        if (wordProg.status === SRS_STATES.NEW) {
-          newStatus = SRS_STATES.LEARNING;
-        } else if (wordProg.status === SRS_STATES.LEARNING && newStreak >= 3) {
-          newStatus = SRS_STATES.REVIEW;
-        } else if (wordProg.status === SRS_STATES.REVIEW && newStreak >= 5) {
-          newStatus = SRS_STATES.MASTERED;
-          xpReward = 20; // Bonus for mastery
-        }
-
-        // Fast answer bonus
-        if (timeMs && timeMs < 3000) {
-          xpReward += 5;
-        }
-      } else {
-        // Wrong answer - downgrade status
-        if (wordProg.status === SRS_STATES.MASTERED) {
-          newStatus = SRS_STATES.REVIEW;
-        } else if (wordProg.status === SRS_STATES.REVIEW) {
-          newStatus = SRS_STATES.LEARNING;
-        }
-      }
+      // Self-mark UI: tek tıklama = doğrudan durum belirler.
+      // Biliyorum → MASTERED, Bilmiyorum → LEARNING. Kullanıcı istediği zaman tersine çevirebilir.
+      const newStatus = correct ? SRS_STATES.MASTERED : SRS_STATES.LEARNING;
+      const newStreak = correct ? wordProg.streak + 1 : 0;
+      const isNewMastery =
+        correct && wordProg.status !== SRS_STATES.MASTERED;
+      const xpReward = isNewMastery ? 20 : (correct ? 10 : 0);
 
       // Calculate next review time (SRS algorithm)
       const intervals = {

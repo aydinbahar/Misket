@@ -36,16 +36,6 @@ export const vocabularyData = {
         pronunciation: "ə-ˈlōn"
       },
       {
-        id: "w1_4",
-        word: "Although",
-        meaning: "-e rağmen",
-        sentence: "Although it was raining, we went outside.",
-        synonym: "Though, Even though",
-        antonym: "Because",
-        memoryTip: "ALTHOUGH → ALL + THOUGH = despite all!",
-        pronunciation: "ȯl-ˈt͟hō"
-      },
-      {
         id: "w1_5",
         word: "Apologize",
         meaning: "Özür dilemek",
@@ -124,16 +114,6 @@ export const vocabularyData = {
         antonym: "Stranger",
         memoryTip: "BUDDY → your BUD who's always ready!",
         pronunciation: "ˈbə-dē"
-      },
-      {
-        id: "w1_13",
-        word: "Busy",
-        meaning: "Meşgul",
-        sentence: "Sorry, I'm too busy to talk right now.",
-        synonym: "Occupied, Engaged",
-        antonym: "Free, Available",
-        memoryTip: "BUSY → like a BEE buzzing around!",
-        pronunciation: "ˈbi-zē"
       },
       {
         id: "w1_14",
@@ -436,16 +416,6 @@ export const vocabularyData = {
         pronunciation: "ˈpā-shən(t)s"
       },
       {
-        id: "w1_44",
-        word: "Prefer",
-        meaning: "Tercih etmek",
-        sentence: "I prefer spending time with close friends.",
-        synonym: "Choose, Favor",
-        antonym: "Reject",
-        memoryTip: "PREFER → PRE (before) + FER = choose first!",
-        pronunciation: "pri-ˈfər"
-      },
-      {
         id: "w1_45",
         word: "Reliable",
         meaning: "Güvenilir",
@@ -484,16 +454,6 @@ export const vocabularyData = {
         antonym: "Public, Open",
         memoryTip: "SECRET → SE-CRET (hidden) information!",
         pronunciation: "ˈsē-krət"
-      },
-      {
-        id: "w1_49",
-        word: "Share",
-        meaning: "Paylaşmak",
-        sentence: "Friends share everything with each other.",
-        synonym: "Divide, Split",
-        antonym: "Keep, Hoard",
-        memoryTip: "SHARE → SHARE and care!",
-        pronunciation: "ˈsher"
       },
       {
         id: "w1_50",
@@ -554,7 +514,27 @@ export const vocabularyData = {
         antonym: "Inconsiderate",
         memoryTip: "UNDERSTANDING → UNDER-STANDING you!",
         pronunciation: "ˌən-dər-ˈstan-diŋ"
-      }
+      },
+      { id: "w1_56", word: "Care", meaning: "Önemsemek", sentence: "I really care about my best friend's happiness." },
+      { id: "w1_58", word: "Fashionable", meaning: "Modaya uygun", sentence: "She always wears fashionable clothes." },
+      { id: "w1_59", word: "Feeling", meaning: "Duygu, his", sentence: "I have a good feeling about our friendship." },
+      { id: "w1_60", word: "Fun", meaning: "Eğlence, eğlenceli", sentence: "We had so much fun at the party." },
+      { id: "w1_61", word: "Generation", meaning: "Nesil, kuşak", sentence: "Each generation has its own style." },
+      { id: "w1_62", word: "Guess", meaning: "Tahmin etmek", sentence: "Can you guess who called me yesterday?" },
+      { id: "w1_63", word: "Guest", meaning: "Misafir, konuk", sentence: "We have a special guest for dinner tonight." },
+      { id: "w1_64", word: "Idea", meaning: "Fikir", sentence: "That's a great idea for the weekend!" },
+      { id: "w1_65", word: "Instead", meaning: "Yerine", sentence: "Let's go to the park instead of the cinema." },
+      { id: "w1_66", word: "Invitation", meaning: "Davet, davetiye", sentence: "I got an invitation to her birthday party." },
+      { id: "w1_67", word: "Invite", meaning: "Davet etmek", sentence: "I want to invite you to my house." },
+      { id: "w1_68", word: "Lie", meaning: "Yalan; yalan söylemek", sentence: "A good friend never tells a lie." },
+      { id: "w1_69", word: "Meet", meaning: "Buluşmak, tanışmak", sentence: "Let's meet at the library after school." },
+      { id: "w1_70", word: "Occur", meaning: "Meydana gelmek, olmak", sentence: "Misunderstandings can occur between close friends." },
+      { id: "w1_71", word: "Offer", meaning: "Teklif etmek", sentence: "She offered to help me with my homework." },
+      { id: "w1_72", word: "Personality", meaning: "Kişilik", sentence: "He has a really friendly personality." },
+      { id: "w1_73", word: "Priceless", meaning: "Paha biçilemez", sentence: "True friendship is priceless." },
+      { id: "w1_74", word: "Promise", meaning: "Söz; söz vermek", sentence: "I promise to keep your secret safe." },
+      { id: "w1_75", word: "Refuse", meaning: "Reddetmek", sentence: "He refused to apologize for what he did." },
+      { id: "w1_76", word: "Same", meaning: "Aynı", sentence: "We like the same kind of music." }
     ]
   },
   "unit2": {
@@ -593,26 +573,6 @@ export const vocabularyData = {
         pronunciation: "ˈaŋ(k)-shəs"
       },
       {
-        id: "w2_4",
-        word: "Argue",
-        meaning: "Tartışmak",
-        sentence: "Teens often argue with their parents.",
-        synonym: "Debate, Quarrel",
-        antonym: "Agree",
-        memoryTip: "ARGUE → ARGUing makes noise!",
-        pronunciation: "ˈär-gyü"
-      },
-      {
-        id: "w2_5",
-        word: "Awesome",
-        meaning: "Mükemmel",
-        sentence: "This movie is awesome!",
-        synonym: "Great, Fantastic",
-        antonym: "Terrible",
-        memoryTip: "AWESOME → full of AWE!",
-        pronunciation: "ˈȯ-səm"
-      },
-      {
         id: "w2_6",
         word: "Awful",
         meaning: "Berbat",
@@ -643,16 +603,6 @@ export const vocabularyData = {
         pronunciation: "ˈbȯr-iŋ"
       },
       {
-        id: "w2_9",
-        word: "Chat",
-        meaning: "Sohbet",
-        sentence: "I love to chat with my friends online.",
-        synonym: "Talk, Converse",
-        antonym: "Silence",
-        memoryTip: "CHAT → like a CAT chattering!",
-        pronunciation: "ˈchat"
-      },
-      {
         id: "w2_10",
         word: "Confident",
         meaning: "Kendine güvenen",
@@ -671,16 +621,6 @@ export const vocabularyData = {
         antonym: "Occasional, Rare",
         memoryTip: "DAILY → every DAY like DAIly milk!",
         pronunciation: "ˈdā-lē"
-      },
-      {
-        id: "w2_12",
-        word: "Different",
-        meaning: "Farklı",
-        sentence: "Every teenager is different.",
-        synonym: "Unlike, Distinct",
-        antonym: "Same, Similar",
-        memoryTip: "DIFFERENT → makes a DIFFERENCE!",
-        pronunciation: "ˈdi-fərnt"
       },
       {
         id: "w2_13",
@@ -721,16 +661,6 @@ export const vocabularyData = {
         antonym: "Dislike, Hate",
         memoryTip: "ENJOY → get JOY from it!",
         pronunciation: "in-ˈjȯi"
-      },
-      {
-        id: "w2_17",
-        word: "Exciting",
-        meaning: "Heyecan verici",
-        sentence: "The roller coaster was so exciting!",
-        synonym: "Thrilling, Stimulating",
-        antonym: "Boring, Dull",
-        memoryTip: "EXCITING → causes EXCITEMENT!",
-        pronunciation: "ik-ˈsī-tiŋ"
       },
       {
         id: "w2_18",
@@ -883,36 +813,6 @@ export const vocabularyData = {
         pronunciation: "ri-ˈlā-shən-ˌship"
       },
       {
-        id: "w2_33",
-        word: "Respect",
-        meaning: "Saygı",
-        sentence: "Respect your elders.",
-        synonym: "Admiration, Regard",
-        antonym: "Disrespect",
-        memoryTip: "RESPECT → RE-SPECT = look again!",
-        pronunciation: "ri-ˈspekt"
-      },
-      {
-        id: "w2_34",
-        word: "Responsibility",
-        meaning: "Sorumluluk",
-        sentence: "Taking responsibility is part of growing up.",
-        synonym: "Duty, Obligation",
-        antonym: "Irresponsibility",
-        memoryTip: "RESPONSIBILITY → ability to RESPOND!",
-        pronunciation: "ri-ˌspän-sə-ˈbi-lə-tē"
-      },
-      {
-        id: "w2_35",
-        word: "Social media",
-        meaning: "Sosyal medya",
-        sentence: "Teens spend a lot of time on social media.",
-        synonym: "Online platforms",
-        antonym: "Traditional media",
-        memoryTip: "SOCIAL MEDIA → SOCIAL communication MEDIA!",
-        pronunciation: "ˈsō-shəl ˈmē-dē-ə"
-      },
-      {
         id: "w2_36",
         word: "Spend time",
         meaning: "Vakit geçirmek",
@@ -961,7 +861,36 @@ export const vocabularyData = {
         antonym: "Rarely, Never",
         memoryTip: "USUALLY → USUAL + LY = happens often!",
         pronunciation: "ˈyü-zhə-wə-lē"
-      }
+      },
+      { id: "w2_41", word: "Admire", meaning: "Hayran olmak", sentence: "I admire my older sister so much." },
+      { id: "w2_42", word: "Advise", meaning: "Tavsiye vermek", sentence: "My teacher advised me to study more." },
+      { id: "w2_43", word: "Always", meaning: "Her zaman", sentence: "I always brush my teeth before bed." },
+      { id: "w2_44", word: "Can't stand", meaning: "Katlanamamak", sentence: "I can't stand horror movies." },
+      { id: "w2_45", word: "Comfortable", meaning: "Rahat", sentence: "These shoes are very comfortable." },
+      { id: "w2_46", word: "Concert", meaning: "Konser", sentence: "We're going to a pop concert this weekend." },
+      { id: "w2_47", word: "Conversation", meaning: "Sohbet, konuşma", sentence: "We had a long conversation about books." },
+      { id: "w2_48", word: "Drummer", meaning: "Davulcu", sentence: "He wants to be the drummer in a band." },
+      { id: "w2_49", word: "Educational", meaning: "Eğitici", sentence: "I prefer educational TV programs." },
+      { id: "w2_50", word: "Enjoyable", meaning: "Keyifli, hoş", sentence: "The picnic was very enjoyable." },
+      { id: "w2_51", word: "Event", meaning: "Etkinlik, olay", sentence: "The school event was a huge success." },
+      { id: "w2_52", word: "Express", meaning: "İfade etmek", sentence: "She can express her feelings easily." },
+      { id: "w2_53", word: "Be fond of", meaning: "Düşkün olmak, sevmek", sentence: "I'm really fond of classical music." },
+      { id: "w2_54", word: "Gym", meaning: "Spor salonu", sentence: "I go to the gym three times a week." },
+      { id: "w2_55", word: "Hang around", meaning: "Takılmak, vakit geçirmek", sentence: "We usually hang around the park after school." },
+      { id: "w2_56", word: "Hate", meaning: "Nefret etmek", sentence: "I hate getting up early on Sundays." },
+      { id: "w2_57", word: "Healthy", meaning: "Sağlıklı", sentence: "Eating fruit is a healthy habit." },
+      { id: "w2_58", word: "Hiking", meaning: "Doğa yürüyüşü", sentence: "Hiking in the forest is my favorite hobby." },
+      { id: "w2_59", word: "Individual sport", meaning: "Bireysel spor", sentence: "Tennis is an individual sport." },
+      { id: "w2_60", word: "Be keen on", meaning: "Çok meraklı olmak, düşkün olmak", sentence: "She's keen on learning new languages." },
+      { id: "w2_61", word: "Patriot", meaning: "Vatansever", sentence: "He is a true patriot of his country." },
+      { id: "w2_62", word: "Relaxing", meaning: "Rahatlatıcı", sentence: "Listening to music is very relaxing." },
+      { id: "w2_63", word: "Snob", meaning: "Züppe, kibirli", sentence: "Don't be a snob about other people's clothes." },
+      { id: "w2_64", word: "Suggest", meaning: "Önermek", sentence: "I suggest we watch a comedy movie." },
+      { id: "w2_65", word: "Team sport", meaning: "Takım sporu", sentence: "Football is a popular team sport." },
+      { id: "w2_66", word: "Terrific", meaning: "Müthiş, harika", sentence: "You did a terrific job on your project!" },
+      { id: "w2_68", word: "Trendy", meaning: "Moda olan, son moda", sentence: "She always wears trendy outfits." },
+      { id: "w2_69", word: "Unbearable", meaning: "Dayanılmaz, çekilmez", sentence: "The heat in summer is unbearable." },
+      { id: "w2_70", word: "Work out", meaning: "Spor yapmak, antrenman yapmak", sentence: "I work out at the gym every morning." }
     ]
   },
   "unit3": {
@@ -969,16 +898,6 @@ export const vocabularyData = {
     title: "In the Kitchen",
     icon: "🍳",
     words: [
-      {
-        id: "w3_1",
-        word: "Add",
-        meaning: "Eklemek",
-        sentence: "Add some salt to the soup.",
-        synonym: "Include, Put in",
-        antonym: "Remove, Subtract",
-        memoryTip: "ADD → ADDing more!",
-        pronunciation: "ˈad"
-      },
       {
         id: "w3_2",
         word: "Bake",
@@ -1448,7 +1367,35 @@ export const vocabularyData = {
         antonym: "Leave still",
         memoryTip: "WHISK → WHISK away!",
         pronunciation: "ˈ(h)wisk"
-      }
+      },
+      { id: "w3_49", word: "Baking powder", meaning: "Kabartma tozu", sentence: "Add a teaspoon of baking powder to the flour." },
+      { id: "w3_50", word: "Baking soda", meaning: "Karbonat", sentence: "Baking soda makes the cake rise." },
+      { id: "w3_51", word: "Bean", meaning: "Fasulye", sentence: "Beans are a good source of protein." },
+      { id: "w3_52", word: "Beef", meaning: "Sığır eti", sentence: "She made a delicious beef stew for dinner." },
+      { id: "w3_53", word: "Butter", meaning: "Tereyağı", sentence: "Spread some butter on the warm bread." },
+      { id: "w3_54", word: "Cinnamon", meaning: "Tarçın", sentence: "Sprinkle cinnamon on top of the apple pie." },
+      { id: "w3_55", word: "Dessert", meaning: "Tatlı", sentence: "My favorite dessert is chocolate cake." },
+      { id: "w3_56", word: "Dish", meaning: "Yemek; tabak", sentence: "Pasta is the most popular dish in Italy." },
+      { id: "w3_57", word: "Dough", meaning: "Hamur", sentence: "Knead the dough for ten minutes." },
+      { id: "w3_58", word: "Fridge", meaning: "Buzdolabı", sentence: "Put the milk back in the fridge." },
+      { id: "w3_59", word: "Frying pan", meaning: "Kızartma tavası", sentence: "Heat some oil in the frying pan." },
+      { id: "w3_60", word: "Garlic", meaning: "Sarımsak", sentence: "Add two cloves of garlic to the sauce." },
+      { id: "w3_61", word: "Grater", meaning: "Rende", sentence: "Use a grater to shred the cheese." },
+      { id: "w3_62", word: "Grill", meaning: "Izgara yapmak", sentence: "We grill burgers in summer." },
+      { id: "w3_63", word: "Knead", meaning: "Yoğurmak", sentence: "Knead the dough until smooth." },
+      { id: "w3_64", word: "Meal", meaning: "Öğün, yemek", sentence: "Breakfast is the most important meal of the day." },
+      { id: "w3_65", word: "Method", meaning: "Yöntem", sentence: "Boiling is a simple cooking method." },
+      { id: "w3_66", word: "Mixture", meaning: "Karışım", sentence: "Pour the mixture into the baking tin." },
+      { id: "w3_67", word: "Nut", meaning: "Fındık, kuruyemiş", sentence: "I like nuts in my chocolate." },
+      { id: "w3_68", word: "Paprika", meaning: "Kırmızı toz biber", sentence: "Add a pinch of paprika for color." },
+      { id: "w3_69", word: "Parsley", meaning: "Maydanoz", sentence: "Sprinkle chopped parsley on top." },
+      { id: "w3_70", word: "Pasta", meaning: "Makarna", sentence: "Italian pasta is famous worldwide." },
+      { id: "w3_71", word: "Prepare", meaning: "Hazırlamak", sentence: "I prepare my lunch every morning." },
+      { id: "w3_72", word: "Rise", meaning: "Kabarmak, yükselmek", sentence: "Let the dough rise for an hour." },
+      { id: "w3_73", word: "Rolling pin", meaning: "Oklava, merdane", sentence: "Use a rolling pin to flatten the dough." },
+      { id: "w3_74", word: "Saucepan", meaning: "Küçük tencere", sentence: "Boil the milk in a small saucepan." },
+      { id: "w3_75", word: "Spices", meaning: "Baharatlar", sentence: "Turkish food uses many spices." },
+      { id: "w3_76", word: "Spicy", meaning: "Baharatlı, acılı", sentence: "I love spicy Mexican food." }
     ]
   },
   "unit4": {
@@ -1567,16 +1514,6 @@ export const vocabularyData = {
         pronunciation: "kən-ˈfərm"
       },
       {
-        id: "w4_12",
-        word: "Connect",
-        meaning: "Bağlamak",
-        sentence: "I'll connect you to the manager.",
-        synonym: "Link, Join",
-        antonym: "Disconnect, Separate",
-        memoryTip: "CONNECT → CONNECTion made!",
-        pronunciation: "kə-ˈnekt"
-      },
-      {
         id: "w4_13",
         word: "Contact",
         meaning: "İletişim kurmak",
@@ -1685,16 +1622,6 @@ export const vocabularyData = {
         antonym: "Hang up",
         memoryTip: "HOLD ON → HOLD tight and stay ON!",
         pronunciation: "ˈhōld ˈän"
-      },
-      {
-        id: "w4_24",
-        word: "Important",
-        meaning: "Önemli",
-        sentence: "This is an important call.",
-        synonym: "Significant, Crucial",
-        antonym: "Unimportant, Trivial",
-        memoryTip: "IMPORTANT → must IMPORT!",
-        pronunciation: "im-ˈpȯr-tənt"
       },
       {
         id: "w4_25",
@@ -1845,7 +1772,17 @@ export const vocabularyData = {
         antonym: "Correct number",
         memoryTip: "WRONG NUMBER → WRONG phone NUMBER!",
         pronunciation: "ˈrȯŋ ˈnəm-bər"
-      }
+      },
+      { id: "w4_40", word: "Keep in touch", meaning: "İrtibatta kalmak", sentence: "Let's keep in touch by texting." },
+      { id: "w4_41", word: "Face to face", meaning: "Yüz yüze", sentence: "I prefer face to face conversation." },
+      { id: "w4_42", word: "Meet up", meaning: "Buluşmak", sentence: "Let's meet up at the cafe tomorrow." },
+      { id: "w4_43", word: "Smartphone", meaning: "Akıllı telefon", sentence: "She uses her smartphone for everything." },
+      { id: "w4_44", word: "Communication", meaning: "İletişim", sentence: "Good communication is important in friendship." },
+      { id: "w4_46", word: "Customer", meaning: "Müşteri", sentence: "The customer called the company to complain." },
+      { id: "w4_47", word: "Call center", meaning: "Çağrı merkezi", sentence: "She works at a call center." },
+      { id: "w4_48", word: "Make a complaint", meaning: "Şikayet etmek", sentence: "I want to make a complaint about the service." },
+      { id: "w4_50", word: "Warn", meaning: "Uyarmak", sentence: "She warned me about the bad weather." },
+      { id: "w4_51", word: "Donate", meaning: "Bağışlamak", sentence: "Many people donate money over the phone." }
     ]
   },
   "unit5": {
@@ -1892,16 +1829,6 @@ export const vocabularyData = {
         antonym: "Main message",
         memoryTip: "ATTACHMENT → ATTACHed to email!",
         pronunciation: "ə-ˈtach-mənt"
-      },
-      {
-        id: "w5_5",
-        word: "Available",
-        meaning: "Müsait, erişilebilir",
-        sentence: "The website is available 24/7.",
-        synonym: "Accessible, Free",
-        antonym: "Unavailable, Busy",
-        memoryTip: "AVAILABLE → AVAIL-able to use!",
-        pronunciation: "ə-ˈvā-lə-bəl"
       },
       {
         id: "w5_6",
@@ -2084,16 +2011,6 @@ export const vocabularyData = {
         pronunciation: "ˈläg ˈau̇t"
       },
       {
-        id: "w5_24",
-        word: "Message",
-        meaning: "Mesaj",
-        sentence: "I received a message from my friend.",
-        synonym: "Text, Note",
-        antonym: "Silence",
-        memoryTip: "MESSAGE → send a MESSAGE!",
-        pronunciation: "ˈme-sij"
-      },
-      {
         id: "w5_25",
         word: "Online",
         meaning: "Çevrimiçi",
@@ -2252,7 +2169,21 @@ export const vocabularyData = {
         antonym: "Wired",
         memoryTip: "WI-FI → Wireless Fidelity!",
         pronunciation: "ˈwī-ˌfī"
-      }
+      },
+      { id: "w5_41", word: "Browser", meaning: "Tarayıcı", sentence: "Chrome is my favorite web browser." },
+      { id: "w5_42", word: "Search engine", meaning: "Arama motoru", sentence: "Google is the most popular search engine." },
+      { id: "w5_43", word: "Surf", meaning: "İnternette gezinmek", sentence: "I surf the internet every evening." },
+      { id: "w5_44", word: "Application", meaning: "Uygulama", sentence: "I downloaded a new application on my phone." },
+      { id: "w5_45", word: "Device", meaning: "Cihaz", sentence: "She has many smart devices at home." },
+      { id: "w5_46", word: "Screen", meaning: "Ekran", sentence: "Don't look at the screen for too long." },
+      { id: "w5_47", word: "Connection", meaning: "Bağlantı", sentence: "The internet connection is very slow today." },
+      { id: "w5_48", word: "Follower", meaning: "Takipçi", sentence: "She has thousands of followers on social media." },
+      { id: "w5_49", word: "Offline", meaning: "Çevrimdışı", sentence: "I went offline to focus on my homework." },
+      { id: "w5_50", word: "Register", meaning: "Kayıt olmak", sentence: "You need to register before using the site." },
+      { id: "w5_51", word: "Addict", meaning: "Bağımlı", sentence: "Don't become an internet addict." },
+      { id: "w5_52", word: "Addiction", meaning: "Bağımlılık", sentence: "Internet addiction is a serious problem." },
+      { id: "w5_53", word: "Harmful", meaning: "Zararlı", sentence: "Too much screen time is harmful." },
+      { id: "w5_54", word: "Safety", meaning: "Güvenlik", sentence: "Online safety is very important for teenagers." }
     ]
   },
   "unit6": {
@@ -2341,16 +2272,6 @@ export const vocabularyData = {
         pronunciation: "ˈbēch"
       },
       {
-        id: "w6_9",
-        word: "Boring",
-        meaning: "Sıkıcı",
-        sentence: "This movie is so boring.",
-        synonym: "Dull, Tedious",
-        antonym: "Interesting, Exciting",
-        memoryTip: "BORING → makes you SNORE!",
-        pronunciation: "ˈbȯr-iŋ"
-      },
-      {
         id: "w6_10",
         word: "Caving",
         meaning: "Mağara yürüyüşü",
@@ -2391,16 +2312,6 @@ export const vocabularyData = {
         pronunciation: "ˌde-mən-ˈstrā-shən"
       },
       {
-        id: "w6_14",
-        word: "Destination",
-        meaning: "Varış yeri",
-        sentence: "Our destination is the mountain peak.",
-        synonym: "Goal, End point",
-        antonym: "Starting point",
-        memoryTip: "DESTINATION → DESTINed to arrive!",
-        pronunciation: "ˌdes-tə-ˈnā-shən"
-      },
-      {
         id: "w6_15",
         word: "Entertaining",
         meaning: "Eğlendirici",
@@ -2419,16 +2330,6 @@ export const vocabularyData = {
         antonym: "Boring, Dull",
         memoryTip: "EXCITING → causes EXCITEMENT!",
         pronunciation: "ik-ˈsī-tiŋ"
-      },
-      {
-        id: "w6_17",
-        word: "Experience",
-        meaning: "Deneyim, tecrübe etmek",
-        sentence: "I want to experience skydiving.",
-        synonym: "Encounter, Live through",
-        antonym: "Miss",
-        memoryTip: "EXPERIENCE → EX-perience it!",
-        pronunciation: "ik-ˈspir-ē-ən(t)s"
       },
       {
         id: "w6_18",
@@ -2491,26 +2392,6 @@ export const vocabularyData = {
         pronunciation: "ˈin-tə-rəs-tiŋ"
       },
       {
-        id: "w6_24",
-        word: "Knife",
-        meaning: "Bıçak",
-        sentence: "We need a knife to cut the rope.",
-        synonym: "Blade, Cutter",
-        antonym: "Spoon",
-        memoryTip: "KNIFE → cuts like a KNIFE!",
-        pronunciation: "ˈnīf"
-      },
-      {
-        id: "w6_25",
-        word: "Research",
-        meaning: "Araştırmak",
-        sentence: "I need to research this topic.",
-        synonym: "Investigate, Study",
-        antonym: "Ignore",
-        memoryTip: "RESEARCH → RE-search again!",
-        pronunciation: "ri-ˈsərch"
-      },
-      {
         id: "w6_26",
         word: "Scuba diving",
         meaning: "Tüple dalış",
@@ -2529,16 +2410,6 @@ export const vocabularyData = {
         antonym: "Ruin",
         memoryTip: "STRUCTURE → STRUCTURE of building!",
         pronunciation: "ˈstrək-chər"
-      },
-      {
-        id: "w6_28",
-        word: "To me",
-        meaning: "Bence, bana göre",
-        sentence: "To me, this is the best adventure.",
-        synonym: "In my opinion, I think",
-        antonym: "To you",
-        memoryTip: "TO ME → my opinion TO ME!",
-        pronunciation: "ˈtü ˈmē"
       },
       {
         id: "w6_29",
@@ -2571,16 +2442,6 @@ export const vocabularyData = {
         pronunciation: "ik-ˈsplȯr"
       },
       {
-        id: "w6_32",
-        word: "Safety",
-        meaning: "Güvenlik",
-        sentence: "Safety is our first priority.",
-        synonym: "Security, Protection",
-        antonym: "Danger",
-        memoryTip: "SAFETY → stay SAFE!",
-        pronunciation: "ˈsāf-tē"
-      },
-      {
         id: "w6_33",
         word: "Risk",
         meaning: "Risk",
@@ -2589,16 +2450,6 @@ export const vocabularyData = {
         antonym: "Safety",
         memoryTip: "RISK → take a RISK!",
         pronunciation: "ˈrisk"
-      },
-      {
-        id: "w6_34",
-        word: "Journey",
-        meaning: "Yolculuk",
-        sentence: "Our journey to the mountain took 3 hours.",
-        synonym: "Trip, Travel",
-        antonym: "Stay",
-        memoryTip: "JOURNEY → JOURNEY to destination!",
-        pronunciation: "ˈjər-nē"
       },
       {
         id: "w6_35",
@@ -2619,16 +2470,6 @@ export const vocabularyData = {
         antonym: "Fear",
         memoryTip: "COURAGE → have COURAGE!",
         pronunciation: "ˈkər-ij"
-      },
-      {
-        id: "w6_37",
-        word: "Survive",
-        meaning: "Hayatta kalmak",
-        sentence: "We need to survive in the wilderness.",
-        synonym: "Live, Endure",
-        antonym: "Die",
-        memoryTip: "SURVIVE → SURVIVE the challenge!",
-        pronunciation: "sər-ˈvīv"
       },
       {
         id: "w6_38",
@@ -2659,7 +2500,20 @@ export const vocabularyData = {
         antonym: "Easy task",
         memoryTip: "CHALLENGE → CHALLENGE yourself!",
         pronunciation: "ˈcha-lənj"
-      }
+      },
+      { id: "w6_41", word: "Rafting", meaning: "Rafting (sal sporu)", sentence: "We tried rafting on the river last summer." },
+      { id: "w6_42", word: "Bungee jumping", meaning: "Yüksekten ayağına ip bağlayarak atlama", sentence: "Bungee jumping is too scary for me." },
+      { id: "w6_43", word: "Paragliding", meaning: "Yamaç paraşütü", sentence: "Paragliding gives you a view of the whole valley." },
+      { id: "w6_44", word: "Trekking", meaning: "Uzun doğa yürüyüşü", sentence: "We went trekking in the mountains." },
+      { id: "w6_45", word: "Skiing", meaning: "Kayak yapmak", sentence: "Skiing in winter is so much fun." },
+      { id: "w6_46", word: "Skydiving", meaning: "Hava dalışı, paraşütle atlama", sentence: "Skydiving is the ultimate extreme sport." },
+      { id: "w6_47", word: "Surfing", meaning: "Sörf yapmak", sentence: "She loves surfing big waves." },
+      { id: "w6_48", word: "Cliff", meaning: "Uçurum, kayalık", sentence: "Don't go too close to the cliff edge." },
+      { id: "w6_49", word: "Desert", meaning: "Çöl", sentence: "Camels live in the desert." },
+      { id: "w6_50", word: "Rope", meaning: "İp, halat", sentence: "You need a strong rope for climbing." },
+      { id: "w6_51", word: "Drown", meaning: "Boğulmak", sentence: "Always wear a life jacket so you don't drown." },
+      { id: "w6_53", word: "Frightening", meaning: "Korkutucu", sentence: "The dark cave was frightening." },
+      { id: "w6_54", word: "Tournament", meaning: "Turnuva", sentence: "Our school won the basketball tournament." }
     ]
   },
   "unit7": {
@@ -3038,16 +2892,6 @@ export const vocabularyData = {
         pronunciation: "ˈfō-tə-ˌgraf"
       },
       {
-        id: "w7_38",
-        word: "Explore",
-        meaning: "Keşfetmek",
-        sentence: "Let's explore the old town.",
-        synonym: "Discover, Visit",
-        antonym: "Ignore",
-        memoryTip: "EXPLORE → EXPLORE new places!",
-        pronunciation: "ik-ˈsplȯr"
-      },
-      {
         id: "w7_39",
         word: "Experience",
         meaning: "Deneyim",
@@ -3066,7 +2910,27 @@ export const vocabularyData = {
         antonym: "Forgettable",
         memoryTip: "MEMORABLE → MEMORable = remember!",
         pronunciation: "ˈme-mə-rə-bəl"
-      }
+      },
+      { id: "w7_41", word: "Ancient", meaning: "Antik, çok eski", sentence: "Ephesus is an ancient Greek city." },
+      { id: "w7_42", word: "Architecture", meaning: "Mimari", sentence: "Istanbul has beautiful Ottoman architecture." },
+      { id: "w7_43", word: "Mosque", meaning: "Cami", sentence: "The Blue Mosque is famous worldwide." },
+      { id: "w7_44", word: "Palace", meaning: "Saray", sentence: "Topkapı Palace was the home of the sultans." },
+      { id: "w7_45", word: "Castle", meaning: "Kale", sentence: "We visited an old castle in the mountains." },
+      { id: "w7_46", word: "Cathedral", meaning: "Katedral", sentence: "Notre-Dame is a famous cathedral in Paris." },
+      { id: "w7_47", word: "Temple", meaning: "Tapınak", sentence: "There are many ancient temples in Greece." },
+      { id: "w7_48", word: "Mausoleum", meaning: "Anıt mezar", sentence: "Atatürk's mausoleum is in Ankara." },
+      { id: "w7_49", word: "Empire", meaning: "İmparatorluk", sentence: "The Ottoman Empire lasted for centuries." },
+      { id: "w7_50", word: "Conquer", meaning: "Fethetmek", sentence: "Mehmet II conquered Istanbul in 1453." },
+      { id: "w7_51", word: "Hospitality", meaning: "Misafirperverlik", sentence: "Turkish hospitality is famous around the world." },
+      { id: "w7_52", word: "Population", meaning: "Nüfus", sentence: "Istanbul has a huge population." },
+      { id: "w7_53", word: "Countryside", meaning: "Kırsal kesim, kırlar", sentence: "We spent the weekend in the countryside." },
+      { id: "w7_54", word: "Seaside", meaning: "Deniz kenarı", sentence: "I love walking along the seaside in the morning." },
+      { id: "w7_55", word: "Cruise", meaning: "Gemi gezisi", sentence: "We took a cruise around the Greek islands." },
+      { id: "w7_56", word: "All-inclusive", meaning: "Her şey dahil", sentence: "We stayed at an all-inclusive hotel in Antalya." },
+      { id: "w7_57", word: "Magnificent", meaning: "Muhteşem, görkemli", sentence: "Hagia Sophia is a magnificent building." },
+      { id: "w7_58", word: "Unforgettable", meaning: "Unutulmaz", sentence: "It was an unforgettable journey." },
+      { id: "w7_59", word: "Turkish delight", meaning: "Türk lokumu", sentence: "Tourists love trying Turkish delight." },
+      { id: "w7_60", word: "Climate", meaning: "İklim", sentence: "The Mediterranean climate is mild and sunny." }
     ]
   },
   "unit8": {
@@ -3205,16 +3069,6 @@ export const vocabularyData = {
         pronunciation: "ˈklēn"
       },
       {
-        id: "w8_14",
-        word: "Cook",
-        meaning: "Yemek pişirmek",
-        sentence: "I cook dinner for my family.",
-        synonym: "Prepare food, Make food",
-        antonym: "Eat out",
-        memoryTip: "COOK → COOK in kitchen!",
-        pronunciation: "ˈku̇k"
-      },
-      {
         id: "w8_15",
         word: "Walk",
         meaning: "Yürütmek, gezdirmek",
@@ -3345,16 +3199,6 @@ export const vocabularyData = {
         pronunciation: "ˈdü-tē"
       },
       {
-        id: "w8_28",
-        word: "Share",
-        meaning: "Paylaşmak",
-        sentence: "We share the household chores.",
-        synonym: "Divide, Distribute",
-        antonym: "Keep all",
-        memoryTip: "SHARE → SHARE the work!",
-        pronunciation: "ˈsher"
-      },
-      {
         id: "w8_29",
         word: "Help",
         meaning: "Yardım etmek",
@@ -3373,7 +3217,19 @@ export const vocabularyData = {
         antonym: "Start",
         memoryTip: "COMPLETE → COMPLETE the task!",
         pronunciation: "kəm-ˈplēt"
-      }
+      },
+      { id: "w8_31", word: "Iron", meaning: "Ütülemek", sentence: "Can you iron my school shirt please?" },
+      { id: "w8_32", word: "Mow the lawn", meaning: "Çim biçmek", sentence: "Dad mows the lawn every Saturday." },
+      { id: "w8_33", word: "Wash the car", meaning: "Arabayı yıkamak", sentence: "I help my dad wash the car." },
+      { id: "w8_34", word: "Fold the clothes", meaning: "Çamaşırları katlamak", sentence: "I fold the clothes after they dry." },
+      { id: "w8_35", word: "Take care of", meaning: "İlgilenmek, bakmak", sentence: "I take care of my little brother." },
+      { id: "w8_36", word: "Look after", meaning: "Göz kulak olmak", sentence: "I look after our dog when mom is away." },
+      { id: "w8_37", word: "Obey", meaning: "İtaat etmek, uymak", sentence: "Children should obey their parents." },
+      { id: "w8_38", word: "Allowance", meaning: "Harçlık", sentence: "I get a small weekly allowance." },
+      { id: "w8_39", word: "Reward", meaning: "Ödül; ödüllendirmek", sentence: "My parents reward me for doing my chores." },
+      { id: "w8_40", word: "Garbage", meaning: "Çöp", sentence: "Please take the garbage outside." },
+      { id: "w8_41", word: "Annoyed", meaning: "Kızgın, rahatsız", sentence: "Mom gets annoyed when I forget my chores." },
+      { id: "w8_42", word: "Habit", meaning: "Alışkanlık", sentence: "Tidying your room should become a habit." }
     ]
   },
   "unit9": {
@@ -3752,16 +3608,6 @@ export const vocabularyData = {
         pronunciation: "ˈlərn"
       },
       {
-        id: "w9_38",
-        word: "Understand",
-        meaning: "Anlamak",
-        sentence: "I understand how this works.",
-        synonym: "Comprehend, Grasp",
-        antonym: "Misunderstand",
-        memoryTip: "UNDERSTAND → UNDER-STAND it!",
-        pronunciation: "ˌən-dər-ˈstand"
-      },
-      {
         id: "w9_39",
         word: "Explain",
         meaning: "Açıklamak",
@@ -3780,7 +3626,32 @@ export const vocabularyData = {
         antonym: "Ignorance",
         memoryTip: "KNOWLEDGE → KNOW + LEDGE!",
         pronunciation: "ˈnä-lij"
-      }
+      },
+      { id: "w9_41", word: "Inventor", meaning: "Mucit", sentence: "Edison was a famous inventor." },
+      { id: "w9_42", word: "Invent", meaning: "İcat etmek", sentence: "Bell invented the telephone in 1876." },
+      { id: "w9_43", word: "Researcher", meaning: "Araştırmacı", sentence: "Researchers found a new way to treat the disease." },
+      { id: "w9_44", word: "Chemist", meaning: "Kimyager", sentence: "Marie Curie was a brilliant chemist." },
+      { id: "w9_45", word: "Physicist", meaning: "Fizikçi", sentence: "Einstein was the most famous physicist." },
+      { id: "w9_46", word: "Biologist", meaning: "Biyolog", sentence: "Biologists study living things." },
+      { id: "w9_47", word: "Prototype", meaning: "İlk örnek, prototip", sentence: "The engineers built a prototype of the new car." },
+      { id: "w9_48", word: "Black hole", meaning: "Kara delik", sentence: "A black hole has very strong gravity." },
+      { id: "w9_49", word: "Stem cell", meaning: "Kök hücre", sentence: "Stem cell research helps treat many diseases." },
+      { id: "w9_50", word: "Hybrid car", meaning: "Hibrit araba", sentence: "Hybrid cars use less petrol." },
+      { id: "w9_51", word: "Solar panel", meaning: "Güneş paneli", sentence: "Solar panels turn sunlight into energy." },
+      { id: "w9_52", word: "Eco-friendly", meaning: "Çevre dostu", sentence: "We should use more eco-friendly products." },
+      { id: "w9_53", word: "Wheelchair", meaning: "Tekerlekli sandalye", sentence: "The new wheelchair helps disabled people move easily." },
+      { id: "w9_54", word: "Artificial", meaning: "Yapay", sentence: "Artificial intelligence is changing our world." },
+      { id: "w9_55", word: "Vaccine", meaning: "Aşı", sentence: "Pasteur developed the rabies vaccine." },
+      { id: "w9_56", word: "Cure", meaning: "Tedavi; iyileştirmek", sentence: "Scientists are searching for a cure." },
+      { id: "w9_57", word: "Treatment", meaning: "Tedavi", sentence: "The new treatment is very effective." },
+      { id: "w9_58", word: "Compass", meaning: "Pusula", sentence: "Sailors used a compass to find their way." },
+      { id: "w9_59", word: "Printing press", meaning: "Matbaa", sentence: "Gutenberg invented the printing press." },
+      { id: "w9_60", word: "Steam engine", meaning: "Buhar makinesi", sentence: "The steam engine started the industrial revolution." },
+      { id: "w9_61", word: "Contribution", meaning: "Katkı", sentence: "Her contribution to science was enormous." },
+      { id: "w9_62", word: "Genius", meaning: "Dahi", sentence: "Einstein was a genius." },
+      { id: "w9_63", word: "Patent", meaning: "Patent", sentence: "He got a patent for his invention." },
+      { id: "w9_64", word: "Award", meaning: "Ödül", sentence: "She won an award for her research." },
+      { id: "w9_65", word: "Improve", meaning: "Geliştirmek, iyileştirmek", sentence: "New technology can improve our lives." }
     ]
   },
   "unit10": {
@@ -4099,16 +3970,6 @@ export const vocabularyData = {
         pronunciation: "prə-ˈtekt"
       },
       {
-        id: "w10_32",
-        word: "Prepare",
-        meaning: "Hazırlanmak",
-        sentence: "We should prepare for emergencies.",
-        synonym: "Get ready, Plan",
-        antonym: "Ignore",
-        memoryTip: "PREPARE → PRE-pare = before!",
-        pronunciation: "pri-ˈper"
-      },
-      {
         id: "w10_33",
         word: "Climate change",
         meaning: "İklim değişikliği",
@@ -4187,7 +4048,65 @@ export const vocabularyData = {
         antonym: "Man-made",
         memoryTip: "NATURAL PHENOMENA → NATURE's PHENOMENA!",
         pronunciation: "ˈna-chə-rəl fə-ˈnä-mə-nə"
-      }
+      },
+      { id: "w10_41", word: "Deforestation", meaning: "Ormansızlaşma", sentence: "Deforestation harms many animal species." },
+      { id: "w10_42", word: "Greenhouse gases", meaning: "Sera gazları", sentence: "Greenhouse gases cause global warming." },
+      { id: "w10_43", word: "Fossil fuel", meaning: "Fosil yakıt", sentence: "Coal and oil are fossil fuels." },
+      { id: "w10_44", word: "First aid", meaning: "İlk yardım", sentence: "Everyone should learn first aid." },
+      { id: "w10_45", word: "Take precaution", meaning: "Önlem almak", sentence: "Take precautions before an earthquake." },
+      { id: "w10_46", word: "Air pollution", meaning: "Hava kirliliği", sentence: "Air pollution is a big problem in cities." },
+      { id: "w10_47", word: "Water pollution", meaning: "Su kirliliği", sentence: "Water pollution kills fish and other sea life." },
+      { id: "w10_48", word: "Overpopulation", meaning: "Aşırı nüfus", sentence: "Overpopulation puts pressure on natural resources." },
+      { id: "w10_49", word: "Shortage", meaning: "Kıtlık, eksiklik", sentence: "Drought caused a water shortage." },
+      { id: "w10_50", word: "Cause", meaning: "Sebep olmak", sentence: "Heavy rain caused the flood." },
+      { id: "w10_51", word: "Spread", meaning: "Yayılmak", sentence: "The wildfire spread very quickly." },
+      { id: "w10_52", word: "Reduce", meaning: "Azaltmak", sentence: "We must reduce our use of plastic." },
+      { id: "w10_53", word: "Injure", meaning: "Yaralamak", sentence: "Many people were injured in the earthquake." },
+      { id: "w10_54", word: "Earth's crust", meaning: "Yer kabuğu", sentence: "Earthquakes happen when the earth's crust moves." },
+      { id: "w10_55", word: "Lava", meaning: "Lav", sentence: "Hot lava flowed down the volcano." }
+    ]
+  },
+  "unit11": {
+    id: "unit11",
+    title: "Connectors & Phrases",
+    icon: "🔗",
+    words: [
+      { id: "w11_1", word: "Although", meaning: "-e rağmen", sentence: "Although it was raining, we went outside." },
+      { id: "w11_2", word: "Because", meaning: "Çünkü", sentence: "I'm tired because I studied all night." },
+      { id: "w11_3", word: "However", meaning: "Ancak, fakat", sentence: "He is rich; however, he is not happy." },
+      { id: "w11_4", word: "Therefore", meaning: "Bu nedenle, bu yüzden", sentence: "It was late; therefore, we went home." },
+      { id: "w11_5", word: "Moreover", meaning: "Üstelik, ayrıca", sentence: "The food was great; moreover, the service was excellent." },
+      { id: "w11_6", word: "In addition", meaning: "Ek olarak, ayrıca", sentence: "In addition to English, she speaks French." },
+      { id: "w11_7", word: "On the other hand", meaning: "Öte yandan, diğer taraftan", sentence: "I love summer. On the other hand, I hate the heat." },
+      { id: "w11_8", word: "Despite", meaning: "-e rağmen", sentence: "Despite the rain, we had a picnic." },
+      { id: "w11_9", word: "While", meaning: "İken, -dığı sırada", sentence: "I read a book while my brother played games." },
+      { id: "w11_10", word: "So", meaning: "Bu yüzden, böylece", sentence: "It was cold, so I wore a coat." },
+      { id: "w11_11", word: "Even though", meaning: "Olmasına rağmen", sentence: "Even though he was tired, he kept working." },
+      { id: "w11_12", word: "Such as", meaning: "Gibi, örneğin", sentence: "I like fruits such as apples and oranges." },
+      { id: "w11_13", word: "For example", meaning: "Örneğin", sentence: "Many sports, for example tennis, need a partner." },
+      { id: "w11_14", word: "In my opinion", meaning: "Bence, bana göre", sentence: "In my opinion, reading is the best hobby." },
+      { id: "w11_15", word: "I think", meaning: "Bence, sanırım", sentence: "I think this movie is amazing." },
+      { id: "w11_16", word: "To me", meaning: "Bana göre, bence", sentence: "To me, friendship is the most important thing." },
+      { id: "w11_17", word: "I believe", meaning: "İnanıyorum ki, inanırım", sentence: "I believe everyone deserves a chance." },
+      { id: "w11_18", word: "From my point of view", meaning: "Bakış açıma göre", sentence: "From my point of view, the answer is wrong." },
+      { id: "w11_19", word: "Personally", meaning: "Kişisel olarak", sentence: "Personally, I prefer tea to coffee." },
+      { id: "w11_20", word: "According to me", meaning: "Bana göre", sentence: "According to me, exercise is essential." },
+      { id: "w11_21", word: "In fact", meaning: "Aslında, gerçekten", sentence: "In fact, she is my best friend." },
+      { id: "w11_22", word: "First", meaning: "İlk olarak, önce", sentence: "First, wash your hands." },
+      { id: "w11_23", word: "Then", meaning: "Sonra, ardından", sentence: "Mix the eggs, then add flour." },
+      { id: "w11_24", word: "After that", meaning: "Bundan sonra", sentence: "We had lunch; after that, we took a walk." },
+      { id: "w11_25", word: "Next", meaning: "Sonra, sıradaki", sentence: "Next, we visited the museum." },
+      { id: "w11_26", word: "Finally", meaning: "Sonunda, son olarak", sentence: "Finally, the long day was over." },
+      { id: "w11_27", word: "Meanwhile", meaning: "Bu arada, bu sırada", sentence: "I was cooking. Meanwhile, my brother was studying." },
+      { id: "w11_28", word: "Before that", meaning: "Ondan önce", sentence: "We watched a movie. Before that, we had dinner." },
+      { id: "w11_29", word: "How long", meaning: "Ne kadar süre", sentence: "How long have you lived here?" },
+      { id: "w11_30", word: "How come", meaning: "Nasıl oluyor da, neden", sentence: "How come you didn't call me?" },
+      { id: "w11_31", word: "What kind of", meaning: "Ne tür", sentence: "What kind of music do you like?" },
+      { id: "w11_32", word: "What type of", meaning: "Ne tür", sentence: "What type of book are you reading?" },
+      { id: "w11_33", word: "How about", meaning: "Ne dersin, nasıl olur", sentence: "How about going to the cinema?" },
+      { id: "w11_34", word: "What if", meaning: "Ya ... ise, peki ya", sentence: "What if it rains tomorrow?" },
+      { id: "w11_35", word: "How much", meaning: "Ne kadar (miktar)", sentence: "How much does this book cost?" },
+      { id: "w11_36", word: "How many", meaning: "Kaç tane (sayı)", sentence: "How many languages do you speak?" }
     ]
   }
 };

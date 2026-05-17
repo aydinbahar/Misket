@@ -16,6 +16,7 @@ const UNIT_TITLE_TR = {
   Chores: 'Ev İşleri',
   Science: 'Bilim',
   'Natural Forces': 'Doğa Güçleri',
+  'Connectors & Phrases': 'Bağlaçlar & Kalıplar',
 };
 
 const daysBetween = (a, b) => {
@@ -86,7 +87,7 @@ const HomeView = ({ setCurrentView, setSelectedUnit }) => {
       </div>
 
       {/* Konu kartları */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {units.map((unit) => (
           <button
             key={unit.id}
