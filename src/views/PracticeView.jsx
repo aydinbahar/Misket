@@ -1,59 +1,95 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { getWordsByUnit, getUnitInfo } from '../data/vocabulary';
-import {
-  ArrowLeft, ArrowRight, Volume2, Lightbulb, Check, X, ChevronDown, ChevronUp,
-} from 'lucide-react';
+import { getUnitClusters } from '../data/wordClusters';
+import { ArrowLeft, Check, Volume2, X, RotateCcw } from 'lucide-react';
 
-const STATUS_LABEL = {
-  new: 'Yeni',
-  learning: 'Öğreniliyor',
-  review: 'Tekrar',
-  mastered: 'Öğrenildi',
-};
-
-const STATUS_COLOR = {
-  new:       { bg: 'var(--bg-card-elev)', fg: 'var(--text-muted)' },
-  learning:  { bg: 'var(--warning-soft)', fg: 'var(--warning)' },
-  review:    { bg: 'var(--accent-soft)',  fg: 'var(--accent-strong)' },
-  mastered:  { bg: 'var(--success-soft)', fg: 'var(--success)' },
+const statusBadgeStyle = (status) => {
+  switch (status) {
+    case 'mastered':
+      return {
+        background: 'var(--success-soft)',
+        color: 'var(--success)',
+        borderColor: 'transparent',
+      };
+    case 'review':
+    case 'learning':
+      // Sarı yerine accent outline — sade ama "üzerinde çalışılıyor" sinyali verir
+      return {
+        background: 'transparent',
+        color: 'var(--accent)',
+        borderColor: 'var(--accent)',
+      };
+    default:
+      return {
+        background: 'var(--bg-card-elev)',
+        color: 'var(--text-secondary)',
+        borderColor: 'transparent',
+      };
+  }
 };
 
 const PracticeView = ({ selectedUnit, setCurrentView }) => {
-  const {
-    userProgress,
-    updateWordProgress,
-    showNotification,
-    updateDailyProgress,
-  } = useApp();
-
-  const [mode, setMode] = useState('learn');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [quizAnswer, setQuizAnswer] = useState('');
-  const [feedback, setFeedback] = useState(null);
-  const [showMore, setShowMore] = useState(false);
+  const { userProgress, updateWordProgress, updateDailyProgress } = useApp();
+  const [openWordId, setOpenWordId] = useState(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
 
-  const words = useMemo(
-    () => (selectedUnit ? getWordsByUnit(selectedUnit) : []),
-    [selectedUnit]
-  );
   const unit = useMemo(
     () => (selectedUnit ? getUnitInfo(selectedUnit) : null),
     [selectedUnit]
   );
 
-  useEffect(() => {
-    setCurrentIndex(0);
-    setQuizAnswer('');
-    setFeedback(null);
-    setShowMore(false);
-  }, [selectedUnit, mode]);
+  const words = useMemo(
+    () => (selectedUnit ? getWordsByUnit(selectedUnit) : []),
+    [selectedUnit]
+  );
 
-  if (words.length === 0) {
+  const wordById = useMemo(() => {
+    const map = {};
+    words.forEach((w) => { map[w.id] = w; });
+    return map;
+  }, [words]);
+
+  const clusters = useMemo(
+    () => (selectedUnit ? getUnitClusters(selectedUnit) : []),
+    [selectedUnit]
+  );
+
+  const wp = userProgress?.wordProgress || {};
+
+  const masteredCount = useMemo(
+    () => words.filter((w) => wp[w.id]?.status === 'mastered').length,
+    [words, wp]
+  );
+
+  // Alt listeler: öğrenilenler ve çalışılması gerekenler
+  const { learnedList, toReviewList } = useMemo(() => {
+    const learned = [];
+    const toReview = [];
+    words.forEach((w) => {
+      const status = wp[w.id]?.status;
+      if (status === 'mastered') {
+        learned.push(w);
+      } else if (status === 'learning' || status === 'review') {
+        toReview.push(w);
+      }
+    });
+    return { learnedList: learned, toReviewList: toReview };
+  }, [words, wp]);
+
+  // Modal açıkken sayfa kaydırmasını kapat
+  useEffect(() => {
+    if (openWordId) {
+      const original = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = original; };
+    }
+  }, [openWordId]);
+
+  if (!unit || words.length === 0) {
     return (
       <div className="card text-center">
-        <p className="text-secondary mb-4">Bu ünitede kelime yok.</p>
+        <p className="text-secondary mb-4">Bu ünite bulunamadı.</p>
         <button onClick={() => setCurrentView('home')} className="btn-primary">
           Ana sayfaya dön
         </button>
@@ -61,10 +97,8 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
     );
   }
 
-  const currentWord = words[currentIndex];
-  const wordProgressData = userProgress?.wordProgress || {};
-  const progress = wordProgressData[currentWord.id];
-  const status = progress?.status || 'new';
+  const openWord = openWordId ? wordById[openWordId] : null;
+  const openWordProgress = openWord ? wp[openWord.id] : null;
 
   const speakWord = (text) => {
     if (!text || !('speechSynthesis' in window)) return;
@@ -78,56 +112,16 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
     window.speechSynthesis.speak(utterance);
   };
 
-  const advance = () => {
-    setQuizAnswer('');
-    setFeedback(null);
-    setShowMore(false);
-    if (currentIndex < words.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      showNotification('Bu ünitedeki tüm kelimeleri tamamladın.', 'success');
-      setCurrentView('home');
-    }
-  };
-
-  const goPrev = () => {
-    if (currentIndex > 0) {
-      setQuizAnswer('');
-      setFeedback(null);
-      setShowMore(false);
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
-  // Learn modunda "Biliyorum / Bilmiyorum" işaretleme — SRS state'i ilerler
-  const handleLearnMark = (knew) => {
-    updateWordProgress(currentWord.id, knew);
+  const handleMark = (knew) => {
+    if (!openWord) return;
+    updateWordProgress(openWord.id, knew);
     if (knew) updateDailyProgress();
-    setTimeout(advance, 250);
+    setOpenWordId(null);
   };
-
-  const handleQuizSubmit = () => {
-    const userAns = quizAnswer.toLowerCase().trim();
-    const correctAns = currentWord.word.toLowerCase().trim();
-    // Küçük yazım hatalarına tolerans: 1-2 karakter fark
-    let diff = 0;
-    const maxLen = Math.max(userAns.length, correctAns.length);
-    for (let i = 0; i < maxLen; i++) {
-      if (userAns[i] !== correctAns[i]) diff++;
-    }
-    const isCorrect = userAns === correctAns || (correctAns.length >= 4 && diff <= 1);
-
-    setFeedback(isCorrect ? 'correct' : 'incorrect');
-    updateWordProgress(currentWord.id, isCorrect);
-    if (isCorrect) updateDailyProgress();
-  };
-
-  const progressPercent = ((currentIndex + 1) / words.length) * 100;
-  const statusColor = STATUS_COLOR[status] || STATUS_COLOR.new;
 
   return (
     <div className="space-y-4">
-      {/* Üst bar — geri butonu + ünite adı + sayaç */}
+      {/* Üst bar */}
       <div className="flex items-center justify-between gap-3">
         <button
           onClick={() => setCurrentView('home')}
@@ -137,250 +131,230 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
           Geri
         </button>
         <div className="flex-1 min-w-0 text-center">
-          <p className="text-xs text-muted-soft uppercase tracking-wider">
-            {unit?.icon} {unit?.title}
+          <p className="font-display font-bold text-base text-primary truncate">
+            {unit.icon} {unit.title}
           </p>
         </div>
         <p className="text-sm font-semibold text-secondary tabular-nums">
-          {currentIndex + 1}/{words.length}
+          {masteredCount}/{words.length}
         </p>
       </div>
 
-      {/* İlerleme çubuğu */}
+      {/* Toplam ilerleme çubuğu */}
       <div className="progress-bar h-1.5">
-        <div className="progress-fill" style={{ width: `${progressPercent}%` }} />
+        <div
+          className="progress-fill"
+          style={{ width: `${(masteredCount / words.length) * 100}%` }}
+        />
       </div>
 
-      {/* Mode segmented control */}
-      <div
-        className="grid grid-cols-2 gap-1 p-1 rounded-xl"
-        style={{ background: 'var(--bg-card-elev)', border: '1px solid var(--border-soft)' }}
-      >
-        {[
-          { id: 'learn', label: 'Öğren' },
-          { id: 'quiz',  label: 'Test'  },
-        ].map((m) => {
-          const active = mode === m.id;
+      {/* Cluster mindmap */}
+      <div className="space-y-3">
+        {clusters.map((cluster) => {
+          const clusterWords = cluster.wordIds
+            .map((id) => wordById[id])
+            .filter(Boolean);
+          const clusterMastered = clusterWords.filter(
+            (w) => wp[w.id]?.status === 'mastered'
+          ).length;
+
           return (
-            <button
-              key={m.id}
-              onClick={() => setMode(m.id)}
-              className="py-2 rounded-lg text-sm font-bold transition-colors"
-              style={{
-                background: active ? 'var(--bg-card)' : 'transparent',
-                color: active ? 'var(--accent)' : 'var(--text-secondary)',
-                boxShadow: active ? 'var(--shadow-card)' : 'none',
-              }}
-            >
-              {m.label}
-            </button>
+            <section key={cluster.id} className="card">
+              <header className="flex items-center justify-between mb-3">
+                <h3 className="font-display font-bold text-base text-primary flex items-center gap-2">
+                  <span className="text-xl" aria-hidden>{cluster.icon}</span>
+                  {cluster.title}
+                </h3>
+                <span className="text-xs font-semibold text-muted-soft tabular-nums">
+                  {clusterMastered}/{clusterWords.length}
+                </span>
+              </header>
+
+              <div className="flex flex-wrap gap-2">
+                {clusterWords.map((word) => {
+                  const status = wp[word.id]?.status || 'new';
+                  const style = statusBadgeStyle(status);
+                  const isMastered = status === 'mastered';
+                  return (
+                    <button
+                      key={word.id}
+                      onClick={() => setOpenWordId(word.id)}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-150 active:scale-95 border"
+                      style={style}
+                    >
+                      {isMastered && <Check className="w-3.5 h-3.5" />}
+                      {word.word}
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
           );
         })}
       </div>
 
-      {/* Ana kart */}
-      {mode === 'learn' ? (
-        <div className="card space-y-4">
-          {/* Durum rozeti + ses */}
-          <div className="flex items-center justify-between">
-            <span
-              className="badge"
-              style={{ background: statusColor.bg, color: statusColor.fg }}
-            >
-              {STATUS_LABEL[status]}
-            </span>
-            <button
-              onClick={() => speakWord(currentWord.word)}
-              disabled={isSpeaking}
-              className="p-2 rounded-lg transition-colors"
-              style={{
-                background: isSpeaking ? 'var(--accent-soft)' : 'transparent',
-                color: 'var(--accent)',
-              }}
-              aria-label="Telaffuzu dinle"
-            >
-              <Volume2 className="w-5 h-5" />
-            </button>
-          </div>
-
-          {/* Kelime */}
-          <div>
-            <h2 className="font-display text-4xl font-bold text-primary leading-tight">
-              {currentWord.word}
-            </h2>
-            {currentWord.pronunciation && (
-              <p className="text-sm text-muted-soft font-mono mt-1">
-                /{currentWord.pronunciation}/
-              </p>
-            )}
-          </div>
-
-          {/* Anlam */}
-          <div>
-            <p className="text-xs uppercase tracking-wider text-muted-soft mb-1">Türkçe anlam</p>
-            <p className="text-xl text-primary font-semibold">{currentWord.meaning}</p>
-          </div>
-
-          {/* Örnek cümle */}
-          {currentWord.sentence && (
-            <div className="pt-3 border-t border-soft">
-              <p className="text-xs uppercase tracking-wider text-muted-soft mb-1">Örnek</p>
-              <p className="text-base text-secondary leading-relaxed italic">
-                "{currentWord.sentence}"
-              </p>
-            </div>
+      {/* Alt listeler: öğrenilenler + çalışılması gerekenler */}
+      {(learnedList.length > 0 || toReviewList.length > 0) && (
+        <div className="space-y-3 pt-2">
+          {toReviewList.length > 0 && (
+            <section className="card">
+              <header className="flex items-center justify-between mb-3">
+                <h3 className="font-display font-bold text-base flex items-center gap-2" style={{ color: 'var(--accent)' }}>
+                  <RotateCcw className="w-4 h-4" />
+                  Çalışman gereken kelimeler
+                </h3>
+                <span className="text-xs font-semibold text-muted-soft tabular-nums">
+                  {toReviewList.length}
+                </span>
+              </header>
+              <ul className="divide-y" style={{ borderColor: 'var(--border-soft)' }}>
+                {toReviewList.map((w) => (
+                  <li key={w.id}>
+                    <button
+                      onClick={() => setOpenWordId(w.id)}
+                      className="w-full flex items-center justify-between gap-3 py-2.5 text-left transition-colors hover:opacity-75"
+                    >
+                      <span className="font-semibold text-primary truncate">{w.word}</span>
+                      <span className="text-sm text-secondary truncate text-right">{w.meaning}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </section>
           )}
 
-          {/* Daha fazla — gizli detaylar */}
-          <button
-            onClick={() => setShowMore(!showMore)}
-            className="btn-ghost w-full text-sm py-2 border-t border-soft rounded-none"
-          >
-            {showMore ? (
-              <>
-                <ChevronUp className="w-4 h-4" /> Daha az
-              </>
-            ) : (
-              <>
-                <ChevronDown className="w-4 h-4" /> Daha fazla
-              </>
-            )}
-          </button>
-
-          {showMore && (
-            <div className="space-y-3 pt-1 animate-fade-in">
-              {currentWord.memoryTip && (
-                <div
-                  className="rounded-lg p-3 flex gap-2"
-                  style={{ background: 'var(--warning-soft)' }}
-                >
-                  <Lightbulb className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--warning)' }} />
-                  <p className="text-sm" style={{ color: 'var(--warning)' }}>
-                    {currentWord.memoryTip}
-                  </p>
-                </div>
-              )}
-              {currentWord.synonym && (
-                <div>
-                  <p className="text-xs uppercase tracking-wider text-muted-soft mb-1">Eş anlamlı</p>
-                  <p className="text-sm text-secondary">{currentWord.synonym}</p>
-                </div>
-              )}
-              {currentWord.antonym && (
-                <div>
-                  <p className="text-xs uppercase tracking-wider text-muted-soft mb-1">Zıt anlamlı</p>
-                  <p className="text-sm text-secondary">{currentWord.antonym}</p>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      ) : (
-        // Quiz mode
-        <div className="card space-y-4">
-          <p className="text-xs uppercase tracking-wider text-muted-soft">
-            İngilizce karşılığı nedir?
-          </p>
-          <p className="font-display text-3xl font-bold text-primary leading-tight">
-            {currentWord.meaning}
-          </p>
-
-          {!feedback ? (
-            <>
-              <input
-                type="text"
-                value={quizAnswer}
-                onChange={(e) => setQuizAnswer(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && quizAnswer.trim() && handleQuizSubmit()}
-                placeholder="Cevabını yaz…"
-                autoFocus
-                autoComplete="off"
-                autoCorrect="off"
-                autoCapitalize="off"
-                spellCheck="false"
-                className="w-full px-4 py-3 rounded-xl text-lg font-semibold outline-none transition-colors"
-                style={{
-                  background: 'var(--bg-card-elev)',
-                  border: '2px solid var(--border-soft)',
-                  color: 'var(--text-primary)',
-                }}
-                onFocus={(e) => (e.target.style.borderColor = 'var(--accent)')}
-                onBlur={(e) => (e.target.style.borderColor = 'var(--border-soft)')}
-              />
-              <button
-                onClick={handleQuizSubmit}
-                disabled={!quizAnswer.trim()}
-                className="btn-primary w-full"
-              >
-                Cevapla
-              </button>
-            </>
-          ) : (
-            <div
-              className="rounded-xl p-4 text-center"
-              style={{
-                background: feedback === 'correct' ? 'var(--success-soft)' : 'var(--error-soft)',
-                color: feedback === 'correct' ? 'var(--success)' : 'var(--error)',
-              }}
-            >
-              {feedback === 'correct' ? (
-                <>
-                  <Check className="w-10 h-10 mx-auto mb-2" />
-                  <p className="text-lg font-bold">Doğru!</p>
-                </>
-              ) : (
-                <>
-                  <X className="w-10 h-10 mx-auto mb-2" />
-                  <p className="text-lg font-bold mb-1">Yanlış</p>
-                  <p className="text-sm">
-                    Doğru cevap: <span className="font-bold">{currentWord.word}</span>
-                  </p>
-                </>
-              )}
-              <button onClick={advance} className="btn-primary w-full mt-4">
-                Devam et
-              </button>
-            </div>
+          {learnedList.length > 0 && (
+            <section className="card">
+              <header className="flex items-center justify-between mb-3">
+                <h3 className="font-display font-bold text-base flex items-center gap-2" style={{ color: 'var(--success)' }}>
+                  <Check className="w-4 h-4" />
+                  Öğrendiğin kelimeler
+                </h3>
+                <span className="text-xs font-semibold text-muted-soft tabular-nums">
+                  {learnedList.length}
+                </span>
+              </header>
+              <ul className="divide-y" style={{ borderColor: 'var(--border-soft)' }}>
+                {learnedList.map((w) => (
+                  <li key={w.id}>
+                    <button
+                      onClick={() => setOpenWordId(w.id)}
+                      className="w-full flex items-center justify-between gap-3 py-2.5 text-left transition-colors hover:opacity-75"
+                    >
+                      <span className="font-semibold text-primary truncate">{w.word}</span>
+                      <span className="text-sm text-secondary truncate text-right">{w.meaning}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </section>
           )}
         </div>
       )}
 
-      {/* Alt navigasyon — sadece Learn modunda; Quiz feedback'inde gizli */}
-      {mode === 'learn' && (
-        <div className="grid grid-cols-3 gap-2">
-          <button
-            onClick={goPrev}
-            disabled={currentIndex === 0}
-            className="btn-secondary text-sm"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Önceki
-          </button>
-          <button
-            onClick={() => handleLearnMark(false)}
-            className="btn-secondary text-sm"
-            title="Bu kelimeyi henüz öğrenmedim — yakında tekrar göster"
-          >
-            Bilmiyorum
-          </button>
-          <button
-            onClick={() => handleLearnMark(true)}
-            className="btn-primary text-sm"
-          >
-            Biliyorum
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
-      )}
-
-      {mode === 'quiz' && !feedback && currentIndex > 0 && (
-        <button
-          onClick={goPrev}
-          className="btn-ghost text-sm w-full"
+      {/* Kelime detay — bottom sheet */}
+      {openWord && (
+        <div
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center"
+          onClick={() => setOpenWordId(null)}
         >
-          <ArrowLeft className="w-4 h-4" />
-          Önceki kelime
-        </button>
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 animate-fade-in"
+            style={{ background: 'rgba(0,0,0,0.5)' }}
+          />
+
+          {/* Sheet */}
+          <div
+            className="relative w-full sm:max-w-md mx-auto rounded-t-3xl sm:rounded-3xl p-6 animate-slide-up"
+            style={{
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border-soft)',
+              boxShadow: '0 -8px 32px rgba(0,0,0,0.18)',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Drag handle (mobil) — aynı zamanda tıklayarak kapatma */}
+            <button
+              onClick={() => setOpenWordId(null)}
+              className="sm:hidden w-full flex justify-center mb-3 -mt-2 py-1"
+              aria-label="Kapat"
+            >
+              <span
+                className="w-10 h-1 rounded-full block"
+                style={{ background: 'var(--border-strong)' }}
+              />
+            </button>
+
+            {/* Üst — kelime + sağ tarafta ses + kapat (desktop) */}
+            <div className="flex items-start justify-between gap-2 mb-3">
+              <h2 className="font-display text-3xl font-bold text-primary leading-tight flex-1 min-w-0 break-words">
+                {openWord.word}
+              </h2>
+              <div className="flex items-center gap-1.5 flex-shrink-0">
+                <button
+                  onClick={() => speakWord(openWord.word)}
+                  disabled={isSpeaking}
+                  className="p-2.5 rounded-xl transition-colors"
+                  style={{
+                    background: isSpeaking ? 'var(--accent-soft)' : 'var(--bg-card-elev)',
+                    color: 'var(--accent)',
+                  }}
+                  aria-label="Telaffuzu dinle"
+                >
+                  <Volume2 className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => setOpenWordId(null)}
+                  className="hidden sm:flex p-2.5 rounded-xl text-muted-soft transition-colors"
+                  style={{ background: 'var(--bg-card-elev)' }}
+                  aria-label="Kapat"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Anlam — başlıksız, doğrudan */}
+            <p className="text-xl font-semibold text-primary mb-3">
+              {openWord.meaning}
+            </p>
+
+            {/* Örnek cümle */}
+            {openWord.sentence && (
+              <p className="text-base text-secondary italic leading-relaxed mb-5 pt-3 border-t border-soft">
+                "{openWord.sentence}"
+              </p>
+            )}
+
+            {/* Mevcut durum */}
+            {openWordProgress && (
+              <p className="text-xs text-muted-soft mb-3 text-center">
+                {openWordProgress.status === 'mastered'
+                  ? 'Bu kelimeyi öğrendin ✓'
+                  : openWordProgress.streak > 0
+                  ? `${openWordProgress.streak} kez üst üste doğru`
+                  : null}
+              </p>
+            )}
+
+            {/* Aksiyonlar */}
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                onClick={() => handleMark(false)}
+                className="btn-secondary"
+              >
+                Bilmiyorum
+              </button>
+              <button
+                onClick={() => handleMark(true)}
+                className="btn-primary"
+              >
+                Biliyorum
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

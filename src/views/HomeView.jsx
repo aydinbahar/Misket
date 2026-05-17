@@ -107,7 +107,7 @@ const HomeView = ({ setCurrentView, setSelectedUnit }) => {
               </span>
               <span
                 className="inline-flex items-center gap-1 font-semibold"
-                style={{ color: unit.learning ? 'var(--warning)' : 'var(--text-muted)' }}
+                style={{ color: unit.learning ? 'var(--accent)' : 'var(--text-muted)' }}
               >
                 <Clock className="w-3.5 h-3.5" />
                 {unit.learning}

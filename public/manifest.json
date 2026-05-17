@@ -1,11 +1,11 @@
 {
-  "name": "Misket - AI Vocabulary Learning Companion",
+  "name": "Misket — LGS İngilizce Kelime",
   "short_name": "Misket",
-  "description": "Learn English vocabulary the fun way with your AI companion Misket! 🐶",
+  "description": "LGS 8. sınıf İngilizce kelime çalışma uygulaması.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#8B5CF6",
+  "background_color": "#f8fafc",
+  "theme_color": "#4f46e5",
   "orientation": "portrait-primary",
   "icons": [
     {
@@ -21,13 +21,5 @@
       "purpose": "any"
     }
   ],
-  "categories": ["education", "productivity"],
-  "screenshots": [
-    {
-      "src": "/screenshot1.png",
-      "sizes": "540x720",
-      "type": "image/png"
-    }
-  ]
+  "categories": ["education"]
 }
-
