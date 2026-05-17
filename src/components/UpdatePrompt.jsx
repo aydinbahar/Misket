@@ -1,117 +1,113 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { RefreshCw, X } from 'lucide-react';
 
+/*
+ * Yeni sürüm tespit edildiğinde alt köşede bildirim gösterir.
+ * vite-plugin-pwa `autoUpdate` modunda yeni SW zaten skipWaiting + clientsClaim
+ * ile arka planda devralır. Bizim tek işimiz kullanıcıya haber vermek ve
+ * "Güncelle" denildiğinde sayfayı yeniden yüklemek.
+ */
 const UpdatePrompt = () => {
   const [showPrompt, setShowPrompt] = useState(false);
-  const [waitingWorker, setWaitingWorker] = useState(null);
-  const shouldReloadRef = useRef(false);
 
   useEffect(() => {
-    // Check for service worker updates
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.ready.then((registration) => {
-        // Check if there's an update waiting
-        registration.addEventListener('updatefound', () => {
-          const newWorker = registration.installing;
-          
-          newWorker.addEventListener('statechange', () => {
-            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              // New service worker is installed but waiting to activate
-              setWaitingWorker(newWorker);
-              setShowPrompt(true);
-            }
-          });
+    if (!('serviceWorker' in navigator)) return;
+
+    let registration;
+    let intervalId;
+
+    const init = async () => {
+      registration = await navigator.serviceWorker.ready;
+
+      // Yeni bir SW indirildiğinde (installed durumuna geçtiğinde) prompt göster
+      const handleUpdateFound = () => {
+        const newWorker = registration.installing;
+        if (!newWorker) return;
+        newWorker.addEventListener('statechange', () => {
+          if (
+            newWorker.state === 'installed' &&
+            navigator.serviceWorker.controller
+          ) {
+            setShowPrompt(true);
+          }
         });
-
-        // Check for updates every 60 seconds
-        const updateInterval = setInterval(() => {
-          registration.update();
-        }, 60000);
-
-        // Cleanup interval on unmount
-        return () => clearInterval(updateInterval);
-      });
-
-      // Listen for messages from service worker
-      // Only reload if we explicitly triggered the update
-      const handleControllerChange = () => {
-        if (shouldReloadRef.current) {
-          // Refresh the page when new service worker takes control
-          window.location.reload();
-        }
       };
 
-      navigator.serviceWorker.addEventListener('controllerchange', handleControllerChange);
+      registration.addEventListener('updatefound', handleUpdateFound);
 
-      // Cleanup event listener on unmount
-      return () => {
-        navigator.serviceWorker.removeEventListener('controllerchange', handleControllerChange);
-      };
-    }
+      // İlk açılışta zaten beklemede olan bir SW varsa hemen göster
+      if (registration.waiting && navigator.serviceWorker.controller) {
+        setShowPrompt(true);
+      }
+
+      // Her 5 dakikada bir güncelleme kontrolü
+      intervalId = setInterval(() => {
+        registration.update().catch(() => {});
+      }, 5 * 60 * 1000);
+    };
+
+    init();
+
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
   }, []);
 
   const handleUpdate = () => {
-    if (waitingWorker) {
-      // Set flag to allow reload
-      shouldReloadRef.current = true;
-      // Tell the waiting service worker to skip waiting and become active
-      waitingWorker.postMessage({ type: 'SKIP_WAITING' });
-      setShowPrompt(false);
-    }
-  };
-
-  const handleDismiss = () => {
     setShowPrompt(false);
-    // Show again in 10 minutes
-    setTimeout(() => {
-      if (waitingWorker) {
-        setShowPrompt(true);
-      }
-    }, 10 * 60 * 1000);
+    // SW autoUpdate + skipWaiting/clientsClaim ile yeni assets'leri zaten
+    // precache'e aldı. Reload yenisini kullanır.
+    setTimeout(() => window.location.reload(), 50);
   };
 
   if (!showPrompt) return null;
 
   return (
-    <div className="fixed bottom-20 left-4 right-4 md:left-auto md:right-4 md:w-96 z-50 animate-slide-up">
-      <div className="card bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-2xl">
+    <div className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-80 z-50 animate-slide-up">
+      <div
+        className="card flex items-start gap-3"
+        style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.15)' }}
+      >
+        <div
+          className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+          style={{ background: 'var(--accent-soft)', color: 'var(--accent)' }}
+        >
+          <RefreshCw className="w-5 h-5" />
+        </div>
+
+        <div className="flex-1 min-w-0">
+          <h3 className="font-display font-bold text-base text-primary mb-0.5">
+            Yeni sürüm hazır
+          </h3>
+          <p className="text-sm text-secondary mb-3">
+            Güncellemek için yenile.
+          </p>
+          <div className="flex gap-2">
+            <button
+              onClick={handleUpdate}
+              className="btn-primary text-sm py-2 px-3"
+            >
+              Yenile
+            </button>
+            <button
+              onClick={() => setShowPrompt(false)}
+              className="btn-ghost text-sm py-2 px-3"
+            >
+              Sonra
+            </button>
+          </div>
+        </div>
+
         <button
-          onClick={handleDismiss}
-          className="absolute top-2 right-2 p-1 hover:bg-white/20 rounded-lg transition-colors"
+          onClick={() => setShowPrompt(false)}
+          className="p-1.5 rounded-lg text-muted-soft hover:text-primary flex-shrink-0"
+          aria-label="Kapat"
         >
           <X className="w-4 h-4" />
         </button>
-
-        <div className="flex items-start gap-4">
-          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-            <RefreshCw className="w-6 h-6 animate-spin" />
-          </div>
-          <div className="flex-1">
-            <h3 className="font-bold text-lg mb-1">Yeni Güncelleme!</h3>
-            <p className="text-sm text-white/90 mb-3">
-              Misket'in yeni bir versiyonu hazır. Şimdi güncellemek ister misiniz?
-            </p>
-            <div className="flex gap-2">
-              <button
-                onClick={handleUpdate}
-                className="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-white/90 transition-all hover:scale-105 flex items-center gap-2"
-              >
-                <RefreshCw className="w-4 h-4" />
-                Güncelle
-              </button>
-              <button
-                onClick={handleDismiss}
-                className="bg-white/20 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-white/30 transition-all"
-              >
-                Sonra
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
 };
 
 export default UpdatePrompt;
-

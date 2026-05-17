@@ -4,6 +4,20 @@ import { getAllUnits, getWordsByUnit } from '../data/vocabulary';
 import { LGS_EXAM_DATE } from '../data/config';
 import { ChevronRight, CheckCircle2, Clock, Circle } from 'lucide-react';
 
+// LGS müfredat ünitelerinin İngilizce → Türkçe karşılıkları
+const UNIT_TITLE_TR = {
+  Friendship: 'Arkadaşlık',
+  'Teen Life': 'Genç Yaşamı',
+  'In the Kitchen': 'Mutfakta',
+  'On the Phone': 'Telefonda',
+  'The Internet': 'İnternet',
+  Adventures: 'Maceralar',
+  Tourism: 'Turizm',
+  Chores: 'Ev İşleri',
+  Science: 'Bilim',
+  'Natural Forces': 'Doğa Güçleri',
+};
+
 const daysBetween = (a, b) => {
   const MS_PER_DAY = 24 * 60 * 60 * 1000;
   const start = new Date(a.getFullYear(), a.getMonth(), a.getDate());
@@ -87,6 +101,11 @@ const HomeView = ({ setCurrentView, setSelectedUnit }) => {
                 <h3 className="font-display font-bold text-lg text-primary leading-tight">
                   {unit.title}
                 </h3>
+                {UNIT_TITLE_TR[unit.title] && (
+                  <p className="text-xs text-muted-soft mt-0.5 italic">
+                    {UNIT_TITLE_TR[unit.title]}
+                  </p>
+                )}
                 <p className="text-xs text-muted-soft mt-0.5">
                   {unit.total} kelime
                 </p>

@@ -9,31 +9,27 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icon.svg'],
       manifest: {
-        name: 'Misket - AI Vocabulary Learning Companion',
+        name: 'Misket — LGS İngilizce Kelime',
         short_name: 'Misket',
-        description: 'Learn English vocabulary the fun way with your AI companion Misket! 🐶',
-        theme_color: '#8B5CF6',
-        background_color: '#ffffff',
+        description: 'LGS 8. sınıf İngilizce kelime çalışma uygulaması.',
+        theme_color: '#4f46e5',
+        background_color: '#f8fafc',
         display: 'standalone',
         orientation: 'portrait',
         scope: '/',
         start_url: '/',
+        categories: ['education'],
         icons: [
-          {
-            src: 'icon.svg',
-            sizes: '192x192',
-            type: 'image/svg+xml',
-            purpose: 'any'
-          },
-          {
-            src: 'icon.svg',
-            sizes: '512x512',
-            type: 'image/svg+xml',
-            purpose: 'any'
-          }
-        ]
+          { src: 'icon.svg', sizes: '192x192', type: 'image/svg+xml', purpose: 'any' },
+          { src: 'icon.svg', sizes: '512x512', type: 'image/svg+xml', purpose: 'any' },
+        ],
       },
       workbox: {
+        // Yeni SW yüklendiğinde beklemeden devralır + tüm açık sekmelerin
+        // kontrolünü hemen alır. UpdatePrompt sadece kullanıcıya bilgi verir
+        // ve "Güncelle" basıldığında sayfayı yeniden yükler.
+        skipWaiting: true,
+        clientsClaim: true,
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
         runtimeCaching: [
           {
@@ -41,18 +37,21 @@ export default defineConfig({
             handler: 'CacheFirst',
             options: {
               cacheName: 'google-fonts-cache',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
-              },
-              cacheableResponse: {
-                statuses: [0, 200]
-              }
-            }
-          }
-        ]
-      }
-    })
+              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-static',
+              expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+        ],
+      },
+    }),
   ],
 })
-
