@@ -56,15 +56,17 @@ function AppContent() {
       <UpdatePrompt />
 
       <div className="max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-        <header className="mb-6 text-center">
-          <button
-            onClick={() => setCurrentView('home')}
-            className="inline-flex items-center gap-2 transition-opacity duration-150 hover:opacity-80"
-          >
-            <img src="/icon.svg" alt="" className="w-7 h-7" />
-            <h1 className="text-xl font-display font-bold text-primary">Misket</h1>
-          </button>
-        </header>
+        {currentView === 'home' && (
+          <header className="mb-8 text-center">
+            <div className="inline-flex items-center gap-2.5">
+              <img src="/icon.svg" alt="" className="w-10 h-10" />
+              <h1 className="text-2xl font-display font-bold text-primary">Misket</h1>
+            </div>
+            <p className="text-sm text-muted-soft italic mt-1">
+              Kelime kelime, sınava
+            </p>
+          </header>
+        )}
 
         <main key={currentView} className="view-enter">{renderView()}</main>
       </div>
