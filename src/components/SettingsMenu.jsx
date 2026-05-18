@@ -148,7 +148,7 @@ const SettingsMenu = () => {
               </section>
 
               <section className="pt-4 border-t border-soft text-center text-xs text-muted-soft">
-                <p>Misket v1.9.3</p>
+                <p>Misket v1.12.0</p>
               </section>
             </div>
           </div>

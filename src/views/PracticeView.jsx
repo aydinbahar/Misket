@@ -145,12 +145,15 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
 
           return (
             <section key={cluster.id} className="card">
-              <header className="flex items-center justify-between mb-3">
-                <h3 className="font-display font-bold text-base text-primary flex items-center gap-2">
-                  <span className="text-xl" aria-hidden>{cluster.icon}</span>
-                  {cluster.title}
+              <header className="flex items-start justify-between gap-3 mb-3">
+                <h3 className="font-display font-bold text-base text-primary flex items-baseline gap-2 flex-wrap">
+                  <span className="text-xl leading-none" aria-hidden>{cluster.icon}</span>
+                  <span>{cluster.titleEn || cluster.title}</span>
+                  {cluster.titleEn && (
+                    <span className="text-xs font-semibold text-muted-soft">{cluster.title}</span>
+                  )}
                 </h3>
-                <span className="text-xs font-semibold text-muted-soft tabular-nums">
+                <span className="text-xs font-semibold text-muted-soft tabular-nums flex-shrink-0 pt-1">
                   {clusterMastered}/{clusterWords.length}
                 </span>
               </header>
@@ -246,11 +249,18 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
               {openWord.meaning}
             </p>
 
-            {/* Örnek cümle */}
+            {/* Örnek cümle + Türkçe çeviri */}
             {openWord.sentence && (
-              <p className="text-base text-secondary italic leading-relaxed mb-5 pt-3 border-t border-soft">
-                "{openWord.sentence}"
-              </p>
+              <div className="mb-5 pt-3 border-t border-soft">
+                <p className="text-base text-secondary italic leading-relaxed">
+                  "{openWord.sentence}"
+                </p>
+                {openWord.sentenceTr && (
+                  <p className="text-sm text-muted-soft mt-1.5 leading-relaxed">
+                    {openWord.sentenceTr}
+                  </p>
+                )}
+              </div>
             )}
 
             {/* Mevcut durum */}

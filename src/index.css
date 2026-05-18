@@ -10,9 +10,11 @@
 
 @layer base {
   :root {
-    --bg-app: #f8fafc;          /* slate-50 */
+    /* Light mode — bg-app slate-100, kartlar beyaz: net kontrast, kartlar 'yüzer'.
+       bg-card-elev (chips/well) bg-app ile aynı → kartın içinde 'oyuk' hissi. */
+    --bg-app: #f1f5f9;          /* slate-100 */
     --bg-card: #ffffff;
-    --bg-card-elev: #f1f5f9;    /* slate-100 */
+    --bg-card-elev: #f1f5f9;    /* slate-100, app bg ile eş — chip/well */
     --bg-soft: #eef2ff;         /* indigo-50 */
 
     --text-primary: #0f172a;    /* slate-900 */
@@ -34,27 +36,29 @@
     --warning: #d97706;         /* amber-600 */
     --warning-soft: #fef3c7;    /* amber-100 */
 
-    --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.05);
     color-scheme: light;
   }
 
   .dark {
-    --bg-app: #0b1220;
-    --bg-card: #111827;          /* slate-900-ish */
-    --bg-card-elev: #1e293b;     /* slate-800 */
+    /* Dark mode — OLED siyahı yerine yumuşatılmış slate.
+       3 kademe net hiyerarşi: app (slate-900) → card (slate-800) → chip (slate-700). */
+    --bg-app: #0f172a;           /* slate-900 — daha sıcak, OLED değil */
+    --bg-card: #1e293b;          /* slate-800 — net yükselti */
+    --bg-card-elev: #334155;     /* slate-700 — chip/buton wells */
     --bg-soft: #1e1b4b;          /* indigo-950 */
 
     --text-primary: #f1f5f9;     /* slate-100 */
     --text-secondary: #cbd5e1;   /* slate-300 */
     --text-muted: #94a3b8;       /* slate-400 */
 
-    --border-soft: #1f2937;
-    --border-strong: #334155;
+    --border-soft: #334155;      /* slate-700 — app bg üzerinde görünür */
+    --border-strong: #475569;    /* slate-600 */
 
     --accent: #818cf8;           /* indigo-400 */
     --accent-strong: #a5b4fc;    /* indigo-300 */
-    --accent-soft: #1e1b4b;
-    --accent-contrast: #0b1220;
+    --accent-soft: #312e81;      /* indigo-900 — daha açık card bg ile uyumlu */
+    --accent-contrast: #0f172a;
 
     --success: #4ade80;
     --success-soft: #052e16;
@@ -63,7 +67,7 @@
     --warning: #fbbf24;
     --warning-soft: #422006;
 
-    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.35);
     color-scheme: dark;
   }
 
