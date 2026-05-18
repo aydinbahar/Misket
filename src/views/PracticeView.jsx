@@ -2,7 +2,8 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { getWordsByUnit, getUnitInfo } from '../data/vocabulary';
 import { getUnitClusters } from '../data/wordClusters';
-import { ArrowLeft, Check, Volume2, X } from 'lucide-react';
+import { ArrowLeft, Check, Volume2, X, Sparkles } from 'lucide-react';
+import QuizMode from './QuizMode';
 
 const statusBadgeStyle = (status) => {
   switch (status) {
@@ -33,6 +34,7 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
   const { userProgress, updateWordProgress, updateDailyProgress } = useApp();
   const [openWordId, setOpenWordId] = useState(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [quizClusterId, setQuizClusterId] = useState(null);
 
   const unit = useMemo(
     () => (selectedUnit ? getUnitInfo(selectedUnit) : null),
@@ -153,9 +155,22 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
                     <span className="text-xs font-semibold text-muted-soft">{cluster.title}</span>
                   )}
                 </h3>
-                <span className="text-xs font-semibold text-muted-soft tabular-nums flex-shrink-0 pt-1">
-                  {clusterMastered}/{clusterWords.length}
-                </span>
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  <span className="text-xs font-semibold text-muted-soft tabular-nums pt-1">
+                    {clusterMastered}/{clusterWords.length}
+                  </span>
+                  {clusterWords.length >= 4 && (
+                    <button
+                      onClick={() => setQuizClusterId(cluster.id)}
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-colors"
+                      style={{ background: 'var(--accent-soft)', color: 'var(--accent-strong)' }}
+                      aria-label="Bu kümede quiz başlat"
+                    >
+                      <Sparkles className="w-3.5 h-3.5" />
+                      Quiz
+                    </button>
+                  )}
+                </div>
               </header>
 
               <div className="flex flex-wrap gap-2.5">
@@ -181,10 +196,10 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
         })}
       </div>
 
-      {/* Kelime detay — bottom sheet */}
+      {/* Kelime detay — ortalı flashcard modal */}
       {openWord && (
         <div
-          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
           onClick={() => setOpenWordId(null)}
         >
           {/* Backdrop */}
@@ -193,70 +208,64 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
             style={{ background: 'rgba(0,0,0,0.5)' }}
           />
 
-          {/* Sheet */}
+          {/* Card */}
           <div
-            className="relative w-full sm:max-w-md md:max-w-lg mx-auto rounded-t-3xl sm:rounded-3xl px-6 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:pb-6 animate-slide-up max-h-[90dvh] overflow-y-auto"
+            className="relative w-full max-w-md md:max-w-lg rounded-3xl p-6 animate-slide-up max-h-[90dvh] overflow-y-auto"
             style={{
               background: 'var(--bg-card)',
               border: '1px solid var(--border-soft)',
-              boxShadow: '0 -8px 32px rgba(0,0,0,0.18)',
+              boxShadow: '0 12px 40px rgba(0,0,0,0.22)',
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Drag handle (mobil) — aynı zamanda tıklayarak kapatma */}
-            <button
-              onClick={() => setOpenWordId(null)}
-              className="sm:hidden w-full flex justify-center mb-3 -mt-2 py-1"
-              aria-label="Kapat"
-            >
-              <span
-                className="w-10 h-1 rounded-full block"
-                style={{ background: 'var(--border-strong)' }}
-              />
-            </button>
-
-            {/* Üst — kelime + sağ tarafta ses + kapat (desktop) */}
-            <div className="flex items-start justify-between gap-2 mb-3">
-              <h2 className="font-display text-3xl font-bold text-primary leading-tight flex-1 min-w-0 break-words">
-                {openWord.word}
-              </h2>
-              <div className="flex items-center gap-1.5 flex-shrink-0">
-                <button
-                  onClick={() => speakWord(openWord.word)}
-                  disabled={isSpeaking}
-                  className="p-2.5 rounded-xl transition-colors"
-                  style={{
-                    background: isSpeaking ? 'var(--accent-soft)' : 'var(--bg-card-elev)',
-                    color: 'var(--accent)',
-                  }}
-                  aria-label="Telaffuzu dinle"
-                >
-                  <Volume2 className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={() => setOpenWordId(null)}
-                  className="hidden sm:flex p-2.5 rounded-xl text-muted-soft transition-colors"
-                  style={{ background: 'var(--bg-card-elev)' }}
-                  aria-label="Kapat"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
+            {/* Üst kontrol satırı — Volume solda, X sağda */}
+            <div className="flex items-center justify-between mb-6 -mt-1">
+              <button
+                onClick={() => speakWord(openWord.word)}
+                disabled={isSpeaking}
+                className="flex items-center justify-center w-11 h-11 rounded-xl transition-colors active:scale-95"
+                style={{
+                  background: isSpeaking ? 'var(--accent-soft)' : 'var(--bg-card-elev)',
+                  color: 'var(--accent)',
+                }}
+                aria-label="Telaffuzu dinle"
+              >
+                <Volume2 className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => setOpenWordId(null)}
+                className="flex items-center justify-center w-11 h-11 rounded-xl transition-colors active:scale-95"
+                style={{ background: 'var(--bg-card-elev)', color: 'var(--text-secondary)' }}
+                aria-label="Kapat"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
 
-            {/* Anlam — başlıksız, doğrudan */}
-            <p className="text-xl font-semibold text-primary mb-3">
+            {/* Hero — kelime */}
+            <h2
+              className="font-display text-4xl sm:text-5xl font-bold leading-tight mb-3 break-words text-center"
+              style={{ color: 'var(--accent)' }}
+            >
+              {openWord.word}
+            </h2>
+
+            {/* Anlam */}
+            <p className="text-lg sm:text-xl text-secondary mb-6 text-center leading-snug">
               {openWord.meaning}
             </p>
 
-            {/* Örnek cümle + Türkçe çeviri */}
+            {/* Örnek cümle kutusu */}
             {openWord.sentence && (
-              <div className="mb-5 pt-3 border-t border-soft">
-                <p className="text-base text-secondary italic leading-relaxed">
+              <div
+                className="rounded-2xl px-4 py-4 sm:px-5 sm:py-5 mb-6 text-center space-y-2"
+                style={{ background: 'var(--bg-card-elev)' }}
+              >
+                <p className="text-base sm:text-lg text-primary italic leading-relaxed">
                   "{openWord.sentence}"
                 </p>
                 {openWord.sentenceTr && (
-                  <p className="text-sm text-muted-soft mt-1.5 leading-relaxed">
+                  <p className="text-sm text-muted-soft leading-relaxed">
                     {openWord.sentenceTr}
                   </p>
                 )}
@@ -264,13 +273,11 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
             )}
 
             {/* Mevcut durum */}
-            {openWordProgress && (
-              <p className="text-xs text-muted-soft mb-3 text-center">
+            {openWordProgress && (openWordProgress.status === 'mastered' || openWordProgress.streak > 0) && (
+              <p className="text-xs text-muted-soft mb-4 text-center">
                 {openWordProgress.status === 'mastered'
                   ? 'Bu kelimeyi öğrendin ✓'
-                  : openWordProgress.streak > 0
-                  ? `${openWordProgress.streak} kez üst üste doğru`
-                  : null}
+                  : `${openWordProgress.streak} kez üst üste doğru`}
               </p>
             )}
 
@@ -292,6 +299,20 @@ const PracticeView = ({ selectedUnit, setCurrentView }) => {
           </div>
         </div>
       )}
+
+      {/* Quiz modu */}
+      {quizClusterId && (() => {
+        const activeCluster = clusters.find((c) => c.id === quizClusterId);
+        if (!activeCluster) return null;
+        const clusterWords = activeCluster.wordIds.map((id) => wordById[id]).filter(Boolean);
+        return (
+          <QuizMode
+            cluster={activeCluster}
+            words={clusterWords}
+            onClose={() => setQuizClusterId(null)}
+          />
+        );
+      })()}
     </div>
   );
 };
