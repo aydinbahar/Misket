@@ -4563,7 +4563,20 @@ export const vocabularyData = {
       { id: "w12_39", word: "Tekamül", meaning: "Gelişme, olgunlaşma", sentence: "Sanatçının üslubu yıllar içinde tekamül etti.", sentenceTr: "Sanatçının üslubu yıllar içinde gelişti." },
       { id: "w12_40", word: "İnkişaf", meaning: "Gelişme, açılma", sentence: "Şehrin inkişafı son yıllarda hızlandı.", sentenceTr: "Şehrin gelişmesi son yıllarda hızlandı." },
       { id: "w12_41", word: "Nadide", meaning: "Az bulunur, çok kıymetli", sentence: "Müzede nadide eserler sergileniyor.", sentenceTr: "Müzede az bulunur eserler sergileniyor." },
-      { id: "w12_42", word: "Yegane", meaning: "Tek, biricik", sentence: "Bu konudaki yegane uzman odur.", sentenceTr: "Bu konudaki tek uzman odur." }
+      { id: "w12_42", word: "Yegane", meaning: "Tek, biricik", sentence: "Bu konudaki yegane uzman odur.", sentenceTr: "Bu konudaki tek uzman odur." },
+
+      // Cluster F: Resmî & Tarihî
+      { id: "w12_43", word: "Maarif", meaning: "Eğitim, öğretim", sentence: "Maarif alanında yapılan yenilikler toplumu etkiledi.", sentenceTr: "Eğitim alanında yapılan yenilikler toplumu etkiledi." },
+      { id: "w12_44", word: "Menfaat", meaning: "Çıkar, yarar", sentence: "Kişisel menfaat toplum yararının önüne geçmemelidir.", sentenceTr: "Kişisel çıkar toplum yararının önüne geçmemelidir." },
+      { id: "w12_45", word: "Müdafaa", meaning: "Savunma", sentence: "Vatan müdafaası tarihimizde önemli bir yere sahiptir.", sentenceTr: "Vatan savunması tarihimizde önemli bir yere sahiptir." },
+      { id: "w12_46", word: "Kıymet", meaning: "Değer, önem", sentence: "Zamanın kıymetini bilmek gerekir.", sentenceTr: "Zamanın değerini bilmek gerekir." },
+      { id: "w12_47", word: "Muhtemel", meaning: "Olası", sentence: "Yağmur yağması muhtemel görünüyor.", sentenceTr: "Yağmur yağması olası görünüyor." },
+      { id: "w12_48", word: "Mahrum", meaning: "Yoksun", sentence: "Bazı çocuklar eğitim imkânlarından mahrum kalabiliyor.", sentenceTr: "Bazı çocuklar eğitim olanaklarından yoksun kalabiliyor." },
+      { id: "w12_49", word: "Muhtaç", meaning: "İhtiyacı olan", sentence: "Yardıma muhtaç insanlara destek olunmalıdır.", sentenceTr: "Yardıma ihtiyacı olan insanlara destek olunmalıdır." },
+      { id: "w12_50", word: "Meşrutiyet", meaning: "Anayasal yönetim", sentence: "Meşrutiyet döneminde yönetime yeni fikirler getirildi.", sentenceTr: "Anayasal yönetim döneminde yönetime yeni fikirler getirildi." },
+      { id: "w12_51", word: "Mütekabiliyet", meaning: "Karşılıklılık", sentence: "İki ülke ilişkilerinde mütekabiliyet ilkesi önemlidir.", sentenceTr: "İki ülke ilişkilerinde karşılıklılık ilkesi önemlidir." },
+      { id: "w12_52", word: "Manevi", meaning: "Maddi olmayan, ruhsal", sentence: "Ailesinin manevi desteği ona güç verdi.", sentenceTr: "Ailesinin ruhsal desteği ona güç verdi." },
+      { id: "w12_53", word: "Muhteva", meaning: "İçerik", sentence: "Kitabın muhtevası öğrenciler için uygundur.", sentenceTr: "Kitabın içeriği öğrenciler için uygundur." }
     ]
   }
 };
