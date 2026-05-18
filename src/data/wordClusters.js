@@ -175,6 +175,19 @@ export const wordClusters = {
     { id: 'cl11_soru', titleEn: 'Question Patterns', title: 'Soru Kalıpları', icon: '❓',
       wordIds: ['w11_29','w11_30','w11_31','w11_32','w11_33','w11_34','w11_35','w11_36'] },
   ],
+
+  unit12: [
+    { id: 'cl12_bilgi', title: 'Bilgi & Anlatım', icon: '💡',
+      wordIds: ['w12_1','w12_2','w12_3','w12_4','w12_5','w12_6','w12_7','w12_8'] },
+    { id: 'cl12_zaman', title: 'Zaman & Süre', icon: '⏳',
+      wordIds: ['w12_9','w12_10','w12_11','w12_12','w12_13','w12_14','w12_15','w12_16'] },
+    { id: 'cl12_duygu', title: 'Duygu & Hal', icon: '💭',
+      wordIds: ['w12_17','w12_18','w12_19','w12_20','w12_21','w12_22','w12_23','w12_24'] },
+    { id: 'cl12_kisilik', title: 'Kişilik & Davranış', icon: '🌟',
+      wordIds: ['w12_25','w12_26','w12_27','w12_28','w12_29','w12_30','w12_31','w12_32'] },
+    { id: 'cl12_eylem', title: 'Eylem & Başarı', icon: '🎯',
+      wordIds: ['w12_33','w12_34','w12_35','w12_36','w12_37','w12_38','w12_39','w12_40','w12_41','w12_42'] },
+  ],
 };
 
 export const getUnitClusters = (unitId) => wordClusters[unitId] || [];

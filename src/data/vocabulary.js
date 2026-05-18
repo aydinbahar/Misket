@@ -4506,6 +4506,65 @@ export const vocabularyData = {
       { id: "w11_52", word: "Neither ... nor", meaning: "Ne ... ne de", sentence: "Neither my brother nor I like horror movies.", sentenceTr: "Ne ben ne de kardeşim korku filmlerini sever." },
       { id: "w11_53", word: "On the contrary", meaning: "Aksine, tam tersine", sentence: "He isn't lazy. On the contrary, he works hard.", sentenceTr: "Tembel değil. Aksine, çok çalışıyor." }
     ]
+  },
+  "unit12": {
+    id: "unit12",
+    title: "Sözcük Hazinesi",
+    icon: "📚",
+    lang: "tr-TR",
+    words: [
+      // Cluster A: Bilgi & Anlatım
+      { id: "w12_1", word: "Malumat", meaning: "Bilgi, haber", sentence: "Bu konuda yeterli malumatım yok.", sentenceTr: "Bu konuda yeterli bilgim yok." },
+      { id: "w12_2", word: "İzah", meaning: "Açıklama", sentence: "Lütfen kararının izahını yap.", sentenceTr: "Lütfen kararının açıklamasını yap." },
+      { id: "w12_3", word: "Beyan", meaning: "Söyleme, açıkça söyleme", sentence: "Görüşlerini açıkça beyan etti.", sentenceTr: "Görüşlerini açıkça söyledi." },
+      { id: "w12_4", word: "Mütalaa", meaning: "İnceleme, görüş", sentence: "Konu hakkında mütalaasını paylaştı.", sentenceTr: "Konu hakkında görüşünü paylaştı." },
+      { id: "w12_5", word: "Tasvir", meaning: "Betimleme, anlatma", sentence: "Şair, doğayı çok güzel tasvir etmiş.", sentenceTr: "Şair, doğayı çok güzel betimlemiş." },
+      { id: "w12_6", word: "Nakletmek", meaning: "Anlatmak, aktarmak", sentence: "Olayı bana aynen nakletti.", sentenceTr: "Olayı bana aynen aktardı." },
+      { id: "w12_7", word: "Müphem", meaning: "Belirsiz, kapalı", sentence: "Cevabı müphem kaldı, anlamadık.", sentenceTr: "Cevabı belirsiz kaldı, anlamadık." },
+      { id: "w12_8", word: "İfşa etmek", meaning: "Açığa vurmak, gizliyi söylemek", sentence: "Sırrımı kimseye ifşa etmedi.", sentenceTr: "Sırrımı kimseye açıklamadı." },
+
+      // Cluster B: Zaman & Süre
+      { id: "w12_9", word: "Müddet", meaning: "Süre", sentence: "Sınav için verilen müddet kısa.", sentenceTr: "Sınav için verilen süre kısa." },
+      { id: "w12_10", word: "Mühlet", meaning: "Ek süre, son tarih", sentence: "Bana bir günlük mühlet ver.", sentenceTr: "Bana bir günlük ek süre ver." },
+      { id: "w12_11", word: "Evvel", meaning: "Önce, eskiden", sentence: "Bundan evvel hiç İstanbul'a gitmemiştim.", sentenceTr: "Bundan önce hiç İstanbul'a gitmemiştim." },
+      { id: "w12_12", word: "Ahir", meaning: "Sonra, son", sentence: "Filmin ahirinde herkes ağladı.", sentenceTr: "Filmin sonunda herkes ağladı." },
+      { id: "w12_13", word: "Demin", meaning: "Az önce", sentence: "Demin telefonda kimle konuşuyordun?", sentenceTr: "Az önce telefonda kimle konuşuyordun?" },
+      { id: "w12_14", word: "Mütemadiyen", meaning: "Sürekli, durmadan", sentence: "Mütemadiyen yağmur yağıyor.", sentenceTr: "Sürekli yağmur yağıyor." },
+      { id: "w12_15", word: "Mazi", meaning: "Geçmiş, geçmiş zaman", sentence: "Maziyi unutup geleceğe bak.", sentenceTr: "Geçmişi unutup geleceğe bak." },
+      { id: "w12_16", word: "İstikbal", meaning: "Gelecek", sentence: "Bu çocuğun istikbali çok parlak.", sentenceTr: "Bu çocuğun geleceği çok parlak." },
+
+      // Cluster C: Duygu & Hal
+      { id: "w12_17", word: "Hicran", meaning: "Ayrılık acısı", sentence: "Hicranla geçen yıllar onu çok yıprattı.", sentenceTr: "Ayrılık acısıyla geçen yıllar onu çok yıprattı." },
+      { id: "w12_18", word: "Hüzün", meaning: "Üzüntü, iç sıkıntısı", sentence: "Şarkının melodisinde bir hüzün vardı.", sentenceTr: "Şarkının melodisinde bir üzüntü vardı." },
+      { id: "w12_19", word: "Gam", meaning: "Üzüntü, keder", sentence: "Gam yeme, her şey düzelecek.", sentenceTr: "Üzülme, her şey düzelecek." },
+      { id: "w12_20", word: "Keder", meaning: "Acı, üzüntü", sentence: "Annesinin ölümü ona büyük keder verdi.", sentenceTr: "Annesinin ölümü ona büyük üzüntü verdi." },
+      { id: "w12_21", word: "Melal", meaning: "Sıkıntı, kasvet", sentence: "Yağmurlu havalar içine melal verir.", sentenceTr: "Yağmurlu havalar içine sıkıntı verir." },
+      { id: "w12_22", word: "Nahif", meaning: "Zayıf, hassas", sentence: "Nahif yapısı yüzünden hep hastalanır.", sentenceTr: "Zayıf yapısı yüzünden hep hastalanır." },
+      { id: "w12_23", word: "Naçar", meaning: "Çaresiz", sentence: "Naçar kaldığı için yardım istedi.", sentenceTr: "Çaresiz kaldığı için yardım istedi." },
+      { id: "w12_24", word: "Vakar", meaning: "Ağırbaşlılık, ciddiyet", sentence: "Konuşmasını büyük bir vakarla sürdürdü.", sentenceTr: "Konuşmasını büyük bir ağırbaşlılıkla sürdürdü." },
+
+      // Cluster D: Kişilik & Davranış
+      { id: "w12_25", word: "Mütevazı", meaning: "Alçakgönüllü", sentence: "Başarılarına rağmen çok mütevazı bir insan.", sentenceTr: "Başarılarına rağmen çok alçakgönüllü bir insan." },
+      { id: "w12_26", word: "Müşfik", meaning: "Sevecen, şefkatli", sentence: "Annem müşfik biriydi, hep beni korurdu.", sentenceTr: "Annem şefkatli biriydi, hep beni korurdu." },
+      { id: "w12_27", word: "Mağrur", meaning: "Kibirli, gururlu", sentence: "Mağrur tavırları yüzünden arkadaşı kalmadı.", sentenceTr: "Kibirli tavırları yüzünden arkadaşı kalmadı." },
+      { id: "w12_28", word: "Kanaatkâr", meaning: "Halinden memnun, az ile yetinen", sentence: "Kanaatkâr insanlar daha mutlu yaşar.", sentenceTr: "Halinden memnun insanlar daha mutlu yaşar." },
+      { id: "w12_29", word: "Aciz", meaning: "Güçsüz, çaresiz", sentence: "O zor durumda kendimi aciz hissettim.", sentenceTr: "O zor durumda kendimi çaresiz hissettim." },
+      { id: "w12_30", word: "Masum", meaning: "Suçsuz, temiz", sentence: "Çocuğun masum gözleri herkesi etkiledi.", sentenceTr: "Çocuğun suçsuz gözleri herkesi etkiledi." },
+      { id: "w12_31", word: "Muteber", meaning: "Geçerli, saygın", sentence: "Onun sözü bu mahallede çok muteberdir.", sentenceTr: "Onun sözü bu mahallede çok saygındır." },
+      { id: "w12_32", word: "Müstesna", meaning: "İstisnai, özel, eşi az", sentence: "Bu müstesna manzarayı asla unutamam.", sentenceTr: "Bu eşsiz manzarayı asla unutamam." },
+
+      // Cluster E: Eylem & Başarı
+      { id: "w12_33", word: "Sağaltmak", meaning: "İyileştirmek, tedavi etmek", sentence: "Doktor, hastayı kısa sürede sağalttı.", sentenceTr: "Doktor, hastayı kısa sürede iyileştirdi." },
+      { id: "w12_34", word: "İfa etmek", meaning: "Yerine getirmek", sentence: "Görevini eksiksiz ifa etti.", sentenceTr: "Görevini eksiksiz yerine getirdi." },
+      { id: "w12_35", word: "İstimal etmek", meaning: "Kullanmak", sentence: "Bu aleti dikkatli istimal etmelisin.", sentenceTr: "Bu aleti dikkatli kullanmalısın." },
+      { id: "w12_36", word: "Tehir etmek", meaning: "Ertelemek", sentence: "Toplantıyı yarına tehir ettik.", sentenceTr: "Toplantıyı yarına erteledik." },
+      { id: "w12_37", word: "Mükafat", meaning: "Ödül", sentence: "Çalışkanlığının mükafatını aldı.", sentenceTr: "Çalışkanlığının ödülünü aldı." },
+      { id: "w12_38", word: "Muvaffak", meaning: "Başarılı", sentence: "Bu zor sınavda muvaffak oldu.", sentenceTr: "Bu zor sınavda başarılı oldu." },
+      { id: "w12_39", word: "Tekamül", meaning: "Gelişme, olgunlaşma", sentence: "Sanatçının üslubu yıllar içinde tekamül etti.", sentenceTr: "Sanatçının üslubu yıllar içinde gelişti." },
+      { id: "w12_40", word: "İnkişaf", meaning: "Gelişme, açılma", sentence: "Şehrin inkişafı son yıllarda hızlandı.", sentenceTr: "Şehrin gelişmesi son yıllarda hızlandı." },
+      { id: "w12_41", word: "Nadide", meaning: "Az bulunur, çok kıymetli", sentence: "Müzede nadide eserler sergileniyor.", sentenceTr: "Müzede az bulunur eserler sergileniyor." },
+      { id: "w12_42", word: "Yegane", meaning: "Tek, biricik", sentence: "Bu konudaki yegane uzman odur.", sentenceTr: "Bu konudaki tek uzman odur." }
+    ]
   }
 };
 
@@ -4527,6 +4586,7 @@ export const getUnitInfo = (unitId) => {
     id: unit.id,
     title: unit.title,
     icon: unit.icon,
+    lang: unit.lang || 'en-US',
     wordCount: unit.words.length
   };
 };
@@ -4537,6 +4597,7 @@ export const getAllUnits = () => {
     id: unit.id,
     title: unit.title,
     icon: unit.icon,
+    lang: unit.lang || 'en-US',
     wordCount: unit.words.length
   }));
 };
