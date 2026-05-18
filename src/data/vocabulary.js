@@ -4576,7 +4576,111 @@ export const vocabularyData = {
       { id: "w12_50", word: "Meşrutiyet", meaning: "Anayasal yönetim", sentence: "Meşrutiyet döneminde yönetime yeni fikirler getirildi.", sentenceTr: "Anayasal yönetim döneminde yönetime yeni fikirler getirildi." },
       { id: "w12_51", word: "Mütekabiliyet", meaning: "Karşılıklılık", sentence: "İki ülke ilişkilerinde mütekabiliyet ilkesi önemlidir.", sentenceTr: "İki ülke ilişkilerinde karşılıklılık ilkesi önemlidir." },
       { id: "w12_52", word: "Manevi", meaning: "Maddi olmayan, ruhsal", sentence: "Ailesinin manevi desteği ona güç verdi.", sentenceTr: "Ailesinin ruhsal desteği ona güç verdi." },
-      { id: "w12_53", word: "Muhteva", meaning: "İçerik", sentence: "Kitabın muhtevası öğrenciler için uygundur.", sentenceTr: "Kitabın içeriği öğrenciler için uygundur." }
+      { id: "w12_53", word: "Muhteva", meaning: "İçerik", sentence: "Kitabın muhtevası öğrenciler için uygundur.", sentenceTr: "Kitabın içeriği öğrenciler için uygundur." },
+
+      // Cluster G: Düşünce & Akıl
+      { id: "w12_54", word: "Mülahaza", meaning: "Düşünce, değerlendirme", sentence: "Bu konudaki mülahazalarını dinlemek istiyorum.", sentenceTr: "Bu konudaki düşüncelerini dinlemek istiyorum." },
+      { id: "w12_55", word: "Mefhum", meaning: "Kavram", sentence: "Özgürlük mefhumu insandan insana değişir.", sentenceTr: "Özgürlük kavramı insandan insana değişir." },
+      { id: "w12_56", word: "Tahayyül", meaning: "Hayal etme", sentence: "Çocukların tahayyül gücü yetişkinlerden zengindir.", sentenceTr: "Çocukların hayal gücü yetişkinlerden zengindir." },
+      { id: "w12_57", word: "Teemmül", meaning: "Derin düşünme", sentence: "Karar vermeden önce uzun uzun teemmül etti.", sentenceTr: "Karar vermeden önce uzun uzun derin düşündü." },
+      { id: "w12_58", word: "Tefekkür", meaning: "Düşünme", sentence: "Şair, kıyıda saatlerce tefekküre daldı.", sentenceTr: "Şair, kıyıda saatlerce düşünceye daldı." },
+      { id: "w12_59", word: "Tasavvur", meaning: "Zihinde canlandırma", sentence: "Onsuz bir hayat tasavvur edemiyorum.", sentenceTr: "Onsuz bir hayatı zihnimde canlandıramıyorum." },
+      { id: "w12_60", word: "İmge", meaning: "Zihindeki tasarım", sentence: "Şiirde kullanılan imgeler çok güçlüydü.", sentenceTr: "Şiirde kullanılan zihinsel tasarımlar çok güçlüydü." },
+      { id: "w12_61", word: "Münevver", meaning: "Aydın kişi", sentence: "Münevver bir ailenin çocuğu olarak yetişti.", sentenceTr: "Aydın bir ailenin çocuğu olarak yetişti." },
+      { id: "w12_62", word: "Müdrik", meaning: "Kavrayan, anlayan", sentence: "Yaşadığı zorlukları müdrik bir gençti.", sentenceTr: "Yaşadığı zorlukları kavrayan bir gençti." },
+
+      // Cluster H: İfade & Söz Sanatı
+      { id: "w12_63", word: "İma", meaning: "Dolaylı anlatım", sentence: "Sözlerinde bana yönelik bir ima vardı.", sentenceTr: "Sözlerinde bana yönelik dolaylı bir anlatım vardı." },
+      { id: "w12_64", word: "Tevil", meaning: "Yorumlama, başka türlü açıklama", sentence: "Yanlış davranışını farklı şekilde tevil etmeye çalıştı.", sentenceTr: "Yanlış davranışını farklı şekilde yorumlamaya çalıştı." },
+      { id: "w12_65", word: "Sarih", meaning: "Açık, net", sentence: "Sözleşmedeki ifade gayet sarihti.", sentenceTr: "Sözleşmedeki ifade gayet açıktı." },
+      { id: "w12_66", word: "Veciz", meaning: "Kısa ama etkili söz", sentence: "Atalarımızın veciz sözleri bize yol gösterir.", sentenceTr: "Atalarımızın kısa ve etkili sözleri bize yol gösterir." },
+      { id: "w12_67", word: "Ezcümle", meaning: "Kısacası, özetle", sentence: "Ezcümle, planımız bekleneni aşan bir başarı getirdi.", sentenceTr: "Kısacası, planımız bekleneni aşan bir başarı getirdi." },
+      { id: "w12_68", word: "Müşir", meaning: "Belirten, gösteren", sentence: "Yüzündeki ifade büyük bir üzüntüye müşirdi.", sentenceTr: "Yüzündeki ifade büyük bir üzüntüyü belirtiyordu." },
+      { id: "w12_69", word: "Tasnif", meaning: "Sınıflandırma", sentence: "Kütüphanedeki kitapları konularına göre tasnif etti.", sentenceTr: "Kütüphanedeki kitapları konularına göre sınıflandırdı." },
+      { id: "w12_70", word: "Teşhis", meaning: "Kişileştirme (söz sanatı)", sentence: "Şair, rüzgârı insan gibi gösteren teşhis sanatını kullandı.", sentenceTr: "Şair, rüzgârı insan gibi gösteren kişileştirme sanatını kullandı." },
+      { id: "w12_71", word: "Mübalağa", meaning: "Abartma", sentence: "Anlattıklarında biraz mübalağa olduğunu hissettim.", sentenceTr: "Anlattıklarında biraz abartma olduğunu hissettim." },
+      { id: "w12_72", word: "İstihza", meaning: "Alay, ince alay", sentence: "Sözlerinde gizli bir istihza seziliyordu.", sentenceTr: "Sözlerinde gizli bir alay seziliyordu." },
+
+      // Cluster I: Karşıtlık & İlişki
+      { id: "w12_73", word: "Muarız", meaning: "Karşı çıkan, muhalif", sentence: "Bu fikre muarız olanlar el kaldırsın.", sentenceTr: "Bu fikre karşı çıkanlar el kaldırsın." },
+      { id: "w12_74", word: "Muaraza", meaning: "Karşı çıkma, çekişme", sentence: "Meclisteki muaraza saatlerce sürdü.", sentenceTr: "Meclisteki karşı çıkma saatlerce sürdü." },
+      { id: "w12_75", word: "Tezat", meaning: "Karşıtlık, zıtlık", sentence: "Söyledikleriyle yaptıkları büyük bir tezat oluşturuyor.", sentenceTr: "Söyledikleriyle yaptıkları büyük bir karşıtlık oluşturuyor." },
+      { id: "w12_76", word: "Müspet", meaning: "Olumlu", sentence: "Verdiği yanıt müspetti, projeyi başlatabiliriz.", sentenceTr: "Verdiği yanıt olumluydu, projeyi başlatabiliriz." },
+      { id: "w12_77", word: "Menfi", meaning: "Olumsuz", sentence: "Menfi düşünceleri herkesin moralini bozuyor.", sentenceTr: "Olumsuz düşünceleri herkesin moralini bozuyor." },
+      { id: "w12_78", word: "Münakaşa", meaning: "Tartışma", sentence: "Sohbet, tatlı bir konudan münakaşaya dönüştü.", sentenceTr: "Sohbet, tatlı bir konudan tartışmaya dönüştü." },
+      { id: "w12_79", word: "Mesele", meaning: "Sorun, konu", sentence: "Bu meseleyi birlikte çözmeliyiz.", sentenceTr: "Bu sorunu birlikte çözmeliyiz." },
+      { id: "w12_80", word: "Mukabil", meaning: "Karşılık olarak", sentence: "İyiliğine mukabil ne yapabilirim?", sentenceTr: "İyiliğine karşılık olarak ne yapabilirim?" },
+      { id: "w12_81", word: "Muvafık", meaning: "Uygun", sentence: "Önerisi herkesin görüşüne muvafık düştü.", sentenceTr: "Önerisi herkesin görüşüne uygun düştü." },
+      { id: "w12_82", word: "Müşterek", meaning: "Ortak", sentence: "Evin müşterek alanlarını birlikte temizliyoruz.", sentenceTr: "Evin ortak alanlarını birlikte temizliyoruz." },
+      { id: "w12_83", word: "Mütecanis", meaning: "Benzer yapıda, türdeş", sentence: "Sınıftaki öğrenciler oldukça mütecanis bir grup.", sentenceTr: "Sınıftaki öğrenciler oldukça benzer yapıda bir grup." },
+      { id: "w12_84", word: "Tahkir", meaning: "Küçük düşürme, aşağılama", sentence: "Hiç kimseyi tahkir edecek bir söz söylememeliyiz.", sentenceTr: "Hiç kimseyi aşağılayacak bir söz söylememeliyiz." },
+
+      // Cluster J: Nitelik & Durum
+      { id: "w12_85", word: "Münferit", meaning: "Tek başına, ayrı", sentence: "Bu, kuralı bozan münferit bir olaydı.", sentenceTr: "Bu, kuralı bozan tek başına bir olaydı." },
+      { id: "w12_86", word: "Müstakil", meaning: "Bağımsız", sentence: "Bahçeli müstakil bir evde oturuyorlar.", sentenceTr: "Bahçeli bağımsız bir evde oturuyorlar." },
+      { id: "w12_87", word: "İstikrarlı", meaning: "Dengeli, düzenli ilerleyen", sentence: "Çalışmalarında istikrarlı bir tempo tutturdu.", sentenceTr: "Çalışmalarında dengeli bir tempo tutturdu." },
+      { id: "w12_88", word: "Tutarsız", meaning: "Çelişkili", sentence: "Anlattıkları çok tutarsızdı, kimse inanmadı.", sentenceTr: "Anlattıkları çok çelişkiliydi, kimse inanmadı." },
+      { id: "w12_89", word: "Sıradan", meaning: "Alışılmış, olağan", sentence: "Sıradan bir günün ortasında olağanüstü bir şey yaşadık.", sentenceTr: "Alışılmış bir günün ortasında olağanüstü bir şey yaşadık." },
+      { id: "w12_90", word: "Yeknesak", meaning: "Tekdüze", sentence: "Yeknesak hayatından sıkıldığını söyledi.", sentenceTr: "Tekdüze hayatından sıkıldığını söyledi." },
+      { id: "w12_91", word: "Özgün", meaning: "Kendine has, orijinal", sentence: "Tasarımı oldukça özgün ve dikkat çekiciydi.", sentenceTr: "Tasarımı oldukça kendine has ve dikkat çekiciydi." },
+      { id: "w12_92", word: "Emsal", meaning: "Benzer, örnek", sentence: "Bu olay sonraki davalar için emsal olacak.", sentenceTr: "Bu olay sonraki davalar için örnek olacak." },
+      { id: "w12_93", word: "İstisna", meaning: "Ayrı tutulan durum", sentence: "Kural herkes için aynıdır, istisnası yoktur.", sentenceTr: "Kural herkes için aynıdır, ayrı tutulan bir durum yoktur." },
+      { id: "w12_94", word: "Aşina", meaning: "Alışık, tanıdık", sentence: "Yüzün bana aşina geliyor.", sentenceTr: "Yüzün bana tanıdık geliyor." },
+      { id: "w12_95", word: "Müşahhas", meaning: "Somut", sentence: "Soyut fikirlerini müşahhas örneklerle anlattı.", sentenceTr: "Soyut fikirlerini somut örneklerle anlattı." },
+      { id: "w12_96", word: "Mücerret", meaning: "Soyut", sentence: "Adalet, mücerret bir kavram olarak kalmamalı.", sentenceTr: "Adalet, soyut bir kavram olarak kalmamalı." },
+
+      // Cluster K: Kişilik (II)
+      { id: "w12_97", word: "Mütereddit", meaning: "Kararsız", sentence: "Karar vermekte hâlâ mütereddit görünüyor.", sentenceTr: "Karar vermekte hâlâ kararsız görünüyor." },
+      { id: "w12_98", word: "Müşkülpesent", meaning: "Zor beğenen", sentence: "Müşkülpesent biriyle alışveriş yapmak yorucudur.", sentenceTr: "Zor beğenen biriyle alışveriş yapmak yorucudur." },
+      { id: "w12_99", word: "Mütebessim", meaning: "Gülümseyen", sentence: "Her zaman mütebessim bir yüzle karşılardı bizi.", sentenceTr: "Her zaman gülümseyen bir yüzle karşılardı bizi." },
+      { id: "w12_100", word: "Mütehassis", meaning: "Uzman, ihtisas sahibi", sentence: "Bu konuda mütehassis bir kişiyle görüşmelisin.", sentenceTr: "Bu konuda uzman bir kişiyle görüşmelisin." },
+      { id: "w12_101", word: "Naif", meaning: "Saf, ince ruhlu", sentence: "Naif bakışlarıyla insanın gönlünü kazanıyordu.", sentenceTr: "Saf bakışlarıyla insanın gönlünü kazanıyordu." },
+      { id: "w12_102", word: "Nüktedan", meaning: "İnce esprili", sentence: "Nüktedan sözleriyle herkesi güldürdü.", sentenceTr: "İnce esprili sözleriyle herkesi güldürdü." },
+      { id: "w12_103", word: "Tevazu", meaning: "Alçakgönüllülük", sentence: "Başarılarına rağmen tevazudan ayrılmadı.", sentenceTr: "Başarılarına rağmen alçakgönüllülükten ayrılmadı." },
+      { id: "w12_104", word: "Dirayet", meaning: "Dayanıklılık, güçlü duruş", sentence: "Zor zamanlarda dirayetli duruşuyla örnek oldu.", sentenceTr: "Zor zamanlarda güçlü duruşuyla örnek oldu." },
+      { id: "w12_105", word: "Kadirşinas", meaning: "Değer bilen", sentence: "Kadirşinas bir öğrenci, hocasını hiç unutmadı.", sentenceTr: "Değer bilen bir öğrenci, hocasını hiç unutmadı." },
+      { id: "w12_106", word: "Müptezellik", meaning: "Basitlik, bayağılık", sentence: "Sanatın müptezelliğe düşmesinden korkuyoruz.", sentenceTr: "Sanatın bayağılığa düşmesinden korkuyoruz." },
+      { id: "w12_107", word: "Meziyet", meaning: "İyi özellik, üstün nitelik", sentence: "Sabır, en büyük meziyetlerinden biridir.", sentenceTr: "Sabır, en büyük iyi özelliklerinden biridir." },
+      { id: "w12_108", word: "Cüret", meaning: "Cesaret, atılganlık", sentence: "Bu kadar açık konuşma cüretini nereden buldun?", sentenceTr: "Bu kadar açık konuşma cesaretini nereden buldun?" },
+      { id: "w12_109", word: "Müfsit", meaning: "Bozucu, ara bozan", sentence: "Topluluğun ahengini bozan müfsit kişilerden uzak dur.", sentenceTr: "Topluluğun ahengini bozan kişilerden uzak dur." },
+
+      // Cluster L: Eylem & Tepki
+      { id: "w12_110", word: "Tevhit", meaning: "Birleştirme", sentence: "Farklı görüşlerin tevhidi kolay olmadı.", sentenceTr: "Farklı görüşlerin birleştirilmesi kolay olmadı." },
+      { id: "w12_111", word: "Teşekkül", meaning: "Oluşum, meydana gelme", sentence: "Yeni bir kurulun teşekkülü için çalışmalar başladı.", sentenceTr: "Yeni bir kurulun oluşumu için çalışmalar başladı." },
+      { id: "w12_112", word: "Tebarüz etmek", meaning: "Öne çıkmak, belirginleşmek", sentence: "Çalışmalarıyla kısa sürede tebarüz etti.", sentenceTr: "Çalışmalarıyla kısa sürede öne çıktı." },
+      { id: "w12_113", word: "Tevarüs", meaning: "Miras kalma", sentence: "Babasından kendisine güzel bir kütüphane tevarüs etti.", sentenceTr: "Babasından kendisine güzel bir kütüphane miras kaldı." },
+      { id: "w12_114", word: "Terkip", meaning: "Birleşim, bileşim", sentence: "Birçok malzemenin terkibinden yeni bir lezzet doğdu.", sentenceTr: "Birçok malzemenin birleşiminden yeni bir lezzet doğdu." },
+      { id: "w12_115", word: "Tecrit", meaning: "Ayırma, soyutlama", sentence: "Hasta odası diğer alanlardan tecrit edildi.", sentenceTr: "Hasta odası diğer alanlardan ayrıldı." },
+      { id: "w12_116", word: "Kanıksamak", meaning: "Sürekli olduğu için alışmak", sentence: "Gürültüyü kanıksadığı için artık duymuyor.", sentenceTr: "Gürültüye alıştığı için artık duymuyor." },
+      { id: "w12_117", word: "Yadsımak", meaning: "İnkâr etmek", sentence: "Çabasını yadsımak haksızlık olur.", sentenceTr: "Çabasını inkâr etmek haksızlık olur." },
+      { id: "w12_118", word: "İtham", meaning: "Suçlama", sentence: "Onu haksız yere ithamda bulundu.", sentenceTr: "Onu haksız yere suçlamada bulundu." },
+      { id: "w12_119", word: "Maruz kalmak", meaning: "Etkisinde kalmak", sentence: "Çok uzun süre güneşe maruz kalma.", sentenceTr: "Çok uzun süre güneşin etkisinde kalma." },
+      { id: "w12_120", word: "Müşahede", meaning: "Gözlem", sentence: "Yıldızları izlemek için yaptığı müşahede uzun sürdü.", sentenceTr: "Yıldızları izlemek için yaptığı gözlem uzun sürdü." },
+      { id: "w12_121", word: "Tahmin", meaning: "Öngörü, kestirim", sentence: "Hava durumu tahmini bugün için yağmurlu.", sentenceTr: "Hava durumu öngörüsü bugün için yağmurlu." },
+      { id: "w12_122", word: "Tasarı", meaning: "Plan, proje", sentence: "Yeni bir okul yapımı için tasarı hazırlandı.", sentenceTr: "Yeni bir okul yapımı için plan hazırlandı." },
+      { id: "w12_123", word: "Tedbir", meaning: "Önlem", sentence: "Salgına karşı her türlü tedbir alındı.", sentenceTr: "Salgına karşı her türlü önlem alındı." },
+
+      // Cluster M: Zorluk & Hâl
+      { id: "w12_124", word: "Meşakkat", meaning: "Zorluk, sıkıntı", sentence: "Yolun meşakkati onu yıldırmadı.", sentenceTr: "Yolun zorluğu onu yıldırmadı." },
+      { id: "w12_125", word: "Müşkül", meaning: "Zor, güç", sentence: "İçinden çıkması güç müşkül bir durumdayız.", sentenceTr: "İçinden çıkması güç zor bir durumdayız." },
+      { id: "w12_126", word: "Çetrefilli", meaning: "Karmaşık, dolambaçlı", sentence: "Çetrefilli bir hukuk meselesiyle uğraşıyor.", sentenceTr: "Karmaşık bir hukuk meselesiyle uğraşıyor." },
+      { id: "w12_127", word: "Beyhude", meaning: "Boşuna, yararsız", sentence: "Onunla tartışmak beyhude bir çabaydı.", sentenceTr: "Onunla tartışmak boşuna bir çabaydı." },
+      { id: "w12_128", word: "Muamma", meaning: "Anlaşılması zor şey, bilmece", sentence: "Geçmişi herkes için bir muamma.", sentenceTr: "Geçmişi herkes için anlaşılması zor bir şey." },
+      { id: "w12_129", word: "İvedi", meaning: "Acil, ivedilikle", sentence: "İvedi olarak hastaneye gitmesi gerekiyor.", sentenceTr: "Acil olarak hastaneye gitmesi gerekiyor." },
+      { id: "w12_130", word: "İnfial", meaning: "Ani duygusal tepki, öfkeli tepki", sentence: "Haber, halkta büyük bir infial uyandırdı.", sentenceTr: "Haber, halkta büyük bir tepki uyandırdı." },
+      { id: "w12_131", word: "Müsamaha", meaning: "Hoşgörü", sentence: "Hata yapana belli ölçüde müsamaha gösterilir.", sentenceTr: "Hata yapana belli ölçüde hoşgörü gösterilir." },
+      { id: "w12_132", word: "Serzeniş", meaning: "Yakınma, sitem", sentence: "Sözlerinde tatlı bir serzeniş vardı.", sentenceTr: "Sözlerinde tatlı bir yakınma vardı." },
+      { id: "w12_133", word: "Hasret", meaning: "Özlem", sentence: "Memleketine duyduğu hasret yıllarca dinmedi.", sentenceTr: "Memleketine duyduğu özlem yıllarca dinmedi." },
+
+      // Cluster N: Birikim & Değer
+      { id: "w12_134", word: "Müktesebat", meaning: "Birikim", sentence: "Yıllar içinde geniş bir kültür müktesebatı oluşturdu.", sentenceTr: "Yıllar içinde geniş bir kültür birikimi oluşturdu." },
+      { id: "w12_135", word: "Müktesep", meaning: "Kazanılmış", sentence: "Müktesep haklarımızdan vazgeçmeyiz.", sentenceTr: "Kazanılmış haklarımızdan vazgeçmeyiz." },
+      { id: "w12_136", word: "Mülhem", meaning: "Esinlenmiş", sentence: "Bu eser eski masallardan mülhem yazılmıştır.", sentenceTr: "Bu eser eski masallardan esinlenilerek yazılmıştır." },
+      { id: "w12_137", word: "Müteakip", meaning: "Sonraki, takip eden", sentence: "Toplantıyı müteakip kararlar açıklanacak.", sentenceTr: "Toplantıyı izleyen süreçte kararlar açıklanacak." },
+      { id: "w12_138", word: "Mukayyet", meaning: "Bağlı, ilgili", sentence: "Sen kendi işine mukayyet ol.", sentenceTr: "Sen kendi işine bağlı ol, başkalarıyla ilgilenme." },
+      { id: "w12_139", word: "Müstear", meaning: "Takma ad", sentence: "Yazar, kitaplarını müstear bir isimle yayımladı.", sentenceTr: "Yazar, kitaplarını takma bir isimle yayımladı." },
+      { id: "w12_140", word: "İtibar", meaning: "Saygınlık", sentence: "Bu kurumun toplumda büyük bir itibarı var.", sentenceTr: "Bu kurumun toplumda büyük bir saygınlığı var." },
+      { id: "w12_141", word: "İtina", meaning: "Özen, dikkat", sentence: "Eski kitapları itinayla raflara yerleştirdi.", sentenceTr: "Eski kitapları özenle raflara yerleştirdi." }
     ]
   }
 };
